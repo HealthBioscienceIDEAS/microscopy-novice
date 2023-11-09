@@ -1,20 +1,18 @@
 ---
-title: 'introduction'
+title: 'another episode'
 teaching: 10
 exercises: 2
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How do you write a lesson using R Markdown and `{sandpaper}`?
-- How does `{sandpaper}`'s lesson preview on PRs work?
+- How does PR preview work for a new episode?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Explain how to use markdown with the new lesson template
-- Demonstrate how to include pieces of code, figures, and nested challenge blocks
+- Evaluate sandpaper's PR previews
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -88,7 +86,7 @@ pie(
 ```
 
 <div class="figure" style="text-align: center">
-<img src="fig/introduction-rendered-pyramid-1.png" alt="pie chart illusion of a pyramid"  />
+<img src="fig/another-episode-rendered-pyramid-1.png" alt="pie chart illusion of a pyramid"  />
 <p class="caption">Sun arise each and every morning</p>
 </div>
 Or you can use pandoc markdown for static figures with the following syntax:
@@ -113,19 +111,6 @@ Cool, right?
 - Use `.Rmd` files for episodes when you need to generate output
 - Run `sandpaper::check_lesson()` to identify any issues with your lesson
 - Run `sandpaper::build_lesson()` to preview your lesson locally
-- Open a PR and preview changes?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Another section
-
-Adding some content here.
-
-
-```r
-print("Hello, world!")
-```
-
-```{.output}
-[1] "Hello, world!"
-```
