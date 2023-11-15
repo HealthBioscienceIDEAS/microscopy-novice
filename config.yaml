@@ -8,7 +8,9 @@
 # lc: Library Carpentry
 # cp: Carpentries (to use for instructor training for instance)
 # incubator: The Carpentries Incubator
-carpentry: 'incubator'
+carpentry: 'IDEAS'
+varnish: 'HealthBioscienceIDEAS/varnish@IDEAS'
+sandpaper: 'HealthBioscienceIDEAS/sandpaper@IDEAS'
 
 # Overall title for pages.
 title: 'Lesson Title'
@@ -58,17 +60,17 @@ contact: 'team@carpentries.org'
 # - another-learner.md
 
 # Order of episodes in your lesson
-episodes: 
+episodes:
 - introduction.Rmd
 
 # Information for Learners
-learners: 
+learners:
 
 # Information for Instructors
-instructors: 
+instructors:
 
 # Learner Profiles
-profiles: 
+profiles:
 
 # Customisation ---------------------------------------------
 #
