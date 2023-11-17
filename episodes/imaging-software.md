@@ -13,10 +13,10 @@ exercises:
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Explain the pros and cons of different image visualisation tools (e.g. ImageJ, napari and proprietary options)
-- Use napari to open images
-- Navigate the napari viewer (pan/zoom/swapping between 2D and 3D views…)
-- Explain the main parts of the napari user interface
+- Explain the pros and cons of different image visualisation tools (e.g. ImageJ, Napari and proprietary options)
+- Use Napari to open images
+- Navigate the Napari viewer (pan/zoom/swapping between 2D and 3D views…)
+- Explain the main parts of the Napari user interface
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -35,10 +35,13 @@ Some points to consider when choosing software are:
 
 - **What is common in your research field?**  
 Having a good community around the software you work with can be extremely helpful - so it's worth considering what is popular in your department, or in relevant papers in your field.
+
 - **Open source or proprietary?**  
 We'll look at this more in the next section, but it's important to consider if the software you are using is freely available, or requires a one-off payment or subscription to use.
+
 - **Support for image types?**  
 For example, does it support 3D images, or timeseries?
+
 - **Can it be customised/extended?**  
 Can you automate certain steps with your own scripts or plugins? This is useful if you want to add extra features to a piece of software, or automate steps for large numbers of images.
 
@@ -54,7 +57,7 @@ Scripts are lists of commands to be carried out by a piece of software e.g. load
 
 #### Plugins
 
-Plugins, in contrast to scripts, are focused on adding optional new features to a piece of software (rather than automating use of existing features). They allow members of the community, outside the main team that develops the software, to add features they need for a particular image type or processing task. They're designed to be re-useable so other members of the community can also easily benefit from these new features.
+Plugins, in contrast to scripts, are focused on adding optional new features to a piece of software (rather than automating use of existing features). They allow members of the community, outside the main team that develops the software, to add features they need for a particular image type or processing task. They're designed to be re-useable so other members of the community can easily benefit from these new features.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -111,7 +114,7 @@ For this lesson, we will use Napari as our software of choice. It's worth bearin
 
 Let's get started by opening a new Napari window - you should have already followed the [installation instructions](../learners/setup.md). Note this can take a while the first time, so give it a few minutes!
 
-```python
+```bash
 conda activate napari-env
 napari
 ```
@@ -147,7 +150,7 @@ We already used the main menu in the last section to open a sample image. The ma
 
 The canvas is the main part of the Napari user interface. This is where we display and interact with our images. 
 
-To navigate the canvas use the following commands:
+Try moving around the cells image with the following commands:
 ```
 Pan - Click and drag
 Zoom - Scroll in/out
@@ -155,93 +158,156 @@ Zoom - Scroll in/out
 
 ## Dimension sliders
 
-Dimension sliders appear at the bottom of the canvas depending on the type of image displayed. For example, the current cells image is 3D, so clicking and dragging the slider allows us to move up and down in the image stack.The arrow buttons at either end of the slider allow us to step through one image at a time. Also, the 'play' button at the very left of the slider allows us to move automatically through the stack until pressed again.
+Dimension sliders appear at the bottom of the canvas depending on the type of image displayed. For example, if we drag the slider at the bottom of the cells image, we move up and down in this 3D image stack.
 
-We will see in later episodes, that more sliders can appear if our image has more dimensions (e.g. time series, or further channels).
+![](fig/dim-slider.png){alt="Three screenshots of the cells image in napari, at different z depths"}
 
-Maybe image of 3 different slider posisitons put next to eachother?
+Pressing the arrow buttons at either end of the slider steps through one image at a time. Also, pressing the 'play' button at the very left of the slider moves automatically through the stack until pressed again.
+
+We will see in later episodes that more sliders can appear if our image has more dimensions (e.g. time series, or further channels).
 
 ## Viewer buttons
 
 The viewer buttons control various aspects of the Napari viewer:
 
-![](fig/console-button.png){alt="A screenshot of Napari's console button"} -- **Console**
+### Console ![](fig/console-button.png){alt="A screenshot of Napari's console button"}
 
 This button opens Napari's built-in python console - we'll look at this in later episodes.
 
-![](fig/2d-3d-button.png){alt="A screenshot of Napari's 2D-3D button"} -- **2D/3D**  
+### 2D/3D ![](fig/2d-3d-button.png){alt="A screenshot of Napari's 2D-3D button"} 
 
-This switches the canvas between 2D and 3D display. For example, for our cell image this is the 3D view:
+This switches the canvas between 2D and 3D display. Try switching to the 3D view for the cells image:
 
 ![](fig/cells-3d-napari.png){alt="A screenshot of 3D cells in Napari"}
 
-![](fig/roll-dims-button.png){alt="A screenshot of Napari's roll dimensions button"} -- **Roll dimensions**  
+The controls for moving in 3D are similar to those for 2D:
+```
+Rotate - Click and drag
+Pan - Shift + click and drag
+Zoom - Scroll in/out
+```
 
-This switches the order of dimensions in the viewer. For our cells image, it allows us to view orthgonal slices through the image (i.e. at 90 degrees to our starting view).
+### Roll dimensions ![](fig/roll-dims-button.png){alt="A screenshot of Napari's roll dimensions button"} 
 
-![](fig/transpose-dim-button.png){alt="A screenshot of Napari's transpose dimensions button"} -- **Roll dimensions**  
+This switches the order of dimensions in the viewer. For example, let's switch back to the 2D view for our cells image and press the roll dimensions button multiple times. You'll see that it switches between different orthogonal views (i.e. at 90 degrees to our starting view). Pressing it 3 times will bring us back to the original orientation.
 
-This button swaps the two currently displayed dimensions.
+![](fig/roll-dims.png){alt="Three screenshots of the cells image in napari, with different dimension order"}
 
-![](fig/grid-button.png){alt="A screenshot of Napari's grid button"} -- **Grid**  
+### Transpose dimensions ![](fig/transpose-dim-button.png){alt="A screenshot of Napari's transpose dimensions button"}
 
-This button displays all images in a grid. For our cells image, this displays the nuclei (green) next to the cell membranes (purple), rather than on top of each other.
+This button swaps the two currently displayed dimensions. Again trying this for our cells image, we see that the image becomes flipped. Pressing the button again brings us back to the original orientation.
 
-![](fig/home-button.png){alt="A screenshot of Napari's home button"} -- **Home**  
+![](fig/transpose-dim.png){alt="Two screenshots of the cells image in napari, with dimensions swapped"}
+
+### Grid ![](fig/grid-button.png){alt="A screenshot of Napari's grid button"}
+
+This button displays all images in a grid. Using this for our cells image, we see the nuclei (green) displayed next to the cell membranes (purple), rather than on top of each other.
+
+### Home ![](fig/home-button.png){alt="A screenshot of Napari's home button"}
 
 This button brings the canvas back to its default view. This is useful if you have panned/zoomed to a specific region and want to quickly get back to an overview of the full image.
 
 ## Layer list
 
-Next we come to the layer list, this shows each layer as its own named row. Layers can be of different types - for example ```Image```, ```Points``` and ```Shapes```. Image layers are the most common, and this is what we see for our cells image. There are currently two image layers - one for the nuclei (green) and one for the cell membranes (purple).
+Now that we've seen the main controls for the viewer, let's look at the layer list. 'Layers' are how Napari displays multiple items together in the viewer. For example, currently our layer list contains two items - 'nuclei' and 'membrane'. These are both ```Image``` layers and are displayed in order, with the nuclei on top and membrane underneath.
 
 ![](fig/layer-list.png){alt="A screenshot of Napari's layer list, showing two image layers named 'nuclei' and 'membrane'"}
 
-Layers can be toggled on/off by clicking the eye icon on the left side of their row. They can be renamed by double clicking on the row.
+We can show/hide each layer by clicking the eye icon on the left side of their row. We can also rename them by double clicking on the row.
 
-Layers are displayed in order, with those further up the list on top and those further down on the bottom. Here, the nuclei image is displayed on top of the membranes. Layers can be re-ordered by dragging and dropping the rows into a new order. For example, if we drag the membranes row to be above the nuclei, then we see the nuclei disappear from the viewer (as the membrane image hides them).
+We can change the order of layers by dragging and dropping items in the layer list. For example, try dragging the membrane layer above the nuclei. You should see the nuclei disappear from the viewer (as they are now hidden by the membrane image on top).
 
 ![](fig/layer-reordering.png){alt="A screenshot of Napari with the nuclei and membrane layer swapped"}
 
+Here we only have ```Image``` layers, but there are many more types like ```Points```, ```Shapes``` and ```Labels```, some of which we will see later in the episode.
+
+
 ## Layer controls
 
-Next we come to the layer controls - these show controls for the currently selected layer (i.e. the one that is highlighted in blue in the layer list). Selecting a different layer will result in different settings being shown. For example, clicking on the nuclei layer shows a ```colormap``` of green, while clicking on the membrane layer shows a ```colormap``` of magenta.
+Next let's look at the layer controls - this area shows controls only for the currently selected layer (i.e. the one that is highlighted in blue in the layer list). For example, if we click on the nuclei layer then we can see a ```colormap``` of green, while if we click on the membrane layer we see a ```colormap``` of magenta.
 
-Controls will also vary between different types of layer (like ```Image``` vs ```Points```) as we will see in later episodes.
+Controls will also vary depending on layer type (like ```Image``` vs ```Points```) as we will see later in this episode.
 
-Let's take a quick look at some of the image layer controls:
+Let's take a quick look at some of the main image layer controls:
 
-**Opacity**  
-This changes the opacity of the layer - lower values are more transparent. For example, reducing the opacity of the membrane layer (if it is still on top of the nuclei), will allow us to see the nuclei again.
+### Opacity  
+This changes the opacity of the layer - lower values are more transparent. For example, reducing the opacity of the membrane layer (if it is still on top of the nuclei), allows us to see the nuclei again.
 
-**Contrast limits**  
-We'll discuss this in detail in a later episode, but briefly - the contrast limits adjust what parts of the image we can see and how bright they appear in the viewer. Moving the left node adjusts what is shown as fully black, while moving the right node adjusts what is shown as fully bright.
+### Contrast limits 
+We'll discuss this in detail in a later episode, but briefly - the contrast limits adjust what parts of the image we can see and how bright they appear in the viewer. Moving the left node adjusts what is shown as fully black, while moving the right node adjusts what is shown as fully bright. 
 
-**Colormap**  
+### Colormap
 Again, we'll discuss this in detail in a later episode, but briefly - the colormap determines what colours an image is displayed with. Clicking in the dropdown shows a wide range of options that you can swap between.
 
-**Blending**    
-This controls how multiple layers are blended together to give the final result in the viewer. There are [many different options to choose from](https://napari.org/stable/guides/layers.html#blending-layers). For example, if we put the nucleus layer back above the membrane one and change its blending to 'opaque' - then we see that it completely hides the membrane layer underneath. Changing it back to 'additive' will allow the nucleus and membrane layers to be seen together again.
+### Blending    
+This controls how multiple layers are blended together to give the final result in the viewer. There are [many different options to choose from](https://napari.org/stable/guides/layers.html#blending-layers). For example, let's put the nuclei layer back on top of the membrane and change its blending to 'opaque'. You should see that it now completely hides the membrane layer underneath. Changing the blending back to 'additive' will allow both the nucleus and membrane layers to be seen together again.
+
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Using image layer controls
+
+Adjust the layer controls for both nuclei and membrane to give the result below:
+
+![](fig/layer-controls-task.png){alt="Cells image with blue nuclei and bright red membranes"}
+
+:::::::::::::::::::::::: solution 
+ 
+- Click on the nuclei in the layer list
+- Change the colormap to cyan
+- Click on the membrane in the layer list
+- Change the colormap to red
+- Move the right contrast limits node to the left to make the membranes appear brighter
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Layer buttons
 
-The layer buttons allow us to add additional layers of new types:
+So far we have only looked at ```Image``` layers, but there are many more types supported by Napari. The layer buttons allow us to add additional layers of these new types:
 
-![](fig/points-button.png){alt="A screenshot of Napari's point layer button"} -- **Points**  
+### Points ![](fig/points-button.png){alt="A screenshot of Napari's point layer button"}
 
 This button creates a new [points layer](https://napari.org/stable/howtos/layers/points.html). This can be used to mark specific locations in an image.
 
-![](fig/shapes-button.png){alt="A screenshot of Napari's shape layer button"} -- **Shapes**  
+### Shapes ![](fig/shapes-button.png){alt="A screenshot of Napari's shape layer button"} 
 
 This button creates a new [shapes layer](https://napari.org/stable/howtos/layers/shapes.html). Shapes can be used to mark regions of interest e.g. with rectangles, ellipses or lines.
 
-![](fig/labels-button.png){alt="A screenshot of Napari's labels layer button"} -- **Labels**  
+### Labels ![](fig/labels-button.png){alt="A screenshot of Napari's labels layer button"}
 
 This button creates a new [labels layer](https://napari.org/stable/howtos/layers/labels.html). This is usually used to label specific regions in an image e.g. to label individual nuclei.
 
-![](fig/delete-button.png){alt="A screenshot of Napari's delete layer button"} -- **Remove layer**  
+### Remove layer ![](fig/delete-button.png){alt="A screenshot of Napari's delete layer button"}  
 
 This button removes the currently selected layer (highlighted in blue) from the layer list.
+
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Point layers
+
+Let's take a quick look at one of these new layer types - the ```Points``` layer.
+
+Add a new points layer by clicking the points button. Investigate the different layer controls - what do they do? Note that hovering over buttons will usually show a summary tooltip.
+
+Add points and adjust settings to give the result below:
+
+![](fig/points-task.png){alt="Cells image with points marking multiple nuclei"}
+
+:::::::::::::::::::::::: solution 
+ 
+- Click the 'add points' button ![](fig/add-points-button.png){alt="Screenshot of Napari's add points button"}
+- Click on nuclei to add points on top of them
+- Click the 'select points' button ![](fig/select-points-button.png){alt="Screenshot of Napari's select points button"}
+- Click on the point over the dividing nucleus
+- Increase the point size slider
+- Change its symbol to star
+- Change its face colour to purple
+- change its edge colour to white
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
