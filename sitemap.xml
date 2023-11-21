@@ -10,6 +10,12 @@
     <loc>https://FIXME-template-source.github.io/NA/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://FIXME-template-source.github.io/NA/aio.html</loc>
+  </url>
+  <url>
+    <loc>https://FIXME-template-source.github.io/NA/images.html</loc>
+  </url>
+  <url>
     <loc>https://FIXME-template-source.github.io/NA/index.html</loc>
   </url>
   <url>
@@ -22,10 +28,22 @@
     <loc>https://FIXME-template-source.github.io/NA/instructor/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://FIXME-template-source.github.io/NA/instructor/aio.html</loc>
+  </url>
+  <url>
+    <loc>https://FIXME-template-source.github.io/NA/instructor/images.html</loc>
+  </url>
+  <url>
     <loc>https://FIXME-template-source.github.io/NA/instructor/index.html</loc>
   </url>
   <url>
+    <loc>https://FIXME-template-source.github.io/NA/instructor/instructor-notes.html</loc>
+  </url>
+  <url>
     <loc>https://FIXME-template-source.github.io/NA/instructor/introduction.html</loc>
+  </url>
+  <url>
+    <loc>https://FIXME-template-source.github.io/NA/instructor/key-points.html</loc>
   </url>
   <url>
     <loc>https://FIXME-template-source.github.io/NA/instructor/profiles.html</loc>
@@ -34,7 +52,13 @@
     <loc>https://FIXME-template-source.github.io/NA/instructor/reference.html</loc>
   </url>
   <url>
+    <loc>https://FIXME-template-source.github.io/NA/instructor-notes.html</loc>
+  </url>
+  <url>
     <loc>https://FIXME-template-source.github.io/NA/introduction.html</loc>
+  </url>
+  <url>
+    <loc>https://FIXME-template-source.github.io/NA/key-points.html</loc>
   </url>
   <url>
     <loc>https://FIXME-template-source.github.io/NA/profiles.html</loc>
