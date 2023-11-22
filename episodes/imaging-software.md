@@ -320,7 +320,7 @@ overview of the full image.
 Now that we've seen the main controls for the viewer, let's look at the layer 
 list. 'Layers' are how Napari displays multiple items together in the viewer. 
 For example, currently our layer list contains two items - 'nuclei' and 
-'membrane'. These are both ```Image``` layers and are displayed in order, with 
+'membrane'. These are both `Image` layers and are displayed in order, with 
 the nuclei on top and membrane underneath.
 
 ![](fig/layer-list.png){alt="A screenshot of Napari's layer list, showing two 
@@ -337,9 +337,8 @@ image on top).
 ![](fig/layer-reordering.png){alt="A screenshot of Napari with the nuclei and 
 membrane layer swapped"}
 
-Here we only have ```Image``` layers, but there are many more types like 
-```Points```, ```Shapes``` and ```Labels```, some of which we will see later 
-in the episode.
+Here we only have `Image` layers, but there are many more types like `Points`, 
+`Shapes` and `Labels`, some of which we will see later in the episode.
 
 
 ## Layer controls
@@ -347,11 +346,11 @@ in the episode.
 Next let's look at the layer controls - this area shows controls only for the 
 currently selected layer (i.e. the one that is highlighted in blue in the layer 
 list). For example, if we click on the nuclei layer then we can see a 
-```colormap``` of green, while if we click on the membrane layer we see a 
-```colormap``` of magenta.
+`colormap` of green, while if we click on the membrane layer we see a 
+`colormap` of magenta.
 
-Controls will also vary depending on layer type (like ```Image``` vs 
-```Points```) as we will see later in this episode.
+Controls will also vary depending on layer type (like `Image` vs `Points`) as we 
+will see later in this episode.
 
 Let's take a quick look at some of the main image layer controls:
 
@@ -404,7 +403,7 @@ appear brighter
 
 ## Layer buttons
 
-So far we have only looked at ```Image``` layers, but there are many more types 
+So far we have only looked at `Image` layers, but there are many more types 
 supported by Napari. The layer buttons allow us to add additional layers of 
 these new types:
 
@@ -444,7 +443,7 @@ layer list.
 
 ## Point layers
 
-Let's take a quick look at one of these new layer types - the ```Points``` layer.
+Let's take a quick look at one of these new layer types - the `Points` layer.
 
 Add a new points layer by clicking the points button. Investigate the different 
 layer controls - what do they do? Note that hovering over buttons will usually 
@@ -480,7 +479,7 @@ https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/sele
 - Napari and Fiji/ImageJ are popular open-source options
 - Napari's user interface is split into a few main sections including the 
 canvas, layer list, layer controls...
-- Layers can be of different types e.g. ```Image```, ```Point```, ```Label```
+- Layers can be of different types e.g. `Image`, `Point`, `Label`
 - Different layer types have different layer controls
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
