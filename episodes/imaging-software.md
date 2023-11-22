@@ -250,13 +250,18 @@ dimensions (e.g. time series, or further channels).
 
 The viewer buttons control various aspects of the Napari viewer:
 
-### Console ![](fig/console-button.png
-){alt="A screenshot of Napari's console button"}
+### Console ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg
+){alt="A screenshot of Napari's console button" height='30px'}
 
 This button opens Napari's built-in python console - we'll look at this in later 
 episodes.
 
-### 2D/3D ![](fig/2d-3d-button.png){alt="A screenshot of Napari's 2D-3D button"} 
+### 2D/3D ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/2D.svg
+){alt="A screenshot of Napari's 2D button" height='25px'}  / ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/3D.svg
+){alt="A screenshot of Napari's 3D button" height='25px'}
 
 This switches the canvas between 2D and 3D display. Try switching to the 3D view 
 for the cells image:
@@ -270,8 +275,9 @@ Pan - Shift + click and drag
 Zoom - Scroll in/out
 ```
 
-### Roll dimensions ![](fig/roll-dims-button.png
-){alt="A screenshot of Napari's roll dimensions button"} 
+### Roll dimensions ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/roll.svg
+){alt="A screenshot of Napari's roll dimensions button" height='25px'} 
 
 This switches the order of dimensions in the viewer. For example, let's switch 
 back to the 2D view for our cells image and press the roll dimensions button 
@@ -282,8 +288,9 @@ back to the original orientation.
 ![](fig/roll-dims.png){alt="Three screenshots of the cells image in napari, 
 with different dimension order"}
 
-### Transpose dimensions ![](fig/transpose-dim-button.png
-){alt="A screenshot of Napari's transpose dimensions button"}
+### Transpose dimensions ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/transpose.svg
+){alt="A screenshot of Napari's transpose dimensions button" height='25px'}
 
 This button swaps the two currently displayed dimensions. Again trying this for 
 our cells image, we see that the image becomes flipped. Pressing the button 
@@ -292,13 +299,17 @@ again brings us back to the original orientation.
 ![](fig/transpose-dim.png){alt="Two screenshots of the cells image in napari, 
 with dimensions swapped"}
 
-### Grid ![](fig/grid-button.png){alt="A screenshot of Napari's grid button"}
+### Grid ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/grid.svg
+){alt="A screenshot of Napari's grid button" height='25px'}
 
 This button displays all images in a grid. Using this for our cells image, we 
 see the nuclei (green) displayed next to the cell membranes (purple), rather 
 than on top of each other.
 
-### Home ![](fig/home-button.png){alt="A screenshot of Napari's home button"}
+### Home ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/home.svg
+){alt="A screenshot of Napari's home button" height='25px'}
 
 This button brings the canvas back to its default view. This is useful if you 
 have panned/zoomed to a specific region and want to quickly get back to an 
@@ -397,30 +408,34 @@ So far we have only looked at ```Image``` layers, but there are many more types
 supported by Napari. The layer buttons allow us to add additional layers of 
 these new types:
 
-### Points ![](fig/points-button.png
-){alt="A screenshot of Napari's point layer button"}
+### Points ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_points.svg
+){alt="A screenshot of Napari's point layer button" height='30px'}
 
 This button creates a new 
 [points layer](https://napari.org/stable/howtos/layers/points.html). This can 
 be used to mark specific locations in an image.
 
-### Shapes ![](fig/shapes-button.png
-){alt="A screenshot of Napari's shape layer button"} 
+### Shapes ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_shapes.svg
+){alt="A screenshot of Napari's shape layer button" height='30px'} 
 
 This button creates a new 
 [shapes layer](https://napari.org/stable/howtos/layers/shapes.html). Shapes can 
 be used to mark regions of interest e.g. with rectangles, ellipses or lines.
 
-### Labels ![](fig/labels-button.png
-){alt="A screenshot of Napari's labels layer button"}
+### Labels ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_labels.svg
+){alt="A screenshot of Napari's labels layer button" height='30px'}
 
 This button creates a new 
 [labels layer](https://napari.org/stable/howtos/layers/labels.html). This is 
 usually used to label specific regions in an image e.g. to label individual 
 nuclei.
 
-### Remove layer ![](fig/delete-button.png
-){alt="A screenshot of Napari's delete layer button"}  
+### Remove layer ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
+){alt="A screenshot of Napari's delete layer button" height='30px'}  
 
 This button removes the currently selected layer (highlighted in blue) from the 
 layer list.
@@ -441,11 +456,13 @@ Add points and adjust settings to give the result below:
 
 :::::::::::::::::::::::: solution 
  
-- Click the 'add points' button ![](fig/add-points-button.png){alt="Screenshot 
-of Napari's add points button"}
+- Click the 'add points' button ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/add.svg
+){alt="Screenshot of Napari's add points button" height='30px'}
 - Click on nuclei to add points on top of them
-- Click the 'select points' button ![](fig/select-points-button.png
-){alt="Screenshot of Napari's select points button"}
+- Click the 'select points' button ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/select.svg
+){alt="Screenshot of Napari's select points button" height='30px'}
 - Click on the point over the dividing nucleus
 - Increase the point size slider
 - Change its symbol to star
