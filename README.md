@@ -6,7 +6,7 @@
 
 This course is developed using the [Carpentries Workbench](https://carpentries.github.io/workbench/).
 The *sandpaper* R package is the main driver used to configure and build the
-website (see installation instructions [below](#building-the-lesson-locally).
+website (see installation instructions [below](#building-the-lesson-locally)).
 
 For a comprehensive guide on how to use *sandpaper*, check out the
 [documentation](https://carpentries.github.io/sandpaper-docs/).
