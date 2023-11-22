@@ -13,7 +13,8 @@ exercises:
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Explain the pros and cons of different image visualisation tools (e.g. ImageJ, Napari and proprietary options)
+- Explain the pros and cons of different image visualisation tools (e.g. ImageJ, 
+Napari and proprietary options)
 - Use Napari to open images
 - Navigate the Napari viewer (pan/zoom/swapping between 2D and 3D views…)
 - Explain the main parts of the Napari user interface
@@ -29,53 +30,85 @@ Light microscopes can produce a very wide range of image data - for example:
 - Different channels
 - Small to large datasets
 
-With such a wide range of data, there comes a huge variety of software that can work with these images. Different software may be specialised to specific types of image data, or to specific research fields. There is no one 'right' software to use - it's about choosing the right tool for your data and research question!
+With such a wide range of data, there comes a huge variety of software that can 
+work with these images. Different software may be specialised to specific types 
+of image data, or to specific research fields. There is no one 'right' software 
+to use - it's about choosing the right tool for your data and research question!
 
 Some points to consider when choosing software are:
 
 - **What is common in your research field?**  
-Having a good community around the software you work with can be extremely helpful - so it's worth considering what is popular in your department, or in relevant papers in your field.
+Having a good community around the software you work with can be extremely 
+helpful - so it's worth considering what is popular in your department, 
+or in relevant papers in your field.
 
 - **Open source or proprietary?**  
-We'll look at this more in the next section, but it's important to consider if the software you are using is freely available, or requires a one-off payment or subscription to use.
+We'll look at this more in the next section, but it's important to consider if 
+the software you are using is freely available, or requires a one-off payment or 
+subscription to use.
 
 - **Support for image types?**  
 For example, does it support 3D images, or timeseries?
 
 - **Can it be customised/extended?**  
-Can you automate certain steps with your own scripts or plugins? This is useful if you want to add extra features to a piece of software, or automate steps for large numbers of images.
+Can you automate certain steps with your own scripts or plugins? This is useful 
+if you want to add extra features to a piece of software, or automate steps for 
+large numbers of images.
 
 :::::::::::::::::::::::::::::::::::::: callout
 
 ### Scripts and plugins?
 
-Scripts and plugins are ways to automate certain software steps or add new features.
+Scripts and plugins are ways to automate certain software steps or add new 
+features.
 
 #### Scripts
 
-Scripts are lists of commands to be carried out by a piece of software e.g. load an image, then threshold it, then measure its size...  They are normally used to automate certain processing steps - for example, rather than having to load each image individually and click the same buttons again and again in the user interface, a script could load each image automatically and run all those steps in one go. They tend to be specific to a particular dataset and research question, so are less likely to be easily re-useable than plugins.
+Scripts are lists of commands to be carried out by a piece of software e.g. 
+load an image, then threshold it, then measure its size...  They are normally 
+used to automate certain processing steps - for example, rather than having to 
+load each image individually and click the same buttons again and again in the 
+user interface, a script could load each image automatically and run all those 
+steps in one go. They tend to be specific to a particular dataset and research 
+question, so are less likely to be easily re-useable than plugins.
 
 #### Plugins
 
-Plugins, in contrast to scripts, are focused on adding optional new features to a piece of software (rather than automating use of existing features). They allow members of the community, outside the main team that develops the software, to add features they need for a particular image type or processing task. They're designed to be re-useable so other members of the community can easily benefit from these new features.
+Plugins, in contrast to scripts, are focused on adding optional new features to 
+a piece of software (rather than automating use of existing features). They 
+allow members of the community, outside the main team that develops the 
+software, to add features they need for a particular image type or processing 
+task. They're designed to be re-useable so other members of the community can 
+easily benefit from these new features.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-A good place to look for advice on software is the [image.sc forum](https://forum.image.sc/) - a popular forum for image analysis (mostly related to biological or medical images).
+A good place to look for advice on software is the 
+[image.sc forum](https://forum.image.sc/) - a popular forum for image analysis 
+(mostly related to biological or medical images).
 
 ## Open source vs proprietary
 
-A key factor to consider when choosing software is whether it is open source or proprietary:
+A key factor to consider when choosing software is whether it is open source or 
+proprietary:
 
 - **Open source**: Software that is made freely available to use and modify.
 
-- **Proprietary**: Software that is owned by a company and usually requires either a one-off fee or subscription to use.
+- **Proprietary**: Software that is owned by a company and usually requires 
+either a one-off fee or subscription to use.
 
-Both can be extremely useful, and it is very likely that you will use a mix of both to view and analyse your images. For example, proprietary software is often provided by the manufacturer when you purchase a light microscope. You will likely use this during acquisition of your images and for some processing steps after. This being said, we encourage using open-source software wherever possible, as it is free to use and easy to extend with extra features.
+Both can be extremely useful, and it is very likely that you will use a mix of 
+both to view and analyse your images. For example, proprietary software is often 
+provided by the manufacturer when you purchase a light microscope. You will 
+likely use this during acquisition of your images and for some processing steps 
+after. This being said, we encourage using open-source software wherever 
+possible, as it is free to use and easy to extend with extra features.
 
 ## Fiji/ImageJ and Napari
 
-While there are many pieces of software to choose from, two of the most popular open-source options are [Fiji/ImageJ](https://imagej.net/software/fiji/) and [Napari](https://napari.org/).
+While there are many pieces of software to choose from, two of the most popular 
+open-source options are [Fiji/ImageJ](https://imagej.net/software/fiji/) and 
+[Napari](https://napari.org/).
 They are both:
 
 - Freely available
@@ -83,43 +116,77 @@ They are both:
 - Supporting a wide range of image types
 - Customisable with scripts + plugins
 
-Both are great options for working with a wide variety of images - so why choose one over the other? Some of the main differences are listed below if you are interested:
+Both are great options for working with a wide variety of images - so why 
+choose one over the other? Some of the main differences are listed below if you 
+are interested:
 
 :::::::::::::::::::::::::::::::::::::: spoiler
 
 ### Differences between Fiji/ImageJ and Napari
 
 **Python vs Java**  
-A big advantage of Napari is that it is made with the Python programming language (vs Fiji/ImageJ which is made with Java). In general, this makes it easier to extend with scripts and plugins as Python tends to be more widely used in the research community. It also means Napari can easily integrate with other python tools e.g. Python's popular machine learning libraries.
+A big advantage of Napari is that it is made with the Python programming 
+language (vs Fiji/ImageJ which is made with Java). In general, this makes it 
+easier to extend with scripts and plugins as Python tends to be more widely used 
+in the research community. It also means Napari can easily integrate with other 
+python tools e.g. Python's popular machine learning libraries.
 
 **Maturity**    
-Fiji/ImageJ has been actively developed [for many years now (>20 years)](https://imagej.net/software/imagej/), while Napari is a more recent development [starting around 2018](https://napari.org/stable/community/team.html#project-history). 	This difference in age comes with pros and cons - in general, it means that the core features and layout of Fiji/ImageJ are very well established, and less likely to change than Napari. With Napari, you will likely have to adjust your image processing workflow with new versions, or update any scripts/plugins more often. Equally, as Napari is new and rapidly growing in popularity, it is quickly gaining new features and attracting a wide range of new plugin developers.
+Fiji/ImageJ has been actively developed 
+[for many years now (>20 years)](https://imagej.net/software/imagej/), while 
+Napari is a more recent development 
+[starting around 2018](https://napari.org/stable/community/team.html#project-history). 
+This difference in age comes with pros and cons - in general, it means that the 
+core features and layout of Fiji/ImageJ are very well established, and less 
+likely to change than Napari. With Napari, you will likely have to adjust your 
+image processing workflow with new versions, or update any scripts/plugins more 
+often. Equally, as Napari is new and rapidly growing in popularity, it is 
+quickly gaining new features and attracting a wide range of new plugin 
+developers.
 
 **Built-in tools**    
-Fiji/ImageJ comes with many image processing tools built-in by default - e.g. making image histograms, thresholding and gaussian blur (we will look at these terms in a later episode). Napari, in contrast, is more minimal by default - mostly focusing on image display. It requires installation of additional plugins to add many of these features.
+Fiji/ImageJ comes with many image processing tools built-in by default - e.g. 
+making image histograms, thresholding and gaussian blur (we will look at these 
+terms in a later episode). Napari, in contrast, is more minimal by default - 
+mostly focusing on image display. It requires installation of additional plugins 
+to add many of these features.
 
 **Specific plugins**   
-There are excellent plugins available for Fiji/ImageJ and Napari that focus on specific types of image data or processing steps. The availability of a specific plugin will often be a deciding factor on whether to use Fiji/ImageJ or Napari for your project.
+There are excellent plugins available for Fiji/ImageJ and Napari that focus on 
+specific types of image data or processing steps. The availability of a specific 
+plugin will often be a deciding factor on whether to use Fiji/ImageJ or Napari 
+for your project.
 
 
 **Ease of installation and user interface**  
-As Fiji/ImageJ has been in development for longer, it tends to be simpler to install than Napari (especially for those with no prior Python experience). In addition, as it has more built-in image processing tools, it tends to be simpler to use fully from its user interface. Napari meanwhile is often strongest when you combine it with some Python scripting (although this isn't required for many workflows!)
+As Fiji/ImageJ has been in development for longer, it tends to be simpler to 
+install than Napari (especially for those with no prior Python experience). In 
+addition, as it has more built-in image processing tools, it tends to be simpler 
+to use fully from its user interface. Napari meanwhile is often strongest when 
+you combine it with some Python scripting (although this isn't required for many 
+workflows!)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-For this lesson, we will use Napari as our software of choice. It's worth bearing in mind though that Fiji/ImageJ can be a useful alternative - and many workflows will actually use both Fiji/ImageJ and Napari together! Again, it's about choosing the right tool for your data and research question.
+For this lesson, we will use Napari as our software of choice. It's worth 
+bearing in mind though that Fiji/ImageJ can be a useful alternative - and many 
+workflows will actually use both Fiji/ImageJ and Napari together! Again, it's 
+about choosing the right tool for your data and research question.
 
 
 ## Opening Napari
 
-Let's get started by opening a new Napari window - you should have already followed the [installation instructions](../learners/setup.md). Note this can take a while the first time, so give it a few minutes!
+Let's get started by opening a new Napari window - you should have already 
+followed the [installation instructions](../learners/setup.md). Note this can 
+take a while the first time, so give it a few minutes!
 
 ```bash
 conda activate napari-env
 napari
 ```
 
-![](fig/blank-napari-ui.png){alt="A screenshot of the default Napari user interface"}
+![](fig/blank-napari-ui.png){alt="A screenshot of the default Napari user 
+interface"}
 
 ## Opening images
 
@@ -132,23 +199,30 @@ File > Open Sample > napari builtins > Cells (3D+2Ch)
 
 You should see a fluorescence microscopy image of some cells:
 
-![](fig/cells-napari.png){alt="A screenshot of a flourescence microscopy image of some cells in Napari"}
+![](fig/cells-napari.png){alt="A screenshot of a flourescence microscopy image 
+of some cells in Napari"}
 
 ## Napari's User interface
 
-Napari's user interface is split into a few main sections, as you can see in the diagram below:
+Napari's user interface is split into a few main sections, as you can see in the 
+diagram below:
 
-![](fig/ui-sections-napari.png){alt="A screenshot of Napari with the main user interface sections labelled"}
+![](fig/ui-sections-napari.png){alt="A screenshot of Napari with the main user 
+interface sections labelled"}
 
-Let's take a brief look at each of these sections - for full information see the [Napari documentation](https://napari.org/stable/tutorials/fundamentals/viewer.html).
+Let's take a brief look at each of these sections - for full information see the 
+[Napari documentation](https://napari.org/stable/tutorials/fundamentals/viewer.html).
 
 ## Main menu
 
-We already used the main menu in the last section to open a sample image. The main menu contains various commands for opening images, changing preferences and installing plugins (we'll see more of these options in later episodes).
+We already used the main menu in the last section to open a sample image. The 
+main menu contains various commands for opening images, changing preferences and 
+installing plugins (we'll see more of these options in later episodes).
 
 ## Canvas
 
-The canvas is the main part of the Napari user interface. This is where we display and interact with our images. 
+The canvas is the main part of the Napari user interface. This is where we 
+display and interact with our images. 
 
 Try moving around the cells image with the following commands:
 ```
@@ -158,25 +232,34 @@ Zoom - Scroll in/out
 
 ## Dimension sliders
 
-Dimension sliders appear at the bottom of the canvas depending on the type of image displayed. For example, if we drag the slider at the bottom of the cells image, we move up and down in this 3D image stack.
+Dimension sliders appear at the bottom of the canvas depending on the type of 
+image displayed. For example, if we drag the slider at the bottom of the cells 
+image, we move up and down in this 3D image stack.
 
-![](fig/dim-slider.png){alt="Three screenshots of the cells image in napari, at different z depths"}
+![](fig/dim-slider.png){alt="Three screenshots of the cells image in napari, at 
+different z depths"}
 
-Pressing the arrow buttons at either end of the slider steps through one image at a time. Also, pressing the 'play' button at the very left of the slider moves automatically through the stack until pressed again.
+Pressing the arrow buttons at either end of the slider steps through one image 
+at a time. Also, pressing the 'play' button at the very left of the slider moves 
+automatically through the stack until pressed again.
 
-We will see in later episodes that more sliders can appear if our image has more dimensions (e.g. time series, or further channels).
+We will see in later episodes that more sliders can appear if our image has more 
+dimensions (e.g. time series, or further channels).
 
 ## Viewer buttons
 
 The viewer buttons control various aspects of the Napari viewer:
 
-### Console ![](fig/console-button.png){alt="A screenshot of Napari's console button"}
+### Console ![](fig/console-button.png
+){alt="A screenshot of Napari's console button"}
 
-This button opens Napari's built-in python console - we'll look at this in later episodes.
+This button opens Napari's built-in python console - we'll look at this in later 
+episodes.
 
 ### 2D/3D ![](fig/2d-3d-button.png){alt="A screenshot of Napari's 2D-3D button"} 
 
-This switches the canvas between 2D and 3D display. Try switching to the 3D view for the cells image:
+This switches the canvas between 2D and 3D display. Try switching to the 3D view 
+for the cells image:
 
 ![](fig/cells-3d-napari.png){alt="A screenshot of 3D cells in Napari"}
 
@@ -187,60 +270,104 @@ Pan - Shift + click and drag
 Zoom - Scroll in/out
 ```
 
-### Roll dimensions ![](fig/roll-dims-button.png){alt="A screenshot of Napari's roll dimensions button"} 
+### Roll dimensions ![](fig/roll-dims-button.png
+){alt="A screenshot of Napari's roll dimensions button"} 
 
-This switches the order of dimensions in the viewer. For example, let's switch back to the 2D view for our cells image and press the roll dimensions button multiple times. You'll see that it switches between different orthogonal views (i.e. at 90 degrees to our starting view). Pressing it 3 times will bring us back to the original orientation.
+This switches the order of dimensions in the viewer. For example, let's switch 
+back to the 2D view for our cells image and press the roll dimensions button 
+multiple times. You'll see that it switches between different orthogonal views 
+(i.e. at 90 degrees to our starting view). Pressing it 3 times will bring us 
+back to the original orientation.
 
-![](fig/roll-dims.png){alt="Three screenshots of the cells image in napari, with different dimension order"}
+![](fig/roll-dims.png){alt="Three screenshots of the cells image in napari, 
+with different dimension order"}
 
-### Transpose dimensions ![](fig/transpose-dim-button.png){alt="A screenshot of Napari's transpose dimensions button"}
+### Transpose dimensions ![](fig/transpose-dim-button.png
+){alt="A screenshot of Napari's transpose dimensions button"}
 
-This button swaps the two currently displayed dimensions. Again trying this for our cells image, we see that the image becomes flipped. Pressing the button again brings us back to the original orientation.
+This button swaps the two currently displayed dimensions. Again trying this for 
+our cells image, we see that the image becomes flipped. Pressing the button 
+again brings us back to the original orientation.
 
-![](fig/transpose-dim.png){alt="Two screenshots of the cells image in napari, with dimensions swapped"}
+![](fig/transpose-dim.png){alt="Two screenshots of the cells image in napari, 
+with dimensions swapped"}
 
 ### Grid ![](fig/grid-button.png){alt="A screenshot of Napari's grid button"}
 
-This button displays all images in a grid. Using this for our cells image, we see the nuclei (green) displayed next to the cell membranes (purple), rather than on top of each other.
+This button displays all images in a grid. Using this for our cells image, we 
+see the nuclei (green) displayed next to the cell membranes (purple), rather 
+than on top of each other.
 
 ### Home ![](fig/home-button.png){alt="A screenshot of Napari's home button"}
 
-This button brings the canvas back to its default view. This is useful if you have panned/zoomed to a specific region and want to quickly get back to an overview of the full image.
+This button brings the canvas back to its default view. This is useful if you 
+have panned/zoomed to a specific region and want to quickly get back to an 
+overview of the full image.
 
 ## Layer list
 
-Now that we've seen the main controls for the viewer, let's look at the layer list. 'Layers' are how Napari displays multiple items together in the viewer. For example, currently our layer list contains two items - 'nuclei' and 'membrane'. These are both ```Image``` layers and are displayed in order, with the nuclei on top and membrane underneath.
+Now that we've seen the main controls for the viewer, let's look at the layer 
+list. 'Layers' are how Napari displays multiple items together in the viewer. 
+For example, currently our layer list contains two items - 'nuclei' and 
+'membrane'. These are both ```Image``` layers and are displayed in order, with 
+the nuclei on top and membrane underneath.
 
-![](fig/layer-list.png){alt="A screenshot of Napari's layer list, showing two image layers named 'nuclei' and 'membrane'"}
+![](fig/layer-list.png){alt="A screenshot of Napari's layer list, showing two 
+image layers named 'nuclei' and 'membrane'"}
 
-We can show/hide each layer by clicking the eye icon on the left side of their row. We can also rename them by double clicking on the row.
+We can show/hide each layer by clicking the eye icon on the left side of their 
+row. We can also rename them by double clicking on the row.
 
-We can change the order of layers by dragging and dropping items in the layer list. For example, try dragging the membrane layer above the nuclei. You should see the nuclei disappear from the viewer (as they are now hidden by the membrane image on top).
+We can change the order of layers by dragging and dropping items in the layer 
+list. For example, try dragging the membrane layer above the nuclei. You should 
+see the nuclei disappear from the viewer (as they are now hidden by the membrane 
+image on top).
 
-![](fig/layer-reordering.png){alt="A screenshot of Napari with the nuclei and membrane layer swapped"}
+![](fig/layer-reordering.png){alt="A screenshot of Napari with the nuclei and 
+membrane layer swapped"}
 
-Here we only have ```Image``` layers, but there are many more types like ```Points```, ```Shapes``` and ```Labels```, some of which we will see later in the episode.
+Here we only have ```Image``` layers, but there are many more types like 
+```Points```, ```Shapes``` and ```Labels```, some of which we will see later 
+in the episode.
 
 
 ## Layer controls
 
-Next let's look at the layer controls - this area shows controls only for the currently selected layer (i.e. the one that is highlighted in blue in the layer list). For example, if we click on the nuclei layer then we can see a ```colormap``` of green, while if we click on the membrane layer we see a ```colormap``` of magenta.
+Next let's look at the layer controls - this area shows controls only for the 
+currently selected layer (i.e. the one that is highlighted in blue in the layer 
+list). For example, if we click on the nuclei layer then we can see a 
+```colormap``` of green, while if we click on the membrane layer we see a 
+```colormap``` of magenta.
 
-Controls will also vary depending on layer type (like ```Image``` vs ```Points```) as we will see later in this episode.
+Controls will also vary depending on layer type (like ```Image``` vs 
+```Points```) as we will see later in this episode.
 
 Let's take a quick look at some of the main image layer controls:
 
 ### Opacity  
-This changes the opacity of the layer - lower values are more transparent. For example, reducing the opacity of the membrane layer (if it is still on top of the nuclei), allows us to see the nuclei again.
+This changes the opacity of the layer - lower values are more transparent. For 
+example, reducing the opacity of the membrane layer (if it is still on top of 
+the nuclei), allows us to see the nuclei again.
 
 ### Contrast limits 
-We'll discuss this in detail in a later episode, but briefly - the contrast limits adjust what parts of the image we can see and how bright they appear in the viewer. Moving the left node adjusts what is shown as fully black, while moving the right node adjusts what is shown as fully bright. 
+We'll discuss this in detail in a later episode, but briefly - the contrast 
+limits adjust what parts of the image we can see and how bright they appear in 
+the viewer. Moving the left node adjusts what is shown as fully black, while 
+moving the right node adjusts what is shown as fully bright. 
 
 ### Colormap
-Again, we'll discuss this in detail in a later episode, but briefly - the colormap determines what colours an image is displayed with. Clicking in the dropdown shows a wide range of options that you can swap between.
+Again, we'll discuss this in detail in a later episode, but briefly - the 
+colormap determines what colours an image is displayed with. Clicking in the 
+dropdown shows a wide range of options that you can swap between.
 
 ### Blending    
-This controls how multiple layers are blended together to give the final result in the viewer. There are [many different options to choose from](https://napari.org/stable/guides/layers.html#blending-layers). For example, let's put the nuclei layer back on top of the membrane and change its blending to 'opaque'. You should see that it now completely hides the membrane layer underneath. Changing the blending back to 'additive' will allow both the nucleus and membrane layers to be seen together again.
+This controls how multiple layers are blended together to give the final result 
+in the viewer. There are [many different options to choose 
+from](https://napari.org/stable/guides/layers.html#blending-layers). For 
+example, let's put the nuclei layer back on top of the membrane and change 
+its blending to 'opaque'. You should see that it now completely hides the 
+membrane layer underneath. Changing the blending back to 'additive' will allow 
+both the nucleus and membrane layers to be seen together again.
 
 ::::::::::::::::::::::::::::::::::::: challenge 
 
@@ -248,7 +375,8 @@ This controls how multiple layers are blended together to give the final result 
 
 Adjust the layer controls for both nuclei and membrane to give the result below:
 
-![](fig/layer-controls-task.png){alt="Cells image with blue nuclei and bright red membranes"}
+![](fig/layer-controls-task.png){alt="Cells image with blue nuclei and bright 
+red membranes"}
 
 :::::::::::::::::::::::: solution 
  
@@ -256,7 +384,8 @@ Adjust the layer controls for both nuclei and membrane to give the result below:
 - Change the colormap to cyan
 - Click on the membrane in the layer list
 - Change the colormap to red
-- Move the right contrast limits node to the left to make the membranes appear brighter
+- Move the right contrast limits node to the left to make the membranes 
+appear brighter
 
 :::::::::::::::::::::::::::::::::
 
@@ -264,23 +393,37 @@ Adjust the layer controls for both nuclei and membrane to give the result below:
 
 ## Layer buttons
 
-So far we have only looked at ```Image``` layers, but there are many more types supported by Napari. The layer buttons allow us to add additional layers of these new types:
+So far we have only looked at ```Image``` layers, but there are many more types 
+supported by Napari. The layer buttons allow us to add additional layers of 
+these new types:
 
-### Points ![](fig/points-button.png){alt="A screenshot of Napari's point layer button"}
+### Points ![](fig/points-button.png
+){alt="A screenshot of Napari's point layer button"}
 
-This button creates a new [points layer](https://napari.org/stable/howtos/layers/points.html). This can be used to mark specific locations in an image.
+This button creates a new 
+[points layer](https://napari.org/stable/howtos/layers/points.html). This can 
+be used to mark specific locations in an image.
 
-### Shapes ![](fig/shapes-button.png){alt="A screenshot of Napari's shape layer button"} 
+### Shapes ![](fig/shapes-button.png
+){alt="A screenshot of Napari's shape layer button"} 
 
-This button creates a new [shapes layer](https://napari.org/stable/howtos/layers/shapes.html). Shapes can be used to mark regions of interest e.g. with rectangles, ellipses or lines.
+This button creates a new 
+[shapes layer](https://napari.org/stable/howtos/layers/shapes.html). Shapes can 
+be used to mark regions of interest e.g. with rectangles, ellipses or lines.
 
-### Labels ![](fig/labels-button.png){alt="A screenshot of Napari's labels layer button"}
+### Labels ![](fig/labels-button.png
+){alt="A screenshot of Napari's labels layer button"}
 
-This button creates a new [labels layer](https://napari.org/stable/howtos/layers/labels.html). This is usually used to label specific regions in an image e.g. to label individual nuclei.
+This button creates a new 
+[labels layer](https://napari.org/stable/howtos/layers/labels.html). This is 
+usually used to label specific regions in an image e.g. to label individual 
+nuclei.
 
-### Remove layer ![](fig/delete-button.png){alt="A screenshot of Napari's delete layer button"}  
+### Remove layer ![](fig/delete-button.png
+){alt="A screenshot of Napari's delete layer button"}  
 
-This button removes the currently selected layer (highlighted in blue) from the layer list.
+This button removes the currently selected layer (highlighted in blue) from the 
+layer list.
 
 ::::::::::::::::::::::::::::::::::::: challenge 
 
@@ -288,7 +431,9 @@ This button removes the currently selected layer (highlighted in blue) from the 
 
 Let's take a quick look at one of these new layer types - the ```Points``` layer.
 
-Add a new points layer by clicking the points button. Investigate the different layer controls - what do they do? Note that hovering over buttons will usually show a summary tooltip.
+Add a new points layer by clicking the points button. Investigate the different 
+layer controls - what do they do? Note that hovering over buttons will usually 
+show a summary tooltip.
 
 Add points and adjust settings to give the result below:
 
@@ -296,9 +441,11 @@ Add points and adjust settings to give the result below:
 
 :::::::::::::::::::::::: solution 
  
-- Click the 'add points' button ![](fig/add-points-button.png){alt="Screenshot of Napari's add points button"}
+- Click the 'add points' button ![](fig/add-points-button.png){alt="Screenshot 
+of Napari's add points button"}
 - Click on nuclei to add points on top of them
-- Click the 'select points' button ![](fig/select-points-button.png){alt="Screenshot of Napari's select points button"}
+- Click the 'select points' button ![](fig/select-points-button.png
+){alt="Screenshot of Napari's select points button"}
 - Click on the point over the dividing nucleus
 - Increase the point size slider
 - Change its symbol to star
@@ -314,7 +461,8 @@ Add points and adjust settings to give the result below:
 
 - There are many software options for light microscopy images
 - Napari and Fiji/ImageJ are popular open-source options
-- Napari's user interface is split into a few main sections including the canvas, layer list, layer controls...
+- Napari's user interface is split into a few main sections including the 
+canvas, layer list, layer controls...
 - Layers can be of different types e.g. ```Image```, ```Point```, ```Label```
 - Different layer types have different layer controls
 
