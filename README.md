@@ -6,7 +6,7 @@
 
 This course is developed using the [Carpentries Workbench](https://carpentries.github.io/workbench/).
 The *sandpaper* R package is the main driver used to configure and build the
-website (see installation instructions [below](#build-the-lesson-locally).
+website (see installation instructions [below](#building-the-lesson-locally).
 
 For a comprehensive guide on how to use *sandpaper*, check out the
 [documentation](https://carpentries.github.io/sandpaper-docs/).
@@ -43,7 +43,7 @@ workflows](https://carpentries.github.io/sandpaper-docs/pull-request.html) to
 validate and preview the new content. Once the PR gets approved, merge it into
 `main` and wait for the [Build and
 Deploy](https://github.com/HealthBioscienceIDEAS/microscopy-novice/actions/workflows/sandpaper-main.yaml)
-action to complete, after which the updates should be visisble on the
+action to complete, after which the updates should be visible on the
 [website](https://healthbioscienceideas.github.io/microscopy-novice/)
 
 ### Building the lesson locally
@@ -61,7 +61,7 @@ To install these forks locally, run the following from within an R session:
 install.packages("remotes")
 
 ## Install sandpaper and varnish from the IDEAS forks
-## HealthBioscienceIDEAS/varnish is listed as a dpendency of sandpaper, so will be installed as  well
+## HealthBioscienceIDEAS/varnish is listed as a dependency of sandpaper, so will be installed as well
 remotes::install_github("HealthBioscienceIDEAS/sandpaper", dependencies = TRUE)
 ```
 
