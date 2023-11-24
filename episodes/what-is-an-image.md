@@ -124,10 +124,15 @@ The important factor to understand is that the final pixel value is only an appr
 - **Acquisition settings:** e.g. the amount of time spent detecting photons, the gain, the binning mode... All these factors will affect the final pixel values.
 
 - ...and many more factors!
- 
- [Maybe just exercise to look at Pete Bankhead's chapter - look at animations, give some factors that affect the pixel value...]
 
-See [this section of Pete Bankhead's bioimage book](https://bioimagebook.github.io/chapters/1-concepts/1-images_and_pixels/images_and_pixels.html#a-simple-microscope) for more details and useful animations of this process.
+::::::::::::::::::::::::::::::::::::: discussion 
+
+Read the ['A simple microscope' section of Pete Bankhead's bioimage book](https://bioimagebook.github.io/chapters/1-concepts/1-images_and_pixels/images_and_pixels.html#a-simple-microscope).
+
+- What are some factors that influence pixel values?
+- Can you come up with suggestions for any more?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Image dimensions
 
@@ -198,6 +203,68 @@ print(image.max())
 
 You can also see this by hovering over the brightest nuclei in the viewer and examining their pixel values. Even the brightest nuclei won't exceed the limit of 255.
 
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Dimensions and data types
+
+Let's open a new image by copying and pasting the following lines into the Napari console:
+
+```python
+
+from skimage import data
+viewer.add_image(data.brain()[9, :, :], name="brain")
+image = viewer.layers["brain"].data
+
+```
+
+This opens a new 2D image of part of a human head X-ray.
+
+- What are the dimensions of this image?
+
+- What type and bit depth is this image?
+
+- What are the possible min/max values of this image array, based on the bit depth?
+
+:::::::::::::::::::::::: solution 
+
+### Solution
+
+### Dimensions
+
+The image's dimensions are (256, 256)
+
+```python
+
+image.shape
+```
+
+```output
+
+(256, 256)
+```
+
+### Type and bit depth
+
+The image's type and bit depth are: unsigned integer 16-bit
+
+```python
+
+image.dtype
+```
+
+```output
+
+dtype('uint16')
+```
+
+### Min and max
+
+Based on a bit depth of 16, this image can store $2^{16} = 65536$ values. As it is of type 'unsigned integer' this corresponds to a min and max of 0 and 65535.
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 ## Common data types
 
@@ -252,6 +319,106 @@ Note that Napari lists coordinates as [y, x] or [rows, columns], so e.g. [1,3] w
 ![](fig/coordinates-on-image.png){alt="A diagram showing how pixel coordinates change over a simple 4x4 image" width=50%}
 
 Here the units are just pixels, but we'll see in later episodes that images can also be scaled based on resolution (e.g. in micrometres). Also bear in mind that images with more dimensions (e.g. a 3D image) will have longer coordinates like [z, y, x]...
+
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Reading and modifying pixel values
+
+First, close all images apart from human mitosis. Run the following line in the console to ensure you are referencing the correct image:
+
+```python
+
+image = viewer.layers["human_mitosis"].data
+```
+
+Pixel values can be read by hovering over them in the viewer, or by running the following in the console:
+```python
+
+# Replace y and x with the correct y and x coordinate e.g. image[3, 5]
+print(image[y, x])
+```
+
+Pixel values can be changed by running the following in the console:
+```python
+
+# Replace y and x with the correct y and x coordinate, and
+# 'pixel_value' with the desired new pixel value e.g. image[3, 5] = 10
+image[y, x] = pixel_value
+viewer.layers["human_mitosis"].refresh()
+```
+
+Given this information:
+
+1. What is the pixel value at x=213 and y=115?
+2. What is the pixel value at x=25 and y=63?
+3. Change the value of the pixel at x=10 and y=15 to 200. Check the new value - is it correct? If not, why not?
+4. Change the value of the pixel at x=10 and y=15 to 300. Check the new value - is it correct? If not, why not?
+
+:::::::::::::::::::::::: solution 
+
+### Solution
+
+### 1
+
+```python
+
+image[115, 213]
+```
+
+```output
+
+162
+```
+
+### 2
+
+```python
+
+image[63, 25]
+```
+
+```output
+
+9
+```
+
+### 3
+
+```python
+
+image[15, 10] = 200
+viewer.layers["human_mitosis"].refresh()
+
+print(image[15, 10])
+```
+
+```output
+
+200
+```
+
+The new value is correct. If you zoom into the top left corner of the image, you should see the one bright pixel you just created.
+
+### 4
+
+```python
+
+image[15, 10] = 300
+viewer.layers["human_mitosis"].refresh()
+
+print(image[15, 10])
+```
+
+```output
+
+44
+```
+
+The new value is not correct. This is because 300 exceeds the maximum value for this 8-bit image (max 255). The value therefore overflows and 'wraps around' to give 44 - an incorrect value.
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
