@@ -1,0 +1,266 @@
+---
+title: 'What is an image?'
+teaching: 
+exercises: 
+---
+
+:::::::::::::::::::::::::::::::::::::: questions 
+
+- How are images represented in the computer?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Explain how a digital image is made of pixels
+
+- Find the value of different pixels in an image in Napari
+
+- Determine an image's dimensions (numpy ndarray .shape)
+
+- Determine an image's data type (numy ndarray .dtype)
+
+- Explain the coordinate system used for images
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+In the last episode, we looked at how to view images in Napari. Let's take a step back now and address - what is an image?
+
+## Pixels
+
+Let's start by removing all layers from the Napari viewer and opening a new sample image:
+
+- Click on the top layer in the layer list and shift + click the bottom layer. This should highlight all layers in blue.
+
+- Press the remove layer button ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
+){alt="A screenshot of Napari's delete layer button" height='30px'} 
+
+- Go to the top menu-bar of Napari and select:  
+`File > Open Sample > napari builtins > Human Mitosis`
+
+![](fig/human-mitosis-napari.png){alt="A screenshot of a 2D image of human cells undergoing mitosis in Napari"}
+
+This 2D image shows the nuclei of human cells undergoing mitosis. If we zoom in by scrolling, we can see that this image is actually made up of many small squares with different brightness. These squares are the image's pixels (or 'picture elements') and are the individual units that make up all digital images.
+
+If we hover over these pixels with the mouse cursor, we can see that each pixel has a specific value. Try hovering over pixels in dark and bright areas of the image and see how the value changes in the bottom left of the viewer:
+
+![](fig/pixel-value.png){alt="A screenshot of Napari - with the mouse cursor hovering over a pixel and highlighting the corresponding pixel value"}
+
+You should see that, in this case, brighter areas have higher values than darker areas (we'll see exactly how these values are converted to colours in the next episode).
+
+## Images are arrays of numbers
+
+We've seen that images are made of individual units called pixels that have specific values - but how is an image really represented in the computer? Let's dig deeper into Napari's `Image` layers...
+
+To do this, let's open Napari's built-in Python console by pressing the console button ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg
+){alt="A screenshot of Napari's console button" height='30px'}. Note this can take a few seconds to open, so give it some time:
+
+![](fig/console.png){alt="A screenshot of Napari's console"}
+
+:::::::::::::::::::::::::::::::::::::: callout
+
+### Console readability
+
+You can increase the font size in the console by clicking inside it, then pressing Ctrl and + together. The font size can also be decreased with Ctrl and - together.
+
+Note that you can also pop the console out into its own window by clicking the small ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/pop_out.svg
+){alt="A screenshot of Napari's float panel button" height='30px'} icon on the left side.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+Let's look at the human mitosis image more closely - copy the following into Napari's console:
+
+```python
+
+# Get the image data for the first layer in Napari
+image = viewer.layers[0].data
+
+# Print the image values and type
+print(image)
+print(type(image))
+```
+
+```output
+[[ 8  8  8 ... 63 78 75]
+ [ 8  8  7 ... 67 71 71]
+ [ 9  8  8 ... 53 64 66]
+ ...
+ [ 8  9  8 ... 17 24 59]
+ [ 8  8  8 ... 17 22 55]
+ [ 8  8  8 ... 16 18 38]]
+ 
+ <class 'numpy.ndarray'>
+```
+
+You should see that a series of numbers are printed out that are stored in a `numpy.ndarray`. Fundamentally, this means that all images are really just arrays of numbers (one number per pixel). Napari is reading those values and converting them into squares of particular colours for us to see in the viewer, but this is only to help us interpret the image contents - the numbers are the real underlying data.
+
+For example, look at the simplified image of an arrow below. On the left is the array of numbers, with the corresponding image display on the right:
+
+![](fig/array.png){alt="A diagram comparing the array of numbers and image display for a simplified image of an arrow"}
+
+In Napari this array is a `numpy.ndarray`. [NumPy](https://numpy.org/) is a popular python package that provides 'n-dimensional arrays' (or 'ndarray' for short). N-dimensional just means they can support any number of dimensions - for example, 2D, 3D and beyond (like time series, images with many channels etc.).
+
+## Creating an image
+
+So images are arrays of numbers - but where do these values come from?
+
+The exact details of how an image is created will depend on the type of microscope you are using e.g. widefield, confocal, superresolution etc. In general though, we have 3 main parts: 
+
+- **Sample:** the object we want to image e.g. some cells
+- **Objective lens:** the lens that gathers the light and focuses it for detection
+- **Detector:** the device that detects the light to form the digital image e.g. a CCD camera
+
+To briefly summarise, light is emitted from the sample (e.g. from a fluorescent marker), then gathered and focused with the objective lens, before hitting the detector. The detector is divided into a large number of small, light sensitive areas (these are physical pixels, that will correspond to the pixels in the final image). When a photon hits one of these areas it is converted to one (or more) electrons. More photons means more electrons and a higher final value for that pixel.
+
+The important factor to understand is that the final pixel value is only an approximation of the real sample. Many factors affect this value e.g.
+
+- **Microscope optics:** There is no perfect microscope that can gather and detect all light emitted from a sample. Only a fraction of the light is detected, and the microscope's lenses will introduce some distortions to the images.
+
+- **Detector performance:** Not all photons that strike a detector will produce electrons. Different detectors have different 'sensitivity' - making them more or less likely to 'miss' photons.
+
+- **Acquisition settings:** e.g. the amount of time spent detecting photons, the gain, the binning mode... All these factors will affect the final pixel values.
+
+- ...and many more factors!
+ 
+ [Maybe just exercise to look at Pete Bankhead's chapter - look at animations, give some factors that affect the pixel value...]
+
+See [this section of Pete Bankhead's bioimage book](https://bioimagebook.github.io/chapters/1-concepts/1-images_and_pixels/images_and_pixels.html#a-simple-microscope) for more details and useful animations of this process.
+
+## Image dimensions
+
+Let's get back to the NumPy array and explore some of its key features. First, what size is it?
+
+Run the following in Napari's console:
+```python
+
+image.shape
+```
+
+```output
+(512, 512)
+```
+
+The array size (also known as its dimensions) is stored in the `.shape`. Here we see that it is `(512, 512)` meaning this image is 512 pixels high and 512 pixels wide. Two values are printed as this image is two dimensional (2D), for a 3D image there would be 3, for a 4D image (e.g. with an additional time series) there would be 4 and so on...
+
+## Image data type
+
+The other key feature of a NumPy array is its 'data type' - this controls which values can be stored inside of it. For example, let's look at the data type for our human mitosis image:
+
+```python
+
+image.dtype
+```
+
+```output
+
+dtype('uint8')
+```
+
+We see that the data type (or 'dtype' for short) is `uint8`. This is short for 'unsigned integer 8-bit'. Let's break this down further into two parts - the type (unsigned integer) and the bit-depth (8-bit).
+
+## Type
+
+The type determines what kind of values can be stored in the array, for example:
+
+- Unsigned integer: positive whole numbers
+- Signed integer: positive and negative whole numbers
+- Float: positive and negative numbers with a decimal point e.g. 3.14
+
+For our mitosis image, 'unsigned integer' means that only positive whole numbers can be stored inside. You can see this by hovering over the pixels in the image again in Napari - the pixel value down in the bottom left is always a positive whole number.
+
+## Bit depth
+
+The bit depth determines the range of values that can be stored e.g. only values between 0 and 255. This is directly related to how the array is stored in the computer.
+
+In the computer, each pixel value will ultimately be stored in some binary format i.e. as a series of ones and zeros. Each of these zeros or ones is known as a 'bit', and the 'bit depth' is the number of bits used to store each value. For example, our mitosis image is '8-bit' meaning that it uses 8 bits to store each pixel value (i.e. each pixel is stored as a series of 8 zeros or ones like `00000000`, or `01101101`...).
+
+The reason the bit depth is so important is that it dictates the number of different values that can be stored. In fact it is equal to:
+
+\[\large \text{Number of values} = 2^{\text{bit depth}}\]
+
+Going back to our mitosis image, this means that it can store $2^8 = 256$ different values, which is equal to a range of 0-255 for unsigned integers.
+
+We can verify this by looking at the maximum value of the mitosis image:
+
+
+```python
+
+print(image.max())
+```
+
+```output
+
+255
+```
+
+You can also see this by hovering over the brightest nuclei in the viewer and examining their pixel values. Even the brightest nuclei won't exceed the limit of 255.
+
+
+## Common data types
+
+NumPy supports a [very wide range of data types](https://numpy.org/doc/stable/reference/arrays.scalars.html#sized-aliases), but there are a few that are most common for image data:
+
+| NumPy datatype     | Full name                |
+| :---------         | :--------------          |
+| `uint8`            | Unsigned integer 8-bit   |
+| `uint16`           | Unsigned integer 16-bit  |
+| `float32`          | Float 32-bit             |
+| `float64`          | Float 64-bit             |
+
+`uint8` and `uint16` are most common for images from light microscopes. `float32` and `float64` are common during image processing (as we will see in later episodes).
+
+## Choosing a bit depth
+
+Most images are either 8-bit or 16-bit - so how to choose which to use?
+The main trade-off here is between the range of values in your image vs the total image file size. A higher bit depth will allow a wider range of values to be stored, but also result in larger image files overall. In general, a 16-bit image will have a file size about 2x as large as 8-bit without compression (we'll discuss compression in a later episode).
+
+The best bit depth choice will depend on your particular imaging experiment and research question. For example, if you know you have to recognise features that only differ slightly in their brightness, then you will likely need 16-bit to capture this. Equally, if you know that you will need to collect a very large number of images and 8-bit is sufficient to see your features of interest, then 8-bit may be a better choice to reduce the required file storage space. As always it's about choosing the best fit for your specific project! 
+
+For more information on bit depths and types - we highly recommend [this chapter of Pete Bankhead's free bioimage book](https://bioimagebook.github.io/chapters/1-concepts/3-bit_depths/bit_depths.html).
+
+:::::::::::::::::::::::::::::::::::::: callout
+
+### Clipping and overflow
+
+It's important to be aware of what image type and bit depth you are using. If you try to store values outside of the valid range this can lead to clipping and overflow.
+
+- Clipping: Values outside the valid range are changed to the closest valid value. For example, storing 1000 in a `uint8` image may result in 255 being stored instead (the max value)
+
+- Overflow: For NumPy arrays, values outside the valid range are 'wrapped around' to give the new result. For example, storing 256 in a `uint8` image (max 255) would give 0, 257 would give 1 and so on...  
+
+Clipping and overflow result in data loss - you can't get the original values back! So it's always good to keep the data type in mind when doing image processing operations (as we will see in later episodes), and also when converting between different bit depths. 
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Coordinate system
+
+We've seen that images are arrays of numbers with a specific shape (dimensions) and data type. How do we access specific values though?
+
+First, we need to look at what coordinate system Napari uses. We can do this by hovering over the mitosis image again and looking at the coordinates to the left of the pixel value.
+
+![](fig/coordinates.png){alt="A screenshot of Napari - with the mouse cursor hovering over a pixel and highlighting the corresponding coordinates"}
+
+As you move around, you should see that the lowest coordinate values are at the top left corner, with the first value increasing as you move down and the second value increasing as you move to the right. This is different to the standard coordinate system you would use to, for example, make graphs:
+
+![](fig/coordinate-system.png){alt="Diagram comparing a standard graph coordinate system (left) and the image coordinate system (right)"}
+
+Note that Napari lists coordinates as [y, x] or [rows, columns], so e.g. [1,3] would be the pixel in row 1 and column 3. Remember that the coordinates always start from 0 as you can see below:
+
+![](fig/coordinates-on-image.png){alt="A diagram showing how pixel coordinates change over a simple 4x4 image" width=50%}
+
+Here the units are just pixels, but we'll see in later episodes that images can also be scaled based on resolution (e.g. in micrometres). Also bear in mind that images with more dimensions (e.g. a 3D image) will have longer coordinates like [z, y, x]...
+
+::::::::::::::::::::::::::::::::::::: keypoints 
+
+- Digital images are made of pixels
+- Digital images are arrays of numbers
+- Light microscopy images are only an approximation of the real sample
+- Napari (and Python more widely) use NumPy arrays to store images - these have a `shape` and `dtype`
+- Most images are 8-bit or 16-bit unsigned integer
+- Images use a coordinate system with (0,0) at the top left, x increasing to the right, and y increasing down
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
