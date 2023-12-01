@@ -1,7 +1,7 @@
 ---
 title: 'Imaging Software'
-teaching: 
-exercises: 
+teaching: 30
+exercises: 10
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
@@ -23,17 +23,22 @@ Napari and proprietary options)
 
 ## Choosing the right tool for the job
 
-Light microscopes can produce a very wide range of image data - for example:
+Light microscopes can produce a very wide range of image data (we'll see some 
+examples in episode X) - for example:
 
 - 2D or 3D
 - Time series or snapshots
 - Different channels
 - Small to large datasets
 
+![](fig/images-mosaic.png){alt="A mosaic of screenshots of some of Napari's 
+included sample data" width='80%'}
+
 With such a wide range of data, there comes a huge variety of software that can 
 work with these images. Different software may be specialised to specific types 
 of image data, or to specific research fields. There is no one 'right' software 
-to use - it's about choosing the right tool for your data and research question!
+to use - it's about choosing the right tool for yourself, your data, and your 
+research question!
 
 Some points to consider when choosing software are:
 
@@ -45,19 +50,20 @@ or in relevant papers in your field.
 - **Open source or proprietary?**  
 We'll look at this more in the next section, but it's important to consider if 
 the software you are using is freely available, or requires a one-off payment or 
-subscription to use.
+a regular subscription fee to use.
 
 - **Support for image types?**  
 For example, does it support 3D images, or timeseries?
 
-- **Can it be customised/extended?**  
-Can you automate certain steps with your own scripts or plugins? This is useful 
-if you want to add extra features to a piece of software, or automate steps for 
-large numbers of images.
+- **Can it be automated/customised/extended?**  
+Can you automate certain steps with your own *scripts or plugins*? This is useful 
+to make sure your analysis steps can be easily shared and reproduced by other 
+researchers. It also enables you to add extra features to a piece of software, 
+and automate repetitive steps for large numbers of images.
 
 :::::::::::::::::::::::::::::::::::::: callout
 
-### Scripts and plugins?
+### What are scripts and plugins?
 
 Scripts and plugins are ways to automate certain software steps or add new 
 features.
@@ -69,8 +75,9 @@ load an image, then threshold it, then measure its size...  They are normally
 used to automate certain processing steps - for example, rather than having to 
 load each image individually and click the same buttons again and again in the 
 user interface, a script could load each image automatically and run all those 
-steps in one go. They tend to be specific to a particular dataset and research 
-question, so are less likely to be easily re-useable than plugins.
+steps in one go. Not only does this save time and reduce manual errors, 
+but it also ensures your workflow can easily be shared and reproduced by other 
+researchers.
 
 #### Plugins
 
@@ -87,6 +94,21 @@ A good place to look for advice on software is the
 [image.sc forum](https://forum.image.sc/) - a popular forum for image analysis 
 (mostly related to biological or medical images).
 
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Using the image.sc forum
+
+Go to the [image.sc forum](https://forum.image.sc/) and take a look at the 
+pinned post called 'Welcome to the Image.sc Forum!'
+
+- Search for posts in the category 'Announcements' tagged with 'napari'
+
+- Search for posts in the category 'Image Analysis' tagged with 'napari'
+
+- Click on some posts to see how questions and replies are laid out
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## Open source vs proprietary
 
 A key factor to consider when choosing software is whether it is open source or 
@@ -99,10 +121,45 @@ either a one-off fee or subscription to use.
 
 Both can be extremely useful, and it is very likely that you will use a mix of 
 both to view and analyse your images. For example, proprietary software is often 
-provided by the manufacturer when you purchase a light microscope. You will 
+provided by the manufacturer when a microscope is purchased. You will 
 likely use this during acquisition of your images and for some processing steps 
-after. This being said, we encourage using open-source software wherever 
-possible, as it is free to use and easy to extend with extra features.
+after. 
+
+There are pros and cons to both, and it's worth considering the following:
+
+:::::::::::::::::::::::::::::::::::::: spoiler
+
+### Pros and cons of open-source / proprietary
+
+**Cost**  
+One of the biggest advantages of open source software is that it is free. This 
+means it is always available, even if you move to a different institution that 
+may not have paid for other proprietary software.
+
+**Development funding/team**  
+Proprietary software is usually maintained by a large team of developers that 
+are funded full time. This may mean it is more stable and thoroughly 
+tested/validated than some open-source software. Some open-source projects will 
+be maintained by large teams with very thorough testing, while others will only 
+have a single developer part-time.
+
+**Flexibility/extension**  
+Open-source software tends to be easier to extend with new features, and more 
+flexible to accommodate a wide variety of workflows. Although, many pieces of 
+proprietary software have a plugin system or scripting to allow automation.
+
+**Open file formats and workflows**  
+Open-source software uses open file formats and workflows, so anyone can see the 
+details of how the analysis is done. Proprietary software tends to keep the 
+implementation details hidden and use file formats that can't be opened easily 
+in other software.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+As always, the right software to use will depend on your preference, your data 
+and your research question. This being said, we will only use open-source 
+software in this course, and we encourage using open-source software where 
+possible.
 
 ## Fiji/ImageJ and Napari
 
@@ -157,7 +214,6 @@ specific types of image data or processing steps. The availability of a specific
 plugin will often be a deciding factor on whether to use Fiji/ImageJ or Napari 
 for your project.
 
-
 **Ease of installation and user interface**  
 As Fiji/ImageJ has been in development for longer, it tends to be simpler to 
 install than Napari (especially for those with no prior Python experience). In 
@@ -190,12 +246,9 @@ interface"}
 
 ## Opening images
 
-Napari comes with some example images, let's open one now:
-
-```
-Go to the top menu-bar of Napari and select:
-File > Open Sample > napari builtins > Cells (3D+2Ch)
-```
+Napari comes with some example images - let's open one now. Go to the top 
+menu-bar of Napari and select:  
+`File > Open Sample > napari builtins > Cells (3D+2Ch)`
 
 You should see a fluorescence microscopy image of some cells:
 
@@ -205,7 +258,8 @@ of some cells in Napari"}
 ## Napari's User interface
 
 Napari's user interface is split into a few main sections, as you can see in the 
-diagram below:
+diagram below (note that on Macs the main menu will appear in the upper ribbon, 
+rather than inside the Napari window):
 
 ![](fig/ui-sections-napari.png){alt="A screenshot of Napari with the main user 
 interface sections labelled"}
@@ -227,28 +281,35 @@ display and interact with our images.
 Try moving around the cells image with the following commands:
 ```
 Pan - Click and drag
-Zoom - Scroll in/out
+Zoom - Scroll in/out (use the same gestures with your mouse 
+                      that you would use to scroll up/down 
+                      in a document)
 ```
 
 ## Dimension sliders
 
 Dimension sliders appear at the bottom of the canvas depending on the type of 
-image displayed. For example, if we drag the slider at the bottom of the cells 
-image, we move up and down in this 3D image stack.
+image displayed. For example, here we have a 3D image of some cells, which 
+consists of a stack of 2D images. If we drag the slider at the bottom of the 
+image, we move up and down in this stack:
 
 ![](fig/dim-slider.png){alt="Three screenshots of the cells image in napari, at 
 different z depths"}
 
-Pressing the arrow buttons at either end of the slider steps through one image 
+Pressing the arrow buttons at either end of the slider steps through one slice 
 at a time. Also, pressing the 'play' button at the very left of the slider moves 
 automatically through the stack until pressed again.
+
+![](fig/dim-slider-closeup.png){alt="Closeup of Napari's dimension slider with
+labels" width='80%'}
 
 We will see in later episodes that more sliders can appear if our image has more 
 dimensions (e.g. time series, or further channels).
 
 ## Viewer buttons
 
-The viewer buttons control various aspects of the Napari viewer:
+The viewer buttons (the row of buttons at the bottom left of Napari) control 
+various aspects of the Napari viewer:
 
 ### Console ![](
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg
@@ -279,14 +340,14 @@ Zoom - Scroll in/out
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/roll.svg
 ){alt="A screenshot of Napari's roll dimensions button" height='25px'} 
 
-This switches the order of dimensions in the viewer. For example, let's switch 
-back to the 2D view for our cells image and press the roll dimensions button 
-multiple times. You'll see that it switches between different orthogonal views 
-(i.e. at 90 degrees to our starting view). Pressing it 3 times will bring us 
-back to the original orientation.
+This changes which image dimensions are displayed in the viewer. For example, 
+let's switch back to the 2D view for our cells image and press the roll 
+dimensions button multiple times. You'll see that it switches between different 
+orthogonal views (i.e. at 90 degrees to our starting view). Pressing it 3 times 
+will bring us back to the original orientation.
 
 ![](fig/roll-dims.png){alt="Three screenshots of the cells image in napari, 
-with different dimension order"}
+with different axes being visualised"}
 
 ### Transpose dimensions ![](
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/transpose.svg
@@ -303,9 +364,10 @@ with dimensions swapped"}
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/grid.svg
 ){alt="A screenshot of Napari's grid button" height='25px'}
 
-This button displays all images in a grid. Using this for our cells image, we 
-see the nuclei (green) displayed next to the cell membranes (purple), rather 
-than on top of each other.
+This button displays all image layers in a grid (+ any additional layer types,
+as we'll see later in the episode). Using this for our cells image, we see the 
+nuclei (green) displayed next to the cell membranes (purple), rather than on 
+top of each other.
 
 ### Home ![](
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/home.svg
@@ -438,6 +500,19 @@ https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/dele
 
 This button removes the currently selected layer (highlighted in blue) from the 
 layer list.
+
+:::::::::::::::::::::::::::::::::::::: callout
+
+### Other layer types
+
+Note that there are some layer types that can't be added via clicking buttons
+in the user interface, like
+[surfaces](https://napari.org/stable/howtos/layers/surface.html),
+[tracks](https://napari.org/stable/howtos/layers/tracks.html) and 
+[vectors](https://napari.org/stable/howtos/layers/vectors.html). These require 
+calling python commands in Napari's console or an external python script.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: challenge 
 
