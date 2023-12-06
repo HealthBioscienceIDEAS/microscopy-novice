@@ -191,6 +191,18 @@
 </div>
 <!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush3">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading3">
+        <a href="imaging-software.html">2. Imaging Software</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -248,7 +260,7 @@
         
 <section id="aio-introduction"><p>Content from <a href="introduction.html">introduction</a></p>
 <hr>
-<p> Last updated on 2023-12-05 | 
+<p> Last updated on 2023-12-06 | 
         
         <a href="https://example.com/FIXME-template-source/edit/main/episodes/introduction.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
@@ -313,7 +325,7 @@ reinforce the objectives.</li>
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing
 challenges associated with the lessons. They appear in the “Instructor
@@ -347,7 +359,7 @@ View”</p>
   Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -378,7 +390,7 @@ challenge blocks?<a class="anchor" aria-label="anchor" href="#challenge-2-how-do
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
@@ -439,6 +451,602 @@ locally</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
+</section></section><section id="aio-imaging-software"><p>Content from <a href="imaging-software.html">Imaging Software</a></p>
+<hr>
+<p> Last updated on 2023-12-06 | 
+        
+        <a href="https://example.com/FIXME-template-source/edit/main/episodes/imaging-software.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 40 minutes </p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>What are the different software options for viewing microscopy
+images?</li>
+<li>How can Napari be used to view images?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Explain the pros and cons of different image visualisation tools
+(e.g. ImageJ, Napari and proprietary options)</li>
+<li>Use Napari to open images</li>
+<li>Navigate the Napari viewer (pan/zoom/swapping between 2D and 3D
+views…)</li>
+<li>Explain the main parts of the Napari user interface</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="choosing-the-right-tool-for-the-job"><h2 class="section-heading">Choosing the right tool for the job<a class="anchor" aria-label="anchor" href="#choosing-the-right-tool-for-the-job"></a>
+</h2>
+<hr class="half-width">
+<p>Light microscopes can produce a very wide range of image data (we’ll
+see some examples in episode X) - for example:</p>
+<ul>
+<li>2D or 3D</li>
+<li>Time series or snapshots</li>
+<li>Different channels</li>
+<li>Small to large datasets</li>
+</ul>
+<figure><img src="../fig/images-mosaic.png" style="width:80.0%" alt="A mosaic of screenshots of some of Napari's  included sample data" class="figure mx-auto d-block"></figure><p>With such a wide range of data, there comes a huge variety of
+software that can work with these images. Different software may be
+specialised to specific types of image data, or to specific research
+fields. There is no one ‘right’ software to use - it’s about choosing
+the right tool for yourself, your data, and your research question!</p>
+<p>Some points to consider when choosing software are:</p>
+<ul>
+<li><p><strong>What is common in your research field?</strong><br>
+Having a good community around the software you work with can be
+extremely helpful - so it’s worth considering what is popular in your
+department, or in relevant papers in your field.</p></li>
+<li><p><strong>Open source or proprietary?</strong><br>
+We’ll look at this more in the next section, but it’s important to
+consider if the software you are using is freely available, or requires
+a one-off payment or a regular subscription fee to use.</p></li>
+<li><p><strong>Support for image types?</strong><br>
+For example, does it support 3D images, or timeseries?</p></li>
+<li><p><strong>Can it be automated/customised/extended?</strong><br>
+Can you automate certain steps with your own <em>scripts or
+plugins</em>? This is useful to make sure your analysis steps can be
+easily shared and reproduced by other researchers. It also enables you
+to add extra features to a piece of software, and automate repetitive
+steps for large numbers of images.</p></li>
+</ul>
+<div id="what-are-scripts-and-plugins" class="callout callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="what-are-scripts-and-plugins" class="callout-inner">
+<h3 class="callout-title">What are scripts and plugins?<a class="anchor" aria-label="anchor" href="#what-are-scripts-and-plugins"></a>
+</h3>
+<div class="callout-content">
+<p>Scripts and plugins are ways to automate certain software steps or
+add new features.</p>
+<div class="section level4">
+<h4 id="scripts">Scripts<a class="anchor" aria-label="anchor" href="#scripts"></a>
+</h4>
+<p>Scripts are lists of commands to be carried out by a piece of
+software e.g.  load an image, then threshold it, then measure its size…
+They are normally used to automate certain processing steps - for
+example, rather than having to load each image individually and click
+the same buttons again and again in the user interface, a script could
+load each image automatically and run all those steps in one go. Not
+only does this save time and reduce manual errors, but it also ensures
+your workflow can easily be shared and reproduced by other
+researchers.</p>
+</div>
+<div class="section level4">
+<h4 id="plugins">Plugins<a class="anchor" aria-label="anchor" href="#plugins"></a>
+</h4>
+<p>Plugins, in contrast to scripts, are focused on adding optional new
+features to a piece of software (rather than automating use of existing
+features). They allow members of the community, outside the main team
+that develops the software, to add features they need for a particular
+image type or processing task. They’re designed to be re-useable so
+other members of the community can easily benefit from these new
+features.</p>
+</div>
+</div>
+</div>
+</div>
+<p>A good place to look for advice on software is the <a href="https://forum.image.sc/" class="external-link">image.sc forum</a> - a popular forum for
+image analysis (mostly related to biological or medical images).</p>
+<div id="using-the-image.sc-forum" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<div id="using-the-image.sc-forum" class="callout-inner">
+<h3 class="callout-title">Using the image.sc forum<a class="anchor" aria-label="anchor" href="#using-the-image.sc-forum"></a>
+</h3>
+<div class="callout-content">
+<p>Go to the <a href="https://forum.image.sc/" class="external-link">image.sc forum</a> and
+take a look at the pinned post called ‘Welcome to the Image.sc
+Forum!’</p>
+<ul>
+<li><p>Search for posts in the category ‘Announcements’ tagged with
+‘napari’</p></li>
+<li><p>Search for posts in the category ‘Image Analysis’ tagged with
+‘napari’</p></li>
+<li><p>Click on some posts to see how questions and replies are laid
+out</p></li>
+</ul>
+</div>
+</div>
+</div>
+</section><section id="open-source-vs-proprietary"><h2 class="section-heading">Open source vs proprietary<a class="anchor" aria-label="anchor" href="#open-source-vs-proprietary"></a>
+</h2>
+<hr class="half-width">
+<p>A key factor to consider when choosing software is whether it is open
+source or proprietary:</p>
+<ul>
+<li><p><strong>Open source</strong>: Software that is made freely
+available to use and modify.</p></li>
+<li><p><strong>Proprietary</strong>: Software that is owned by a company
+and usually requires either a one-off fee or subscription to
+use.</p></li>
+</ul>
+<p>Both can be extremely useful, and it is very likely that you will use
+a mix of both to view and analyse your images. For example, proprietary
+software is often provided by the manufacturer when a microscope is
+purchased. You will likely use this during acquisition of your images
+and for some processing steps after.</p>
+<p>There are pros and cons to both, and it’s worth considering the
+following:</p>
+<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
+  <h3 class="accordion-header" id="headingSpoiler1">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Pros and cons of open-source / proprietary
+  </h3>
+</button>
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div class="accordion-body">
+<p><strong>Cost</strong><br>
+One of the biggest advantages of open source software is that it is
+free. This means it is always available, even if you move to a different
+institution that may not have paid for other proprietary software.</p>
+<p><strong>Development funding/team</strong><br>
+Proprietary software is usually maintained by a large team of developers
+that are funded full time. This may mean it is more stable and
+thoroughly tested/validated than some open-source software. Some
+open-source projects will be maintained by large teams with very
+thorough testing, while others will only have a single developer
+part-time.</p>
+<p><strong>Flexibility/extension</strong><br>
+Open-source software tends to be easier to extend with new features, and
+more flexible to accommodate a wide variety of workflows. Although, many
+pieces of proprietary software have a plugin system or scripting to
+allow automation.</p>
+<p><strong>Open file formats and workflows</strong><br>
+Open-source software uses open file formats and workflows, so anyone can
+see the details of how the analysis is done. Proprietary software tends
+to keep the implementation details hidden and use file formats that
+can’t be opened easily in other software.</p>
+</div>
+</div>
+</div>
+</div>
+<p>As always, the right software to use will depend on your preference,
+your data and your research question. This being said, we will only use
+open-source software in this course, and we encourage using open-source
+software where possible.</p>
+</section><section id="fijiimagej-and-napari"><h2 class="section-heading">Fiji/ImageJ and Napari<a class="anchor" aria-label="anchor" href="#fijiimagej-and-napari"></a>
+</h2>
+<hr class="half-width">
+<p>While there are many pieces of software to choose from, two of the
+most popular open-source options are <a href="https://imagej.net/software/fiji/" class="external-link">Fiji/ImageJ</a> and <a href="https://napari.org/" class="external-link">Napari</a>. They are both:</p>
+<ul>
+<li>Freely available</li>
+<li>‘General’ imaging software i.e. applicable to many different
+research fields</li>
+<li>Supporting a wide range of image types</li>
+<li>Customisable with scripts + plugins</li>
+</ul>
+<p>Both are great options for working with a wide variety of images - so
+why choose one over the other? Some of the main differences are listed
+below if you are interested:</p>
+<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
+  <h3 class="accordion-header" id="headingSpoiler2">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Differences between Fiji/ImageJ and Napari
+  </h3>
+</button>
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div class="accordion-body">
+<p><strong>Python vs Java</strong><br>
+A big advantage of Napari is that it is made with the Python programming
+language (vs Fiji/ImageJ which is made with Java). In general, this
+makes it easier to extend with scripts and plugins as Python tends to be
+more widely used in the research community. It also means Napari can
+easily integrate with other python tools e.g. Python’s popular machine
+learning libraries.</p>
+<p><strong>Maturity</strong><br>
+Fiji/ImageJ has been actively developed <a href="https://imagej.net/software/imagej/" class="external-link">for many years now (&gt;20
+years)</a>, while Napari is a more recent development <a href="https://napari.org/stable/community/team.html#project-history" class="external-link">starting
+around 2018</a>. This difference in age comes with pros and cons - in
+general, it means that the core features and layout of Fiji/ImageJ are
+very well established, and less likely to change than Napari. With
+Napari, you will likely have to adjust your image processing workflow
+with new versions, or update any scripts/plugins more often. Equally, as
+Napari is new and rapidly growing in popularity, it is quickly gaining
+new features and attracting a wide range of new plugin developers.</p>
+<p><strong>Built-in tools</strong><br>
+Fiji/ImageJ comes with many image processing tools built-in by default -
+e.g.  making image histograms, thresholding and gaussian blur (we will
+look at these terms in a later episode). Napari, in contrast, is more
+minimal by default - mostly focusing on image display. It requires
+installation of additional plugins to add many of these features.</p>
+<p><strong>Specific plugins</strong><br>
+There are excellent plugins available for Fiji/ImageJ and Napari that
+focus on specific types of image data or processing steps. The
+availability of a specific plugin will often be a deciding factor on
+whether to use Fiji/ImageJ or Napari for your project.</p>
+<p><strong>Ease of installation and user interface</strong><br>
+As Fiji/ImageJ has been in development for longer, it tends to be
+simpler to install than Napari (especially for those with no prior
+Python experience). In addition, as it has more built-in image
+processing tools, it tends to be simpler to use fully from its user
+interface. Napari meanwhile is often strongest when you combine it with
+some Python scripting (although this isn’t required for many
+workflows!)</p>
+</div>
+</div>
+</div>
+</div>
+<p>For this lesson, we will use Napari as our software of choice. It’s
+worth bearing in mind though that Fiji/ImageJ can be a useful
+alternative - and many workflows will actually use both Fiji/ImageJ and
+Napari together! Again, it’s about choosing the right tool for your data
+and research question.</p>
+</section><section id="opening-napari"><h2 class="section-heading">Opening Napari<a class="anchor" aria-label="anchor" href="#opening-napari"></a>
+</h2>
+<hr class="half-width">
+<p>Let’s get started by opening a new Napari window - you should have
+already followed the <a href="index.html#setup">installation instructions</a>.
+Note this can take a while the first time, so give it a few minutes!</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">napari</span></span></code></pre>
+</div>
+<figure><img src="../fig/blank-napari-ui.png" alt="A screenshot of the default Napari user  interface" class="figure mx-auto d-block"></figure></section><section id="opening-images"><h2 class="section-heading">Opening images<a class="anchor" aria-label="anchor" href="#opening-images"></a>
+</h2>
+<hr class="half-width">
+<p>Napari comes with some example images - let’s open one now. Go to the
+top menu-bar of Napari and select:<br><code>File &gt; Open Sample &gt; napari builtins &gt; Cells (3D+2Ch)</code></p>
+<p>You should see a fluorescence microscopy image of some cells:</p>
+<figure><img src="../fig/cells-napari.png" alt="A screenshot of a flourescence microscopy image  of some cells in Napari" class="figure mx-auto d-block"></figure></section><section id="naparis-user-interface"><h2 class="section-heading">Napari’s User interface<a class="anchor" aria-label="anchor" href="#naparis-user-interface"></a>
+</h2>
+<hr class="half-width">
+<p>Napari’s user interface is split into a few main sections, as you can
+see in the diagram below (note that on Macs the main menu will appear in
+the upper ribbon, rather than inside the Napari window):</p>
+<figure><img src="../fig/ui-sections-napari.png" alt="A screenshot of Napari with the main user  interface sections labelled" class="figure mx-auto d-block"></figure><p>Let’s take a brief look at each of these sections - for full
+information see the <a href="https://napari.org/stable/tutorials/fundamentals/viewer.html" class="external-link">Napari
+documentation</a>.</p>
+</section><section id="main-menu"><h2 class="section-heading">Main menu<a class="anchor" aria-label="anchor" href="#main-menu"></a>
+</h2>
+<hr class="half-width">
+<p>We already used the main menu in the last section to open a sample
+image. The main menu contains various commands for opening images,
+changing preferences and installing plugins (we’ll see more of these
+options in later episodes).</p>
+</section><section id="canvas"><h2 class="section-heading">Canvas<a class="anchor" aria-label="anchor" href="#canvas"></a>
+</h2>
+<hr class="half-width">
+<p>The canvas is the main part of the Napari user interface. This is
+where we display and interact with our images.</p>
+<p>Try moving around the cells image with the following commands:</p>
+<pre><code>Pan - Click and drag
+Zoom - Scroll in/out (use the same gestures with your mouse 
+                      that you would use to scroll up/down 
+                      in a document)</code></pre>
+</section><section id="dimension-sliders"><h2 class="section-heading">Dimension sliders<a class="anchor" aria-label="anchor" href="#dimension-sliders"></a>
+</h2>
+<hr class="half-width">
+<p>Dimension sliders appear at the bottom of the canvas depending on the
+type of image displayed. For example, here we have a 3D image of some
+cells, which consists of a stack of 2D images. If we drag the slider at
+the bottom of the image, we move up and down in this stack:</p>
+<figure><img src="../fig/dim-slider.png" alt="Three screenshots of the cells image in napari, at  different z depths" class="figure mx-auto d-block"></figure><p>Pressing the arrow buttons at either end of the slider steps through
+one slice at a time. Also, pressing the ‘play’ button at the very left
+of the slider moves automatically through the stack until pressed
+again.</p>
+<figure><img src="../fig/dim-slider-closeup.png" style="width:80.0%" alt="Closeup of Napari's dimension slider with labels" class="figure mx-auto d-block"></figure><p>We will see in later episodes that more sliders can appear if our
+image has more dimensions (e.g. time series, or further channels).</p>
+</section><section id="viewer-buttons"><h2 class="section-heading">Viewer buttons<a class="anchor" aria-label="anchor" href="#viewer-buttons"></a>
+</h2>
+<hr class="half-width">
+<p>The viewer buttons (the row of buttons at the bottom left of Napari)
+control various aspects of the Napari viewer:</p>
+<div class="section level3">
+<h3 id="console">Console <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg" alt="A screenshot of Napari's console button" height="30" class="figure"><a class="anchor" aria-label="anchor" href="#console"></a>
+</h3>
+<p>This button opens Napari’s built-in python console - we’ll look at
+this in later episodes.</p>
+</div>
+<div class="section level3">
+<h3 id="d3d">2D/3D <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/2D.svg" alt="A screenshot of Napari's 2D button" height="25" class="figure"> / <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/3D.svg" alt="A screenshot of Napari's 3D button" height="25" class="figure"><a class="anchor" aria-label="anchor" href="#d3d"></a>
+</h3>
+<p>This switches the canvas between 2D and 3D display. Try switching to
+the 3D view for the cells image:</p>
+<figure><img src="../fig/cells-3d-napari.png" alt="A screenshot of 3D cells in Napari" class="figure mx-auto d-block"></figure><p>The controls for moving in 3D are similar to those for 2D:</p>
+<pre><code>Rotate - Click and drag
+Pan - Shift + click and drag
+Zoom - Scroll in/out</code></pre>
+</div>
+<div class="section level3">
+<h3 id="roll-dimensions">Roll dimensions <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/roll.svg" alt="A screenshot of Napari's roll dimensions button" height="25" class="figure"><a class="anchor" aria-label="anchor" href="#roll-dimensions"></a>
+</h3>
+<p>This changes which image dimensions are displayed in the viewer. For
+example, let’s switch back to the 2D view for our cells image and press
+the roll dimensions button multiple times. You’ll see that it switches
+between different orthogonal views (i.e. at 90 degrees to our starting
+view). Pressing it 3 times will bring us back to the original
+orientation.</p>
+<figure><img src="../fig/roll-dims.png" alt="Three screenshots of the cells image in napari,  with different axes being visualised" class="figure mx-auto d-block"></figure>
+</div>
+<div class="section level3">
+<h3 id="transpose-dimensions">Transpose dimensions <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/transpose.svg" alt="A screenshot of Napari's transpose dimensions button" height="25" class="figure"><a class="anchor" aria-label="anchor" href="#transpose-dimensions"></a>
+</h3>
+<p>This button swaps the two currently displayed dimensions. Again
+trying this for our cells image, we see that the image becomes flipped.
+Pressing the button again brings us back to the original
+orientation.</p>
+<figure><img src="../fig/transpose-dim.png" alt="Two screenshots of the cells image in napari,  with dimensions swapped" class="figure mx-auto d-block"></figure>
+</div>
+<div class="section level3">
+<h3 id="grid">Grid <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/grid.svg" alt="A screenshot of Napari's grid button" height="25" class="figure"><a class="anchor" aria-label="anchor" href="#grid"></a>
+</h3>
+<p>This button displays all image layers in a grid (+ any additional
+layer types, as we’ll see later in the episode). Using this for our
+cells image, we see the nuclei (green) displayed next to the cell
+membranes (purple), rather than on top of each other.</p>
+</div>
+<div class="section level3">
+<h3 id="home">Home <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/home.svg" alt="A screenshot of Napari's home button" height="25" class="figure"><a class="anchor" aria-label="anchor" href="#home"></a>
+</h3>
+<p>This button brings the canvas back to its default view. This is
+useful if you have panned/zoomed to a specific region and want to
+quickly get back to an overview of the full image.</p>
+</div>
+</section><section id="layer-list"><h2 class="section-heading">Layer list<a class="anchor" aria-label="anchor" href="#layer-list"></a>
+</h2>
+<hr class="half-width">
+<p>Now that we’ve seen the main controls for the viewer, let’s look at
+the layer list. ‘Layers’ are how Napari displays multiple items together
+in the viewer. For example, currently our layer list contains two items
+- ‘nuclei’ and ‘membrane’. These are both <code>Image</code> layers and
+are displayed in order, with the nuclei on top and membrane
+underneath.</p>
+<figure><img src="../fig/layer-list.png" alt="A screenshot of Napari's layer list, showing two  image layers named 'nuclei' and 'membrane'" class="figure mx-auto d-block"></figure><p>We can show/hide each layer by clicking the eye icon on the left side
+of their row. We can also rename them by double clicking on the row.</p>
+<p>We can change the order of layers by dragging and dropping items in
+the layer list. For example, try dragging the membrane layer above the
+nuclei. You should see the nuclei disappear from the viewer (as they are
+now hidden by the membrane image on top).</p>
+<figure><img src="../fig/layer-reordering.png" alt="A screenshot of Napari with the nuclei and  membrane layer swapped" class="figure mx-auto d-block"></figure><p>Here we only have <code>Image</code> layers, but there are many more
+types like <code>Points</code>, <code>Shapes</code> and
+<code>Labels</code>, some of which we will see later in the episode.</p>
+</section><section id="layer-controls"><h2 class="section-heading">Layer controls<a class="anchor" aria-label="anchor" href="#layer-controls"></a>
+</h2>
+<hr class="half-width">
+<p>Next let’s look at the layer controls - this area shows controls only
+for the currently selected layer (i.e. the one that is highlighted in
+blue in the layer list). For example, if we click on the nuclei layer
+then we can see a <code>colormap</code> of green, while if we click on
+the membrane layer we see a <code>colormap</code> of magenta.</p>
+<p>Controls will also vary depending on layer type (like
+<code>Image</code> vs <code>Points</code>) as we will see later in this
+episode.</p>
+<p>Let’s take a quick look at some of the main image layer controls:</p>
+<div class="section level3">
+<h3 id="opacity">Opacity<a class="anchor" aria-label="anchor" href="#opacity"></a>
+</h3>
+<p>This changes the opacity of the layer - lower values are more
+transparent. For example, reducing the opacity of the membrane layer (if
+it is still on top of the nuclei), allows us to see the nuclei
+again.</p>
+</div>
+<div class="section level3">
+<h3 id="contrast-limits">Contrast limits<a class="anchor" aria-label="anchor" href="#contrast-limits"></a>
+</h3>
+<p>We’ll discuss this in detail in a later episode, but briefly - the
+contrast limits adjust what parts of the image we can see and how bright
+they appear in the viewer. Moving the left node adjusts what is shown as
+fully black, while moving the right node adjusts what is shown as fully
+bright.</p>
+</div>
+<div class="section level3">
+<h3 id="colormap">Colormap<a class="anchor" aria-label="anchor" href="#colormap"></a>
+</h3>
+<p>Again, we’ll discuss this in detail in a later episode, but briefly -
+the colormap determines what colours an image is displayed with.
+Clicking in the dropdown shows a wide range of options that you can swap
+between.</p>
+</div>
+<div class="section level3">
+<h3 id="blending">Blending<a class="anchor" aria-label="anchor" href="#blending"></a>
+</h3>
+<p>This controls how multiple layers are blended together to give the
+final result in the viewer. There are <a href="https://napari.org/stable/guides/layers.html#blending-layers" class="external-link">many
+different options to choose from</a>. For example, let’s put the nuclei
+layer back on top of the membrane and change its blending to ‘opaque’.
+You should see that it now completely hides the membrane layer
+underneath. Changing the blending back to ‘additive’ will allow both the
+nucleus and membrane layers to be seen together again.</p>
+<div id="using-image-layer-controls" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="using-image-layer-controls" class="callout-inner">
+<h3 class="callout-title">Using image layer controls<a class="anchor" aria-label="anchor" href="#using-image-layer-controls"></a>
+</h3>
+<div class="callout-content">
+<p>Adjust the layer controls for both nuclei and membrane to give the
+result below:</p>
+<figure><img src="../fig/layer-controls-task.png" alt="Cells image with blue nuclei and bright  red membranes" class="figure mx-auto d-block"></figure>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1">
+  Show me the solution
+  </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div class="accordion-body">
+<ul>
+<li>Click on the nuclei in the layer list</li>
+<li>Change the colormap to cyan</li>
+<li>Click on the membrane in the layer list</li>
+<li>Change the colormap to red</li>
+<li>Move the right contrast limits node to the left to make the
+membranes appear brighter</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="layer-buttons"><h2 class="section-heading">Layer buttons<a class="anchor" aria-label="anchor" href="#layer-buttons"></a>
+</h2>
+<hr class="half-width">
+<p>So far we have only looked at <code>Image</code> layers, but there
+are many more types supported by Napari. The layer buttons allow us to
+add additional layers of these new types:</p>
+<div class="section level3">
+<h3 id="points">Points <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_points.svg" alt="A screenshot of Napari's point layer button" height="30" class="figure"><a class="anchor" aria-label="anchor" href="#points"></a>
+</h3>
+<p>This button creates a new <a href="https://napari.org/stable/howtos/layers/points.html" class="external-link">points
+layer</a>. This can be used to mark specific locations in an image.</p>
+</div>
+<div class="section level3">
+<h3 id="shapes">Shapes <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_shapes.svg" alt="A screenshot of Napari's shape layer button" height="30" class="figure"><a class="anchor" aria-label="anchor" href="#shapes"></a>
+</h3>
+<p>This button creates a new <a href="https://napari.org/stable/howtos/layers/shapes.html" class="external-link">shapes
+layer</a>. Shapes can be used to mark regions of interest e.g. with
+rectangles, ellipses or lines.</p>
+</div>
+<div class="section level3">
+<h3 id="labels">Labels <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_labels.svg" alt="A screenshot of Napari's labels layer button" height="30" class="figure"><a class="anchor" aria-label="anchor" href="#labels"></a>
+</h3>
+<p>This button creates a new <a href="https://napari.org/stable/howtos/layers/labels.html" class="external-link">labels
+layer</a>. This is usually used to label specific regions in an image
+e.g. to label individual nuclei.</p>
+</div>
+<div class="section level3">
+<h3 id="remove-layer">Remove layer <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure"><a class="anchor" aria-label="anchor" href="#remove-layer"></a>
+</h3>
+<p>This button removes the currently selected layer (highlighted in
+blue) from the layer list.</p>
+<div id="other-layer-types" class="callout callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="other-layer-types" class="callout-inner">
+<h3 class="callout-title">Other layer types<a class="anchor" aria-label="anchor" href="#other-layer-types"></a>
+</h3>
+<div class="callout-content">
+<p>Note that there are some layer types that can’t be added via clicking
+buttons in the user interface, like <a href="https://napari.org/stable/howtos/layers/surface.html" class="external-link">surfaces</a>,
+<a href="https://napari.org/stable/howtos/layers/tracks.html" class="external-link">tracks</a>
+and <a href="https://napari.org/stable/howtos/layers/vectors.html" class="external-link">vectors</a>.
+These require calling python commands in Napari’s console or an external
+python script.</p>
+</div>
+</div>
+</div>
+<div id="point-layers" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="point-layers" class="callout-inner">
+<h3 class="callout-title">Point layers<a class="anchor" aria-label="anchor" href="#point-layers"></a>
+</h3>
+<div class="callout-content">
+<p>Let’s take a quick look at one of these new layer types - the
+<code>Points</code> layer.</p>
+<p>Add a new points layer by clicking the points button. Investigate the
+different layer controls - what do they do? Note that hovering over
+buttons will usually show a summary tooltip.</p>
+<p>Add points and adjust settings to give the result below:</p>
+<figure><img src="../fig/points-task.png" alt="Cells image with points marking multiple nuclei" class="figure mx-auto d-block"></figure>
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2">
+  Show me the solution
+  </h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div class="accordion-body">
+<ul>
+<li>Click the ‘add points’ button <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/add.svg" alt="Screenshot of Napari's add points button" height="30" class="figure">
+</li>
+<li>Click on nuclei to add points on top of them</li>
+<li>Click the ‘select points’ button <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/select.svg" alt="Screenshot of Napari's select points button" height="30" class="figure">
+</li>
+<li>Click on the point over the dividing nucleus</li>
+<li>Increase the point size slider</li>
+<li>Change its symbol to star</li>
+<li>Change its face colour to purple</li>
+<li>change its edge colour to white</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+</h3>
+<div class="callout-content">
+<ul>
+<li>There are many software options for light microscopy images</li>
+<li>Napari and Fiji/ImageJ are popular open-source options</li>
+<li>Napari’s user interface is split into a few main sections including
+the canvas, layer list, layer controls…</li>
+<li>Layers can be of different types e.g. <code>Image</code>,
+<code>Point</code>, <code>Label</code>
+</li>
+<li>Different layer types have different layer controls</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- 
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use. 
+ -->
+</div>
 </section></section>
 </div>
     </main>
@@ -488,8 +1096,8 @@ any links that you are not going to use.
   "url": "https://FIXME-template-source.github.io/NA/instructor/aio.html",
   "identifier": "https://FIXME-template-source.github.io/NA/instructor/aio.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2023-12-05",
-  "datePublished": "2023-12-05"
+  "dateModified": "2023-12-06",
+  "datePublished": "2023-12-06"
 }
 
   </script><script>
