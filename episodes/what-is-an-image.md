@@ -1,7 +1,7 @@
 ---
 title: 'What is an image?'
-teaching: 
-exercises: 
+teaching: 30
+exercises: 10
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
@@ -25,15 +25,17 @@ exercises:
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 In the last episode, we looked at how to view images in Napari. Let's take a 
-step back now and address - what is an image?
+step back now and try to understand how Napari (or ImageJ or any other viewer) 
+understands how to display images properly. To do that we must first be able to 
+answer the fundamental question - what is an image?
 
 ## Pixels
 
-Let's start by removing all layers from the Napari viewer and opening a new 
-sample image:
+Let's start by removing all the layers we added to the Napari viewer last 
+episode. Then we can open a new sample image:
 
-- Click on the top layer in the layer list and shift + click the bottom layer. 
-This should highlight all layers in blue.
+- Click on the top layer in the layer list and <kbd>shift</kbd> + click the 
+bottom layer. This should highlight all layers in blue.
 
 - Press the remove layer button ![](
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
@@ -45,11 +47,11 @@ https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/dele
 ![](fig/human-mitosis-napari.png){alt="A screenshot of a 2D image of human cells 
 undergoing mitosis in Napari"}
 
-This 2D image shows the nuclei of human cells undergoing mitosis. If we zoom in 
-by scrolling, we can see that this image is actually made up of many small 
-squares with different brightness. These squares are the image's pixels (or 
-'picture elements') and are the individual units that make up all 
-digital images.
+This 2D image shows the nuclei of human cells undergoing mitosis. If we really 
+zoom in up-close by scrolling, we can see that this image is actually made up of 
+many small squares with different brightness values. These squares are the 
+image's pixels (or 'picture elements') and are the individual units that make 
+up all digital images.
 
 If we hover over these pixels with the mouse cursor, we can see that each pixel 
 has a specific value. Try hovering over pixels in dark and bright areas of the 
@@ -79,8 +81,8 @@ Note this can take a few seconds to open, so give it some time:
 ### Console readability
 
 You can increase the font size in the console by clicking inside it, then 
-pressing Ctrl and + together. The font size can also be decreased with 
-Ctrl and - together.
+pressing <kbd>Ctrl</kbd> and <kbd>+</kbd> together. The font size can also be 
+decreased with <kbd>Ctrl</kbd> and <kbd>-</kbd> together.
 
 Note that you can also pop the console out into its own window by clicking the 
 small ![](
@@ -90,8 +92,15 @@ icon on the left side.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-Let's look at the human mitosis image more closely - copy the following into 
-Napari's console:
+Let's look at the human mitosis image more closely - copy the text in the 
+'Python' cell below into Napari's console and then press the <kbd>Enter</kbd> 
+key. You should see it returns text that matches the 'Output' cell below in 
+response.
+
+All of the information about the Napari viewer can be accessed through the 
+console with a variable called `viewer`. A `viewer` has 1 to many layers, and
+here we access the top (first) layer with `viewer.layers[0]`. Then, to access 
+the actual image data stored in that layer, we retrieve it with `.data`:
 
 ```python
 
@@ -116,14 +125,16 @@ print(type(image))
 ```
 
 You should see that a series of numbers are printed out that are stored in a 
-`numpy.ndarray`. Fundamentally, this means that all images are really just 
-arrays of numbers (one number per pixel). Napari is reading those values and 
-converting them into squares of particular colours for us to see in the viewer, 
-but this is only to help us interpret the image contents - the numbers are the 
-real underlying data.
+Python data type called a `numpy.ndarray`. Fundamentally, this means that all 
+images are really just arrays of numbers (one number per pixel). Arrays are just 
+rectangular grids of numbers, much like a spreadsheet. Napari is reading those 
+values and converting them into squares of particular colours for us to see in 
+the viewer, but this is only to help us interpret the image contents - the 
+numbers are the real underlying data.
 
 For example, look at the simplified image of an arrow below. On the left is the 
-array of numbers, with the corresponding image display on the right:
+array of numbers, with the corresponding image display on the right. This is 
+called a 4 by 4 image, as it has 4 rows and 4 columns:
 
 ![](fig/array.png){alt="A diagram comparing the array of numbers and image 
 display for a simplified image of an arrow"}
@@ -131,8 +142,10 @@ display for a simplified image of an arrow"}
 In Napari this array is a `numpy.ndarray`. [NumPy](https://numpy.org/) is a 
 popular python package that provides 'n-dimensional arrays' (or 'ndarray' for 
 short). N-dimensional just means they can support any number of dimensions - 
-for example, 2D, 3D and beyond (like time series, images with many 
-channels etc.).
+for example, 2D (squares/rectangles of numbers), 3D (cubes/cuboids of numbers) 
+and beyond (like time series, images with many channels etc. where we would 
+have multiple rectangles or cuboids of data which provide further information 
+all at the same location).
 
 ## Creating an image
 
@@ -193,7 +206,7 @@ series) there would be 4 and so on...
 
 The other key feature of an image array is its 'data type' - this controls which 
 values can be stored inside of it. For example, let's look at the data type for 
-our human mitosis image:
+our human mitosis image - this is stored in `.dtype`:
 
 ```python
 
@@ -237,10 +250,11 @@ a series of 8 ones or zeros like `00000000`, or `01101101`...).
 The reason the bit depth is so important is that it dictates the number of 
 different values that can be stored. In fact it is equal to:
 
-\[\large \text{Number of values} = 2^{\text{bit depth}}\]
+\[\large \text{Number of values} = 2^{\text{(bit depth)}}\]
 
-Going back to our mitosis image, this means that it can store $2^8 = 256$ 
-different values, which is equal to a range of 0-255 for unsigned integers.
+Going back to our mitosis image, since it is stored as integers with a 
+bit-depth of 8, this means that it can store $2^8 = 256$ 
+different values. This is equal to a range of 0-255 for unsigned integers.
 
 We can verify this by looking at the maximum value of the mitosis image:
 
@@ -263,8 +277,8 @@ of 255.
 
 ## Dimensions and data types
 
-Let's open a new image by copying and pasting the following lines into the 
-Napari console:
+Let's open a new image by removing all layers from the Napari viewer, then 
+copying and pasting the following lines into the Napari console:
 
 ```python
 
@@ -345,10 +359,10 @@ later episodes).
 ## Choosing a bit depth
 
 Most images are either 8-bit or 16-bit - so how to choose which to use? 
-A higher bit depth will allow a wider range of values to be stored, but also 
-result in larger image files overall. In general, a 16-bit image will have a 
-file size about 2x as large as 8-bit without compression (we'll discuss 
-compression in a later episode).
+A higher bit depth will allow a wider range of values to be stored, but it will 
+also result in larger file sizes for the resulting images. In general, a 16-bit 
+image will have a file size that is about twice as large as an 8-bit image 
+if no compression is used (we'll discuss compression in a later episode).
 
 The best bit depth choice will depend on your particular imaging experiment and 
 research question. For example, if you know you have to recognise features that 
@@ -359,7 +373,7 @@ number of images and 8-bit is sufficient to see your features of interest, then
 always it's about choosing the best fit for your specific project! 
 
 For more information on bit depths and types - we highly recommend 
-[this chapter of Pete Bankhead's free bioimage book](
+[the 'Types & bit-depths' chapter from Pete Bankhead's free bioimage book](
 https://bioimagebook.github.io/chapters/1-concepts/3-bit_depths/bit_depths.html).
 
 :::::::::::::::::::::::::::::::::::::: callout
@@ -367,8 +381,8 @@ https://bioimagebook.github.io/chapters/1-concepts/3-bit_depths/bit_depths.html)
 ### Clipping and overflow
 
 It's important to be aware of what image type and bit depth you are using. If 
-you try to store values outside of the valid range this can lead to clipping 
-and overflow.
+you try to store values outside of the valid range, this can lead to _clipping_ 
+and _overflow_.
 
 - Clipping: Values outside the valid range are changed to the closest valid 
 value. For example, storing 1000 in a `uint8` image may result in 255 being 
@@ -392,7 +406,9 @@ and data type. How do we access specific values from this array? What coordinate
 system is Napari using?
 
 To look into this, let's hover over pixels in our mitosis image and examine the 
-coordinates that appear to the left of the pixel value:
+coordinates that appear to the left of the pixel value. If you closed the 
+mitosis image, then open it again by removing all layers and selecting: 
+`File > Open Sample > napari builtins > Human Mitosis`:
 
 ![](fig/coordinates.png){alt="A screenshot of Napari - with the mouse cursor 
 hovering over a pixel and highlighting the corresponding coordinates"}
@@ -413,9 +429,10 @@ start from 0 as you can see in the diagram below:
 ){alt="A diagram showing how pixel coordinates change over a simple 4x4 image" width=50%}
 
 For the mitosis image, these coordinates are in pixels, but we'll see in later 
-episodes that images can also be scaled based on resolution (e.g. in 
-micrometres). Also, bear in mind that images with more dimensions (e.g. a 3D 
-image) will have longer coordinates like [z, y, x]...
+episodes that images can also be scaled based on resolution to represent 
+distances in the physical world (e.g. in micrometres). Also, bear in mind that 
+images with more dimensions (e.g. a 3D image) will have longer coordinates 
+like [z, y, x]...
 
 ::::::::::::::::::::::::::::::::::::: challenge 
 
@@ -427,6 +444,7 @@ correct image:
 
 ```python
 
+# Get the image data for the layer called 'human_mitosis'
 image = viewer.layers["human_mitosis"].data
 ```
 
@@ -528,7 +546,7 @@ give 44 - an incorrect value.
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
 - Digital images are made of pixels
-- Digital images are arrays of numbers
+- Digital images store these pixels as arrays of numbers
 - Light microscopy images are only an approximation of the real sample
 - Napari (and Python more widely) use NumPy arrays to store images - 
 these have a `shape` and `dtype`
