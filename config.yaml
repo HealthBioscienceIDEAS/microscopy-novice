@@ -61,6 +61,7 @@ contact: 'team@carpentries.org'
 episodes: 
 - introduction.Rmd
 - imaging-software.md
+- filetypes-and-metadata.md
 
 # Information for Learners
 learners: 
