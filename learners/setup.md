@@ -55,24 +55,66 @@ Use Terminal
 ## Post Setup Checks
 
 Before starting the course it is important to check that your setup is working. 
-Download test data from the open microspcopy environment pages.
-https://downloads.openmicroscopy.org/images/OME-TIFF/2016-06/MitoCheck/00001_01.ome.tiff
 
-https://downloads.openmicroscopy.org/images/Zeiss-CZI/idr0011/Plate1-Blue-A_TS-Stinger/Plate1-Blue-A-12-Scene-3-P3-F2-03.czi
+::::::::::::::::::::::::::::::::::::::: challenge
+
+## Check napari opens a tiff image.
+
+Any napari installation should be able to open a tiff image.
+
+Download [00001_01.ome.tiff](https://downloads.openmicroscopy.org/images/OME-TIFF/2016-06/MitoCheck/00001_01.ome.tiff) from the open microscopy environment pages.
 
 Start napari
 ```bash
 conda activate napari-env
 napari
 ```
-Check that napari is installed correctly by opening a tiff file.
+Open a file with
+
 `File > Open file(s)...`
-Should open a file selection dialog. Navigate to wherever you downloaded '00001_01.ome.tiff' to, probably your 'Downloads' folder. Select and click open. This should open a 'Choose reader' dialog. Select 'napari builtins'.
-![](fig/ome_00001.png){alt="A screenshot of freshly opened 00001_01.ome.tiff" width='80%'}
 
+- Navigate to where you saved `00001_01.ome.tiff` to, most likely your `Downloads` folder. 
+- Select `00001_01.ome.tiff` and click open. 
+- If you see a `Choose reader` dialog, select `napari builtins`.
 
-Check that the napari-aicsimageio is installed correctly by opening a czi image.
+::::::::::::::::::::::::::
+::::::::::::::::::: solution
 
-![](fig/plate1-blue.png){alt="A screenshot of freshly opened Plate1-Blue-A-12-Scene-3-P3-F2-03.czi" width='80%'}
+## Expected Output
 
+![If this is what you see your napari installation is working as expected. If not then please check the installation or get in touch with the course organisers for help.](fig/ome_00001.png){alt="A screenshot of freshly opened 00001_01.ome.tiff" width='80%'}
 
+Close napari: `File > exit`
+
+::::::::::::::::::::::::::
+
+:::::::::::::::::::: challenge
+
+## Check napari opens a czi image.
+
+During the course we'll be working with czi images. To open these the napari-aicsimageio plugin is needed. Let's check the plugin is working.
+
+Download [Plate1-Blue-A-12-Scene-3-P3-F2-03.czi](https://downloads.openmicroscopy.org/images/Zeiss-CZI/idr0011/Plate1-Blue-A_TS-Stinger/Plate1-Blue-A-12-Scene-3-P3-F2-03.czi) from the open microscopy environment pages.
+
+Start napari. Note that if you've already done the previous test (tiff image) then it should not be neccessary to run `conda activate napari-env`. However, it is necessary to restart napari to ensure the image display is correctly formatted.
+ 
+```bash
+conda activate napari-env
+napari
+```
+
+`File > Open file(s)...`
+
+- Navigate to where you saved `Plate1-Blue-A-12-Scene-3-P3-F2-03.czi` to, most likely your `Downloads` folder. 
+- Select `Plate1-Blue-A-12-Scene-3-P3-F2-03.czi` and click open.
+
+::::::::::::::::::::::::::
+::::::::::::::::::: solution
+
+## Expected Output
+
+![If this is what you see your napari and aicsimageio plugin installation is working as expected. If not then please check the installation or get in touch with the course organisers for help.](fig/plate1-blue.png){alt="A screenshot of freshly opened Plate1-Blue-A-12-Scene-3-P3-F2-03.czi" width='80%'}
+
+Close napari: `File > exit`
+
+::::::::::::::::::::::::::
