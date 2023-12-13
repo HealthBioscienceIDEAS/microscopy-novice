@@ -16,9 +16,9 @@ exercises: 10
 
 - Find the value of different pixels in an image in Napari
 
-- Determine an image's dimensions (numpy ndarray .shape)
+- Determine an image's dimensions (numpy ndarray `.shape`)
 
-- Determine an image's data type (numy ndarray .dtype)
+- Determine an image's data type (numpy ndarray `.dtype`)
 
 - Explain the coordinate system used for images
 
