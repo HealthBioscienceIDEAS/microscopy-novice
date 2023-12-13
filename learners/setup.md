@@ -68,8 +68,11 @@ napari
 Check that napari is installed correctly by opening a tiff file.
 `File > Open file(s)...`
 Should open a file selection dialog. Navigate to wherever you downloaded '00001_01.ome.tiff' to, probably your 'Downloads' folder. Select and click open. This should open a 'Choose reader' dialog. Select 'napari builtins'.
+![](fig/ome_00001.png){alt="A screenshot of freshly opened 00001_01.ome.tiff" width='80%'}
+
 
 Check that the napari-aicsimageio is installed correctly by opening a czi image.
 
+![](fig/plate1-blue.png){alt="A screenshot of freshly opened Plate1-Blue-A-12-Scene-3-P3-F2-03.czi" width='80%'}
 
 
