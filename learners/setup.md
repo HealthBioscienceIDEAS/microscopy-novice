@@ -52,3 +52,24 @@ Use Terminal
 
 :::::::::::::::::::::::::
 
+## Post Setup Checks
+
+Before starting the course it is important to check that your setup is working. 
+Download test data from the open microspcopy environment pages.
+https://downloads.openmicroscopy.org/images/OME-TIFF/2016-06/MitoCheck/00001_01.ome.tiff
+
+https://downloads.openmicroscopy.org/images/Zeiss-CZI/idr0011/Plate1-Blue-A_TS-Stinger/Plate1-Blue-A-12-Scene-3-P3-F2-03.czi
+
+Start napari
+```bash
+conda activate napari-env
+napari
+```
+Check that napari is installed correctly by opening a tiff file.
+`File > Open file(s)...`
+Should open a file selection dialog. Navigate to wherever you downloaded '00001_01.ome.tiff' to, probably your 'Downloads' folder. Select and click open. This should open a 'Choose reader' dialog. Select 'napari builtins'.
+
+Check that the napari-aicsimageio is installed correctly by opening a czi image.
+
+
+
