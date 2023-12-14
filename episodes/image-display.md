@@ -1,7 +1,7 @@
 ---
 title: 'Image display'
-teaching: 
-exercises: 
+teaching: 30
+exercises: 10
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
@@ -52,10 +52,10 @@ pixels in Napari, or print the array into Napari's console (as we saw last
 episode), but these are hard to interpret at a glance. A much better option is 
 to use an image histogram.
 
-To do this, we will have to install a new plugin for Napari. Remember from 
-episode 1 that plugins add new features to a piece of software. Napari has 
-hundreds of plugins available on the [napari hub](https://www.napari-hub.org/) 
-website.
+To do this, we will have to install a new plugin for Napari. Remember from the 
+[Imaging Software episode](imaging-software.md) that plugins add new features 
+to a piece of software. Napari has hundreds of plugins available on the 
+[napari hub](https://www.napari-hub.org/) website.
 
 Let's start by going to the napari hub and searching for 'matplotlib':
 
@@ -65,7 +65,10 @@ Let's start by going to the napari hub and searching for 'matplotlib':
 You should see 'napari Matplotlib' appear in the list (if not, try scrolling 
 further down the page). If we click on `napari matplotlib` this opens a summary 
 of the plugin with links to the documentation. There's also a useful 'Activity' 
-tab that summarises the number of installs and maintenance history of the plugin.
+tab that summarises the number of installs and maintenance history of the plugin:
+
+![](fig/napari-hub-activity.png
+){alt="Screenshot of napari-matplotlib's activity tab on napari hub"}
 
 Now that we've found the plugin we want to use, let's go ahead and install it 
 in Napari. Note that some plugins have special requirements for installation, 
@@ -79,8 +82,8 @@ In the top menu bar of Napari select:
 This should open a window summarising all installed plugins (at the top) and all 
 available plugins to install (at the bottom). If we search for 'matplotlib' in 
 the top searchbar, then 'napari-matplotlib' will appear under 'Available 
-Plugins'. Press the blue install button and wait for it to finish. You'll then 
-need to close and re-open Napari.
+Plugins'. Press the blue install button and wait for it to finish. **You'll then 
+need to close and re-open Napari.**
 
 If all worked as planned, you should see a new option in the top menubar under:  
 `Plugins > napari Matplotlib`
@@ -128,8 +131,9 @@ past year.
 
 **Image.sc**  
 It can also be useful to search the plugin's name on the 
-[image.sc](https://forum.image.sc/) forum to see if other people had good 
-experiences with it.
+[image.sc](https://forum.image.sc/) forum to browse relevant posts and see if 
+other people had good experiences using it. Image.sc is also a great place to 
+get help and advice from other plugin users, or the plugin's developers.
 
 :::::::::::::::::::::::::::::::::
 
@@ -139,7 +143,7 @@ experiences with it.
 ## Image histograms
 
 Let's use our newly installed plugin to look at the human mitosis image. If you 
-don't have it open, go the top menubar and select:
+don't have it open, go the top menubar and select:  
 `File > Open Sample > napari builtins > Human Mitosis`
 
 Then open the image histogram with:  
@@ -157,7 +161,7 @@ continue using dark mode if you prefer.
 This histogram summarises the pixel values of the entire image. On the x axis 
 is the pixel value which run from 0-255 for this 8-bit image. This is split 
 into a number of 'bins' of a certain width (for example, it could be 0-10, 11-20 
-and so on...). Each bin has a blue bar whose height is proprotional to the 
+and so on...). Each bin has a blue bar whose height represents the 
 number of pixels with values in that bin. So, for example, for our mitosis image 
 we see the highest bars to the left, with shorter bars to the right. This means 
 this image has a lot of very dark (low intensity) pixels and fewer bright 
@@ -171,7 +175,9 @@ Let's quickly compare to another image. Open the 'coins' image with:
 
 From the histogram, we can see that this image has a wider spread of pixel 
 values. There are bars of similar height across many different values (rather 
-than just one big peak at the left hand side).
+than just one big peak at the left hand side). Note that the alternating high 
+and low bars are due to napari-matplotlib using bins of fractional width e.g. 
+2.54 - this will hopefully be adjustable in future plugin versions.
 
 Image histograms are a great way to quickly summarise and compare pixel values 
 of different images.
@@ -210,8 +216,8 @@ the contrast limits or colormap in the layer controls. You should see that the
 histogram stays the same, no matter what settings you change i.e. the display 
 settings don't affect the underlying pixel values.
 
-This is one of the reasons it's important to use software designed for 
-scientific analysis to work with your light microscopy images. Software like 
+This is one of the reasons it's _important to use software designed for 
+scientific analysis_ to work with your light microscopy images. Software like 
 Napari and ImageJ will try to ensure that your pixel values remain unchanged, 
 while other image editing software (designed for working with photographs) may 
 change the pixel values in unexpected ways. Also, even with scientific software, 
@@ -219,35 +225,48 @@ some image processing steps (that we'll see in later episodes) will change the
 pixel values. 
 
 Keep this in mind and make sure you always retain a copy of your original data, 
-in its original file format! We'll see in episode X that original image files 
-contain important metadata that should be kept for future reference.
+in its original file format! We'll see in the ['Filetypes and metadata' episode
+](./FIXME.md) that original image files contain important metadata that should 
+be kept for future reference.
 
 ## Colormaps / LUTs
 
-Let's dig deeper into Napari's colormaps. We've already seen in episode X that 
-the colormap can be changed by choosing different options from the 'colormap' 
-menu in the layer controls. But how do these colormaps actually work?
+Let's dig deeper into Napari's colormaps. As we saw in the ['What is an image?' 
+episode](what-is-an-image.md), images are represented by arrays of numbers 
+(pixel values) with certain dimensions and data type. Napari (or any other image 
+viewer) has to convert these numbers into coloured squares on our screen to 
+allow us to view and interpret the image. Colormaps (also known as lookup tables 
+or LUTs) are a way to convert pixel values into corresponding colours for 
+display. For example, remember the image at the beginning of this episode, 
+showing an image array using three different colormaps:
 
-Colormaps (also known as lookup tables or LUTs) match each pixel value to a 
-colour to use for display. For example, see the diagram below showing the 
-'gray' colormap:
+![](fig/same-array-diff-display.png
+){alt="Diagram showing an image array (top) with three different colormap 
+options (bottom)" width='70%'}
+
+Napari supports a wide range of colormaps that can be selected from the 
+'colormap' menu in the layer controls (as we saw in the [Imaging Software 
+episode](imaging-software.md)). For example, see the diagram below showing the 
+'gray' colormap, where every pixel value from 0-255 is matched to a shade of 
+gray:
 
 ![](fig/gray-colorbar.png
 ){alt="Grey colormap shown as a colorbar with corresponding pixel values" 
 width='50%'}
 
-Each pixel value from 0-255 maps to a corresponding colour. See the diagram 
-below for examples of 4 different colormaps with an example image histogram:
+See the diagram below for examples of 4 different colormaps applied to the 
+'coins' image from Napari, along with corresponding image histograms:
 
 ![](fig/colorbar-comparison.png
-){alt="Four histograms showing the gray, green, viridis and inferno colormap 
-and correspoinding colorbar"}
+){alt="Diagram showing histograms, colorbars and images for the gray, green, 
+viridis and inferno colormap applied on the coins image" width='90%'}
 
 Why would we want to use different colormaps?
 
 - to highlight specific features in an image
-- to help with overlaying multiple images, as we saw in episode X when we 
-displayed green nuclei and magenta membranes together.
+- to help with overlaying multiple images, as we saw in the [Imaging Software 
+episode](imaging-software.md) when we displayed green nuclei and magenta 
+membranes together.
 - to help interpretation of an image. For example, if we used a red fluorescent 
 label in an experiment, then using a red colormap might help people understand 
 the image quickly.
@@ -255,16 +274,17 @@ the image quickly.
 ## Brightness and contrast
 
 As the final section of this episode, let's learn more about the 
-'contrast limits' in Napari. As we saw in episode X, adjusting the contrast 
-limits in the layer controls changes how bright different parts of the image are 
-displayed. What is really going on here though?
+'contrast limits' in Napari. As we saw in the [Imaging Software episode
+](imaging-software.md), adjusting the contrast limits in the layer controls 
+changes how bright different parts of the image are displayed. What is really 
+going on here though?
 
 In fact, the 'contrast limits' are adjusting how our colormap gets applied to 
 the image. For example, consider the standard gray colormap:
 
 ![](fig/contrast-comparison-0-255.png
-){alt="Histogram coloured by gray colormap with corresponding colorbar. Contrast 
-limits 0 and 255." width='70%'}
+){alt="Histogram, colorbar and image corresponding to coins coloured by the 
+gray colormap. Contrast limits 0 and 255." width='90%'}
 
 For an 8-bit image, the range of colours from black to white are normally spread 
 from 0 (the minimum pixel value) to 255 (the maximum pixel value). If we move 
@@ -272,8 +292,8 @@ the left contrast limits node, we change where the colormap starts from e.g.
 for a value of 150 we get:
 
 ![](fig/contrast-comparison-150-255.png
-){alt="Histogram coloured by gray colormap with corresponding colorbar. Contrast 
-limits 150 and 255." width='70%'}
+){alt="Histogram, colorbar and image corresponding to coins coloured by the 
+gray colormap. Contrast limits 150 and 255." width='90%'}
 
 Now all the colours from black to white are spread over a smaller range of pixel 
 values from 150-255 and everything below 150 is set to black. Note that in 
@@ -285,8 +305,8 @@ If we move the right contrast limits node, we change where the colormap ends
 and 200:
 
 ![](fig/contrast-comparison-150-200.png
-){alt="Histogram coloured by gray colormap with corresponding colorbar. Contrast 
-limits 150 and 200." width='70%'}
+){alt="Histogram, colorbar and image corresponding to coins coloured by the 
+gray colormap. Contrast limits 150 and 200." width='90%'}
 
 Now the range of colours from black to white only cover the pixel values from 
 150-200, everything below is black and everything above is white.
