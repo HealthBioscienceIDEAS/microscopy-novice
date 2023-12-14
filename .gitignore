@@ -54,3 +54,4 @@ renv/sandbox # OPTIONAL
 
 # PyCharm files 
 .idea/
+__pycache__/

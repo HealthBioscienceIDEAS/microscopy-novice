@@ -12,8 +12,7 @@ import numpy as np
 matplotlib.use('Qt5Agg')
 
 
-def plot_histogram(image, min, max, contrast_min, contrast_max, cmap, hide_x_ticks=True):
-    fig, ax = plt.subplots()
+def plot_histogram(image, ax, min, max, contrast_min, contrast_max, cmap, hide_x_ticks=True):
     ax.set_xlim(min, max)
 
     if hide_x_ticks:
@@ -64,8 +63,15 @@ def plot_histogram(image, min, max, contrast_min, contrast_max, cmap, hide_x_tic
     cb.ax.xaxis.set_ticks([], minor=True)
 
 
+def plot_image(image, min, max, cmap, ax):
+    ax.imshow(image, cmap=cmap, vmin=min, vmax=max)
+    ax.axis('off')
+
+
 def generate_contrast_plot(save_dir):
-    """generate multiple plots with different contrast settings - histogram + colorbar"""
+    """generate multiple plots with different contrast settings - showing a coloured histogram,
+    colorbar and corresponding image"""
+
     image = data.coins()
     cmap = plt.cm.gray
     min = 0
@@ -74,6 +80,10 @@ def generate_contrast_plot(save_dir):
     contrast_maxes = [255, 255, 200]
 
     for contrast_min, contrast_max in zip(contrast_mins, contrast_maxes):
-        plot_histogram(image, min, max, contrast_min, contrast_max, cmap)
+        fig, axes = plt.subplots(1, 2)
+        fig.subplots_adjust(wspace=0.05)
+        fig.set_size_inches(8, 3)
+        plot_histogram(image, axes[0], min, max, contrast_min, contrast_max, cmap)
+        plot_image(image, contrast_min, contrast_max, cmap, axes[1])
         plt.savefig(Path(save_dir) / f"contrast-comparison-{contrast_min}-{contrast_max}.png",
                     dpi=300, bbox_inches='tight')
