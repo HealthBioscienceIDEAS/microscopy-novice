@@ -214,6 +214,18 @@
 </div>
 <!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush5">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading5">
+        <a href="image-display.html">4. Image display</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -270,7 +282,7 @@
         
 <section id="aio-introduction"><p>Content from <a href="introduction.html">introduction</a></p>
 <hr>
-<p> Last updated on 2023-12-13 | 
+<p> Last updated on 2023-12-15 | 
         
         <a href="https://example.com/FIXME-template-source/edit/main/episodes/introduction.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -445,7 +457,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-imaging-software"><p>Content from <a href="imaging-software.html">Imaging Software</a></p>
 <hr>
-<p> Last updated on 2023-12-13 | 
+<p> Last updated on 2023-12-15 | 
         
         <a href="https://example.com/FIXME-template-source/edit/main/episodes/imaging-software.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1040,7 +1052,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-what-is-an-image"><p>Content from <a href="what-is-an-image.html">What is an image?</a></p>
 <hr>
-<p> Last updated on 2023-12-13 | 
+<p> Last updated on 2023-12-15 | 
         
         <a href="https://example.com/FIXME-template-source/edit/main/episodes/what-is-an-image.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1368,7 +1380,7 @@ on the bit depth?</p></li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="dimensions">Dimensions<a class="anchor" aria-label="anchor" href="#dimensions"></a>
@@ -1576,7 +1588,7 @@ value - is it correct? If not, why not?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="section">1<a class="anchor" aria-label="anchor" href="#section"></a>
@@ -1684,6 +1696,378 @@ increasing to the right, and y increasing down</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
+</section></section><section id="aio-image-display"><p>Content from <a href="image-display.html">Image display</a></p>
+<hr>
+<p> Last updated on 2023-12-15 | 
+        
+        <a href="https://example.com/FIXME-template-source/edit/main/episodes/image-display.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>How are pixel values converted into colours for display?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Create a histogram for an image</li>
+<li>Install plugins from Napari Hub</li>
+<li>Change colormap (LUT) in Napari</li>
+<li>Adjust brightness and contrast in Napari</li>
+<li>Explain the importance of always retaining a copy of the original
+pixel values</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="image-array-and-display"><h2 class="section-heading">Image array and display<a class="anchor" aria-label="anchor" href="#image-array-and-display"></a>
+</h2>
+<hr class="half-width">
+<p>Last episode we saw that images are arrays of numbers with specific
+dimensions and data type. Napari reads these numbers (pixel values) and
+converts them into colours on our display, allowing us to view the
+image. Exactly how this conversion is done can vary greatly, and is the
+topic of this episode.</p>
+<p>For example, take the image array shown below. Depending on the
+display settings, it can look very different inside Napari:</p>
+<figure><img src="fig/same-array-diff-display.png" style="width:70.0%" alt="Diagram showing an image array (top) with three different colormap  options (bottom)" class="figure mx-auto d-block"></figure><p>Equally, image arrays with different pixel values can look the same
+in Napari depending on the display settings:</p>
+<figure><img src="fig/diff-array-same-display.png" style="width:50.0%" alt="Diagram showing two image arrays - 8-bit vs 16-bit (top) with the same  display (bottom)" class="figure mx-auto d-block"></figure><p>In summary, we can’t rely on appearance alone to understand the
+underlying pixel values. Display settings (like the colormap, brightness
+and contrast - as we will see below) have a big impact on how the final
+image looks.</p>
+</section><section id="napari-plugins"><h2 class="section-heading">Napari plugins<a class="anchor" aria-label="anchor" href="#napari-plugins"></a>
+</h2>
+<hr class="half-width">
+<p>How can we quickly assess the pixel values in an image? We could
+hover over pixels in Napari, or print the array into Napari’s console
+(as we saw last episode), but these are hard to interpret at a glance. A
+much better option is to use an image histogram.</p>
+<p>To do this, we will have to install a new plugin for Napari. Remember
+from the <a href="imaging-software.html">Imaging Software episode</a>
+that plugins add new features to a piece of software. Napari has
+hundreds of plugins available on the <a href="https://www.napari-hub.org/" class="external-link">napari hub</a> website.</p>
+<p>Let’s start by going to the napari hub and searching for
+‘matplotlib’:</p>
+<figure><img src="fig/napari-hub.png" alt="Screenshot of searching 'matplotlib' on napari hub" class="figure mx-auto d-block"></figure><p>You should see ‘napari Matplotlib’ appear in the list (if not, try
+scrolling further down the page). If we click on
+<code>napari matplotlib</code> this opens a summary of the plugin with
+links to the documentation. There’s also a useful ‘Activity’ tab that
+summarises the number of installs and maintenance history of the
+plugin:</p>
+<figure><img src="fig/napari-hub-activity.png" alt="Screenshot of napari-matplotlib's activity tab on napari hub" class="figure mx-auto d-block"></figure><p>Now that we’ve found the plugin we want to use, let’s go ahead and
+install it in Napari. Note that some plugins have special requirements
+for installation, so it’s always worth checking their napari hub page
+for any extra instructions. In the top menu bar of Napari select:<br><code>Plugins &gt; Install/Uninstall Plugins...</code></p>
+<figure><img src="fig/plugin-installation.png" alt="Screenshot of plugin installation window in Napari" class="figure mx-auto d-block"></figure><p>This should open a window summarising all installed plugins (at the
+top) and all available plugins to install (at the bottom). If we search
+for ‘matplotlib’ in the top searchbar, then ‘napari-matplotlib’ will
+appear under ‘Available Plugins’. Press the blue install button and wait
+for it to finish. <strong>You’ll then need to close and re-open
+Napari.</strong></p>
+<p>If all worked as planned, you should see a new option in the top
+menubar under:<br><code>Plugins &gt; napari Matplotlib</code></p>
+<div id="finding-plugins" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="finding-plugins" class="callout-inner">
+<h3 class="callout-title">Finding plugins<a class="anchor" aria-label="anchor" href="#finding-plugins"></a>
+</h3>
+<div class="callout-content">
+<p>Napari hub contains hundreds of plugins with varying quality, written
+by many different developers. It can be difficult to choose which
+plugins to use!</p>
+<ul>
+<li>Search for cell tracking plugins on <a href="https://www.napari-hub.org/" class="external-link">Napari hub</a>
+</li>
+<li>Look at some of the plugin summaries and ‘Activity’ tabs</li>
+<li>What factors could help you decide if the plugin is well
+maintained?</li>
+<li>What factors could help you decide if the plugin is popular with
+Napari users?</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1">
+  Show me the solution
+  </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div class="accordion-body">
+<div class="section level3">
+<h3 id="is-a-plugin-well-maintained">Is a plugin well maintained?<a class="anchor" aria-label="anchor" href="#is-a-plugin-well-maintained"></a>
+</h3>
+<p>Some factors to look for:</p>
+<p><strong>Last updated</strong><br>
+Check when the plugin was last updated - was it recently? This is shown
+in the search list summary and under ‘Maintenance’ in the activity tab.
+In the activity tab, you can also look at a graph summarising the
+‘commits’ over the past year - ‘commits’ are made when someone updates
+their plugin with new changes.</p>
+<p><strong>Documentation</strong><br>
+Is the plugin summary (+ any linked documentation) detailed enough to
+explain how to use the plugin?</p>
+</div>
+<div class="section level3">
+<h3 id="is-a-plugin-popular">Is a plugin popular?<a class="anchor" aria-label="anchor" href="#is-a-plugin-popular"></a>
+</h3>
+<p>Some factors to look for:</p>
+<p><strong>Installs</strong><br>
+Check how many times a plugin has been installed - a higher number of
+installs usually means it’s more popular in the Napari community. The
+installs are shown in the search list summary and under ‘Usage’ in the
+activity tab. In the activity tab, you can also look at a graph
+summarising the installs over the past year.</p>
+<p><strong>Image.sc</strong><br>
+It can also be useful to search the plugin’s name on the <a href="https://forum.image.sc/" class="external-link">image.sc</a> forum to browse relevant
+posts and see if other people had good experiences using it. Image.sc is
+also a great place to get help and advice from other plugin users, or
+the plugin’s developers.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="image-histograms"><h2 class="section-heading">Image histograms<a class="anchor" aria-label="anchor" href="#image-histograms"></a>
+</h2>
+<hr class="half-width">
+<p>Let’s use our newly installed plugin to look at the human mitosis
+image. If you don’t have it open, go the top menubar and select:<br><code>File &gt; Open Sample &gt; napari builtins &gt; Human Mitosis</code></p>
+<p>Then open the image histogram with:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
+<p>You should see a histogram open on the right side of the image:</p>
+<figure><img src="fig/mitosis-histogram.png" style="width:70.0%" alt="Screenshot of image histogram for mitosis image" class="figure mx-auto d-block"></figure><p>Here, I’ve changed Napari to light mode to make the histogram easier
+to see
+(<code>File &gt; Preferences &gt; Appearance &gt; Theme &gt; light</code>),
+but you’re welcome to continue using dark mode if you prefer.</p>
+<p>This histogram summarises the pixel values of the entire image. On
+the x axis is the pixel value which run from 0-255 for this 8-bit image.
+This is split into a number of ‘bins’ of a certain width (for example,
+it could be 0-10, 11-20 and so on…). Each bin has a blue bar whose
+height represents the number of pixels with values in that bin. So, for
+example, for our mitosis image we see the highest bars to the left, with
+shorter bars to the right. This means this image has a lot of very dark
+(low intensity) pixels and fewer bright (high intensity) pixels.</p>
+<p>Let’s quickly compare to another image. Open the ‘coins’ image
+with:<br><code>File &gt; Open Sample &gt; napari builtins &gt; Coins</code></p>
+<figure><img src="fig/coins-histogram.png" style="width:68.0%" alt="Screenshot of image histogram for coins image" class="figure mx-auto d-block"></figure><p>From the histogram, we can see that this image has a wider spread of
+pixel values. There are bars of similar height across many different
+values (rather than just one big peak at the left hand side). Note that
+the alternating high and low bars are due to napari-matplotlib using
+bins of fractional width e.g.  2.54 - this will hopefully be adjustable
+in future plugin versions.</p>
+<p>Image histograms are a great way to quickly summarise and compare
+pixel values of different images.</p>
+<div id="histograms" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="histograms" class="callout-inner">
+<h3 class="callout-title">Histograms<a class="anchor" aria-label="anchor" href="#histograms"></a>
+</h3>
+<div class="callout-content">
+<p>Match each of these small test images to their corresponding
+histogram. You can assume that all images are displayed with a standard
+gray colormap and default contrast limits of the min/max possible pixel
+values:</p>
+<figure><img src="fig/exercise-hist-images.png" style="width:68.0%" alt="Screenshot of 4 small grayscale test images" class="figure mx-auto d-block"></figure><figure><img src="fig/exercise-histograms.png" alt="Screenshot of 4 histograms, corresponding to the test images" class="figure mx-auto d-block"></figure>
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2">
+  Show me the solution
+  </h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div class="accordion-body">
+<ul>
+<li>a - 3</li>
+<li>b - 4</li>
+<li>c - 2</li>
+<li>d - 1</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section><section id="changing-display-settings"><h2 class="section-heading">Changing display settings<a class="anchor" aria-label="anchor" href="#changing-display-settings"></a>
+</h2>
+<hr class="half-width">
+<p>What happens to pixel values when we change the display settings? Try
+changing the contrast limits or colormap in the layer controls. You
+should see that the histogram stays the same, no matter what settings
+you change i.e. the display settings don’t affect the underlying pixel
+values.</p>
+<p>This is one of the reasons it’s <em>important to use software
+designed for scientific analysis</em> to work with your light microscopy
+images. Software like Napari and ImageJ will try to ensure that your
+pixel values remain unchanged, while other image editing software
+(designed for working with photographs) may change the pixel values in
+unexpected ways. Also, even with scientific software, some image
+processing steps (that we’ll see in later episodes) will change the
+pixel values.</p>
+<p>Keep this in mind and make sure you always retain a copy of your
+original data, in its original file format! We’ll see in the <a href="./FIXME.html">‘Filetypes and metadata’ episode</a> that original
+image files contain important metadata that should be kept for future
+reference.</p>
+</section><section id="colormaps-luts"><h2 class="section-heading">Colormaps / LUTs<a class="anchor" aria-label="anchor" href="#colormaps-luts"></a>
+</h2>
+<hr class="half-width">
+<p>Let’s dig deeper into Napari’s colormaps. As we saw in the <a href="what-is-an-image.html">‘What is an image?’ episode</a>, images are
+represented by arrays of numbers (pixel values) with certain dimensions
+and data type. Napari (or any other image viewer) has to convert these
+numbers into coloured squares on our screen to allow us to view and
+interpret the image. Colormaps (also known as lookup tables or LUTs) are
+a way to convert pixel values into corresponding colours for display.
+For example, remember the image at the beginning of this episode,
+showing an image array using three different colormaps:</p>
+<figure><img src="fig/same-array-diff-display.png" style="width:70.0%" alt="Diagram showing an image array (top) with three different colormap  options (bottom)" class="figure mx-auto d-block"></figure><p>Napari supports a wide range of colormaps that can be selected from
+the ‘colormap’ menu in the layer controls (as we saw in the <a href="imaging-software.html">Imaging Software episode</a>). For example,
+see the diagram below showing the ‘gray’ colormap, where every pixel
+value from 0-255 is matched to a shade of gray:</p>
+<figure><img src="fig/gray-colorbar.png" style="width:50.0%" alt="Grey colormap shown as a colorbar with corresponding pixel values" class="figure mx-auto d-block"></figure><p>See the diagram below for examples of 4 different colormaps applied
+to the ‘coins’ image from Napari, along with corresponding image
+histograms:</p>
+<figure><img src="fig/colorbar-comparison.png" style="width:90.0%" alt="Diagram showing histograms, colorbars and images for the gray, green,  viridis and inferno colormap applied on the coins image" class="figure mx-auto d-block"></figure><p>Why would we want to use different colormaps?</p>
+<ul>
+<li>to highlight specific features in an image</li>
+<li>to help with overlaying multiple images, as we saw in the <a href="imaging-software.html">Imaging Software episode</a> when we
+displayed green nuclei and magenta membranes together.</li>
+<li>to help interpretation of an image. For example, if we used a red
+fluorescent label in an experiment, then using a red colormap might help
+people understand the image quickly.</li>
+</ul></section><section id="brightness-and-contrast"><h2 class="section-heading">Brightness and contrast<a class="anchor" aria-label="anchor" href="#brightness-and-contrast"></a>
+</h2>
+<hr class="half-width">
+<p>As the final section of this episode, let’s learn more about the
+‘contrast limits’ in Napari. As we saw in the <a href="imaging-software.html">Imaging Software episode</a>, adjusting the
+contrast limits in the layer controls changes how bright different parts
+of the image are displayed. What is really going on here though?</p>
+<p>In fact, the ‘contrast limits’ are adjusting how our colormap gets
+applied to the image. For example, consider the standard gray
+colormap:</p>
+<figure><img src="fig/contrast-comparison-0-255.png" style="width:90.0%" alt="Histogram, colorbar and image corresponding to coins coloured by the  gray colormap. Contrast limits 0 and 255." class="figure mx-auto d-block"></figure><p>For an 8-bit image, the range of colours from black to white are
+normally spread from 0 (the minimum pixel value) to 255 (the maximum
+pixel value). If we move the left contrast limits node, we change where
+the colormap starts from e.g.  for a value of 150 we get:</p>
+<figure><img src="fig/contrast-comparison-150-255.png" style="width:90.0%" alt="Histogram, colorbar and image corresponding to coins coloured by the  gray colormap. Contrast limits 150 and 255." class="figure mx-auto d-block"></figure><p>Now all the colours from black to white are spread over a smaller
+range of pixel values from 150-255 and everything below 150 is set to
+black. Note that in Napari you can set specific values for the contrast
+limits by right clicking on the contrast limits slider.</p>
+<p>If we move the right contrast limits node, we change where the
+colormap ends (i.e. where pixels are fully white). For example, for
+contrast limits of 150 and 200:</p>
+<figure><img src="fig/contrast-comparison-150-200.png" style="width:90.0%" alt="Histogram, colorbar and image corresponding to coins coloured by the  gray colormap. Contrast limits 150 and 200." class="figure mx-auto d-block"></figure><p>Now the range of colours from black to white only cover the pixel
+values from 150-200, everything below is black and everything above is
+white.</p>
+<p>Why do we need to adjust contrast limits?</p>
+<ul>
+<li><p>to allow us to see low contrast features. Some parts of your
+image may only differ slightly in their pixel value (low contrast).
+Bringing the contrast limits closer together allows a small change in
+pixel value to be represented by a bigger change in colour from the
+colormap.</p></li>
+<li><p>to focus on specific features. For example, increasing the lower
+contrast limit will remove any low intensity parts of the image from the
+display.</p></li>
+</ul>
+<div id="adjusting-contrast" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="adjusting-contrast" class="callout-inner">
+<h3 class="callout-title">Adjusting contrast<a class="anchor" aria-label="anchor" href="#adjusting-contrast"></a>
+</h3>
+<div class="callout-content">
+<p>Open the Napari console with the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg" alt="A screenshot of Napari's console button" height="30" class="figure"> button
+and copy and paste the code below:</p>
+<pre><code>import numpy as np
+from skimage.draw import disk
+image = np.full((100,100), 10, dtype="uint8")
+image[:, 50:100] = 245
+image[disk((50, 25),15)] = 11
+image[disk((50, 75),15)] = 247
+viewer.add_image(image)</code></pre>
+<p>This 2D image contains two hidden circles:</p>
+<ul>
+<li>Adjust Napari’s contrast limits to view both</li>
+<li>What contrast limits allow you to see each circle? (remember you can
+right click on the contrast limit bar to see specific values). Why do
+these limits work?</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3">
+  Show me the solution
+  </h4>
+</button>
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div class="accordion-body">
+<p>The left circle can be seen with limits of e.g. 0 and 33</p>
+<p>These limits work because the background on the left side of the
+image has a pixel value of 10 and the circle has a value of 11. By
+moving the upper contrast limit to the left we force the colormap to go
+from black to white over a smaller range of pixel values. This allows
+this small difference in pixel value to be represented by a larger
+difference in colour and therefore made visible.</p>
+<p>The right circle can be seen with limits of e.g. 231 and 255. This
+works for a very similar reason - the background has a pixel value of
+245 and the circle has a value of 247.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+</h3>
+<div class="callout-content">
+<ul>
+<li>The same image array can be displayed in many different ways in
+Napari</li>
+<li>Image histograms provide a useful overview of the pixel values in an
+image</li>
+<li>Plugins can be searched for on Napari hub and installed via
+Napari</li>
+<li>Colormaps (or LUTs) map pixel values to colours</li>
+<li>Contrast limits change the range of pixel values the colormap is
+spread over</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- 
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use. 
+ -->
 </section></section>
 </div>
     </main>
@@ -1733,8 +2117,8 @@ any links that you are not going to use.
   "url": "https://FIXME-template-source.github.io/NA/aio.html",
   "identifier": "https://FIXME-template-source.github.io/NA/aio.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2023-12-13",
-  "datePublished": "2023-12-13"
+  "dateModified": "2023-12-15",
+  "datePublished": "2023-12-15"
 }
 
   </script><script>
