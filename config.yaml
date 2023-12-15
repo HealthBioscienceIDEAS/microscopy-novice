@@ -62,6 +62,7 @@ episodes:
 - introduction.Rmd
 - imaging-software.md
 - what-is-an-image.md
+- image-display.md
 
 # Information for Learners
 learners:
