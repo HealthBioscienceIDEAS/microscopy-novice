@@ -6,13 +6,14 @@ exercises: 10
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How are images with more than 2 dimensions handled in Napari?
+- How do we visualise and work with images with more than 2 dimensions?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Explain how axes are handled in Napari (xyz, channels, time)
+- Explain how different axes (xyz, channels, time) are stored in image arrays 
+and displayed
 - Open and navigate images with different dimensions in Napari
 - Explain what RGB images are and how they are handled in Napari
 - Split and merge channels in Napari
@@ -21,9 +22,9 @@ exercises: 10
 
 ## Image dimensions / axes
 
-As we saw in the ['What is an image?' episode](./FIXME.md), image pixel values 
-are stored as arrays of numbers with certain dimensions and data type. So far we 
-have focused on grayscale 2D images that are represented by a 2D array:
+As we saw in the ['What is an image?' episode](what-is-an-image.md), image pixel 
+values are stored as arrays of numbers with certain dimensions and data type. 
+So far we have focused on grayscale 2D images that are represented by a 2D array:
 
 ![](fig/array.png){alt="A diagram comparing the array of numbers and image 
 display for a simplified image of an arrow" width='80%'}
@@ -31,11 +32,22 @@ display for a simplified image of an arrow" width='80%'}
 Light microscopy data varies greatly though, and often has more dimensions 
 representing:
 
-- Time (t)
-- Channels (c)
-- Spatial axes (z / y / x)
+- **Time (t):**  
+  Multiple images of the same sample over a certain time period - also known as 
+  a 'time series'. This is useful to evaluate dynamic processes.
+  
+- **Channels (c):**  
+  Usually, this is multiple images of the same sample under different 
+  wavelengths of light (e.g. red, green, blue channels, or wavelengths specific 
+  to certain fluorescent markers). Note that channels can represent many more 
+  values though, as we will [see below](#channels).
 
-These images will be stored as arrays with a larger number of dimensions than 2. 
+- **Depth (z):**  
+  Multiple images of the same sample, taken at different depths. This will 
+  produce a 3D volume of images, allowing the shape and position of objects to 
+  be understood in full 3D.
+
+These images will be stored as arrays that have more than two dimensions. 
 Let's start with our familiar human mitosis image, and work up to some more 
 complex imaging data.
 
@@ -49,7 +61,11 @@ undergoing mitosis in Napari"}
 
 We can see this image only has two dimensions (or two 'axes' as they're also 
 known) due to the lack of sliders under the image, and by checking its shape in 
-the Napari console:
+the Napari console. Remember that we looked at [how to open the console
+](what-is-an-image.md#images-are-arrays-of-numbers) and how to check the 
+[`.shape`](what-is-an-image.md#image-dimensions) in detail in the ['What is an 
+image?'
+episode](what-is-an-image.md):
 
 ```python
 image = viewer.layers["human_mitosis"].data
@@ -61,15 +77,23 @@ print(image.shape)
 (512, 512)
 ```
 
+Note that comments have been added to all output sections in this episode (the 
+lines starting with #). These state what the dimensions represent (e.g. (y, x) 
+for the y and x axes). These comments won't appear in the output in your console.
+
 ## 3D
 
-Let's remove the mitosis image and move to a 3D image:  
+Let's remove the mitosis image by clicking the remove layer button ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
+){alt="A screenshot of Napari's delete layer button" height='30px'} at the top 
+right of the layer list. Then, let's open a new 3D image:  
 `File > Open Sample > napari builtins > Brain (3D)`
 
 ![](fig/brain-napari.png){alt="A screenshot of a head X-ray in Napari"}
 
-This image shows part of a human head X-ray CT dataset. We can see it has three 
-dimensions due to the slider at the base of the image, and the shape output:
+This image shows part of a human head acquired using X-ray Computerised 
+Tomography (CT). We can see it has three dimensions due to the slider at the 
+base of the image, and the shape output:
 
 ```python
 image = viewer.layers["brain"].data
@@ -81,8 +105,10 @@ print(image.shape)
 (10, 256, 256)
 ```
 
-This 3D image can be thought of as a stack of 2D images, where the z axis points 
-along the stack. It is stored as a 3D array:
+This 3D image can be thought of as a stack of ten 2D images, with each image 
+containing a 256x256 array. The x/y axes point along the width/height of the 
+first 2D image, and the z axis points along the stack. It is stored as a 3D 
+array:
 
 ![](fig/2d-3d-arrays.png){alt="A diagram comparing 2D and 
 3D image arrays" width='80%'}
@@ -93,24 +119,91 @@ is the x axis. We can check this in Napari by looking at the number at the very
 left of the slider. Here it's labelled '0', showing that it controls movement 
 along dimension 0 (i.e. the z axis).
 
+:::::::::::::::::::::::::::::::::::::: callout
+
+## Axis labels
+
+By default, sliders will be labelled by the index of the dimension they move 
+along e.g. 0, 1, 2... Note that it is possible to re-name these though! For 
+example, if you click on the number at the left of the slider, you can freely 
+type in a new value. This can be useful to label sliders with informative names 
+like 'z', or 'time'. 
+
+You can also check which labels are currently being used with:
+```python
+viewer.dims.axis_labels
+```
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## Channels
 
-Next, let's look at a 3D image with channels. Remove the brain image and select:  
+Next, let's look at a 3D image where an additional (fourth) dimension contains
+data from different 'channels'. Remove the brain image and select:  
 `File > Open Sample > napari builtins > Cells (3D+2Ch)`  
 
 ![](fig/cells-napari.png){alt="A screenshot of a flourescence microscopy image 
 of some cells in Napari"}
 
-Channels are used e.g. with fluorescence microscopy to store images collected 
-with different wavelengths of light. In the currently open image, we can see 
-two channels - one for a fluorescent label targeting nuclei, and another for a 
-fluorescent label targeting cell membranes. These channels are shown as separate 
-image layers in Napari's layer list.
+Image channels can be used to store data from multiple sources for the same 
+location. For example, consider the diagram below. On the left is shown a 2D 
+image array overlaid on a simple cell with a nucleus. Each of the pixel 
+locations e.g. (0, 0), (1, 1), (2, 1)... can be considered as sampling locations 
+where different measurements can be made. For example, this could be the 
+intensity of light detected with different wavelengths (like red, green...) at 
+each location, or it could be measurements of properties like the surface height 
+and elasticity at each location (like from [scanning probe microscopy
+](https://www.nature.com/articles/s43586-021-00033-2)). These separate data 
+sources are stored as 'channels' in our image.
 
-This image has a total of 4 dimensions (czyx), so why is there only one slider? 
-This is because Napari automatically recognises the channels and separates them 
-into different image layers. We can see what happens when Napari doesn't 
-recognise the channels, by selecting both image layers (shift + click so they're 
+![](fig/channel-arrays.png){alt="A diagram showing different kinds of channels 
+for a 4x4 image of a cell e.g. red / green / surface height / elasticity" 
+width='80%'}
+
+This diagram shows an example of a 2D image with channels, but this can also be 
+extended to 3D images, as we will see now.
+
+Fluorescence microscopy images, like the one we currently have open in Napari, 
+are common examples of images with multiple channels. In flourescence 
+microscopy, different 'flourophores' are used that target specific features 
+(like the nucleus or cell membrane) and emit light of different wavelengths. 
+Images are taken filtering for each of these wavelengths in turn, giving one 
+image channel per fluorophore. In this case, there are two channels - one for a 
+flourophore targeting the nucleus, and one for a fluorophore targeting the cell 
+membrane. These are shown as separate image layers in Napari's layer list:
+
+![](fig/layer-list.png){alt="A screenshot of Napari's layer list, showing two 
+image layers named 'nuclei' and 'membrane'"}
+
+Recall from the [imaging software episode](imaging-software.md) that 'layers' 
+are how Napari displays multiple items together in the viewer. Each layer could 
+be an entire image, part of an image like a single channel, a series of points 
+or shapes etc. Each layer is displayed as a named item in the layer list, and 
+can have various display settings adjusted in the layer controls. 
+
+Let's check the shape of both layers:
+
+```python
+nuclei = viewer.layers["nuclei"].data
+membrane = viewer.layers["membrane"].data
+print(nuclei.shape)
+print(membrane.shape)
+```
+
+```output
+# (z, y, x)
+(60, 256, 256)
+(60, 256, 256)
+```
+This shows that each layer contains a 3D image array of size 60x256x256. Each 
+3D image represents the intensity of light detected at each (z, y, x) location 
+with a wavelength corresponding to the given fluorophore.
+
+Here, Napari has automatically recognised that this image contains different 
+channels and separated them into different image layers. This is not always the 
+case though, and sometimes it [may be preferable to not split the channels into 
+separate layers](#when-to-split-channels-into-layers-in-napari)! We can merge 
+our channels again by selecting both image layers (shift + click so they're 
 both highlighted in blue), right clicking on them and selecting:  
 `Merge to stack`
 
@@ -132,17 +225,26 @@ print(image.shape)
 (2, 60, 256, 256)
 ```
 
-This clearly shows all 4 dimensions, with dimension 0 as channels and dimension 
-1 as z. This matches the labels at the left hand side of each of the two 
-sliders. We can separate the channels again by right clicking on the 'membrane' 
-image layer and selecting:  
-`Split Stack`
+Notice how these dimensions match combining the two layers shown above. Two 
+arrays with 3 dimensions (60, 256, 256) are combined to give one array with
+four dimensions (2, 60, 256, 256) with the first axis representing the 2 channels. 
+See the diagram below for a visualisation of how these 3D and 4D arrays compare:
 
-Given its 4 dimensions, this image is stored in a 4D image array. This is 
-similar to having one 3D image array per channel, stacked side by side:
+![](fig/3d-4d-arrays.png){alt="A diagram comparing image arrays with three 
+(z, y, x) and four (c, z, y, x) dimensions" width='80%'}
 
-![](fig/3d-4d-arrays.png){alt="A diagram comparing 3D and 4D 
-image arrays" width='80%'}
+As we've seen before, the labels on the left hand side of each slider in Napari 
+matches the index of the dimension it moves along. The top slider (labelled 1) 
+moves along the z axis, while the bottom slider (labelled 0) switches channels.
+
+We can separate the channels again by right clicking on the 'membrane' image 
+layer and selecting:  
+`Split Stack` 
+
+Note that this resets the contrast limits for membrane and nuclei to defaults of 
+the min/max possible values. You'll need to adjust the contrast limits on the 
+membrane layer to see it clearly again after splitting.
+
 
 :::::::::::::::::::::::::::::::::::::: callout
 
@@ -166,6 +268,52 @@ via the console as above, manually stating the channel axis.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::: callout
+
+## When to split channels into layers in Napari?
+
+As we saw above, we have two choices when loading images with multiple 
+channels into Napari:
+
+- Load the image as one Napari layer, and use a slider to change channel
+
+- Load each channel as a separate Napari layer, e.g. using the `channel_axis`
+
+Both are useful ways to view multichannel images, and which you choose will 
+depend on your image and preference. Some pros and cons are shown below:
+
+:::::::::::::::::::::::::::::::: spoiler
+
+### Pros and cons
+
+**Channels as separate layers**
+
+1. Channels can be overlaid on top of each other (rather than only viewed one at 
+a time)
+
+2. Channels can be easily shown/hidden with the ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
+){alt="A screenshot of Napari's eye button" height='20px'} icons
+
+3. Display settings like contrast limits and colormaps can be controlled 
+independently for each channel (rather than only for the entire image)
+
+**Entire image as one layer**
+
+1. Useful when handling a very large number of channels. For example, if we have 
+hundreds of channels, then moving between them on a slider may be simpler and 
+faster.
+
+2. Napari can become slow, or even crash with a very large number of layers. 
+Keeping the entire image as one layer can help prevent this.
+
+3. Keeping the full image as one layer can be helpful when running certain 
+processing operations across multiple channels at once
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 ## Time
 
@@ -175,7 +323,12 @@ clicking on '00001_01.ome.tiff' on [this page of the OME website
 ](https://docs.openmicroscopy.org/ome-model/5.6.3/ome-tiff/data.html#mitocheck).
 
 To open it in Napari, remove any existing image layers, then drag and drop the 
-file over the canvas. Note this can take a while to open, so give it some time! 
+file over the canvas. A popup may appear asking you to choose a 'reader' - you 
+can select either 'napari builtins' or 'napari-aicsimageio'. We'll see in the 
+next episode that the 'napari-aicsimageio' reader gives us access to useful 
+image metadata.
+
+Note this image can take a while to open, so give it some time! 
 Alternatively, you can select in the top menu-bar:  
 `File > Open File(s)...`
 
@@ -184,7 +337,14 @@ Alternatively, you can select in the top menu-bar:
 This image is a 2D time series (tyx) of some human cells undergoing mitosis. The 
 slider at the bottom now moves through time, rather than z or channels. Try 
 moving the slider from left to right -  you should see some nuclei divide and 
-the total number of nuclei increase.
+the total number of nuclei increase. You can also press the small ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/right_arrow.svg
+){alt="A screenshot of Napari's play button" height='20px'} icon at the 
+left side of the slider to automatically move along it. The icon will change 
+into a ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/square.svg
+){alt="A screenshot of Napari's stop button" height='25px'}- pressing this will 
+stop the movement.
 
 We can again check the image dimensions by running the following:
 
@@ -198,13 +358,13 @@ print(image.shape)
 (93, 1024, 1344)
 ```
 
-Note that this image has a total of 3 dimensions, and so will also be stored in 
-a 3D array:
+Note that this image has a total of 3 dimensions, and so it will also be stored 
+in a 3D array:
 
 ![](fig/tyx-array.png){alt="A diagram of a tyx image array" width='40%'}
 
-This makes the point that certain dimensions/axes aren't always in the same 
-positions. For example, a 3D image array with shape (512, 512, 512) could 
+This makes the point that the dimensions don't always represent the same 
+quantities. For example, a 3D image array with shape (512, 512, 512) could 
 represent a zyx, cyx or tyx image. We'll discuss this more in the next section. 
 
 ## Dimension order
@@ -227,11 +387,11 @@ Python has certain conventions for the order of image axes (like
 ](https://scikit-image.org/docs/stable/user_guide/numpy_images.html#coordinate-conventions) 
 and [aicsimageio's reader
 ](https://allencellmodeling.github.io/aicsimageio/aicsimageio.aics_image.AICSImage.html)) 
-- but this tends to vary based on the library or plugin you're using. They're 
-not firm rules!
+- but this tends to vary based on the library or plugin you're using. These 
+are not firm rules!
 
 Therefore, it's always worth checking you understand which axes are being shown 
-in Napari and what they represent! Check against your prior knowledge of the 
+in any viewer and what they represent! Check against your prior knowledge of the 
 experimental setup, and check the metadata in the original image (we'll look at 
 this in the next episode). If you want to change how axes are displayed, 
 remember you can use the roll or transpose dimensions buttons as discussed in 
@@ -267,6 +427,11 @@ it again with:
   # Replace ? with the correct channel axis
   viewer.add_image(data.kidney(), rgb=False, channel_axis=?)
   ```
+  Note that using the wrong channel axis may cause Napari to crash. If this 
+  happens to you just restart Napari and try again. Bear in mind, as we saw in 
+  the [channel splitting section](#when-to-split-channels-into-layers-in-napari) 
+  that large numbers of layers can be difficult to handle, so it isn't usually 
+  advisable to use 'channel_axis' on dimensions with a large size.
 
 4. How many channels does the image have?
 
@@ -332,10 +497,10 @@ print(image.shape)
 (960, 1280, 3)
 ```
 
-In this case, the channels aren't separated out into different image layers, 
-but rather shown combined together in a single image. If you hover your mouse 
-over the image, you should see three pixel values printed in the bottom left 
-representing (R, G, B).
+Notice that the channels aren't separated out into different image layers, as 
+they were for the multichannel images above. Instead, they are shown combined 
+together as a single image. If you hover your mouse over the image, you should 
+see three pixel values printed in the bottom left representing (R, G, B).
 
 ![](fig/rgb-values.png){alt="A screenshot of an H+E slide of skin layers in 
 Napari, highlighting the (R,G,B) values"}
@@ -363,15 +528,26 @@ values for B and G. Equally, the green area shows high values for G, and the
 blue area shows high values for B. The red, green and blue values are mixed 
 together to give the final colour.
 
+Recall from the [image display episode](image-display.md) that for most 
+microscopy images the colour of each pixel is determined by a colormap (or LUT). 
+Each pixel usually has a single value that is then mapped to a corresponding 
+colour via the colormap, and different colormaps can be used to highlight 
+different features. RGB images are different - here we have three values 
+(R, G, B) that unambiguously correspond to a colour for display. For example, 
+(255, 0, 0) would always be fully red, (0, 255, 0) would always be fully green 
+and so on... This is why there is no option to select a colormap in the layer 
+controls when an RGB image is displayed. In effect, the colormap is kindof 
+hard-coded into the image, with a full colour stored for every pixel location.
 
-RGB images are very common in day-to-day life - for example, photos taken with a 
-camera or phone will be RGB. This being said, they are less common in microscopy 
-- although there are certain research fields and types of microscope that 
-commonly use RGB. A key example is imaging of tissue sections for histology or 
-pathology. You will also often use RGB images when preparing figures for papers 
-and presentations - RGB images can be opened in all imaging software (not just 
-scientific research focused ones), so are useful when preparing images for 
-display. As usual, always make sure you keep a copy of your original raw data! 
+These kinds of images are common when we are trying to replicate what can be 
+seen with the human eye. For example, photos taken with a standard camera or 
+phone will be RGB. They are less common in microscopy, although there are 
+certain research fields and types of microscope that commonly use RGB. A key 
+example is imaging of tissue sections for histology or pathology. You will also 
+often use RGB images when preparing figures for papers and presentations - RGB 
+images can be opened in all imaging software (not just scientific research 
+focused ones), so are useful when preparing images for display. As usual, always 
+make sure you keep a copy of your original raw data! 
 
 :::::::::::::::::::::::::::::::::::::: callout
 
@@ -394,11 +570,20 @@ viewer.add_image(data.astronaut(), rgb=True)
 
 ## RGB histograms
 
-Make a histogram of the Skin (RGB) image using `napari-matplotlib` .
+Make a histogram of the Skin (RGB) image using `napari-matplotlib` (as covered 
+in the [image display episode](image-display.md))
 
-- How does it differ from the image histograms we looked at last episode?
+- How does it differ from the image histograms we looked at in the 
+[image display episode](image-display.md)?
 
 :::::::::::::::::::::::: solution 
+
+If you haven't completed the [image display episode](image-display.md), you 
+will need to [install the `napari-matplotlib` plugin
+](image-display.md#napari-plugins).
+
+Then open a histogram with:  
+`Plugins > napari Matplotlib > Histogram`
  
 ![](fig/rgb-histogram.png){alt="RGB histogram of the Napari Skin sample image"}
 
