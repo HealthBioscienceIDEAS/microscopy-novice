@@ -16,7 +16,6 @@ Download the [data zip file](https://example.com/FIXME) and unzip it to your Des
 
 ## Software Setup
 
-::::::::::::::::::::::::::::::::::::::: discussion
 
 ### Details
 
@@ -39,45 +38,19 @@ with # are comments and do not need to be run).
 # Make sure conda is upto date
 conda update -n base conda
 
-# We need to use pip to install the napari-aicsimagio plugin, so conffigure
+# We need to use pip to install the napari-aicsimagio plugin, so configure
 # conda to work well with pip
 conda config --set pip_interop_enabled True
 
-conda create -y -n napari-env conda-forge python=3.9 bioformats_jar
+# Create a virtual environment (napari-env) for the lessons 
+conda create -y -n napari-env -c conda-forge python=3.9 bioformats_jar
 
+# Activate the napari-env virtual environment
+conda activate napari-env
+
+# Install napari and plugins using pip
+pip install "napari[all]" napari-aicsimageio
 ```
-
-Setup for different systems can be presented in dropdown menus via a `solution`
-tag. They will join to this discussion block, so you can give a general overview
-of the software used in this lesson here and fill out the individual operating
-systems (and potentially add more, e.g. online setup) in the solutions blocks.
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::: solution
-
-### Windows
-
-Use PuTTY
-
-:::::::::::::::::::::::::
-
-:::::::::::::::: solution
-
-### MacOS
-
-Use Terminal.app
-
-:::::::::::::::::::::::::
-
-
-:::::::::::::::: solution
-
-### Linux
-
-Use Terminal
-
-:::::::::::::::::::::::::
 
 ## Post Setup Checks
 
@@ -123,7 +96,7 @@ During the course we'll be working with czi images. To open these the napari-aic
 
 Download [Plate1-Blue-A-12-Scene-3-P3-F2-03.czi](https://downloads.openmicroscopy.org/images/Zeiss-CZI/idr0011/Plate1-Blue-A_TS-Stinger/Plate1-Blue-A-12-Scene-3-P3-F2-03.czi) from the open microscopy environment pages.
 
-Start napari. Note that if you've already done the previous test (tiff image) then it should not be neccessary to run `conda activate napari-env`. However, it is necessary to restart napari to ensure the image display is correctly formatted.
+Start napari. Note that if you've already done the previous test (tiff image) then it should not be necessary to run `conda activate napari-env`. However, it is necessary to restart napari to ensure the image display is correctly formatted.
  
 ```bash
 conda activate napari-env
