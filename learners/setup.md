@@ -20,6 +20,33 @@ Download the [data zip file](https://example.com/FIXME) and unzip it to your Des
 
 ### Details
 
+During these lessons we will use the [napari](https://napari.org/stable/) image
+ viewer and the 
+[napari-aicsimagio](https://github.com/AllenCellModeling/napari-aicsimageio)
+ plugin to load different image types. 
+For beginners we recommend using Anaconda to install and manage these
+packages. The first step is to 
+[download and install Anaconda](https://www.anaconda.com/download#downloads).
+
+The remaining instructions are written assuming you will be using the 
+Anaconda prompt. If you are unfamiliar with Anaconda it may be wise to 
+review the [Anaconda getting started pages](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html).
+
+Start the Anaconda prompt and run the following commands (lines starting 
+with # are comments and do not need to be run).
+
+```bash
+# Make sure conda is upto date
+conda update -n base conda
+
+# We need to use pip to install the napari-aicsimagio plugin, so conffigure
+# conda to work well with pip
+conda config --set pip_interop_enabled True
+
+conda create -y -n napari-env conda-forge python=3.9 bioformats_jar
+
+```
+
 Setup for different systems can be presented in dropdown menus via a `solution`
 tag. They will join to this discussion block, so you can give a general overview
 of the software used in this lesson here and fill out the individual operating
