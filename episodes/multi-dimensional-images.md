@@ -536,7 +536,7 @@ different features. RGB images are different - here we have three values
 (R, G, B) that unambiguously correspond to a colour for display. For example, 
 (255, 0, 0) would always be fully red, (0, 255, 0) would always be fully green 
 and so on... This is why there is no option to select a colormap in the layer 
-controls when an RGB image is displayed. In effect, the colormap is kindof 
+controls when an RGB image is displayed. In effect, the colormap is 
 hard-coded into the image, with a full colour stored for every pixel location.
 
 These kinds of images are common when we are trying to replicate what can be 
