@@ -10,11 +10,16 @@ course, this will be your `working directory`. You can name it anything you
 like but we recommend `microscopy-ideas`.
 
 Download
- [00001_01.ome.tiff](https://downloads.openmicroscopy.org/images/OME-TIFF/2016-06/MitoCheck/00001_01.ome.tiff)
+[00001_01.ome.tiff](
+https://downloads.openmicroscopy.org/images/OME-TIFF/2016-06/MitoCheck/00001_01.ome.tiff)
+ ([CC BY 4.0 Licence](
+https://downloads.openmicroscopy.org/images/OME-TIFF/2016-06/MitoCheck/readme.txt))
  from the open microscopy environment pages to your working directory.
 
 Download
 [Plate1-Blue-A-12-Scene-3-P3-F2-03.czi](https://downloads.openmicroscopy.org/images/Zeiss-CZI/idr0011/Plate1-Blue-A_TS-Stinger/Plate1-Blue-A-12-Scene-3-P3-F2-03.czi)
+ ([CC BY 4.0 Licence](
+https://downloads.openmicroscopy.org/images/Zeiss-CZI/idr0011/readme.txt))
 from the open microscopy environment pages to your working directory.
 
 ## Software Setup
