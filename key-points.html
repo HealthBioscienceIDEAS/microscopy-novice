@@ -181,7 +181,7 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="introduction.html">1. introduction</a>
+        <a href="imaging-software.html">1. Imaging Software</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -193,7 +193,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="imaging-software.html">2. Imaging Software</a>
+        <a href="what-is-an-image.html">2. What is an image?</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -205,7 +205,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="what-is-an-image.html">3. What is an image?</a>
+        <a href="image-display.html">3. Image display</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -217,7 +217,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="image-display.html">4. Image display</a>
+        <a href="multi-dimensional-images.html">4. Multi-dimensional images</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -280,18 +280,7 @@
     <main id="main-content" class="main-content"><div class="container lesson-content">
         
         
-<section id="introduction"><h2 class="section-heading"><a href="introduction.html">introduction</a></h2>
-<hr class="half-width">
-<ul>
-<li>Use <code>.md</code> files for episodes when you want static
-content</li>
-<li>Use <code>.Rmd</code> files for episodes when you need to generate
-output</li>
-<li>Run <code>sandpaper::check_lesson()</code> to identify any issues
-with your lesson</li>
-<li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
-locally</li>
-</ul></section><section id="imaging-software"><h2 class="section-heading"><a href="imaging-software.html">Imaging Software</a></h2>
+<section id="imaging-software"><h2 class="section-heading"><a href="imaging-software.html">Imaging Software</a></h2>
 <hr class="half-width">
 <ul>
 <li>There are many software options for light microscopy images</li>
@@ -327,6 +316,18 @@ Napari</li>
 <li>Colormaps (or LUTs) map pixel values to colours</li>
 <li>Contrast limits change the range of pixel values the colormap is
 spread over</li>
+</ul></section><section id="multi-dimensional-images"><h2 class="section-heading"><a href="multi-dimensional-images.html">Multi-dimensional images</a></h2>
+<hr class="half-width">
+<ul>
+<li>Microscopy images can have many dimensions, usually representing
+time (t), channels (c), and spatial axes (z, y, x)</li>
+<li>Napari can open images with any number of dimensions</li>
+<li>Napari (and python in general) has no firm rules for axis order.
+Different libraries and plugins will often use different
+conventions.</li>
+<li>RGB images always have 3 channels - red (R), green (G) and blue (B).
+These channels aren’t separated into different image layers - they’re
+instead combined together to give the final image display.</li>
 </ul></section>
 </div>
     </main>
@@ -376,8 +377,8 @@ spread over</li>
   "url": "https://FIXME-template-source.github.io/NA/key-points.html",
   "identifier": "https://FIXME-template-source.github.io/NA/key-points.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2023-12-19",
-  "datePublished": "2023-12-19"
+  "dateModified": "2023-12-20",
+  "datePublished": "2023-12-20"
 }
 
   </script><script>

@@ -9,8 +9,6 @@
 # cp: Carpentries (to use for instructor training for instance)
 # incubator: The Carpentries Incubator
 carpentry: 'IDEAS'
-varnish: 'HealthBioscienceIDEAS/varnish@IDEAS'
-sandpaper: 'HealthBioscienceIDEAS/sandpaper@IDEAS'
 
 # Overall title for pages.
 title: 'Lesson Title'
@@ -61,7 +59,10 @@ contact: 'team@carpentries.org'
 
 # Order of episodes in your lesson
 episodes:
-- introduction.Rmd
+- imaging-software.md
+- what-is-an-image.md
+- image-display.md
+- multi-dimensional-images.md
 
 # Information for Learners
 learners:
@@ -78,3 +79,5 @@ profiles:
 # sandpaper and varnish versions) should live
 
 
+varnish: HealthBioscienceIDEAS/varnish@IDEAS
+sandpaper: HealthBioscienceIDEAS/sandpaper@IDEAS
