@@ -34,6 +34,8 @@ instructions for your operating system in the
 https://conda.io/projects/conda/en/latest/user-guide/getting-started.html#starting-conda).
 Run the following commands in the terminal (lines starting
 with # are comments and do not need to be run).
+You can run the commands by copy and pasting them into the terminal and
+pressing the <kbd>Enter</kbd>  key.
 
 ```bash
 # Make sure conda is up to date
