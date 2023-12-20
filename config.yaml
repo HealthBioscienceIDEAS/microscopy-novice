@@ -59,10 +59,10 @@ contact: 'team@carpentries.org'
 
 # Order of episodes in your lesson
 episodes:
-- introduction.Rmd
 - imaging-software.md
 - what-is-an-image.md
 - image-display.md
+- multi-dimensional-images.md
 
 # Information for Learners
 learners:
