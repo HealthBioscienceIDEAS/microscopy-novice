@@ -4,9 +4,9 @@ title: Setup
 
 ## Download Data
 
-During this lessons we will be using two microscopy images and creating images
+During these lessons we will be using two microscopy images and creating images
 of our own. Create a working directory, you can name it anything you like but
-we recommend `microsopy-ideas`.
+we recommend `microscopy-ideas`.
 
 Download
  [00001_01.ome.tiff](https://downloads.openmicroscopy.org/images/OME-TIFF/2016-06/MitoCheck/00001_01.ome.tiff)
@@ -14,7 +14,7 @@ Download
 
 Download
 [Plate1-Blue-A-12-Scene-3-P3-F2-03.czi](https://downloads.openmicroscopy.org/images/Zeiss-CZI/idr0011/Plate1-Blue-A_TS-Stinger/Plate1-Blue-A-12-Scene-3-P3-F2-03.czi)
-from the open microscopy environment pages to your working dircetory.
+from the open microscopy environment pages to your working directory.
 
 ## Software Setup
 
@@ -35,7 +35,7 @@ Start the Anaconda prompt and run the following commands (lines starting
 with # are comments and do not need to be run).
 
 ```bash
-# Make sure conda is upto date
+# Make sure conda is up to date
 conda update -n base conda
 
 # We need to use pip to install the napari-aicsimagio plugin, so configure
@@ -61,7 +61,7 @@ Before starting the course it is important to check that your setup is working.
 ## Check napari opens a tiff image.
 
 Any napari installation should be able to open a tiff image.
-Start napari. Note that if you've already in the napari-env virtual environment
+Start napari. Note that if you're already in the napari-env virtual environment
 from the installation steps it is
 not necessary to run `conda activate napari-env`.
 ```bash
