@@ -32,8 +32,7 @@ running the software from a terminal. To open a terminal follow the
 instructions for your operating system in the
 ['Starting Conda' section of the Anaconda getting started pages](
 https://conda.io/projects/conda/en/latest/user-guide/getting-started.html#starting-conda).
-
-Start the Anaconda prompt and run the following commands (lines starting
+Run the following commands in the terminal (lines starting
 with # are comments and do not need to be run).
 
 ```bash
