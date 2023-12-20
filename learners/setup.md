@@ -5,8 +5,9 @@ title: Setup
 ## Download Data
 
 During these lessons we will be using two microscopy images and creating images
-of our own. Create a working directory, you can name it anything you like but
-we recommend `microscopy-ideas`.
+of our own. Create an empty folder somewhere on your computer to use during the
+course, this will be your `working directory`. You can name it anything you
+like but we recommend `microscopy-ideas`.
 
 Download
  [00001_01.ome.tiff](https://downloads.openmicroscopy.org/images/OME-TIFF/2016-06/MitoCheck/00001_01.ome.tiff)
