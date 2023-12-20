@@ -27,10 +27,11 @@ For beginners we recommend using Anaconda to install and manage these
 packages. The first step is to
 [download and install Anaconda](https://www.anaconda.com/download#downloads).
 
-The remaining instructions are written assuming you will be using the
-Anaconda prompt. If you are unfamiliar with Anaconda it may be wise to
-review the
- [Anaconda getting started pages](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html).
+The remaining instructions are written assuming you will be installing and
+running the software from a terminal. To open a terminal follow the
+instructions for your operating system in the
+['Starting Conda' section of the Anaconda getting started pages](
+https://conda.io/projects/conda/en/latest/user-guide/getting-started.html#starting-conda).
 
 Start the Anaconda prompt and run the following commands (lines starting
 with # are comments and do not need to be run).
