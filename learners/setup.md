@@ -111,7 +111,9 @@ Open a file with
 ## Expected Output
 
 ![If this is what you see your napari installation is working as expected.
- If not then please check the installation or get in touch with the course
+If not then please check the installation first
+by re-running the above steps and checking for any error messages in the
+terminal output. If that fails please get in touch with the course
  organisers for help.](fig/ome_00001.png){alt="A screenshot of freshly
  opened 00001_01.ome.tiff" width='80%'}
 
@@ -149,8 +151,11 @@ napari
 ## Expected Output
 
 ![If this is what you see your napari and aicsimageio plugin installation
- is working as expected. If not then please check the installation or get
- in touch with the course organisers for help.](fig/plate1-blue.png){alt="A
+ is working as expected.
+If not then please check the installation first
+by re-running the above steps and checking for any error messages in the
+terminal output. If that fails please get in touch with the course
+ organisers for help.](fig/plate1-blue.png){alt="A
  screenshot of freshly opened Plate1-Blue-A-12-Scene-3-P3-F2-03.czi"
  width='80%'}
 
