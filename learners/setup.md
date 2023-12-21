@@ -141,6 +141,7 @@ napari
 - Navigate to the directory where you saved
 `Plate1-Blue-A-12-Scene-3-P3-F2-03.czi` to earlier on.
 - Select `Plate1-Blue-A-12-Scene-3-P3-F2-03.czi` and click open.
+- If you see a `Choose reader` dialog, select `napari-aicsimageio`.
 
 ::::::::::::::::::::::::::
 ::::::::::::::::::: solution
