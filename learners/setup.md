@@ -92,6 +92,11 @@ installation steps it is not necessary to run `conda activate napari-env`.
 conda activate napari-env
 napari
 ```
+You should now see the napari viewer like this ...
+
+![](../episodes/fig/blank-napari-ui.png){alt="A
+ screenshot of the default Napari user interface" width='60%'}
+
 Open a file with
 
 `File > Open file(s)...`
