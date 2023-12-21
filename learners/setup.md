@@ -28,7 +28,7 @@ from the open microscopy environment pages to your working directory.
 During these lessons we will use the [napari](https://napari.org/stable/)
 image viewer and the
 [napari-aicsimagio](https://github.com/AllenCellModeling/napari-aicsimageio)
- plugin to load different image types.
+ plugin to load imaging data files of various file formats.
 For beginners we recommend using Anaconda to install and manage these
 packages. The first step is to
 [download and install Anaconda](https://www.anaconda.com/download#downloads).
@@ -47,11 +47,13 @@ pressing the <kbd>Enter</kbd>  key.
 # Make sure conda is up to date
 conda update -n base conda
 
-# We need to use pip to install the napari-aicsimagio plugin, so configure
+# We need to use a python program called pip to install
+# the napari-aicsimagio plugin, so we need to configure
 # conda to work well with pip
 conda config --set pip_interop_enabled True
 
-# Create a virtual environment (napari-env) for the lessons
+# This line will create a "virtual environment" (called napari-env)
+# that will contain all of the software that will be used in the lessons
 conda create -y -n napari-env -c conda-forge python=3.9 bioformats_jar
 
 # Activate the napari-env virtual environment
