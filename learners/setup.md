@@ -56,7 +56,8 @@ conda config --set pip_interop_enabled True
 # that will contain all of the software that will be used in the lessons
 conda create -y -n napari-env -c conda-forge python=3.9 bioformats_jar
 
-# Activate the napari-env virtual environment
+# Activate the napari-env virtual environment.
+# Running this should change the terminal prompt to '(napari-env)'.
 conda activate napari-env
 
 # Install napari and plugins using pip
