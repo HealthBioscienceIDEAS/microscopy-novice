@@ -41,7 +41,7 @@ https://conda.io/projects/conda/en/latest/user-guide/getting-started.html#starti
 Run the following commands in the terminal (lines starting
 with # are comments and do not need to be run).
 You can run the commands by copy and pasting them into the terminal and
-pressing the <kbd>Enter</kbd>  key.
+pressing the <kbd>Enter</kbd> key.
 
 ```bash
 # Make sure conda is up to date
@@ -62,6 +62,20 @@ conda activate napari-env
 # Install napari and plugins using pip
 pip install "napari[all]" napari-aicsimageio
 ```
+
+:::::::::::::::::::::::::::::::::::::: spoiler
+
+## Why is there so much text appearing on the screen?
+
+If you're new to running commands in the terminal you may be alarmed if
+running some of these commands results in a lot of text output to the
+screen. This is normal and usually helpful for checking things are
+working OK. For our purposes you can ignore it. If you see the word
+ERROR appear near the end (often highlighted in a different colour)
+it is possible something has gone wrong. In this case the best place
+to start is any messages in the text expanding on the source of the error.
+
+::::::::::::::::::::::::::::::::::::::
 
 ## Post Setup Checks
 
