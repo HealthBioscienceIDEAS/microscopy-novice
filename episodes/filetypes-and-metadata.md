@@ -21,21 +21,27 @@ exercises: 10
 
 ## Image file formats
 
-Images can be saved in a wide variety of file formats - e.g. you may be familiar 
-with some like .jpg, .png or .tiff. Microscopy images have an especially wide 
-range of options, with hundreds of different formats in use, often specific to 
-particular microscope manufacturers. With this being said, how do we choose 
-which format to use?
+Images can be saved in a wide variety of file formats. You may be familiar 
+with many of these like JPEG (files ending with .jpg or .jpeg extension), 
+PNG (.png extension) or TIFF (.tiff or .tif extension). Microscopy images have 
+an especially wide range of options, with hundreds of different formats in use, 
+often specific to particular microscope manufacturers. With this being said, how 
+do we choose which format(s) to use in our research? It's worth bearing in mind 
+that the best format to use will vary depending on your research question and 
+experimental workflow - so you may need to use different formats on 
+different research projects.
 
 ## Metadata
 
 First, let's look closer at what gets stored inside an image file.
 
 There are two main things that get stored inside image files: _pixel values_ and 
-_metadata_. We've looked at pixel values in previous episodes -  this is the raw 
-image data as an array of numbers with specific dimensions and data type. The 
-metadata, on the other hand, is a wide variety of additional information about 
-the image and how it was acquired.
+_metadata_. We've looked at pixel values in previous episodes ([What is an 
+image?](what-is-an-image.md), [Image display](image-display.md) and 
+[Multi-dimensional images](multi-dimensional-images.md) episodes) -  this is the 
+raw image data as an array of numbers with specific dimensions and data type. 
+The metadata, on the other hand, is a wide variety of additional information 
+about the image and how it was acquired.
 
 For example, let's take a look at the metadata in the 
 'Plate1-Blue-A-12-Scene-3-P3-F2-03.czi' file we downloaded as part of the 
@@ -45,21 +51,6 @@ a Napari plugin called [napari-aicsimageio
 wide variety of file formats to be opened in Napari that aren't supported by 
 default. This plugin was already installed in the [setup instructions
 ](../learners/setup.md), so you should be able to start using it straight away.
-
-:::::::::::::::::::::::::::::::::::::: callout
-
-### Napari-aicsimagio installation
-
-You may be wondering why we didn't install this plugin via 
-`Plugins > Install / Uninstall Plugins...` as we showed in the 
-[Image Display episode](./FIXME.md). To support the widest range of file 
-formats, napari-aicsimagio needs integration with Bio-Formats (we'll discuss 
-Bio-Formats later in the episode). Unfortunately, this isn't currently possible 
-via `Plugins > Install / Uninstall Plugins...`, hence why we used 
-[conda to install it
-](https://github.com/AllenCellModeling/napari-aicsimageio#installation).
-
-::::::::::::::::::::::::::::::::::::::::::::::::
 
 Let's open the 'Plate1-Blue-A-12-Scene-3-P3-F2-03.czi' file by removing any 
 existing image layers, then dragging and dropping it onto the canvas. In the 
@@ -75,7 +66,12 @@ This image is part of a [published dataset on Image Data Resource
 ](https://idr.openmicroscopy.org/search/?query=Name:idr0011-ledesmafernandez-dad4/screenD) 
 (accession number idr0011), and comes from the [OME sample data
 ](https://downloads.openmicroscopy.org/images/Zeiss-CZI/idr0011/). It is a 3D 
-fluorescence microscopy image of yeast with three channels.
+fluorescence microscopy image of yeast with three channels (we'll explore what
+these channels represent in the [Exploring metadata exercise
+](#exploring-metadata)). Napari has automatically recognised these three 
+channels and split them into three separate image layers. Recall that we looked
+at how Napari handles channels in the [multi-dimensional images 
+episode](multi-dimensional-images.md#channels).
 
 We can browse its metadata by selecting in the top menu-bar:  
 `Plugins > OME Tree Widget (ome-types)`
@@ -92,13 +88,47 @@ see the `acquisition_date` when this image was acquired. Also, under `pixels`
 we can see information about the `dimension_order`, the size of different 
 dimensions (`size_c`, `size_t`, `size_x`, `size_y` and `size_z`), the type and 
 bit-depth (`type`) and importantly the pixel size (`physical_size_x`, 
-`physical_size_x_unit` etc.).
+`physical_size_x_unit` etc.). The pixel size is essential for making accurate
+quantitative measurements from our images, and will be discussed [in the next 
+section of this episode](#pixel-size).
 
 This metadata is a vital record of exactly how the image was acquired and what 
 it represents. As we've mentioned in previous episodes - it's important to 
-maintain this metadata as a record for the future. Converting between file 
-formats can result in loss of certain metadata, so it's always worthwhile 
-keeping a copy of your image in its original raw file format.
+maintain this metadata as a record for the future. It's also essential to allow
+us to make quantitative measurements from our images, by understanding factors 
+like the pixel size. Converting between file formats can result in loss of 
+metadata, so it's always worthwhile keeping a copy of your image safely in its 
+original raw file format. You should take extra care to ensure that additional 
+processing steps don't overwrite this original image.
+
+
+:::::::::::::::::::::::::::::::::::::: callout
+
+### Exploring metadata in the console
+
+Note that you can also inspect some metadata via the console:
+
+```python
+viewer.layers[0].metadata
+```
+
+```output
+{'aicsimage': <AICSImage [Reader: CziReader, Image-is-in-Memory: False]>,
+ 'raw_image_metadata': <Element 'ImageDocument' at 0x000001F61807C7C0>,
+ 'ome_types': OME(
+    plates=[<1 field_type>],
+    experimenters=[{'annotation_refs': [], 'id': 'Experimenter:Zeiss', 'user_name': 'Zeiss'}],
+    instruments=[<1 field_type>],
+    images=[<2 field_type>],
+    structured_annotations=[{'description': 'ZEN 2012 (blue edition)1.1.1.0', 'annotation_refs': [], 'id': 'urn:lsid:allencell.org:Annotation:AcquisitionSoftware', 'value': {'any_elements': []}, 'kind': 'xmlannotation'}],
+ )}
+```
+
+See the [napari-aicsimageio readme
+](https://github.com/AllenCellModeling/napari-aicsimageio?tab=readme-ov-file#access-to-the-aicsimage-object-and-metadata) 
+for details.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: challenge 
 
@@ -183,8 +213,9 @@ size appropriately will ensure their overall size matches correctly in the
 Napari viewer.
 
 How do we set the pixel size in Napari? Most of the time, if the pixel size is 
-provided in the image metadata, napari-aicsimageio will set it automatically. 
-We can check this by running the following in Napari's console:
+provided in the image metadata, napari-aicsimageio will set it automatically 
+in a property called `scale`. We can check this by running the following in 
+Napari's console:
 
 ```python
 # Get the first image layer
@@ -249,6 +280,10 @@ print(image_layer_3.scale)
 ```
 
 ### 2
+
+![](fig/yeast-exercise-2.png){alt="Yeast image shown in Napari with layer 3 
+twice as big in y and x"}
+
 ```python
 image_layer_3.scale = (0.35, 0.4, 0.4)
 ```
@@ -257,6 +292,10 @@ other layers. This is because we set the pixel size in y and x (which used to
 be 0.2047619&mu;m) to about twice its original value (now 0.4&mu;m).
 
 ### 3
+
+![](fig/yeast-exercise-3.png){alt="Yeast image shown in Napari with layer 3 
+twice as big in y"}
+
 ```python
 image_layer_3.scale = (0.35, 0.4, 0.2047619)
 ```
@@ -267,6 +306,9 @@ layers, but about twice the height. This is because we set the pixel size in y
 to stretched or squashed images like this!
 
 ### 4
+
+![](fig/yeast-exercise-4.png){alt="Yeast image shown in Napari with all layers 
+half size in y/x"}
 
 We set the pixel size in y/x to half its original value of 0.2047619&mu;m:
 ```python
@@ -286,9 +328,10 @@ consider, including:
 
 ### Dimension support
 
-Some file formats will only support a certain number of dimensions. For example, 
-.png and .jpg only support 2D images, while .tiff can support images with many 
-more dimensions.
+Some file formats will only support certain dimensions e.g. 2D, 3D, a specific 
+number of channels... For example, .png and .jpg only support 2D images (either 
+grayscale or RGB), while .tiff can support images with many more dimensions 
+(including any number of channels, time, 2D and 3D etc.).
 
 ### Metadata support
 
@@ -308,7 +351,8 @@ new format.
 
 Many light microscopes will save data automatically into their own proprietary 
 file formats (owned by the microscope company). For example, Zeiss microscopes 
-often save to .czi, while Leica microscopes use .lif. These formats will retain 
+often save files to a format with a .czi extension, while Leica 
+microscopes often use a format with a .lif extension. These formats will retain 
 all the metadata used during acquisition, but are often difficult to open in 
 software that wasn't created by the same company. 
 
@@ -327,44 +371,59 @@ software e.g. OME-TIFF.
 
 Different file formats use different types of 'compression'. Compression is a 
 way to reduce image file sizes, by changing the way that the image pixel values 
-are stored. There are two main types:
+are stored. There are many different compression algorithms that compress files 
+in different ways. 
 
-- **Lossless compression** - when the image file is written, an algorithm is 
-applied to reduce its file size. This process is 'lossless' i.e. when the file 
-is opened again the compression process can be reversed perfectly to give 
-exactly the same pixel values.
+Many compression algorithms rely on finding areas of an image with similar pixel 
+values that can be stored in a more efficient way. For example, imagine a 
+row of 30 pixels from an 8-bit grayscale image: 
 
-- **Lossy compression** - when the image is written, an algorithm is applied to 
-reduce its file size. This process is 'lossy' i.e. when the file is opened again 
-the pixel values will be _different_. Some image quality is lost via this 
-process, but it can achieve much smaller file sizes.
+![](fig/image-line.png){alt="Diagram of a line of 30 pixels - 10 with pixel 
+value 50, then 10 with pixel value 100, then 10 with pixel value 150"}
+
+Normally, this would be stored as 30 individual pixel values, but we can reduce 
+this greatly by recognising that many of the pixel values are the same. We could
+store the exact same data with only 6 values: 10 50 10 100 10 150, showing that 
+there are 10 values with pixel value 50, then 10 with value 100, then 10 with 
+value 150. This is the general idea behind 'run-length encoding' and many 
+compression algorithms use similar principles to reduce file sizes.
+
+There are two main types of compression:
+
+- **Lossless compression** algorithms are reversible - when the file is opened 
+again, it can be reversed perfectly to give the exact same pixel values.
+
+- **Lossy compression** algorithms reduce the size by irreversibly altering the 
+data. When the file is opened again, the pixel values will be different to their 
+original values. Some image quality may be lost via this process, but it can 
+achieve much smaller file sizes.
 
 For microscopy data, you should therefore use a file format with no compression, 
 or lossless compression. Lossy compression should be avoided as it degrades the 
-pixel values!
+pixel values and may alter the results of any analysis that you perform!
 
 ::::::::::::::::::::::::::::::::::::: challenge 
 
 ## Compression
 
 Let's remove all layers from the Napari viewer, and open the 
-'mitocheck.ome.tiff' dataset. You should have already downloaded this as part of 
-the [setup instructions](../learners/setup.md).
+'00001_01.ome.tiff' dataset. You should have already downloaded this to your 
+working directory as part of the [setup instructions](../learners/setup.md).
 
 Run the code below in Napari's console. This will save a specific timepoint of 
 this image (time = 30) as four different file formats (.tiff, .png + low and 
 high quality .jpg). Note: these files will be written to the same folder as the 
-'mitocheck.ome.tiff' image!
+'00001_01.ome.tiff' image!
 
 ```python
 from skimage.io import imsave
 from pathlib import Path
 
-# Get the mitocheck.ome layer, and get timepoint = 30
-layer = viewer.layers["mitocheck.ome"]
+# Get the 00001_01.ome layer, and get timepoint = 30
+layer = viewer.layers["00001_01.ome"]
 image = layer.data[30, :, :]
 
-# Save as different file formats in same folder as mitocheck.ome
+# Save as different file formats in same folder as 00001_01.ome
 folder_path = Path(layer.source.path).parent
 imsave( folder_path / "test-tiff.tiff", image)
 imsave( folder_path / "test-png.png", image)
@@ -373,7 +432,7 @@ imsave( folder_path / "test-jpg-low-quality.jpg", image, quality=30)
 
 ```
 
-- Go to the folder where 'mitocheck.ome.tiff' was saved and look at the file 
+- Go to the folder where '00001_01.ome.tiff' was saved and look at the file 
 sizes of the newly written images (`test-tiff`, `test-png`, 
 `test-jpg-high-quality` and `test-jpg-low-quality`). Which is biggest? 
 Which is smallest?
@@ -383,7 +442,7 @@ try showing / hiding different layers with the ![](
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
 ){alt="A screenshot of Napari's eye button" height='30px'} icon. 
 How do they differ? How does each compare to timepoint 30 of the original 
-'mitocheck.ome' image?
+'00001_01.ome' image?
 
 - Which file formats use lossy compression?
 
@@ -422,11 +481,20 @@ compression - so their pixel values are identical to the original values.
 If your images are very large, you may need to use a pyramidal file format that 
 is specialised for handling them. Pyramidal file formats store images at 
 multiple resolutions (and usually in small chunks) so that they can be browsed 
-smoothly without having to load all of the full-resolution data. Specialised 
-software like [QuPath](https://qupath.github.io/), [Fiji's BigDataViewer
-](https://imagej.net/plugins/bdv/) and [OMERO's viewer
+smoothly without having to load all of the full-resolution data. This is similar 
+to how google maps allows browsing of its vast quantities of map data. 
+Specialised software like [QuPath](https://qupath.github.io/), [Fiji's 
+BigDataViewer](https://imagej.net/plugins/bdv/) and [OMERO's viewer
 ](https://www.openmicroscopy.org/omero/) can provide smooth browsing of these 
 kinds of images.
+
+See below for an example image pyramid (using napari's Cells (3D + 2Ch) sample 
+image) with three different resolution levels stored. Each level is about twice
+as small the last in x and y:
+
+![](fig/image-pyramid.png){alt="Diagram of an image pyramid with three 
+resolution levels" width="40%"}
+
 
 ## Common file formats
 
@@ -491,8 +559,8 @@ represents.
 along with providing easy browsing of some metadata.
 - Pixel size states how large a pixel is in physical units (e.g. micrometre).
 - Compression can be lossless or lossy - lossless is best for microscopy images.
-- There are many, many different microscopy file formats. Different formats are 
-best for different uses like acquisition, analysis and display.
+- There are many, many different microscopy file formats. The best format to use 
+depends on your use-case e.g. acquisition, analysis or display.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
