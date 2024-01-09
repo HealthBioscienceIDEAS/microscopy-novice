@@ -34,10 +34,24 @@ packages. The first step is to
 [download and install Anaconda](https://www.anaconda.com/download#downloads).
 
 The remaining instructions are written assuming you will be installing and
-running the software from a terminal. To open a terminal follow the
-instructions for your operating system in the
+running the software from a terminal.
+Follow the
+instructions below to open a terminal on your operating system.
+
+::::::::::::::::::::::::::::::::::::::::::: spoiler
+
+### Opening a Terminal
+
+ - Windows: Open either the Command Prompt (cmd.exe) or PowerShell
+ - macOS: Launchpad > Other Application > Terminal
+ - Linux: Open a terminal window
+
+:::::::::::::::::::::::::::::::::::::::::::
+
+For more information on starting and running Anaconda you may visit the
 ['Starting Conda' section of the Anaconda getting started pages](
 https://conda.io/projects/conda/en/latest/user-guide/getting-started.html#starting-conda).
+
 Run the following commands in the terminal (lines starting
 with # are comments and do not need to be run).
 You can run the commands by copy and pasting them into the terminal and
