@@ -320,72 +320,196 @@ any links that you are not going to use.
  --></tbody></table><p>
       The actual schedule may vary slightly depending on the topics and exercises chosen by the instructor.
       </p>
-      </section><section id="setup"><p>FIXME: Setup instructions live in this document. Please specify the
-tools and the data sets the Learner needs to have installed.</p>
-<section id="data-sets"><h2 class="section-heading">Data Sets<a class="anchor" aria-label="anchor" href="#data-sets"></a>
+      </section><section id="setup"><section id="download-data"><h2 class="section-heading">Download Data<a class="anchor" aria-label="anchor" href="#download-data"></a>
 </h2>
-<hr class="half-width"><!--
-FIXME: place any data you want learners to use in `episodes/data` and then use
-       a relative link ( [data zip file](data/lesson-data.zip) ) to provide a
-       link to it, replacing the example.com link.
---><p>Download the <a href="https://example.com/FIXME" class="external-link">data zip file</a>
-and unzip it to your Desktop</p>
+<hr class="half-width"><p>During these lessons we will be using two microscopy images and
+creating images of our own. Create an empty folder somewhere on your
+computer to use during the course, this will be your
+<code>working directory</code>. You can name it anything you like but we
+recommend <code>microscopy-ideas</code>.</p>
+<p>Download <a href="https://downloads.openmicroscopy.org/images/OME-TIFF/2016-06/MitoCheck/00001_01.ome.tiff" class="external-link">00001_01.ome.tiff</a>
+(<a href="https://downloads.openmicroscopy.org/images/OME-TIFF/2016-06/MitoCheck/readme.txt" class="external-link">CC
+BY 4.0 Licence</a>) from the open microscopy environment pages to your
+working directory.</p>
+<p>Download <a href="https://downloads.openmicroscopy.org/images/Zeiss-CZI/idr0011/Plate1-Blue-A_TS-Stinger/Plate1-Blue-A-12-Scene-3-P3-F2-03.czi" class="external-link">Plate1-Blue-A-12-Scene-3-P3-F2-03.czi</a>
+(<a href="https://downloads.openmicroscopy.org/images/Zeiss-CZI/idr0011/readme.txt" class="external-link">CC
+BY 4.0 Licence</a>) from the open microscopy environment pages to your
+working directory.</p>
 </section><section id="software-setup"><h2 class="section-heading">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a>
 </h2>
-<hr class="half-width"><div id="details" class="callout discussion">
+<hr class="half-width"><p>During these lessons we will use the <a href="https://napari.org/stable/" class="external-link">napari</a> image viewer and the <a href="https://github.com/AllenCellModeling/napari-aicsimageio" class="external-link">napari-aicsimagio</a>
+plugin to load imaging data files of various file formats. For beginners
+we recommend using Anaconda to install and manage these packages. The
+first step is to <a href="https://www.anaconda.com/download#downloads" class="external-link">download and install
+Anaconda</a>.</p>
+<p>The remaining instructions are written assuming you will be
+installing and running the software from a terminal. Follow the
+instructions below to open a terminal on your operating system.</p>
+<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
+  <h3 class="accordion-header" id="headingSpoiler1">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Opening a Terminal
+  </h3>
+</button>
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div class="accordion-body">
+<ul><li>Windows: Click Start &gt; Search for Anaconda Prompt &gt; Click to
+Open</li>
+<li>macOS: Launchpad &gt; Other Application &gt; Terminal</li>
+<li>Linux: Open a terminal window</li>
+</ul></div>
+</div>
+</div>
+</div>
+<p>For more information on starting and running Anaconda you may visit
+the <a href="https://conda.io/projects/conda/en/latest/user-guide/getting-started.html#starting-conda" class="external-link">‘Starting
+Conda’ section of the Anaconda getting started pages</a>.</p>
+<p>Run the following commands in the terminal (lines starting with # are
+comments and do not need to be run). You can run the commands by copy
+and pasting them into the terminal and pressing the <kbd>Enter</kbd>
+key.</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure conda is up to date</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update <span class="at">-n</span> base conda</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># We need to use a python program called pip to install</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># the napari-aicsimagio plugin, so we need to configure</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># conda to work well with pip</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--set</span> pip_interop_enabled True</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># This line will create a "virtual environment" (called napari-env)</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># that will contain all of the software that will be used in the lessons</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-y</span> <span class="at">-n</span> napari-env <span class="at">-c</span> conda-forge python=3.9 bioformats_jar</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Activate the napari-env virtual environment.</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Running this should change the terminal prompt to '(napari-env)'.</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Install napari and plugins using pip</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="st">"napari[all]"</span> napari-aicsimageio</span></code></pre>
+</div>
+<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
+  <h3 class="accordion-header" id="headingSpoiler2">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Why is there so much text appearing on the screen?
+  </h3>
+</button>
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div class="accordion-body">
+<p>If you’re new to running commands in the terminal you may be alarmed
+if running some of these commands results in a lot of text output to the
+screen. This is normal and usually helpful for checking things are
+working OK. For our purposes you can ignore it. If you see the word
+ERROR appear near the end (often highlighted in a different colour) it
+is possible something has gone wrong. In this case the best place to
+start is any messages in the text expanding on the source of the
+error.</p>
+</div>
+</div>
+</div>
+</div>
+</section><section id="post-setup-checks"><h2 class="section-heading">Post Setup Checks<a class="anchor" aria-label="anchor" href="#post-setup-checks"></a>
+</h2>
+<hr class="half-width"><p>Before starting the course it is important to check that your setup
+is working.</p>
+<div id="check-napari-opens-a-tiff-image." class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
-<div id="details" class="callout-inner">
-<h3 class="callout-title">Details<a class="anchor" aria-label="anchor" href="#details"></a>
+<div id="check-napari-opens-a-tiff-image." class="callout-inner">
+<h3 class="callout-title">Check napari opens a tiff image.<a class="anchor" aria-label="anchor" href="#check-napari-opens-a-tiff-image."></a>
 </h3>
 <div class="callout-content">
-<p>Setup for different systems can be presented in dropdown menus via a
-<code>solution</code> tag. They will join to this discussion block, so
-you can give a general overview of the software used in this lesson here
-and fill out the individual operating systems (and potentially add more,
-e.g. online setup) in the solutions blocks.</p>
+<p>Any napari installation should be able to open a tiff image. Start
+napari. Note that if you’re already in the napari-env virtual
+environment from the installation steps it is not necessary to run
+<code>conda activate napari-env</code>.</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">napari</span></span></code></pre>
 </div>
+<p>You should now see the napari viewer like this …</p>
+<figure><img src="../fig/blank-napari-ui.png" style="width:60.0%" alt="A  screenshot of the default Napari user interface" class="figure mx-auto d-block"></figure><p>Open a file with</p>
+<p><code>File &gt; Open file(s)...</code></p>
+<ul><li>Navigate to the directory where you saved
+<code>00001_01.ome.tiff</code> earlier on.</li>
+<li>Select <code>00001_01.ome.tiff</code> and click open.</li>
+<li>If you see a <code>Choose reader</code> dialog, select
+<code>napari builtins</code>.</li>
+</ul></div>
 </div>
 </div>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">
-  Windows
+  Expected Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<p>Use PuTTY</p>
+<figure><img src="../fig/ome_00001.png" style="width:80.0%" alt="A screenshot of freshly  opened 00001_01.ome.tiff" class="figure mx-auto d-block"><figcaption>If this is what you see your napari installation is
+working as expected. If not then please check the installation first by
+re-running the above steps and checking for any error messages in the
+terminal output. If that fails please get in touch with the course
+organisers for help.</figcaption></figure><p>Close napari: <code>File &gt; exit</code></p>
 </div>
 </div>
+</div>
+</div>
+<div id="check-napari-opens-a-czi-image." class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<div id="check-napari-opens-a-czi-image." class="callout-inner">
+<h3 class="callout-title">Check napari opens a czi image.<a class="anchor" aria-label="anchor" href="#check-napari-opens-a-czi-image."></a>
+</h3>
+<div class="callout-content">
+<p>During the course we’ll be working with czi images. To open these the
+napari-aicsimageio plugin is needed. Let’s check the plugin is
+working.</p>
+<p>Start napari. Note that if you’ve already done the previous test
+(tiff image) then it should not be necessary to run
+<code>conda activate napari-env</code>. However, it is necessary to
+restart napari to ensure the image display is correctly formatted.</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">napari</span></span></code></pre>
+</div>
+<p><code>File &gt; Open file(s)...</code></p>
+<ul><li>Navigate to the directory where you saved
+<code>Plate1-Blue-A-12-Scene-3-P3-F2-03.czi</code> to earlier on.</li>
+<li>Select <code>Plate1-Blue-A-12-Scene-3-P3-F2-03.czi</code> and click
+open.</li>
+<li>If you see a <code>Choose reader</code> dialog, select
+<code>napari-aicsimageio</code>.</li>
+</ul></div>
 </div>
 </div>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">
-  MacOS
+  Expected Output
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<p>Use Terminal.app</p>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">
-  Linux
-  </h4>
-</button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
-<div class="accordion-body">
-<p>Use Terminal</p>
+<figure><img src="../fig/plate1-blue.png" style="width:80.0%" alt="A  screenshot of freshly opened Plate1-Blue-A-12-Scene-3-P3-F2-03.czi" class="figure mx-auto d-block"><figcaption>If this is what you see your napari and aicsimageio
+plugin installation is working as expected. If not then please check the
+installation first by re-running the above steps and checking for any
+error messages in the terminal output. If that fails please get in touch
+with the course organisers for help.</figcaption></figure><p>Close napari: <code>File &gt; exit</code></p>
 </div>
 </div>
 </div>
@@ -444,8 +568,8 @@ any links that you are not going to use.
   "url": "https://FIXME-template-source.github.io/NA/instructor/index.html",
   "identifier": "https://FIXME-template-source.github.io/NA/instructor/index.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2024-01-09",
-  "datePublished": "2024-01-09"
+  "dateModified": "2024-01-10",
+  "datePublished": "2024-01-10"
 }
 
   </script><script>
