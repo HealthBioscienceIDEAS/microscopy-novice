@@ -42,7 +42,7 @@ instructions below to open a terminal on your operating system.
 
 ### Opening a Terminal
 
- - Windows: Open either the Command Prompt (cmd.exe) or PowerShell
+ - Windows: Click Start > Search for Anaconda Prompt > Click to Open
  - macOS: Launchpad > Other Application > Terminal
  - Linux: Open a terminal window
 
