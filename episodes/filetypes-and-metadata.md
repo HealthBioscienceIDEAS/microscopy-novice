@@ -106,23 +106,17 @@ processing steps don't overwrite this original image.
 
 ### Exploring metadata in the console
 
-Note that you can also inspect some metadata via the console:
+Note that you can also inspect some metadata via the console (as below). Here we 
+use python's [rich](https://github.com/Textualize/rich) library to add 
+colour-coding to make the output easier to read:
 
 ```python
-viewer.layers[0].metadata
+import rich
+rich.print(viewer.layers[0].metadata)
 ```
 
-```output
-{'aicsimage': <AICSImage [Reader: CziReader, Image-is-in-Memory: False]>,
- 'raw_image_metadata': <Element 'ImageDocument' at 0x000001F61807C7C0>,
- 'ome_types': OME(
-    plates=[<1 field_type>],
-    experimenters=[{'annotation_refs': [], 'id': 'Experimenter:Zeiss', 'user_name': 'Zeiss'}],
-    instruments=[<1 field_type>],
-    images=[<2 field_type>],
-    structured_annotations=[{'description': 'ZEN 2012 (blue edition)1.1.1.0', 'annotation_refs': [], 'id': 'urn:lsid:allencell.org:Annotation:AcquisitionSoftware', 'value': {'any_elements': []}, 'kind': 'xmlannotation'}],
- )}
-```
+![](fig/metadata-console.png){alt="Screenshot of metadata printed to Napari's 
+console"}
 
 See the [napari-aicsimageio readme
 ](https://github.com/AllenCellModeling/napari-aicsimageio?tab=readme-ov-file#access-to-the-aicsimage-object-and-metadata) 
