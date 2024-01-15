@@ -161,14 +161,14 @@ detection
 e.g. a CCD camera
 
 To briefly summarise for a fluorescence microscopy image:   
-an excitation light source (e.g. a laser) illuminates the sample, a fluorescent 
-label than emits light which is gathered and focused by the objective lens, 
-before hitting the detector. The detector might be a single element (e.g. in a 
-laser-scanning microscope) or composed of an array of many small, light 
-sensitive areas - these are physical pixels, that will correspond to the pixels 
-in the final image. When light hits one of the detector elements it is converted 
-into electrons, with more light resulting in more electrons and a higher final 
-value for that pixel.
+an excitation light source (e.g. a laser) illuminates the sample, and this light 
+is absorbed by a fluorescent label. This causes it to emit light which is then 
+gathered and focused by the objective lens, before hitting the detector. The 
+detector might be a single element (e.g. in a laser-scanning microscope) or 
+composed of an array of many small, light sensitive areas - these are physical 
+pixels, that will correspond to the pixels in the final image. When light hits 
+one of the detector elements it is converted into electrons, with more light 
+resulting in more electrons and a higher final value for that pixel.
 
 The important factor to understand is that the final pixel value is only ever an 
 approximation of the real sample. Many factors will affect this final result 
