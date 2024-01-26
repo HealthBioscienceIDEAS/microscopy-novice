@@ -154,10 +154,6 @@ You should see a histogram open on the right side of the image:
 ![](fig/mitosis-histogram.png
 ){alt="Screenshot of image histogram for mitosis image" width='70%'}
 
-Here, I've changed Napari to light mode to make the histogram easier to see 
-(`File > Preferences > Appearance > Theme > light`), but you're welcome to 
-continue using dark mode if you prefer.
-
 This histogram summarises the pixel values of the entire image. On the x axis 
 is the pixel value which run from 0-255 for this 8-bit image. This is split 
 into a number of 'bins' of a certain width (for example, it could be 0-10, 11-20 
@@ -167,6 +163,8 @@ we see the highest bars to the left, with shorter bars to the right. This means
 this image has a lot of very dark (low intensity) pixels and fewer bright 
 (high intensity) pixels.
 
+The vertical white lines at 0 and 255 represent the current 'contrast limits' - we'll look at this in detail in a [later section of this episode](#brightness-and-contrast).
+
 Let's quickly compare to another image. Open the 'coins' image with:  
 `File > Open Sample > napari builtins > Coins`
 
@@ -175,9 +173,7 @@ Let's quickly compare to another image. Open the 'coins' image with:
 
 From the histogram, we can see that this image has a wider spread of pixel 
 values. There are bars of similar height across many different values (rather 
-than just one big peak at the left hand side). Note that the alternating high 
-and low bars are due to napari-matplotlib using bins of fractional width e.g. 
-2.54 - this will hopefully be adjustable in future plugin versions.
+than just one big peak at the left hand side).
 
 Image histograms are a great way to quickly summarise and compare pixel values 
 of different images.
@@ -213,8 +209,8 @@ contrast limits of the min/max possible pixel values:
 
 What happens to pixel values when we change the display settings? Try changing 
 the contrast limits or colormap in the layer controls. You should see that the 
-histogram stays the same, no matter what settings you change i.e. the display 
-settings don't affect the underlying pixel values.
+blue bars of the histogram stay the same, no matter what settings you change 
+i.e. the display settings don't affect the underlying pixel values.
 
 This is one of the reasons it's _important to use software designed for 
 scientific analysis_ to work with your light microscopy images. Software like 
@@ -298,7 +294,8 @@ gray colormap. Contrast limits 150 and 255." width='90%'}
 Now all the colours from black to white are spread over a smaller range of pixel 
 values from 150-255 and everything below 150 is set to black. Note that in 
 Napari you can set specific values for the contrast limits by right clicking on 
-the contrast limits slider.
+the contrast limits slider. As you adjust the contrast limits, the vertical 
+white lines on the `napari-matplotlib` histogram will move to match.
 
 If we move the right contrast limits node, we change where the colormap ends 
 (i.e. where pixels are fully white). For example, for contrast limits of 150 
