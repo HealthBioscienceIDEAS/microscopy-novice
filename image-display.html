@@ -263,7 +263,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Image display</h1>
-        <p> Last updated on 2023-12-19 | 
+        <p> Last updated on 2024-01-31 | 
         
         <a href="https://example.com/FIXME-template-source/edit/main/episodes/image-display.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -374,7 +374,7 @@ Napari users?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="is-a-plugin-well-maintained">Is a plugin well maintained?<a class="anchor" aria-label="anchor" href="#is-a-plugin-well-maintained"></a></h3>
@@ -414,11 +414,7 @@ the plugin’s developers.</p>
 image. If you don’t have it open, go the top menubar and select:<br><code>File &gt; Open Sample &gt; napari builtins &gt; Human Mitosis</code></p>
 <p>Then open the image histogram with:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
 <p>You should see a histogram open on the right side of the image:</p>
-<figure><img src="fig/mitosis-histogram.png" style="width:70.0%" alt="Screenshot of image histogram for mitosis image" class="figure mx-auto d-block"></figure><p>Here, I’ve changed Napari to light mode to make the histogram easier
-to see
-(<code>File &gt; Preferences &gt; Appearance &gt; Theme &gt; light</code>),
-but you’re welcome to continue using dark mode if you prefer.</p>
-<p>This histogram summarises the pixel values of the entire image. On
+<figure><img src="fig/mitosis-histogram.png" style="width:70.0%" alt="Screenshot of image histogram for mitosis image" class="figure mx-auto d-block"></figure><p>This histogram summarises the pixel values of the entire image. On
 the x axis is the pixel value which run from 0-255 for this 8-bit image.
 This is split into a number of ‘bins’ of a certain width (for example,
 it could be 0-10, 11-20 and so on…). Each bin has a blue bar whose
@@ -426,14 +422,13 @@ height represents the number of pixels with values in that bin. So, for
 example, for our mitosis image we see the highest bars to the left, with
 shorter bars to the right. This means this image has a lot of very dark
 (low intensity) pixels and fewer bright (high intensity) pixels.</p>
+<p>The vertical white lines at 0 and 255 represent the current ‘contrast
+limits’ - we’ll look at this in detail in a <a href="#brightness-and-contrast">later section of this episode</a>.</p>
 <p>Let’s quickly compare to another image. Open the ‘coins’ image
 with:<br><code>File &gt; Open Sample &gt; napari builtins &gt; Coins</code></p>
 <figure><img src="fig/coins-histogram.png" style="width:68.0%" alt="Screenshot of image histogram for coins image" class="figure mx-auto d-block"></figure><p>From the histogram, we can see that this image has a wider spread of
 pixel values. There are bars of similar height across many different
-values (rather than just one big peak at the left hand side). Note that
-the alternating high and low bars are due to napari-matplotlib using
-bins of fractional width e.g.  2.54 - this will hopefully be adjustable
-in future plugin versions.</p>
+values (rather than just one big peak at the left hand side).</p>
 <p>Image histograms are a great way to quickly summarise and compare
 pixel values of different images.</p>
 <div id="histograms" class="callout challenge">
@@ -458,7 +453,7 @@ values:</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ul><li>a - 3</li>
 <li>b - 4</li>
@@ -472,9 +467,9 @@ values:</p>
 </h2>
 <hr class="half-width"><p>What happens to pixel values when we change the display settings? Try
 changing the contrast limits or colormap in the layer controls. You
-should see that the histogram stays the same, no matter what settings
-you change i.e. the display settings don’t affect the underlying pixel
-values.</p>
+should see that the blue bars of the histogram stay the same, no matter
+what settings you change i.e. the display settings don’t affect the
+underlying pixel values.</p>
 <p>This is one of the reasons it’s <em>important to use software
 designed for scientific analysis</em> to work with your light microscopy
 images. Software like Napari and ImageJ will try to ensure that your
@@ -527,7 +522,9 @@ the colormap starts from e.g.  for a value of 150 we get:</p>
 <figure><img src="fig/contrast-comparison-150-255.png" style="width:90.0%" alt="Histogram, colorbar and image corresponding to coins coloured by the  gray colormap. Contrast limits 150 and 255." class="figure mx-auto d-block"></figure><p>Now all the colours from black to white are spread over a smaller
 range of pixel values from 150-255 and everything below 150 is set to
 black. Note that in Napari you can set specific values for the contrast
-limits by right clicking on the contrast limits slider.</p>
+limits by right clicking on the contrast limits slider. As you adjust
+the contrast limits, the vertical white lines on the
+<code>napari-matplotlib</code> histogram will move to match.</p>
 <p>If we move the right contrast limits node, we change where the
 colormap ends (i.e. where pixels are fully white). For example, for
 contrast limits of 150 and 200:</p>
@@ -575,7 +572,7 @@ these limits work?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The left circle can be seen with limits of e.g. 0 and 33</p>
 <p>These limits work because the background on the left side of the
@@ -674,8 +671,8 @@ any links that you are not going to use.
   "url": "https://FIXME-template-source.github.io/NA/image-display.html",
   "identifier": "https://FIXME-template-source.github.io/NA/image-display.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2023-12-19",
-  "datePublished": "2024-01-30"
+  "dateModified": "2024-01-31",
+  "datePublished": "2024-01-31"
 }
 
   </script><script>
