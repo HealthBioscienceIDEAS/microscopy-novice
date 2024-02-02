@@ -28,9 +28,9 @@ analyse the resulting image data.
 
 ## Steps to designing a light microscopy experiment
 
-As we've said throughout the course, there is no one 'right' way of handling 
-image data. It depends on the research question and project in hand, with 
-different solutions being best in different situations. The same holds true for 
+As we've said throughout the course, there is no one 'right' way of analysing 
+image data. It depends on the specific images and research question, with 
+different solutions being best for different situations. The same holds true for 
 designing a light microscopy experiment - here we'll discuss some general 
 guidelines, but the specifics will depend on your particular research project.
 
@@ -52,11 +52,29 @@ A general workflow could be:
 
 ## Define your research question
 
-First, it's essential to clearly define your research question. What do you want 
-to find out from your microscopy experiment?
+Clearly defining your research question is the essential starting point. What do 
+you want to find out from your microscopy experiment?
 
-For example, for our chemical example, the question could be: Does the chemical 
-affect the number, size or shape of cell nuclei over time?
+For example, for our chemical example, the main aim could be: Does the chemical 
+affect the number, size or shape of cell nuclei over time? 
+
+Then we could form more specific research questions e.g.
+
+- Does the addition of the chemical, result in an increase in the number of cell 
+nuclei over ten hours?
+
+- Does the addition of the chemical, result in an increase in the average 
+nucleus diameter over ten hours?
+
+- Does the addition of the chemical, result in an increase in the roundness of 
+cell nuclei over ten hours?
+
+For the rest of the episode, we will stick to our very broad research aim of: 
+'Does the chemical affect the number, size or shape of cell nuclei over time?'. 
+This will allow us to have a broad discussion of many different approaches to 
+designing a light microscopy experiment. Bear in mind that in a real experiment 
+you should be as specific as possible with your research question!
+
 
 ## Define what you need to observe
 
@@ -98,6 +116,13 @@ overall shape.
 We will probably need a fluorescent label for the nuclei. This will allow them 
 to be easily identified in our images so the number, size and shape can be 
 measured. 
+
+Note that it is possible to see and measure nuclei from un-labelled cells also 
+(e.g. from phase contrast or DIC images, as we will cover in the [widefield 
+section of this episode](#widefield)). The downside is that it's much harder to 
+automatically recognise and measure nuclei from these kinds of images. Unlike 
+images of fluorescently labelled nuclei, there is a much less clear separation 
+between nuclei and the rest of the cell, making analysis more challenging.
 
 ### Spatial scale
 
@@ -142,25 +167,25 @@ analysis methods?
 
 - How many objects/events do you need to quantify?
 
-As the second point says, it's always worthwhile considering how you will 
+As the second point indicates, it's always worthwhile to consider how you will 
 quantify your images before you collect them. This will make the image analysis 
-steps much faster and ensure that you are collecting images optomised for that 
-method. We'll look at image processing methods more in later episodes.
+steps much faster and ensure that you are collecting images optimised for the 
+given method. We'll look at image processing methods more in later episodes.
 
 For the last point, it's important to consider any statistical tests you will 
 use to answer your research question, and the sample size required to give them 
-good 'power'. Statistical power is the likelihood of a statistical test 
-detecting an effect when there actually is one. For example, consider testing 
-if the number of cells is significantly different when grown with and without 
-our chemical of interest. If there really is a difference, a statistical power 
-of 0.8 (80%) would mean that out of 100 different studies, only 80 would be able 
-to actually detect it. Having a high statistical power is vital to ensure that 
+sufficient statistical 'power'. Statistical power is the likelihood of a 
+statistical test detecting an effect when one is actually present. For example, 
+consider testing if the number of cells is significantly different when grown 
+with and without our chemical of interest. If there really is a difference, a 
+statistical power of 0.8 (80%) would mean that out of 100 different studies, 80 
+of them would detect it. Having a high statistical power is vital to ensure that 
 our experiment has a good chance of detecting the effects we are interested in. 
-Sample size has a strong effect on power, with larger sample sizes resulting in 
-higher power. Conducting a 'power analysis' is a good way to assess a reasonable 
-minimum sample size for your experiment. A full discussion of this is outside of 
-the scope of this course, but there are links to further resources in the 
-[final episode](FIXME.md). 
+There is a clear relationship between sample size and power, with larger sample 
+sizes resulting in higher power to detect the same effect. Conducting a 'power 
+analysis' is a good way to assess a reasonable minimum sample size for your 
+experiment. A full discussion of this is outside of the scope of this course, 
+but there are links to further resources in the [final episode](FIXME.md). 
 
 
 ::::::::::::::::::::::::::::::::::::: challenge 
@@ -193,23 +218,26 @@ For nucleus shape, there are even more options. In 2D we could, for example,
 measure the nucleus 'roundness' (a measure of how circular it is). In 3D, we 
 could measure nucleus 'sphericity' (a measure of how spherical it is). Which 
 measures you use will often depend on which image analysis software you use. 
-Many have a wide range of shape (morphological) features built-in e.g. Napari 
-has a plugin called 'napari-skimage-regionprops' that offers [many different 
-features](https://www.napari-hub.org/plugins/napari-skimage-regionprops#features).
+Many analysis packages have a wide range of shape (morphological) features 
+built-in e.g. Napari has a plugin called 'napari-skimage-regionprops' that 
+offers [many different features
+](https://www.napari-hub.org/plugins/napari-skimage-regionprops#features).
 
 ### How to quantify?
 
 Here again there is no one correct answer - a lot will depend on which image 
-analysis software you use and your personal preference. Let's say you decided on 
-imaging in 3D and measuring: nucleus number, volume and sphericity. We could 
-make these measurements in many different pieces of software including Napari. 
-We need to 'segment' the nuclei i.e. identify which pixels in the image 
-correspond to each nucleus (we'll look at this in detail in later episodes). As 
-we are looking to quantify many nuclei at many different timepoints, it's not 
-feasible to do this manually - we'll need to develop an automated workflow to 
-segment the nuclei and measure their volume and sphericity. We'll look at some 
-techniques for this kind of analysis in the [manual segmentation](FIXME.md), 
-[thresholding](FIXME.md) and [instance segmentation](FIXME.md) episodes.
+analysis software you use and your personal preference. For example, let's say 
+you decided on imaging in 3D and measuring nucleus number, volume and sphericity 
+with Napari. Before we can make any measurements from the cells, we first need 
+to 'segment' the nuclei i.e. identify which pixels in the image correspond to 
+each nucleus (we'll look at this in detail in later episodes). For some tasks, 
+this could be as simple as drawing a contour or boundary around the cell. 
+However, as we are looking to quantify many nuclei at many different timepoints, 
+it's not feasible to do this manually - we'll need to develop an automated 
+workflow to segment the nuclei and measure their volume and sphericity. We'll 
+look at some techniques for this kind of analysis in the 
+[manual segmentation](FIXME.md), [thresholding](FIXME.md) and 
+[instance segmentation](FIXME.md) episodes.
 
 :::::::::::::::::::::::::::::::::
 
@@ -231,8 +259,9 @@ often.
 
 There's a very wide variety of light microscopes available (from many different 
 manufacturers) that are specialised for different kinds of samples. We'll take a 
-brief look at some popular options below, but bear in mind that there are many 
-more!
+brief look at some popular options below, but there are far too many to cover in 
+a single episode. Bear this in mind when choosing light microscopy techniques 
+for your own experiments - there are many more options to consider!
 
 ### Widefield
 
@@ -243,11 +272,11 @@ microscope) or from above (in an inverted microscope).
 In it's simplest form, a widefield microscope can be used for 'brightfield 
 microscopy'. This is simply where the sample is illuminated by a bright light 
 from one side, and then imaged from the other. The issue with this method is 
-that it often produces low-contrast images, where biological structures are 
-hard to see. This is because biological structures are often quite transparent - 
-they don't absorb much light or differ much in their density. For this reason, 
-contrast agents/staining are often used to increase contrast (i.e. the addition 
-of dyes/chemicals that bind to specific structures).
+that it often produces low-contrast images, where it's difficult to see 
+biological structures. This is because biological structures are often quite 
+transparent - they don't absorb much light or differ much in their density. For 
+this reason, contrast agents/staining are often used to increase contrast (i.e. 
+the addition of dyes/chemicals that bind to specific structures).
 
 ![The image above is Napari's Skin (RGB) sample image - it is a brightfield 
 image of a hematoxylin and eosin stained slide of dermis and epidermis.
@@ -257,7 +286,9 @@ To increase contrast (especially for unstained samples), widefield microscopes
 often support ['phase-contrast'
 ](https://www.microscopyu.com/techniques/phase-contrast/introduction-to-phase-contrast-microscopy) 
 or ['DIC - Differential Interference Contrast'
-](https://www.leica-microsystems.com/science-lab/microscopy-basics/differential-interference-contrast-dic/).
+](https://www.leica-microsystems.com/science-lab/microscopy-basics/differential-interference-contrast-dic/). 
+Both these methods make use of slight changes in the 'phase' of light as it 
+passes through a sample to increase contrast.
 
 ![The image above is a phase gradient contrast image of some SH-SY5Y cells 
 (ZEISS Microscopy, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0), 
@@ -280,6 +311,19 @@ a longer wavelength (the emission wavelength). By illuminating the sample with
 light of the excitation wavelength, then detecting light of the emission 
 wavelength, a fluorescence microscope can image the biological structures that 
 the label is bound to.
+
+It's worth noting that optimising a fluorescence microscopy setup can be quite 
+complex! For example, depending on the structure you want to image, it can be 
+difficult to acquire labels that bind specifically and don't interfere with 
+normal function and localisation. This requires multiple initial tests to verify 
+where a label binds, as well as the appropriate conditions to use (like 
+incubation time / temperature). In addition, if you want to image multiple 
+fluorescent labels at the same time, then you have to ensure there is minimal 
+overlap between their excitation/emission wavelengths. Labels must also be 
+chosen to match the available lasers/filters on your microscope of choice - 
+otherwise you will be unable to properly excite and collect emitted light from 
+them. These considerations are true for all types of fluorescence microscope - 
+including widefield and also confocal (that will be discussed below).
 
 ![The image above is a fluorescence microscopy image of some LLC-PK1 cells 
 (ZEISS Microscopy, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0), 
@@ -304,7 +348,7 @@ This is extremely useful, especially for thick samples, to achieve clear images
 where details aren't obscured by out-of-focus light.
 
 There are many different types of confocal microscopes, but one of the most 
-common is: laser scanning confocal microscopes. These are also known as point 
+common is laser scanning confocal microscopes. These are also known as point 
 scanning confocal microscopes. In this microscope, a laser is focused onto a 
 single point of the specimen at a time (rather than illuminating the entire 
 sample). The point of illumination is then moved across the sample in a raster 
@@ -312,12 +356,19 @@ pattern (i.e. line by line), with light detected point by point. This gradually
 builds up the final image.
 
 Confocal microscopes are typically used for fluorescence microscopy, especially 
-when it is necessary to image the shape of structures in full 3D. Bear in mind 
-that their advantages don't come without other disadvantages! For example, 
-confocal microscopes will generally be more complex to use and slower to acquire 
+when it is necessary to image the shape of structures in full 3D. However, this 
+form of imaging also comes with some disadvantages. For example, confocal 
+microscopes will generally be more complex to use and slower to acquire 
 images than a widefield microscope. Although there are other types of confocal 
 that are faster than laser scanning systems, such as 'spinning disc confocal 
-microscopes'.
+microscopes'. Spinning disc systems split the laser into hundreds of focused 
+beams using an array of carefully arranged pinholes on a round disc. Spinning 
+the disc causes the beams to rapidly scan across the sample and acquire an 
+image, much faster than using a single beam as a standard laser-scanning 
+confocal does. For more information, [Jonkman et al.'s review
+](https://www.nature.com/articles/s41596-020-0313-9) gives a great summary of 
+different confocal methods - e.g. see figure 2 for a comparison of 
+laser-scanning and spinning disc confocals.
 
 ![The image above is Napari's Kidney (3D + 3Ch) sample image. This was acquired 
 with confocal fluorescence microscopy.](fig/confocal-example.png){alt="Screenshot 
@@ -325,13 +376,21 @@ of Napari's Kidney (3D + 3Ch) sample image" width='60%'}
 
 ### Super-resolution
 
-As there are so many [different 'super-resolution' methods
-](https://royalsocietypublishing.org/doi/10.1098/rsta.2021.0110) available, we 
-will only give a brief mention here. The key point is that super-resolution 
-methods provide extremely high resolution images that go beyond the classic 
-limit set by the diffraction of light. Many of these systems are based on 
-modified widefield or confocal microscope setups. This increase in resolution 
-usually comes at the cost of increased complexity in experiment/microscope setup.
+Before the invention of 'super-resolution' methods, it was thought that light 
+microscopes had a maximum resolution of around 200nm due to the 
+['diffraction limit'
+](https://www.microscopyu.com/techniques/super-resolution/the-diffraction-barrier-in-optical-microscopy) 
+of light. Super-resolution methods allow microscopes to surpass this limit, 
+achieving resolutions down to tens of nanometres. This allows many biological 
+structures, previously only visible with techniques like electron microscopy, 
+to be viewed with light microscopes. Many of these super-resolution systems are 
+based on modified widefield or confocal microscope setups. The increase in 
+resolution they provide usually comes at the cost of increased complexity in 
+experiment/microscope setup. There are far too many types of super-resolution to 
+cover in this episode, but [Schermelleh et al.
+](https://www.nature.com/articles/s41556-018-0251-8_) and [Prakash et al
+](https://royalsocietypublishing.org/doi/10.1098/rsta.2021.0110) provide useful 
+reviews if you are interested. 
 
 ### Choosing a method
 
@@ -342,7 +401,9 @@ Does it image a large enough area? Does it image fast enough to provide the
 temporal resolution you need?... The online [bioimaging guide
 ](https://www.bioimagingguide.org/welcome.html) provides a [useful flowchart
 ](https://www.bioimagingguide.org/02_Sample_acquisition/Picking.html) to give 
-you some ideas - as well as links to many other great microscopy resources.
+you some ideas - as well as links to many other great microscopy resources. 
+We've also placed a small summary table below of the microscopy techniques we 
+covered in this episode.
 
 If your research question can be solved by a simpler and less costly method, 
 then usually this is the way to go! It's all about choosing the right tool for 
@@ -350,7 +411,17 @@ the job - different approaches will be best for different research questions.
 For example, you could count cell number with a high-end super-resolution 
 microscope, but this is also possible with a standard widefield which will be 
 simpler and faster. In general, only move to more complex techniques when your 
-research question really requires it.
+research question really requires it. This also holds true for later steps like 
+choosing image processing and statistical analysis methods.
+
+| Technique               | What is it?         | Key points
+| :-----                  | :-------            | :------- 
+| Brightfield             | Illuminates the sample with light from one side, and images on the other | Hard to see many biological structures - usually requires contrast agents/staining to increase contrast
+| Phase contrast / DIC    | Makes use of slight changes in the ‘phase’ of light as it passes through a sample to increase contrast | Allows unstained samples to be seen more easily
+| Widefield flourescence  | Fluorescent labels (with specific excitation and emission wavelengths) bind to specific biological structures | Widefield illuminates the whole sample at once, which can lead to blurry images in thicker samples
+| Laser scanning confocal | A laser is scanned across the sample point by point in a raster pattern | Allows 'optical sectioning', giving clearer images in full 3D. More complex to use than widefield, also slower to acquire images.
+| Spinning disc confocal  | An array of pinholes on a disc split the laser into hundreds of beams that move across the sample | Faster than standard laser scanning confocal
+| Super-resolution        | Wide range of methods that break the classic 'diffraction limit' of light, allowing resolutions down to tens of nanometres | More complex to use than standard widefield / confocal
 
 ::::::::::::::::::::::::::::::::::::: challenge 
 
@@ -371,12 +442,26 @@ of nuclei to be imaged over time.
 
 If we're more interested in the precise 3D volume and shape, then confocal 
 fluorescence microscopy would be a better fit. We'd have to be careful with how 
-often we wanted to image the cells vs the speed of acquisition though.
+often we wanted to image the cells vs the speed of acquisition though. 
+
+As we are using live cell imaging, we have to carefully consider how often we 
+need to take an image to answer our research question. For example, if we want 
+to track the rapid movement and divisions of individual nuclei, then we will 
+need to image quickly, with a small time interval between each image. 
+Alternatively, if we only need to measure overall changes in mean nucleus 
+number/size/shape (without exactly tracking every nucleus) then we can allow 
+much longer time intervals between each image. For rapid imaging, it may be 
+necessary to use a microscope specialised for high speed (such as a spinning 
+disc confocal), otherwise slower methods (such as a standard laser scanning 
+confocal) can also work very well.
 
 Super-resolution options wouldn't be required here. Cell nuclei can be easily 
-visualised with standard widefield and confocal approaches. There's no need to 
-introduce any extra complexity, as our research question doesn't require that 
-level of resolution.
+visualised with standard widefield and confocal approaches, as they have a large 
+diameter of around 5-20 micrometre (depending on cell type). This is well above 
+the classic 'diffraction limit' of around 200nm that we discussed in the 
+[super-resolution section](#super-resolution). There's no need to introduce any 
+extra complexity, as our research question doesn't require that level of 
+resolution.
 
 :::::::::::::::::::::::::::::::::
 
@@ -385,7 +470,7 @@ level of resolution.
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- A general workflow for designing a light microscopy experiment could include:
+- A general workflow for designing a light microscopy experiment should include:
   - Define your research question
   - Define what you need to observe to answer that question
   - Define what you need to measure to answer that question
@@ -395,8 +480,8 @@ level of resolution.
 - There are many different types of light microscope - including widefield and 
 confocal
 
-- You should choose the simplest method that allows you to address your 
-research question
+- You should choose the simplest methods (in acquisition, processing, and 
+statistical analysis) that allow you to address your research question
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
