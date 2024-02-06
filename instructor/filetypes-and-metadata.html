@@ -262,7 +262,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Filetypes and metadata</h1>
-        <p> Last updated on 2024-01-15 | 
+        <p> Last updated on 2024-02-06 | 
         
         <a href="https://example.com/FIXME-template-source/edit/main/episodes/filetypes-and-metadata.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -463,6 +463,11 @@ support<a class="anchor" aria-label="anchor" href="#napari-aicsimagio-image-meta
 <p>Only certain file types will support browsing metadata via the ‘OME
 Tree Widget’ in napari-aicsimageio. The plugin is still under
 development - so more formats are likely to be supported in future!</p>
+<p>Napari-aicsimageio also has <a href="https://github.com/AllenCellModeling/napari-aicsimageio?tab=readme-ov-file#reading-mode-threshold" class="external-link">limits
+on the size of images</a> it will load directly into memory. Only images
+with a filesize less than 4GB and less than 30% of available memory will
+be loaded directly. Otherwise, images are loaded as smaller chunks as
+required.</p>
 <p>If you have difficulty opening a specific file format with
 napari-aicsimageio, it’s worth trying to open it in <a href="https://imagej.net/software/fiji/" class="external-link">Fiji</a> also. Fiji has very
 well established integration with Bio-Formats, and so tends to support a
@@ -946,7 +951,7 @@ any links that you are not going to use.
   "url": "https://FIXME-template-source.github.io/NA/instructor/filetypes-and-metadata.html",
   "identifier": "https://FIXME-template-source.github.io/NA/instructor/filetypes-and-metadata.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2024-01-15",
+  "dateModified": "2024-02-06",
   "datePublished": "2024-02-06"
 }
 
