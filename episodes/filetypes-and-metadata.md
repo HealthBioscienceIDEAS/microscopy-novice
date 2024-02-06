@@ -177,11 +177,11 @@ Only certain file types will support browsing metadata via the 'OME Tree Widget'
 in napari-aicsimageio. The plugin is still under development - so more formats 
 are likely to be supported in future!
 
-Napari-aicsimageio also has [quite strict limits
+Napari-aicsimageio also has [limits on the size of images
 ](https://github.com/AllenCellModeling/napari-aicsimageio?tab=readme-ov-file#reading-mode-threshold) 
-on the size of images it will load directly into memory. Only images with a 
-filesize less than 4GB and less than 30% of available memory will be loaded 
-directly. Otherwise, images are loaded as smaller chunks as required.
+it will load directly into memory. Only images with a filesize less than 4GB and 
+less than 30% of available memory will be loaded directly. Otherwise, images are 
+loaded as smaller chunks as required.
 
 If you have difficulty opening a specific file format with napari-aicsimageio, 
 it's worth trying to open it in [Fiji](https://imagej.net/software/fiji/) also. 
