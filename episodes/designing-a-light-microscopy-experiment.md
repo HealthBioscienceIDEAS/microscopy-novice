@@ -55,18 +55,18 @@ A general workflow could be:
 Clearly defining your research question is the essential starting point. What do 
 you want to find out from your microscopy experiment?
 
-For example, for our chemical example, the main aim could be: Does the chemical 
+For our chemical example, the main aim could be: Does the chemical 
 affect the number, size or shape of cell nuclei over time? 
 
 Then we could form more specific research questions e.g.
 
-- Does the addition of the chemical, result in an increase in the number of cell 
+- Does the addition of the chemical result in an increase in the number of cell 
 nuclei over ten hours?
 
-- Does the addition of the chemical, result in an increase in the average 
+- Does the addition of the chemical result in an increase in the average 
 nucleus diameter over ten hours?
 
-- Does the addition of the chemical, result in an increase in the roundness of 
+- Does the addition of the chemical result in an increase in the roundness of 
 cell nuclei over ten hours?
 
 For the rest of the episode, we will stick to our very broad research aim of: 
@@ -176,16 +176,17 @@ For the last point, it's important to consider any statistical tests you will
 use to answer your research question, and the sample size required to give them 
 sufficient statistical 'power'. Statistical power is the likelihood of a 
 statistical test detecting an effect when one is actually present. For example, 
-consider testing if the number of cells is significantly different when grown 
-with and without our chemical of interest. If there really is a difference, a 
-statistical power of 0.8 (80%) would mean that out of 100 different studies, 80 
-of them would detect it. Having a high statistical power is vital to ensure that 
-our experiment has a good chance of detecting the effects we are interested in. 
-There is a clear relationship between sample size and power, with larger sample 
-sizes resulting in higher power to detect the same effect. Conducting a 'power 
-analysis' is a good way to assess a reasonable minimum sample size for your 
-experiment. A full discussion of this is outside of the scope of this course, 
-but there are links to further resources in the [final episode](FIXME.md). 
+consider testing if there is a difference of X% in the number of cells when 
+grown with and without our chemical of interest. If there really is a 
+difference, a statistical power of 0.8 (80%) would mean that out of 100 
+different studies, 80 of them would detect it. Having a high statistical power 
+is vital to ensure that our experiment has a good chance of detecting the 
+effects we are interested in. There is a clear relationship between sample size 
+and power, with larger sample sizes resulting in higher power to detect the same 
+effect. Conducting a 'power analysis' is a good way to assess a reasonable 
+minimum sample size for your experiment. A full discussion of this is outside of 
+the scope of this course, but there are links to further resources in the 
+[final episode](FIXME.md). 
 
 
 ::::::::::::::::::::::::::::::::::::: challenge 
