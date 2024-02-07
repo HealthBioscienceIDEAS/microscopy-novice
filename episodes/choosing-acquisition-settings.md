@@ -111,7 +111,8 @@ The field of view is the size of the area you can view with your light
 microscope. It is often measured as a diameter in millimetres. A larger field of 
 view is useful if you want to, for example, observe a large number of cells at 
 the same time. This can quickly increase your sample size, providing 
-improved statistical power (as covered in the [last episode](designing-a-light-microscopy-experiment.md#define-what-you-need-to-measure)).
+improved statistical power (as covered in the [last episode
+](designing-a-light-microscopy-experiment.md#define-what-you-need-to-measure)).
 
 The field of view is affected by many factors but, importantly, is directly 
 related to the magnification of the objective lens. Higher levels of 
