@@ -30,24 +30,21 @@ from skimage.measure import label
 
 image = viewer.layers["nuclei"].data
 
-def binary_mask(image):
-  blurred = gaussian(image, sigma=3)
-  threshold = threshold_otsu(blurred)
+blurred = gaussian(image, sigma=3)
+threshold = threshold_otsu(blurred)
+semantic_seg = blurred > threshold
 
-  semantic_seg = blurred > threshold
-  return semantic_seg
+viewer.add_labels(semantic_seg)
 
-def instance_segmentation(image):
-  """
-  Creates an instance segmentation of a binary image.
-  """
-  eroded = binary_erosion(semantic_seg, footprint=ball(10))
-  instance_seg = label(eroded)
-  instance_seg = expand_labels(instance_seg, distance=10)
-  return instance_seg
+eroded = binary_erosion(semantic_seg, footprint=ball(10))
+instance_seg = label(eroded)
+instance_seg = expand_labels(instance_seg, distance=10)
 
 viewer.add_labels(instance_seg)
-```
+
+#we only want to measure whole nuclei. 
+tools > segmentation post processing > remove 
+
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
