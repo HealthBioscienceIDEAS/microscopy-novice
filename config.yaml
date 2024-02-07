@@ -58,22 +58,23 @@ contact: 'team@carpentries.org'
 # - another-learner.md
 
 # Order of episodes in your lesson
-episodes: 
+episodes:
 - imaging-software.md
 - what-is-an-image.md
 - image-display.md
 - multi-dimensional-images.md
 - filetypes-and-metadata.md
+- designing-a-light-microscopy-experiment.md
 - quality-control-and-manual-segmentation.md
 
 # Information for Learners
-learners: 
+learners:
 
 # Information for Instructors
-instructors: 
+instructors:
 
 # Learner Profiles
-profiles: 
+profiles:
 
 # Customisation ---------------------------------------------
 #
