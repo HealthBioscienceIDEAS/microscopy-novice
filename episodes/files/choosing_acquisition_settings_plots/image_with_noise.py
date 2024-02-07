@@ -23,10 +23,11 @@ def generate_image_with_noise(save_dir):
     nucleus_noisy = nucleus + np.random.normal(scale=5000.0, size=nucleus.shape)
 
     fig, all_axes = plt.subplots(1, 2)
+    fig.subplots_adjust(wspace=0)
     fig.set_size_inches(5, 2)
 
     min = 0
-    max = 65535
+    max = 29713
     plot_image(nucleus, min, max, plt.cm.gray, all_axes[0], "nuclei image")
     plot_image(nucleus_noisy, min, max, plt.cm.gray, all_axes[1], "nuclei image with added noise")
 

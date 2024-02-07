@@ -40,22 +40,23 @@ as well as looking at some early quality control steps.
 ## Acquisition settings
 
 Once you've chosen a light microscope to use, there are a wide variety of 
-acquisition settings that can be adjusted. For example, magnification, laser 
-power, exposure time... Different combinations of settings will be best for 
-different samples and research questions. For example, one combination of 
+acquisition settings that can be adjusted. Acquisition settings commonly 
+optimised for an experiment include magnification, laser power, and exposure 
+time, but there are many others. Different combinations of settings will be best 
+for different samples and research questions. For example, one combination of 
 settings may be best for rapid live cell imaging, while another may be best for 
 high resolution imaging of fixed samples.
 
 There are many different factors that are affected by acquisition settings, but 
-here are some of the main ones to consider:
+here are some of the main ones to consider.
 
 ## Spatial resolution
 
-Spatial resolution is the resolution in 2D (x and y), or 3D (x, y and z). It is 
-defined as the smallest distance between two points on a sample that can still 
-be seen as separate entities. For example, a resolution of one micrometre would 
-mean that objects less than one micrometre apart couldn't be identified 
-separately (i.e. they would appear as one object).
+Spatial resolution is defined as the smallest distance between two adjacent 
+points on a sample that can still be seen as separate entities. In 2D, this is 
+measured in x and y, while in 3D it is measured in x, y and z. For example, a 
+resolution of one micrometre would mean that objects less than one micrometre 
+apart couldn't be identified separately (i.e. they would appear as one object).
 
 Spatial resolution is affected by many factors including the wavelength of light 
 and the [numerical aperture (NA)
@@ -69,6 +70,21 @@ datasets, where the x/y resolution tends to be better than the z resolution.
 
 We'll look at spatial resolution in more detail [later in this episode
 ](#resolution-vs-pixel-size).
+
+:::::::::::::::::::::::::::::::::::::: callout
+
+## Spatial resolution and optical resolution
+
+In this episode, we use 'spatial resolution' to refer to the resolution limits 
+of the light microscope. Note that sometimes 'spatial resolution' is also used 
+to refer to the final image pixel size (as we will look at [later in this 
+episode](#resolution-vs-pixel-size)). Due to this ambiguity, you may also see 
+the microscope's resolution referred to as 'optical resolution' to clearly 
+distinguish it from pixel size.
+
+::::::::::::::::::::::::::::::::::::::
+
+
 
 ## Temporal resolution
 
@@ -94,7 +110,8 @@ as much light as possible in these short timescales.
 The field of view is the size of the area you can view with your light 
 microscope. It is often measured as a diameter in millimetres. A larger field of 
 view is useful if you want to, for example, observe a large number of cells at 
-the same time.
+the same time. This can quickly increase your sample size, providing 
+improved statistical power (as covered in the [last episode](designing-a-light-microscopy-experiment.md#define-what-you-need-to-measure)).
 
 The field of view is affected by many factors but, importantly, is directly 
 related to the magnification of the objective lens. Higher levels of 
@@ -106,6 +123,26 @@ then be stitched together (often with the microscope manufacturer's acquisition
 software), to give one large final image. This method can provide high 
 resolution images of large areas, but also slows down overall acquisition times.
 
+## Depth penetration
+
+Depth penetration refers to the distance light can penetrate into your sample 
+(in the z direction). It therefore controls the maximum z range that you can 
+image over - for example, a specific confocal microscope may be limited to a 
+maximum depth of 50 micrometre. 
+
+Depth penetration is limited due to samples absorbing and scattering light that 
+passes through them. Various factors control the penetration depth - for 
+example, the density of the sample and the wavelength of light used during 
+imaging. Various [tissue clearing
+](https://www.nature.com/articles/s43586-021-00080-9) methods exist that can 
+help to make a sample more transparent, and allow imaging at greater depths. 
+Also, the use of longer wavelengths of light can reduce absorption/scattering 
+and increase depth penetration. This comes at the cost of decreased spatial 
+resolution (as we covered in the [spatial resolution section
+](#spatial-resolution)). For very thick samples, you will likely need to use a 
+microscope specialised for this task e.g. a [multiphoton microscope
+](https://www.microscopyu.com/techniques/multi-photon/multiphoton-microscopy).
+
 ## Data size
 
 It's important to consider the overall size of your imaging data (e.g. in 
@@ -115,14 +152,15 @@ file storage space that is regularly backed up.
 
 The overall size of your data will depend on many factors. For example, 
 increasing your resolution will increase the size of your final images, 
-especially if you are covering a large area by stitching in x/y.
+especially if you are covering a large area by stitching multiple images taken 
+at different positions together.
 
 ## Light exposure (i.e phototoxicity / photobleaching)
 
 Illuminating our samples with light is an essential part of collecting light 
-microscopy images. This being said, we have to be very careful of the 
-detrimental effects light can have on our samples, especially at high intensity 
-over long time periods. 
+microscopy images. However, we must also be mindful of the detrimental effects 
+light can have on our samples, especially at high intensity over long time 
+periods. 
 
 Photobleaching is a key issue for fluorescence microscopy. If a fluorophore is 
 exposed to intense light, its structure can degrade over time. This means that 
@@ -132,9 +170,9 @@ Another issue is phototoxicity. Light exposure can damage cells resulting in
 unexpected changes in cell behaviour, morphology and eventually cell death.
 
 Reducing the effects of photobleaching and phototoxicity requires minimising the 
-light exposure of our samples as much as possible. For example, reducing 
-light/laser power, reducing exposure time/dwell time, imaging at lower temporal 
-resolution...
+light exposure of our samples as much as possible. Light exposure can be 
+reduced through many methods, including reducing light/laser power, reducing 
+exposure time/dwell time, and imaging at lower temporal resolution.
 
 ## Signal to noise ratio
 
@@ -146,8 +184,10 @@ The 'signal' is what we really want to measure - for example, for a fluorescence
 microscopy image, this would be the light emitted by fluorophores in the sample. 
 In an ideal world the detector would perfectly measure the light intensity, but 
 this isn't really possible. The values the detector records will always be 
-affected by random fluctuations called 'noise'. This noise usually appears as a 
-random 'graininess' over the image and can make details difficult to see.
+affected by random fluctuations called 'noise' (see the ['where does noise 
+come from?'](#where-does-noise-come-from) section for more information). This 
+noise usually appears as a random 'graininess' over the image and can make 
+details difficult to see.
 
 ![](fig/image-with-noise.png){alt="Left - the nuclei from Napari's Cells 
 (3D+2Ch) sample image. Right - same image with added gaussian noise"}
@@ -162,19 +202,23 @@ left is the ideal scenario, where there is no noise, and we perfectly see one
 value of 20 and one of 30. The middle shows the addition of some noise to each 
 value, resulting in wider distributions that overlap extensively. This means 
 that in the combined histogram of these values (right) it becomes impossible to 
-clearly distinguish these two values.
+clearly distinguish these two values. Note - here the added noise is a gaussian 
+distribution centred on each value (i.e. 20 and 30) with a standard deviation of 
+10 and 1000 samples - you can read more about gaussian noise in the [noise chapter
+](https://bioimagebook.github.io/chapters/3-fluorescence/3-formation_noise/formation_noise.html) 
+of Pete Bankhead's bioimage book.
 
 ![](fig/snr-comparison-low.png){alt="Diagram of a low signal-to-noise scenario. 
 Left - histogram with no noise. Middle - histogram with added noise (separate 
 histograms). Right - histogram with added noise (combined histogram)."}
 
 If we imagine a scenario with higher signal, now values of 80 and 120 (one still 
-1.5x higher than the other), then we can see that the addition of the same noise 
-has a much less drastic effect. As the values are now higher and further apart, 
-the broadening of their distributions only causes them to overlap slightly. We 
-can still clearly distinguish the values in the combined histogram on the right. 
-This demonstrates how increasing the signal to noise ratio can improve our 
-ability to recognise and measure different features.
+1.5x higher than the other), then we can see that adding the same level of noise 
+has less effect. As the values are now higher and further apart, the broadening 
+of their distributions only causes them to overlap slightly. We can still 
+clearly distinguish the values in the combined histogram on the right. This 
+demonstrates how increasing the signal to noise ratio can improve our ability to 
+recognise and measure different features.
 
 ![](fig/snr-comparison-high.png){alt="Diagram of a high signal-to-noise scenario. 
 Left - histogram with no noise. Middle - histogram with added noise (separate 
@@ -227,17 +271,18 @@ hit the detector - no detector is perfect, so there will always be some variatio
 
 ## Optimising acquisition settings
 
-In an ideal world we could produce the 'perfect' image that optomised for all of 
+In an ideal world we could produce the 'perfect' image that optimised for all of 
 the features above: high spatial resolution, high temporal resolution, large 
-field of view, small data size, low light exposure and high signal to noise 
-ratio. This is never possible though! There are always trade-offs and 
-compromises to be made. These different factors are inter-related, usually 
-meaning that optomising for one will reduce the others. For example, increasing 
-spatial resolution requires a reduced field of view and an increased overall 
-data size. As each pixel covers a smaller area, resulting in less signal per 
-pixel, you will likely need to increase light exposure to achieve a reasonable 
-signal to noise ratio. This may mean using higher light intensity, or imaging 
-more slowly (with increased dwell time/exposure time).
+field of view, large depth penetration, small data size, low light exposure and 
+high signal to noise ratio. This is never possible though! There are always 
+trade-offs and compromises to be made. These different factors are 
+inter-related, usually meaning that optimising for one will be at the expense of 
+the others. For example, increasing spatial resolution requires a reduced field 
+of view, and it will increase the overall data size. As each pixel covers a 
+smaller area, resulting in less signal per pixel, you will likely need to 
+increase light exposure to achieve a comparable signal to noise ratio. This may 
+mean using higher light intensity, or imaging more slowly (with increased dwell 
+time/exposure time).
 
 ![](fig/acquisition-tradeoffs.png){alt="Diagram highlighting some of the 
 trade-offs of increasing spatial resolution" width="80%"}
@@ -245,7 +290,7 @@ trade-offs of increasing spatial resolution" width="80%"}
 Different microscopes will provide different ranges for these features - for 
 example, supporting different ranges of spatial or temporal resolution, or 
 providing detectors with different sensitivity that require higher or lower 
-light intensity. Acqusition settings then allow you to fine-tune how that 
+light intensity. Acquisition settings then allow you to fine-tune how that 
 microscope functions, optimising within these ranges for your particular sample 
 and research question. For example, do you need to prioritise temporal 
 resolution for a highly dynamic process? Or perhaps is spatial resolution the 
@@ -293,7 +338,10 @@ times. We must balance this against signal to noise ratio though.
 As we are taking many images over a long timescale, our data size could become 
 very large. To minimise this, we should make sure we are using the lowest 
 spatial resolution possible (that still lets us see individual nucleus 
-size/shape). Also, we should ensure we are using an appropriate interval between 
+size/shape). Usually this means selecting a lower NA objective lens (which is 
+usually also a lower magnification objective lens). 
+
+Also, we should ensure we are using an appropriate interval between 
 our images. For example, do you need an image every minute? Or is every ten 
 minutes fine? Longer intervals will reduce the size of your final dataset.
 
@@ -314,6 +362,13 @@ provides enough spatial resolution to see individual nuclei. Alternatively, we
 will need to stitch images together from multiple positions - although this will 
 slow down acquisition, and must be balanced against the required temporal 
 resolution!
+
+### Depth penetration
+
+As we are considering cells grown in culture (rather than in thick tissues), 
+depth penetration isn't a key concern here. This means we shouldn't have to, for 
+example, limit ourselves to fluorophores with longer emission wavelengths, or 
+require any additional preparation steps like tissue clearing.
 
 :::::::::::::::::::::::::::::::::
 
@@ -428,11 +483,10 @@ displayed at 9cm wide, then the result will be the same, 5000x.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-### Choosing spatial resolution
+### Choosing magnification, spatial resolution and pixel size
 
 Now that we understand the difference between magnification, resolution and 
-pixel size - how do we go about choosing the spatial resolution to use in our 
-experiments? 
+pixel size - how do we go about choosing their values for our experiments? 
 
 The most important thing is to only use the level of resolution that you really 
 require to answer your research question. For example, say you were researching 
@@ -443,9 +497,78 @@ the larger layers could be seen at much lower resolution, allowing you to image
 a larger area faster, while also keeping your data size as small as possible. 
 Don't increase your resolution without a good reason!  
 
-Equally, you have to be careful not to set your resolution too low. Make sure 
-that it is high enough to resolve the smallest structure you want to be able to 
-see and measure.
+[As discussed above](#spatial-resolution), a number of factors affect the 
+spatial resolution - but one of the most important is your choice of objective 
+lens. Each microscope will usually have a selection of objective lenses 
+available (each with a different magnification and numerical aperture (NA)). In 
+general, higher NA lenses (which provide a higher spatial resolution) will also 
+provide higher levels of magnification. Choose the lowest NA/magnification 
+objective that still provides enough spatial resolution to resolve the smallest 
+structure you want to be able to see and measure. Table 1 of [Jonkman et al.'s 
+2020 paper](https://www.nature.com/articles/s41596-020-0313-9) provides a nice 
+summary of some common objective lenses.
+
+The pixel size of your final image should be matched appropriately to your 
+chosen objective lens (and therefore the spatial resolution/magnification used). 
+This is usually set to satisfy 'Nyquist sampling' which states that the pixel 
+size should be two to three times smaller than the smallest feature you want to 
+capture in your images. Let's look at a quick example of why this is necessary. 
+
+Consider the diagram below - on the left is shown two round cells (blue) that 
+have a diameter of 10 micrometre and are overlaid by a pixel grid with the same 
+spacing. On the right is shown the equivalent final image, using a rough 
+grayscale colourmap (black = 0, white = maximum).
+
+![](fig/nyquist-1.png){alt="Left - a diagram of two round cells (blue, 10 
+micrometre wide) overlaid by a perfectly aligned 10 micrometre pixel grid. 
+Right - the equivalent image with a grayscale colormap" width="80%"}
+
+When the cells lie at the centre of each pixel, we can easily detect them as 
+separate objects in our final image. The issue comes when the cells are offset 
+from the pixel grid - which will happen very regularly in a real life scenario! 
+Keeping the same 10 micrometre spacing, but offsetting the grid slightly results 
+in a final image where where we can no longer separate the two cells:
+
+![](fig/nyquist-2.png){alt="Left - a diagram of two round cells (blue, 10 
+micrometre wide) overlaid by a misaligned 10 micrometre pixel grid. 
+Right - the equivalent image with a grayscale colormap" width="80%"}
+
+Only by decreasing the pixel size (e.g. to 5 micrometre) can we be sure to 
+capture the two cells, no matter their alignment with the grid:
+
+![](fig/nyquist-3.png){alt="Left - a diagram of two round cells (blue, 10 
+micrometre wide) overlaid by a 5 micrometre pixel grid. 
+Right - the equivalent image with a grayscale colormap" width="80%"}
+
+Failing to meet the Nyquist critera can also result in various image artifacts 
+known as 'aliasing'. For example, consider the digram below - here we have 6 
+small cells (blue) that are evenly spaced in the x direction. Using a pixel 
+spacing of 10 micrometre, this produces an odd effect in our final image, where 
+we see a repeating pattern that is much wider than the real spacing of our cells.
+
+![](fig/aliasing.png){alt="Top - a diagram of six round cells (blue, 5 
+micrometre wide) overlaid by a 10 micrometre pixel grid. 
+Bottom - the equivalent image with a grayscale colormap" width="80%"}
+
+This is an example of aliasing where a high frequency detail in the image (the 
+repeating pattern of small cells) is aliased to give a false lower frequency 
+pattern. Aliasing and Nyquist sampling are important considerations for all 
+fields where an analog signal is converted to a digital one - for example, 
+digital audio and video, as well as images.
+
+Most acquisition software will automatically provide sensible defaults that meet 
+the Nyquist criteria (taking into account the configuration of your microscope 
+and other acquisition settings). For example, for a laser scanning confocal, 
+this will adjust the z-step used and the x/y spacing of points sampled with the 
+laser. The main point is to avoid:
+
+- Undersampling: Our pixel size is too large to accurately preserve the spatial 
+resolution in the resulting digital image (i.e. we haven't achieved Nyquist 
+sampling)
+
+- Oversampling: Our pixel size is too small, exceeding that required for Nyquist 
+sampling. This results in larger images, with far more pixels, without providing 
+any extra useful spatial information.
 
 ## Initial quality control
 
