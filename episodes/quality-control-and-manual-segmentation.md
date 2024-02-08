@@ -43,9 +43,9 @@ discussed signal to noise ratio in the [last episode
 In order to count our cells, we will need to see individual nuclei in our 
 images. As there is one nucleus per cell, we will use the nucleus number as the 
 equivalent of cell number. If we look at our cells image in Napari, we can 
-clearly see individual nuclei highlighted in green. If we zoom in we can see 
-some noise (as a slight 'graininess' over the image), but this doesn't interfere 
-with being able to see the locations or sizes of all nuclei.
+clearly see multiple cell nuclei in green. If we zoom in we can see some noise 
+(as a slight 'graininess' over the image), but this doesn't interfere with being 
+able to see the locations or sizes of all nuclei.
 
 Next, it's good practice to check the image histogram, as we covered in the 
 [choosing acquisition settings episode
@@ -61,7 +61,14 @@ Plot the image histogram with `napari matplotlib`:
 - Do you see any issues with the histogram?
 
 If you need a refresher on how to use `napari matplotlib`, check out the 
-[image display episode](image-display.md#napari-plugins).
+[image display episode](image-display.md#napari-plugins). It may also be useful 
+to zoom into parts of the image histogram by clicking the ![](
+https://raw.githubusercontent.com/matplotlib/napari-matplotlib/main/src/napari_matplotlib/icons/black/Zoom.png
+){alt="A screenshot of napari-matplotlib's zoom button" height='30px'} icon at 
+the top of histogram, then clicking and dragging a box around the region you want 
+to zoom into. You can reset your histogram by clicking the ![](
+https://raw.githubusercontent.com/matplotlib/napari-matplotlib/main/src/napari_matplotlib/icons/black/Home.png
+){alt="A screenshot of napari-matplotlib's home button" height='30px'} icon.
 
 :::::::::::::::::::::::: solution 
 
@@ -76,18 +83,52 @@ highlighted in blue).
 ![](fig/nuclei-histogram.png){alt="A histogram of the 29th z slice of Napari's 
 cell sample image"}
 
+::::::::::::::::::::::::::::::callout
+
+### Z slices and contrast limits
+
 Note that as this image is 3D `napari matplotlib` only shows the histogram of 
 the current z slice (in this case z=29 as shown at the top of the histogram). 
 Moving the slider at the bottom of the viewer, will update the histogram to show 
-different slices.
+different slices. 
+
+The vertical white lines at the left and right of the histogram display the 
+current contrast limits as set in the layer controls. Note that by default 
+Napari isn't using the full image range as the contrast limits. We can change 
+this by right clicking on the contrast limits slider and selecting the 'reset' 
+button on the right hand side. This will set the contrast limits to the min/max 
+pixel value of the current z slice. If we instead want to use the full 16-bit 
+range from 0-65535, we can instead click the 'full range' button, then drag the 
+contrast limit nodes to each end of the slider.
+
+:::::::::::::::::::::::::::::::::
+
+First, are there pixel values spread over most of the possible range? We can 
+check what range is possible by printing the image's data type to the console:
+
+```python
+nuclei = viewer.layers["nuclei"].data
+print(nuclei.dtype)
+```
+
+```output
+uint16
+```
+This shows the image is an unsigned integer 16-bit image, which has a pixel 
+value range from 0-65535 (as we covered in the ['What is an image?' episode
+](what-is-an-image.md#bit-depth)). This matches the range on the x axis of our 
+napari-matplotlib histogram.
 
 If we look at the brightest part of the image, near z=29, we can see that there 
-are pixel values over much of the possible range. This being said, it is a bit 
-underexposed as pixel values are clustered at the left hand side, with few 
-values to the right. In an ideal world the image could have been acquired with a 
-longer exposure time / higher laser power etc to collect more light. This slight 
-underexposure isn't a big issue here though, as we can still clearly separate 
-the nuclei from the background which is our main aim.
+are indeed pixel values over much of this possible range. At first glance, it 
+may seem like there are no values at the right side of the histogram, but if we 
+zoom in using the ![](
+https://raw.githubusercontent.com/matplotlib/napari-matplotlib/main/src/napari_matplotlib/icons/black/Zoom.png
+){alt="A screenshot of napari-matplotlib's zoom button" height='30px'} icon we 
+can clearly see pixels at these higher values.
+
+![](fig/nuclei-histogram-zoom.png){alt="A histogram of the 29th z slice of 
+Napari's cell sample image - zoomed in to the range from 25000 to 60000"}
 
 Most importantly, we see no evidence for 'clipping', which means we are avoiding 
 any irretrievable loss of information this would cause. Recall that clipping 
@@ -102,12 +143,14 @@ information loss.
 ## What is segmentation?
 
 In order to count the number of cells, we must 'segment' the nuclei in this 
-image. Segmentation is the process of figuring out what each pixel in an image 
-represents e.g. is that pixel part of a nucleus or not? Segmentation comes in 
-two main types - 'semantic segmentation' and 'instance segmentation'. 
+image. Segmentation is the process of labelling each pixel in an image e.g. is 
+that pixel part of a nucleus or not? Segmentation comes in two main types - 
+'semantic segmentation' and 'instance segmentation'. In this section we'll 
+describe what both kinds of segmentation represent, as well as how they relate 
+to each other, using some simple examples.
 
-Let's take a quick look at a rough semantic segmentation. Open Napari's console 
-by pressing the ![](
+First, let's take a quick look at a rough semantic segmentation. Open Napari's 
+console by pressing the ![](
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg
 ){alt="A screenshot of Napari's console button" height='30px'} button, then copy 
 and paste the code below. Don't worry about the details of what's happening in 
@@ -129,13 +172,20 @@ viewer.add_labels(semantic_seg)
 ![](fig/semantic-seg-napari.png){alt="A screenshot of a rough semantic 
 segmentation of nuclei in Napari"}
 
-You should see an image appear that highlights the nuclei in brown. This is an 
-example of a 'semantic segmentation'. In a semantic segmentation, pixels are 
-grouped into different categories (also known as 'classes') - for example, 
-nuclei vs background. Importantly, it doesn't recognise which pixels belong to 
-different objects of the same category - for example, here we don't know which 
-pixels belong to individual, separate nuclei. This is the role of 'instance 
-segmentation' that we'll look at next.
+You should see an image appear that highlights the nuclei in brown. Try toggling 
+the 'semantic_seg' layer on and off multiple times, by clicking the ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
+){alt="A screenshot of Napari's eye button" height='30px'} icon next to its name 
+in the layer list. You should see that the brown areas match the nucleus 
+boundaries reasonably well.
+
+This is an example of a 'semantic segmentation'. In a semantic segmentation, 
+pixels are grouped into different categories (also known as 'classes'). In this 
+example, we have assigned each pixel to one of two classes: `nuclei` or 
+`background`. Importantly, it doesn't recognise which pixels belong to different 
+objects of the same category - for example, here we don't know which pixels 
+belong to individual, separate nuclei. This is the role of 
+'instance segmentation' that we'll look at next.
 
 Copy and paste the code below into Napari's console. Again, don't worry about 
 the details of what's happening here - we'll look at some of these concepts in 
@@ -160,12 +210,22 @@ You should see an image appear that highlights nuclei in different colours.
 Let's hide the 'semantic_seg' layer by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
 ){alt="A screenshot of Napari's eye button" height='30px'} icon next to its name 
-in Napari's layer list. 
+in Napari's layer list. Then try toggling the 'instance_seg' layer on and off 
+multiple times, by clicking the corresponding ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
+){alt="A screenshot of Napari's eye button" height='30px'} icon. You should see 
+that the coloured areas match most of the nucleus boundaries reasonably well, 
+although there are some areas that are less well labelled.
 
 This image is an example of an 'instance segmentation' - it is recognising which 
 pixels belong to individual 'instances' of our category (nuclei). This is the 
 kind of segmentation we will need in order to count the number of nuclei (and 
 therefore the number of cells) in our image.
+
+Note that it's common for instance segmentations to be created by first making a 
+semantic segmentation, then splitting it into individual instances. This isn't 
+always the case though - it will depend on the type of segmentation method you 
+use.
 
 ## How are segmentations represented?
 
@@ -269,6 +329,12 @@ sometimes see them referred to as 'label images', especially in the context of
 Napari. Segmentations with only two values (e.g. 0 and 1 for background vs some 
 specific category) are often referred to as 'masks'.
 
+Note that in this episode we focus on segmentations where every pixel is 
+assigned to a specific class or instance. There are many segmentation methods 
+though that will instead output the _probability_ of a pixel belonging to a 
+specific class or instance. These may be stored as float images, where each 
+pixel has a decimal value between 0 and 1 denoting their probability. 
+
 ::::::::::::::::::::::::::::::::::::: challenge 
 
 ## Segmentation shapes and data types
@@ -321,6 +387,13 @@ All the images have the same shape of (60, 256, 256). This makes sense as
 Therefore, they need to be exactly the same size as the nuclei image in order to 
 assign a label to each pixel.
 
+Note that even though the segmentation and image have the same shape, they often 
+won't have the same filesize when saved. This is due to segmentations containing 
+many identical values (e.g. large parts of the image might be 0, for background) 
+meaning they can often be compressed heavily without loss of information. Recall 
+that we looked at compression in the [filetypes and metadata episode
+](filetypes-and-metadata.md#compression).
+
 ### Bit depths
 
 ```python
@@ -335,16 +408,27 @@ int32
 
 The data type (`.dtype`) of 'semantic_seg' contains the number 8, showing that 
 it is an 8-bit image. The data type of 'instance_seg' contains the number 32, 
-showing that it is a 32-bit image. Note that in this case, as the instance 
-segmentation only contains 19 nuclei, it could also have been stored as 8-bit 
-(and probably should have been, as this would provide a smaller file size!).
+showing that it is a 32-bit image. 
+
+Note that in this case, as the instance segmentation only contains 19 nuclei, it 
+could also have been stored as 8-bit (and probably should have been, as this 
+would provide a smaller file size!). The bit depth was increased by some of the 
+image processing operations used to generate the instance segmentation, which is 
+a common side effect as we'll discuss in the [next episode
+](filters-and-thresholding.md#thresholding-the-blurred-image). If we wanted to 
+reduce the bit depth, we could right click on the 'instance_seg' layer in the 
+layer list, then select `Convert data type`. For more complex conversions, we 
+would need to use python commands in Napari's console - e.g. see the 
+['Python: Types and bit-depths'
+](https://bioimagebook.github.io/chapters/1-concepts/3-bit_depths/python.html) 
+chapter form Pete Bankhead's bioimage book.
 
 ### Bit depth for 100 nuclei
 
 To store an instance segmentation of 100 nuclei, we need to store values from 
-0-100 (with 0 being the background, and the rest values for individual nuclei). 
-An 8-bit unsigned integer image can store values from 0-255 and would therefore 
-be sufficient in this case.
+0-100 (with convention being that 0 represents the background pixels, and the 
+rest are values for individual nuclei). An 8-bit unsigned integer image can 
+store values from 0-255 and would therefore be sufficient in this case.
 
 ### Bit depth for 1000 nuclei
 
@@ -442,7 +526,7 @@ as transparent - this is because it is usually used to represent the background.
 ## Manual segmentation in Napari
 
 Try labelling more individual nuclei in this image, making sure each gets its 
-own pixel value (label). Investiagate the other settings in the layer controls:
+own pixel value (label). Investigate the other settings in the layer controls:
 
 - What does the ![](
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/fill.svg
@@ -518,12 +602,33 @@ to paint very close to existing labels without affecting them.
 
 Now that we've done some manual segmentation in Napari, you can probably tell 
 that this is a very slow and time consuming process (especially if you want to 
-segment in full 3D!). Therefore, it's generally only suitable for small images 
-in small quantities. If we want to efficiently scale to larger images in large 
-quantities, then we need more automated methods. We'll look at some of these in 
-the next few episodes. It's worth bearing in mind though that automated methods 
-are rarely perfect, so it's very likely that you will have to do some manual 
-segmentation cleanup from time to time.
+segment in full 3D!). It's also difficult to keep the segmentation fully 
+consistent, especially if multiple people are contributing to it. For example, 
+it can be difficult to tell exactly where the boundary of a nucleus should be 
+placed, as there may be a gradual fall off in pixel intensity at the edge rather 
+than a sharp drop.
+
+Due to these challenges, full manual segmentation is generally only suitable for 
+small images in small quantities. If we want to efficiently scale to larger 
+images in large quantities, then we need more automated methods. We'll look at 
+some of these in the next few episodes, where we investigate some 'classic' 
+image processing methods that generate segmentations directly from image pixel 
+values. These automated approaches will also help us achieve a less variable 
+segmentation, that segments objects in a fully consistent way.
+
+For more complex segmentation scenarios, where the boundaries between objects 
+are less clear, we may need to use machine learning or deep learning models. 
+These models learn to segment images based on provided 'groundtruth' data. This 
+'groundtruth' is usually many small, manually segmented patches of our images of 
+interest. While generating this manual groundtruth is still slow and time 
+consuming, the advantage is that we only need to segment a small subset of our 
+images (rather than the entire thing). Also, once the model is trained, it can 
+be re-used on similar image data.
+
+It's worth bearing in mind that automated methods are rarely perfect (whether 
+they're classic image processing, machine learning or deep learning based). It's 
+very likely that you will have to do some manual segmentation cleanup from time 
+to time.
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
@@ -534,7 +639,9 @@ example, checking the histograms of your images.
 represents e.g. is that pixel part of a nucleus or not?
 
 - Segmentation can be broadly split into 'semantic segmentation' and 'instance 
-segmentation'
+segmentation'. Semantic segmentation assigns pixels to specific classes (like 
+nuclei or background), while instance segmentation assigns pixels to individual 
+'instances' of a class (like individual nuclei). 
 
 - Segmentations are represented in the computer in the same way as standard 
 images. The difference is that pixel values represent classes or instances, 
@@ -542,6 +649,13 @@ rather than light intensity.
 
 - Napari uses `Labels` layers for segmentations. These offer various annotation 
 tools like the paintbrush, fill bucket etc.
+
+- Fully manual segmentation is generally only suitable for small images. More 
+automated approaches (based on classic image processing, machine learning or 
+deep learning) are necessary to scale to larger images. Even with automated 
+methods, manual segmentation is often still a key component - both for 
+generating groundtruth data and cleaning up problematic areas of the final 
+segmentation. 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
