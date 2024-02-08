@@ -85,21 +85,145 @@ print (f"Percent Nuclei = {nuclei_percent:.2f}%")
 Percent Nuclei = 19.47%
 ```
 
-Is know the percentage of pixels that are classed as nuclei sufficient 
+Is knowing the percentage of pixels that are classed as nuclei sufficient 
 for our purposes? Thinking back to some of the research questions 
 we discussed in the [episode on designing an experiment](
 designing-a-light-microscopy-experiment.md#define-your-research-question)
+, if the percentage changes over time we can infer that something is 
+happening but what? We can't say whether the nuclei are changing in
+number or in size or shape. For most research questions we will need a more
+informative measurement.
+
+:::::::::::::::::::::::: callout
+
+### Saving and repeating your work
+
+Let's assume that measuring percentage of nuclei is sufficient for your
+research question. How do we automate and repeat this workflow on new 
+images. The Napari Python console has a built in save function. 
+```python
+#Save current session to a file called measure_percent.py
+%save measure_percent ~0/
+```
+Delete the semantic_seg layer grom the viewer and run:
+```python
+load measure_percent.py
+```
+After pressing enter you should see the calculated percent nuclei and 
+the semantic_seg layer should reappear. We will reuse the save function 
+at the end of this lesson.
+::::::::::::::::::::::::
+
+## Counting the Nuclei
+
+We now need to count the number of nuclei in the image. We can use the
+the [label](
+https://scikit-image.org/docs/stable/api/skimage.measure.html#skimage.measure.label)
+function from scikit-image. The label function will go through the image
+and assign each connected region a unique integer value. Let's try it
+
+```python
+#Import the label function
+from skimage.measure import label
+
+#Run the label function on the binary mask image
+instance_seg = label(semantic_seg)
+
+#Add the result to out viewer
+viewer.add_labels(instance_seg)
+```
+![](fig/instance_segmentation_wrong.png){
+alt="A screenshot of an instance segmentation of nuclei with some 
+incorrectly joined instances."}
+You should see the above image in the Napari viewer. The different colours
+are used to represent different nuclei. Does it look right? 
+
+There are several instances of nuclei that are clearly separate being
+labelled as a single nuclei. Looking at the 4 nuclei at the bottom left that have all been labelled light blue, we can see that 3 of them are touching,
+ so it is not surprising that they have been labelled as a single nuclei.
+What about the forth apparently separate nuclei? We should remind ourselves
+that this a 3 dimensional image. 
+ 
+You may remember from our [first lesson](imaging-software.html#d3d) that 
+we can change to 3D view mode by pressing the ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/2D.svg
+){alt="A screenshot of Napari's 2D/3D toggle button" height='30px'} button.
+Try it now.
+
+![](fig/instance_segmentation_wrong3d.png){
+alt="A screenshot of an instance segmentation of nuclei in 3D mode with some 
+incorrectly joined instances."}
+You should see the image rendered in 3D, with a clear join between the 
+upper most light blue nuclei and its neighour. So now we understand why the
+instance labelling has failed, what can we do to fix it?
+
+::::::::::::::::::::::::: challenge
+
+### Erode the semantic segmentation so all nuclei are separate
+In order to use the label function to count the cell nuclei we first need
+to make sure all the nuclei are separate. We can do this by reducing the
+apparent size of the nuclei by eroding the image. scikit-image's 
+[binary_erosion](
+https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.binary_erosion) 
+function is a good tool to do this. The function sets a pixel to the 
+minimum value in the neighbourhood defined by a 'footprint' parameter.
+We'll use scikit-image's [ball](
+https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.ball) 
+function to generate a sphere to use as the footprint. We can change
+the radius of the footprint to control the amount of erosion. Try eroding 
+the semantic_seg layer with different integer values for the radius. 
+What radius do you need to ensure all nuclei are separate?
+
+```python
+from skimage.morphology import binary_erosion, ball
+
+#With radius = 1
+radius = 1
+eroded_mask = binary_erosion(semantic_seg, footprint = ball(radius = 1))
+viewer.add_labels(eroded_mask, name = f'eroded ball {radius}')
+```
+
+:::::::::::::::::::::::::solution
+
+```python
+#We can use a for loop to test many values of radius. This will test all
+#integers from 1 to 10
+for radius in range(1,11):
+  eroded_mask = binary_erosion(semantic_seg, footprint = ball(radius = 1))
+  viewer.add_labels(eroded_mask, name = f'eroded ball {radius}')
+
+```
+
+![](fig/binary_mask_no_erosion.png){
+alt="A screenshot of a semantic segmentation mask before erosion."}
+The first image shows the binary mask without any erosion for comparison.
+
+![](fig/binary_mask_erosion_1.png){
+alt="A screenshot of a semantic segmentation mask eroded with a ball of 
+radius 1."}
+Erosion with a radius of 1 makes a small difference, but the nuclei remain 
+joined. 
+
+![](fig/binary_mask_erosion_5.png){
+alt="A screenshot of a semantic segmentation mask eroded with a ball of 
+radius 5."}
+Erosion with a radius of 5 makes a more noticeable difference, 
+but some nuclei remain joined. 
+
+![](fig/binary_mask_erosion_10.png){
+alt="A screenshot of a semantic segmentation mask eroded with a ball of 
+radius 10."}
+Erosion with a radius of 10 separates all nuclei.
+
+
+:::::::::::::::::::::::::
+:::::::::::::::::::::::::
 
 from skimage.filters import threshold_otsu, gaussian
-from skimage.morphology import binary_erosion, ball
 from skimage.segmentation import expand_labels
-from skimage.measure import label
 
 image = viewer.layers["nuclei"].data
 
-blurred = gaussian(image, sigma=3)
-threshold = threshold_otsu(blurred)
-semantic_seg = blurred > threshold
 
 viewer.add_labels(semantic_seg)
 
