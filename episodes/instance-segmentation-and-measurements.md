@@ -219,8 +219,59 @@ Erosion with a radius of 10 separates all nuclei.
 :::::::::::::::::::::::::
 :::::::::::::::::::::::::
 
+Now we have separate nuclei lets try creating instance labels 
+again.
+
+```python
+eroded_semantic_seg = viewer.layers['eroded ball 10'].data
+
+instance_seg = label(eroded_semantic_seg)
+
+viewer.add_labels(instance_seg)
+```
+
+
+![](fig/instance_segmentation_eroded.png){
+alt="Instance segmentation on the eroded segmentation mask"}
+
+[expand labels](
+https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.expand_labels)
+
+
 from skimage.filters import threshold_otsu, gaussian
+
+```python
 from skimage.segmentation import expand_labels
+```
+![](fig/instance_segmentation_expanded.png){
+alt="Expanded Instance segmentation on the eroded segmentation mask"}
+
+:::::::::::::::::::::::::challenge
+
+### Is the erosion reversible?
+
+:::::::::::::::::::::::::solution
+Almost
+![](fig/instance_segmentation_vs_semantic_segmentation.png){
+alt="A comparison between the expanded instance segmentation and the
+original semantic segmentation showing some mismatch between the borders."}
+
+:::::::::::::::::::::::::
+:::::::::::::::::::::::::
+
+[clear border](
+https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.clear_border)
+
+```python
+
+from skimage.segmentation import clear_border
+instance_seg_clear=clear_border(instance_seg)
+viewer.add_labels(instance_seg_clear)
+```
+
+![](fig/instance_segmentation_clear_border.png){
+alt="The instance segmentation with any nuclei crossing the image boundary
+removed"}
 
 image = viewer.layers["nuclei"].data
 
