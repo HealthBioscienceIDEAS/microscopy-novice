@@ -6,8 +6,8 @@ exercises: 10
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- What is thresholding?
-- What are filters?
+- How can thresholding be used to create masks?
+- What are filters and how do they work?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -16,9 +16,8 @@ exercises: 10
 - Threshold an image manually using its histogram, and display the result in 
 Napari
 
-- Use gaussian blur and otsu thresholding from Napari plugins:
-`napari-segment-blobs-and-things-with-membranes` and 
-`napari-simple-itk-image-processing`
+- Use some Napari plugins to perform two commonly used image processing steps: 
+gaussian blurring and otsu thresholding
 
 - Explain how filters work - e.g. what is a kernel? What does the 'sigma' of a 
 gaussian blur change?
@@ -28,51 +27,61 @@ gaussian blur change?
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 In the previous episode, we started to develop an image processing workflow to 
-count the number of cells in an image. So far, this focused on manual 
-segmentation like so:
+count the number of cells in an image. Our initial pipeline relied on manual 
+segmentation:
 
 1. Quality Control
 2. Manual segmentation of nuclei
 3. Count nuclei
 
-The issue with relying on manual segmentation for this task is that it is very 
-slow and time consuming! While it's feasible for a small image, it would take 
-much too long for large images in large quantities. For this, we need to 
-introduce more automated methods, which we will start to look at in this 
-episode. Using more automated methods has the added benefit of making your image 
-processing more _reproducible_ - by having a clear record of every step that 
-produced your final result, it will be easier for other researchers to replicate 
-your work and also try similar methods on their own data.
+There are a number of issues with relying on manual segmentation for this task. 
+For example, as covered in the [previous episode
+](quality-control-and-manual-segmentation.md#manual-vs-automated), it is 
+difficult to keep manual segmentation fully consistent. If you ask someone to 
+segment the same cell multiple times, the result will always be slightly 
+different. Also, manual segmentation is very slow and time consuming! While it 
+is feasible for small images in small quantities, it would take much too long 
+for large datasets of hundreds or thousands of images.
+
+This is where we need to introduce more automated methods, which we will start 
+to look at in this episode. Most importantly, using more automated methods has 
+the benefit of making your image processing more _reproducible_ - by having a 
+clear record of every step that produced your final result, it will be easier 
+for other researchers to replicate your work and also try similar methods on 
+their own data.
 
 ## Thresholding
 
 If you don't have Napari's 'Cells (3D + 2Ch)' image open, then open it with:  
 `File > Open Sample > napari builtins > Cells (3D + 2Ch)`
 
-![](fig/cells-napari.png){alt="A screenshot of a flourescence microscopy image 
-of some cells in Napari"}
-
-Remove all layers apart from 'nuclei' from the layer list. Select any additional 
+Make sure you only have 'nuclei' in the layer list. Select any additional 
 layers, then click the ![](
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'} icon to 
-remove them. 
+remove them. Also, select the nuclei layer (should be highlighted in blue), and 
+change its colormap from 'green' to 'gray' in the layer controls.
+
+![](fig/nuclei-gray-napari.png){alt="A screenshot of nuclei in Napari using 
+the gray colormap"}
 
 Now let's look at how we can create a mask of the nuclei. Recall from the 
 [last episode](quality-control-and-manual-segmentation.md), that a 'mask' is a 
 segmentation with only two labels - background + your class of interest (in this 
 case nuclei).
 
-One way to create a mask is to use a method called 'thresholding'. Thresholding 
-is simply choosing a specific pixel value to use as the cut-off between 
-background and your class of interest. For example, you could choose a pixel 
-value of 100 and set all pixels with a value less than that as background, and 
-all pixels with a value greater than that as nuclei. How do we go about choosing 
-a good threshold though?
+A simple approach to create a mask is to use a method called 'thresholding'. 
+Thresholding works best when there is a clear separation in pixel values between 
+the class of interest and the rest of the image. In these cases, thresholding 
+involves choosing one or more specific pixel values to use as the cut-off 
+between background and your class of interest. For example, in this image, you 
+could choose a pixel value of 100 and set all pixels with a value less than that 
+as background, and all pixels with a value greater than that as nuclei. How do 
+we go about choosing a good threshold though?
 
-One key method is using the image histogram - recall that we looked at 
-histograms in detail in the [image display episode](image-display.md). Let's go 
-ahead and open a histogram with:  
+One common approach to choosing a threshold is to use the image histogram - 
+recall that we looked at histograms in detail in the [image display episode
+](image-display.md). Let's go ahead and open a histogram with:  
 `Plugins > napari Matplotlib > Histogram`
 
 ![](fig/nuclei-histogram.png){alt="A histogram of the 29th z slice of Napari's 
@@ -85,16 +94,16 @@ representing the nuclei. We can verify this by adjusting the contrast limits in
 the layer controls. If we move the left contrast limits node to the right of the 
 low intensity peak (around 8266), we can still clearly see the nuclei:
 
-![](fig/contrast-limit-8266-nuclei.png){alt="Left, fluorescence microscopy image 
-of cells. Right, histogram of the same image. Both with left contrast limit set 
+![](fig/contrast-limit-8266-nuclei.png){alt="Left, nuclei with gray colormap. 
+Right, histogram of the same image. Both with left contrast limit set 
 to 8266."}
 
 If we move the left contrast limits node to the right of the higher intensity 
 peak (around 28263), most of the nuclei disappear from the image:
 
-![](fig/contrast-limit-28263-nuclei.png){alt="Left, fluorescence microscopy 
-image of cells. Right, histogram of the same image. Both with left contrast 
-limit set to 28263."}
+![](fig/contrast-limit-28263-nuclei.png){alt="Left, nuclei with gray colormap. 
+Right, histogram of the same image. Both with left contrast limit set 
+to 28263."}
 
 Recall that you can set specific values for the contrast limits by right 
 clicking on the contrast limits slider in Napari.
@@ -117,32 +126,59 @@ viewer.add_labels(mask)
 
 ```
 
-Note that we use `.add_labels()` here, rather than `.add_image()` which we used 
-in previous episodes. `.add_labels()` will ensure our mask is added as a 
-`Labels` layer, giving us access to all the annotation tools and settings for 
-segmentations (as covered in the [manual segmentation episode
-](quality-control-and-manual_segmentation.md)). `add_image()` would create a 
-standard `Image` layer, which is not what we want in this case.
-
 You should see a mask appear that highlights the nuclei in brown. If we set the 
 nuclei contrast limits back to normal (select 'nuclei' in the layer list, then 
 drag the left contrast limits node back to zero), then toggle on/off the mask 
-with the ![](
+or nuclei layers with the ![](
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
 ){alt="A screenshot of Napari's eye button" height='30px'} icon, you should see 
 that the brown areas match the nucleus boundaries reasonably well. They aren't 
 perfect though! The brown regions have a speckled appearance where some regions 
 inside nuclei aren't labelled and some areas in the background are incorrectly 
-labelled. We need to find a way to smooth out this nuclei mask.
+labelled. 
 
 ![](fig/threshold-mask.png){alt="Mask of nuclei (brown) overlaid on nuclei 
-image - created with manual thresholding"}
+image - created with manual thresholding" width="60%"}
+
+This is mostly due to the presence of noise in our image (as we looked at in the 
+[choosing acquisition settings episode
+](choosing-acquisition-settings.md#signal-to-noise-ratio)). For example, the 
+dark image background isn't completely uniform - there are random fluctuations 
+in the pixel values giving it a 'grainy' appearance when we zoom in. These 
+fluctuations in pixel value make it more difficult to set a threshold that fully 
+separates the nuclei from the background. For example, background pixels that 
+are brighter than average may exceed our threshold of 8266, while some nuclei 
+pixels that are darker than average may fall below it. This is the main cause of 
+the speckled appearance of some of our mask regions.
+
+To improve the mask we must find a way to reduce these fluctuations in pixel 
+value. This is usually achieved by blurring the image (also referred to as 
+smoothing). We'll look at this in detail [later in the episode](#filters).
+
+::::::::::::::::::::::::::::::::::::: callout
+
+## `.add_labels()` vs `.add_image`
+
+In the code blocks above, you will notice that we use `.add_labels()`, rather
+than `.add_image()` as we have in previous episodes. `.add_labels()` will ensure 
+our mask is added as a `Labels` layer, giving us access to all the annotation 
+tools and settings for segmentations (as covered in the [manual segmentation 
+episode](quality-control-and-manual_segmentation.md)). `add_image()` would 
+create a standard `Image` layer, which doesn't give us easy access to the 
+annotation tools.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: challenge 
 
 ## Manual thresholds
 
-Copy and paste the following into Napari's console:
+In this exercise, we'll practice choosing manual thresholds based on an image's 
+histogram. For this, we'll use a simple test image containing three shapes 
+(rectangle, circle and triangle) with different mean intensities.
+
+Copy and paste the following into Napari's console to generate and load this 
+test image:
 ```python
 import numpy as np
 import skimage
@@ -162,10 +198,7 @@ else:
 viewer.add_image(image)
 ```
 
-You should see an image similar to the one below containing a rectangle, circle 
-and triangle.
-
-![](fig/manual-thresholding-exercise-shapes.png){alt="Noisy image containing a 
+![](fig/manual-thresholding-exercise-shapes.png){alt="Test image containing a 
 rectangle, circle and triangle"}
 
 Create a mask for each shape by choosing thresholds based on the image's 
@@ -192,7 +225,7 @@ mask = (image > 20) & (image < 40)
 First, we show a histogram for the image by selecting the 'image' layer, then:  
 `Plugins > napari Matplotlib > Histogram`
 
-![](fig/manual-thresholding-exercise-histogram.png){alt="Histogram of the noisy 
+![](fig/manual-thresholding-exercise-histogram.png){alt="Histogram of the 
 shape image"}
 
 By moving the left contrast limits node we can figure out what each peak 
@@ -203,7 +236,11 @@ represents. You should see that the peaks from left to right are:
 - circle
 - triangle
 
-Then we set thresholds for each:
+Then we set thresholds for each (as below). Note that you may not have exactly 
+the same threshold values as we use here! There are many different values that 
+can give good results, as long as they fall in the gaps between the peaks in the 
+image histogram.
+
 ```python
 rectangle = (image > 53) & (image < 110)
 viewer.add_labels(rectangle)
@@ -221,9 +258,10 @@ viewer.add_labels(triangle)
 
 ## Adding plugins to help with segmentation
 
-For this next part, we need to install some additional plugins for Napari. If 
-you need a refresher on the details of how to find and install plugins, see the 
-[image display episode](image-display.md#napari-plugins).
+Fortunately for us, segmenting images in the presence of noise is a widely 
+studied problem, so there are a many existing plugins we can install to help. If 
+you need a refresher on the details of how to find and install plugins in 
+Napari, see the [image display episode](image-display.md#napari-plugins).
 
 We will use two plugins: [`napari-segment-blobs-and-things-with-membranes`
 ](https://www.napari-hub.org/plugins/napari-segment-blobs-and-things-with-membranes) 
@@ -235,8 +273,8 @@ fast and easy for this course. If you use Napari more in your own work though,
 you may want to consider using [`devbio-napari`
 ](https://www.napari-hub.org/plugins/devbio-napari) instead. `devbio-napari` 
 bundles many plugins into one useful package (including the two plugins we are 
-about to install!). There's detailed information on their [documentation pages
-](https://www.napari-hub.org/plugins/devbio-napari) if you're interested.
+about to install!). There's detailed information on their documentation pages if 
+you're interested.
 
 In the top menu-bar of Napari select:  
 `Plugins > Install/Uninstall Plugins...`
@@ -260,6 +298,15 @@ Once both plugins are installed, **you will need to close and re-open Napari**.
 Let's open the cells image in Napari again:  
 `File > Open Sample > napari builtins > Cells (3D + 2Ch)`
 
+As before, make sure you only have 'nuclei' in the layer list. Select any 
+additional layers, then click the ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
+){alt="A screenshot of Napari's delete layer button" height='30px'} icon to 
+remove them. Also, select the nuclei layer (should be highlighted in blue), and 
+change its colormap from 'green' to 'gray' in the layer controls.
+
+![](fig/nuclei-gray.png){alt="Nuclei image with gray colormap" width='40%'}
+
 With the new plugins installed, you should see many new options under `Tools` in 
 the top menu-bar of Napari. You can find out more about these options using the 
 plugin's documentation which was linked in the [previous section
@@ -268,13 +315,13 @@ plugin's documentation which was linked in the [previous section
 For now, we are interested in the options under:  
 `Tools > Filtering / noise removal`
 
-Specifically, the two options labelled 'Gaussian' - you should see one ending in 
+Specifically, the two options labelled 'gaussian' - you should see one ending in 
 'n-SimpleITK' and another ending 'scikit-image, nsbatwm'. These are two slightly 
-different implementations of a _gaussian blur_, one from 
-`napari-simpleitk-image-processing` and the other from 
-`napari-segment-blobs-and-things-with-membranes`. Both should work perfectly 
-well for our image, but let's use the one ending with 'scikit-image, nsbatwm' 
-for now.
+different implementations of a _gaussian blur_, one from the 
+`napari-simpleitk-image-processing` plugin and the other from the 
+`napari-segment-blobs-and-things-with-membranes` plugin. Both should work 
+perfectly well for our image, but let's use the one ending with 'scikit-image, 
+nsbatwm' for now.
 
 If you click on this option, you should see a new panel appear on the right side 
 of Napari:
@@ -288,14 +335,16 @@ Make sure you have 'nuclei(data)' selected on the 'image' row, then click run:
 of 1" width='40%'}
 
 You should see a new image appear in the layer list called 'Result of 
-gaussian_blur', which is a slightly blurred version of the original nuclei image.
+gaussian_blur', which is a slightly blurred version of the original nuclei 
+image.
 
 Try increasing the 'sigma' value to three and clicking run again:
 
 ![](fig/nuclei-blurred-3.png){alt="Nuclei image after gaussian blur with sigma 
 of 3" width='40%'}
 
-You should see the nuclei become even more blurred in the new image.
+You should see that the 'Result of gaussian_blur' layer is updated to show a 
+much more heavily blurred version of the original nuclei image.
 
 What's happening here? What exactly does a gaussian blur do? A gaussian blur is 
 an example of a 'linear filter' which is used to manipulate pixel values in 
@@ -317,22 +366,28 @@ example 3x3 kernel is shown below:
 pixel highlighted in red. Around this pixel is shown a 3x3 box. Right - example 
 of a 3x3 kernel"}
 
-Bear in mind that kernels can have many different sizes! For example 3x3, 5x5, 
-9x9... To determine the new value of a pixel (like the red pixel above), the 
+While the above image uses a 3x3 kernel, they can have many different sizes! 
+Kernels tend to be odd in size: 3x3, 5x5, 9x9, etc. This is to allow the current 
+pixel that you will be replacing to lie perfectly at the centre of the kernel, 
+with equal spacing on all sides.
+
+To determine the new value of a pixel (like the red pixel above), the 
 kernel is placed over the target image centred on the pixel of interest. Then, 
 for each position in the kernel, we multiply the image pixel value with the 
-kernel pixel value. For example, multiplying the top left image pixel value with 
-the top left kernel value, then the top middle pixel value with the top middle 
-kernel value and so on... The values at each position are then summed together 
-to give the new value of the central pixel. To process an entire image, the 
-kernel is moved across the image pixel by pixel calculating the new value at 
-each location. Pete Bankhead's bioimage book has a 
+kernel pixel value. For the 3x3 kernel example above, we multiply the image 
+pixel value one above and one to the left of our current pixel with the pixel 
+value in the top left position of the kernel. Then we multiply the value for the 
+pixel just above our current pixel with the top middle kernel value and so on... 
+The result of the nine multiplications in each of the nine positions of this 
+kernel are then summed together to give the new value of the central pixel. To 
+process an entire image, the kernel is moved across the image pixel by pixel 
+calculating the new value at each location. Pete Bankhead's bioimage book has a 
 [really nice animation of this process
 ](https://bioimagebook.github.io/chapters/2-processing/4-filters/filters.html#mean-filters)
 , which is worth taking a look at.
 
 For the gaussian filter we looked at above, the values in the kernel are based 
-on a 'Gaussian function'. A gaussian function creates a central peak that 
+on a 'gaussian function'. A gaussian function creates a central peak that 
 reduces in height as we move further away from the centre. The shape of the peak 
 can be adjusted using different values of 'sigma' (the standard deviation of the 
 function), with larger sigma values resulting in a wider peak:
@@ -353,12 +408,23 @@ decrease as we move further away. See the example 5x5 kernel below:
 ![](fig/gaussian-kernel.png){alt="An example of a 5x5 gaussian 
 kernel" width="40%"}
 
-Larger sigma values result in larger kernels, which affect larger areas of the 
-image. This means that the blurring effect of the gaussian filter is enhanced, 
-but will also take longer to calculate. This is a general feature of kernels for 
-different types of filter - larger kernels tend to result in a stronger effect 
-at the cost of increased compute time. This time can become significant when 
-processing very large images in large quantities. 
+The gaussian filter causes blurring (also known as smoothing), as it is 
+equivalent to taking a weighted average of all pixel values within its 
+boundaries. In a weighted average, some values contribute more to the final 
+result than others. This is determined by their 'weight', with a higher weight 
+resulting in a larger contribution to the result. As a gaussian kernel has its 
+highest weights at the centre, this means that a gaussian filter produces an 
+average where central pixels contribute more than those further away.
+
+Larger sigma values result in larger kernels, which average larger areas of the 
+image. For example, the [`scikit-image, nsbatwm`
+](https://scikit-image.org/docs/stable/api/skimage.filters.html#skimage.filters.gaussian) 
+implementation we are currently using truncates the kernel after four standard 
+deviations (sigma). This means that the blurring effect of the gaussian filter 
+is enhanced with larger sigma, but will also take longer to calculate. This is a 
+general feature of kernels for different types of filter - larger kernels tend 
+to result in a stronger effect at the cost of increased compute time. This time 
+can become significant when processing very large images in large quantities. 
 
 If you want more information about how filters work, both the 
 [data carpentry image processing lesson
@@ -368,6 +434,27 @@ and Pete Bankhead's [bioimage book
 have chapters going into great detail. Note that here we have focused on 
 'linear' filters, but there are many types of 'non-linear' filter that process 
 pixel values in different ways.
+
+::::::::::::::::::::::::::::::::::::: callout
+
+## Sigma vs full width at half maximum (FWHM)
+
+In this episode, we have focused on the gaussian function's standard deviation 
+(sigma) as the main way to control the width of the central peak. Some image 
+analysis packages will instead use a measure called the 'full width at half 
+maximum' or FWHM. The FWHM is the width of the curve at half of its maximum 
+value (see the diagram below):
+
+![](fig/gaussian-FWHM.png){alt="Diagram of gaussian function with FWHM labelled"
+width="80%"}
+
+Similar to increasing sigma, a higher FWHM will result in a wider peak. Note 
+that there is a clear relationship between sigma and FWHM where:
+
+\[\large FWHM = sigma\sqrt{8ln(2)}\]
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 ::::::::::::::::::::::::::::::::::::: challenge 
 
@@ -440,7 +527,7 @@ remove them by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'} icon. Also, 
 close all filter settings panels on the right side of Napari (apart from the 
-Gaussian settings) by clicking the tiny ![](
+gaussian settings) by clicking the tiny ![](
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility_off.svg
 ){alt="A screenshot of Napari's hide button" height='20px'} icon at their top 
 left corner.
@@ -465,7 +552,7 @@ viewer.add_labels(blurred_mask)
 ```
 
 You'll see that we get an odd result - a totally empty image! What went wrong 
-here? Let's looked at the blurred image's shape and data type in the console:
+here? Let's look at the blurred image's shape and data type in the console:
 
 ```python
 print(blurred.shape)
@@ -529,12 +616,31 @@ viewer.add_labels(blurred_mask)
 ```
 
 ![](fig/threshold-blurred-mask.png){alt="Mask of nuclei (brown) overlaid on 
-nuclei image - created with manual thresholding after gaussian blur"}
+nuclei image - created with manual thresholding after gaussian blur" 
+width="60%"}
 
 Now we see a much more sensible result - a brown mask that again highlights the 
-nuclei in brown. If we compare to the previous mask, we can see that this one 
-seems much smoother and has fewer areas inside nuclei that aren't labelled, as 
-well as fewer areas of the background that are incorrectly labelled. 
+nuclei in brown. To compare to the result with no smoothing, let's run our 
+previous threshold again (from the 
+[earlier thresholding section](#thresholding)):
+
+```python
+
+# Get the image data for the nuclei
+nuclei = viewer.layers["nuclei"].data
+
+# Create mask with a threshold of 8266
+mask = nuclei > 8266
+
+# Add mask to the Napari viewer
+viewer.add_labels(mask)
+
+```
+
+If we compare 'blurred_mask' and 'mask', we can see that blurring before 
+choosing a threshold results in a much smoother result that has fewer areas 
+inside nuclei that aren't labelled, as well as fewer areas of the background 
+that are incorrectly labelled. 
 
 This workflow of blurring an image then thresholding it is a very common method 
 to provide a smoother, more complete mask. Note that it still isn't perfect! If 
@@ -543,9 +649,9 @@ clear that some areas are still missed or incorrectly labelled.
 
 ## Automated thresholding
 
-First, let's clean up our layer list again. Make sure you only have the 'nuclei' 
-and 'Result of gaussian_blur' layers in the layer list - select any others and 
-remove them by clicking the ![](
+First, let's clean up our layer list again. Make sure you only have the 
+'nuclei', 'mask', 'blurred_mask' and 'Result of gaussian_blur' layers in the 
+layer list - select any others and remove them by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'} icon. Then, 
 if you still have the `napari-matplotlib` histogram open, close it by clicking 
@@ -564,10 +670,23 @@ This will open a panel on the right side of Napari. Select 'Result of
 gaussian_blur(data)' in the image row, then click Run:
 
 ![](fig/threshold-blurred-otsu-mask.png){alt="Mask of nuclei (brown) overlaid on 
-nuclei image - created with Otsu thresholding after gaussian blur"}
+nuclei image - created with Otsu thresholding after gaussian blur" width="60%"}
 
-This should produce a mask that is almost identical to the one we created with a 
-manual threshold.
+This should produce a mask (in a new layer called 'Result of threshold_otsu') 
+that is very similar to the one we created with a manual threshold. To make it 
+easier to compare, we can rename some of our layers by double clicking on their 
+name in the layer list - for example, rename 'mask' to 'manual_mask', 
+'blurred_mask' to 'manual_blurred_mask', and 'Result of threshold_otsu' to 
+'otsu_blurred_mask'. Recall that you can change the colour of a mask by clicking 
+the ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/shuffle.svg
+){alt="A screenshot of Napari's shuffle button" height='30px'} icon in the top 
+row of the layer controls. By toggling on/off the relevant ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
+){alt="A screenshot of Napari's eye button" height='30px'} icons, you should see 
+that Otsu chooses a slightly different threshold than we did in our 
+'manual_blurred_mask', labelling slightly smaller regions as nuclei in the final 
+result.
 
 How is Otsu finding the correct threshold? The details are rather complex, but 
 to summarise - Otsu's method is trying to find a threshold that minimises the 
@@ -587,7 +706,7 @@ For this exercise, we'll use the same example image as the [manual thresholding
 exercise](#manual-thresholds). If you don't have that image open, run the top 
 code block in that exercise to open the image:
 
-![](fig/manual-thresholding-exercise-shapes.png){alt="Noisy image containing a 
+![](fig/manual-thresholding-exercise-shapes.png){alt="Test image containing a 
 rectangle, circle and triangle"}
 
 Try some of the other automatic thresholding options provided by the 
@@ -603,6 +722,11 @@ For example:
 
 How do they compare to standard Otsu thresholding?  
 `Tools > Segmentation / binarization > Threshold (Otsu et al 1979, scikit-image, nsbatwm)`
+
+Recall that you can change the colour of a mask by clicking the ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/shuffle.svg
+){alt="A screenshot of Napari's shuffle button" height='30px'} icon in the top 
+row of the layer controls.
 
 :::::::::::::::::::::::: solution 
 
@@ -704,7 +828,11 @@ steps after it will also update. For example, select the 'Result of Gaussian
 the mask automatically updates, becoming more patchy and noisy.
 
 The napari assistant also has useful options to export and save workflows for 
-re-use. You can read more about the different options in the 
+re-use. This is important to make our image processing _reproducible_ - it 
+creates a clear record of every step that produced the final result. This makes 
+it easy for other researchers to replicate our work and try the same methods on 
+their own data. The napari-assistant can export workflows as python scripts or 
+jupyter notebooks, which you can read more about in their 
 [online documentation](https://www.napari-hub.org/plugins/napari-assistant).
 
 ## Summary
