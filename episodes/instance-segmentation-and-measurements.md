@@ -136,18 +136,89 @@ viewer.add_labels(instance_seg)
 alt="A screenshot of an instance segmentation of nuclei with some 
 incorrectly joined instances."}
 You should see the above image in the Napari viewer. The different colours
-are used to represent different nuclei. Does it look right? 
+are used to represent different nuclei. The instance segmentation assigns
+a different integer value to each nuclei, so counting the number of
+nuclei can be done very easily by taking the maximum value of the instance
+segmentation image.
 
-There are several instances of nuclei that are clearly separate being
-labelled as a single nuclei. Looking at the 4 nuclei at the bottom left that have all been labelled light blue, we can see that 3 of them are touching,
- so it is not surprising that they have been labelled as a single nuclei.
+```python
+
+#Calculate number of nuclei from instance segmentation
+print(f"Number of Nuclei = {instance_seg.max()}")
+```
+```output
+Number of Nuclei = 18
+```
+
+We can reuse Numpy's `count_nonzero` function on individual nuclei by 
+specifying an integer value between 1 and 18
+
+```python
+#How many pixels are there in nuclei 1
+nuclei_id = 1
+print(f"There are {np.count_nonzero(instance_seg == nuclei_id)}", 
+      f" pixels in nuclei {nuclei_id}") 
+```
+
+```output
+There are 43945  pixels in nuclei 1
+```
+
+More usefully we can can count the number of pixels in each of nuclei 
+and add them to a python list.
+
+```python
+#Create an empty list
+nuclei_pixels = []
+number_of_nuclei = instance_seg.max()
+#Go through each nuclei, 
+for nuclei_id in range (1, number_of_nuclei + 1):
+  # And append the number of pixels to the list
+  nuclei_pixels.append(np.count_nonzero(instance_seg == nuclei_id)
+print(nuclei_pixels)
+```
+```output
+[43945, 27187, 202258, 47652, 54018, 113935, 79226, 102444, 34421, 35227, 14525, 3258, 2000, 240, 155, 4709, 522, 7]
+```
+Looking at the numbers above, there's a lot of variation in the size
+of the nuclei. We can do some statistical analysis.
+
+```python
+#Use Numpy's peak to peak function (ptp) to find the range.
+print (f"Range of Nuclei sizes = {np.ptp(nuclei_pixels)} pixels")
+
+#Find the mean nuclei size
+print (f"Nuclei size mean = {np.mean(nuclei_pixels):.2f} pixels")
+
+#And the standard deviation
+print (f"Nuclei size standard dev. = {np.std(nuclei_pixels):.2f} pixels")
+```
+```output
+Range of Nuclei sizes = 202251 pixels
+Nuclei size mean = 42540.50 pixels
+Nuclei size standard dev. = 51971.86 pixels
+```
+
+Do these numbers reflect what we can see in the original images? Whilst 
+there is visible variation in the size of the nuclei, it is not of the 
+scale implied by these numbers. There are two reasons for this, 
+firstly the labeling has not correctly identified each separate 
+every nuclei, and secondly we haven't treated nuclei at the edge of the
+image correctly. 
+
+There are several instances of nuclei that look separate being
+labelled as a single nuclei. Referring to the image of instance 
+segmentation above we can see that the 4 nuclei at the bottom left that 
+have all been given a single label (light blue). We can see that 3 of them 
+are touching, so it is not surprising that they have been labelled as
+a single nuclei.
 What about the forth apparently separate nuclei? We should remind ourselves
 that this a 3 dimensional image. 
  
 You may remember from our [first lesson](imaging-software.html#d3d) that 
 we can change to 3D view mode by pressing the ![](
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/2D.svg
-){alt="A screenshot of Napari's 2D/3D toggle button" height='30px'} button.
+){alt="Napari's 2D/3D toggle" height='30px'} button.
 Try it now.
 
 ![](fig/instance_segmentation_wrong3d.png){
@@ -171,7 +242,7 @@ We'll use scikit-image's [ball](
 https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.ball) 
 function to generate a sphere to use as the footprint. We can change
 the radius of the footprint to control the amount of erosion. Try eroding 
-the semantic_seg layer with different integer values for the radius. 
+the `semantic_seg` layer with different integer values for the radius. 
 What radius do you need to ensure all nuclei are separate?
 
 ```python
@@ -179,7 +250,7 @@ from skimage.morphology import binary_erosion, ball
 
 #With radius = 1
 radius = 1
-eroded_mask = binary_erosion(semantic_seg, footprint = ball(radius = 1))
+eroded_mask = binary_erosion(semantic_seg, footprint = ball(radius))
 viewer.add_labels(eroded_mask, name = f'eroded ball {radius}')
 ```
 
@@ -233,6 +304,7 @@ viewer.add_labels(instance_seg)
 
 ![](fig/instance_segmentation_eroded.png){
 alt="Instance segmentation on the eroded segmentation mask"}
+
 
 [expand labels](
 https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.expand_labels)
