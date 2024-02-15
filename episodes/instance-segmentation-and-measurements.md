@@ -174,7 +174,7 @@ number_of_nuclei = instance_seg.max()
 #Go through each nuclei, 
 for nuclei_id in range (1, number_of_nuclei + 1):
   # And append the number of pixels to the list
-  nuclei_pixels.append(np.count_nonzero(instance_seg == nuclei_id)
+  nuclei_pixels.append(np.count_nonzero(instance_seg == nuclei_id))
 print(nuclei_pixels)
 ```
 ```output
@@ -202,16 +202,15 @@ Nuclei size standard dev. = 51971.86 pixels
 Do these numbers reflect what we can see in the original images? Whilst 
 there is visible variation in the size of the nuclei, it is not of the 
 scale implied by these numbers. There are two reasons for this, 
-firstly the labeling has not correctly identified each separate 
+firstly the labelling has not correctly identified each separate 
 every nuclei, and secondly we haven't treated nuclei at the edge of the
 image correctly. 
 
-There are several instances of nuclei that look separate being
-labelled as a single nuclei. Referring to the image of instance 
-segmentation above we can see that the 4 nuclei at the bottom left that 
-have all been given a single label (light blue). We can see that 3 of them 
-are touching, so it is not surprising that they have been labelled as
-a single nuclei.
+Looking at the labelling problem first, there are several instances of 
+nuclei that look separate being labelled as a single nuclei. Referring
+ to the image of instance segmentation above we can see that the 4 nuclei
+at the bottom left that have all been given a single label (light blue).
+Three of them are visibly touching, so it is not surprising that they have been labelled as a single nuclei.
 What about the forth apparently separate nuclei? We should remind ourselves
 that this a 3 dimensional image. 
  
@@ -299,80 +298,134 @@ eroded_semantic_seg = viewer.layers['eroded ball 10'].data
 instance_seg = label(eroded_semantic_seg)
 
 viewer.add_labels(instance_seg)
+
+print(f"Number of Nuclei after erosion  = {instance_seg.max()}")
 ```
 
+```outout
+Number of Nuclei after erosion  = 19
+```
 
 ![](fig/instance_segmentation_eroded.png){
 alt="Instance segmentation on the eroded segmentation mask"}
+Looking at the image above, there are no longer any incorrectly joined 
+nuclei. The absolute number of nuclei found hasn't changed much as the 
+erosion process has removed some partial nuclei around the edges of the 
+image.
 
-
-[expand labels](
+Performing any size or shape analysis on these nuclei will be flawed, as 
+they are heavily eroded. We can largely undo much of the erosion by using
+the scikit-images [expand labels](
 https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.expand_labels)
-
-
-from skimage.filters import threshold_otsu, gaussian
+function. 
 
 ```python
 from skimage.segmentation import expand_labels
+
+viewer.layers.remove('instance_seg')
+
+instance_seg = expand_labels(instance_seg, 10)
+
+viewer.add_labels(instance_seg)
 ```
 ![](fig/instance_segmentation_expanded.png){
 alt="Expanded Instance segmentation on the eroded segmentation mask"}
+There are now 19 apparently correctly labelled nuclei that appear to be 
+the same shape as in the original mask image.
 
 :::::::::::::::::::::::::challenge
 
-### Is the erosion reversible?
-
+### Is the erosion completely reversible?
+In order to create a correct instance segmentation we have performed a 
+mask erosion followed by a label expansion. This is a common image 
+operation often used to remove back ground noise, known as as `opening`, 
+or an erosion followed by a dilation. In addition to helping us separate 
+instances it will have the effect of removing objects smaller than the 
+erosion mask, in this case a sphere with radius 10 pixels. 
+If we compare the eroded and expanded image with the original mask, 
+what will we see?
 :::::::::::::::::::::::::solution
-Almost
 ![](fig/instance_segmentation_vs_semantic_segmentation.png){
 alt="A comparison between the expanded instance segmentation and the
 original semantic segmentation showing some mismatch between the borders."}
+Looking at the above image we can see some small mismatches around the 
+edges of most of the nuclei. Will the effect of this on the accuracy of 
+our results be signifiant?
 
 :::::::::::::::::::::::::
 :::::::::::::::::::::::::
 
+## Removing Border Cells
+If we do a pixel count on the instance segmentation now we will still get 
+some unrealistically small nuclei as some nuclei are only partially in the 
+image. We can remove these from our analyse using scikit-image's
 [clear border](
 https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.clear_border)
+function. 
 
 ```python
 
 from skimage.segmentation import clear_border
-instance_seg_clear=clear_border(instance_seg)
-viewer.add_labels(instance_seg_clear)
+
+viewer.layers.remove('instance_seg')
+
+instance_seg=clear_border(instance_seg)
+
+viewer.add_labels(instance_seg)
 ```
 
 ![](fig/instance_segmentation_clear_border.png){
 alt="The instance segmentation with any nuclei crossing the image boundary
 removed"}
+We now have an image with 11 clearly labelled nuclei. Let's check the 
+nuclei count as we did above.
 
-image = viewer.layers["nuclei"].data
+```python
+#First count the nuclei
+number_of_nuclei = instance_seg.max()
+print (f"There are {number_of_nuclei} individual nuclei")
+```
+```output
+There are 19 individual nuclei
+```
+What's happened here? When we ran `clear_borders` the pixels corresponding
+to border nuclei were set to zero, however the total number of labels 
+in the image was not changed, so whilst there are 19 labels in the 
+image some of them have no corresponding pixels. The easiest way to 
+correct this is to re label the image.
+```python
+instance_seg = label(instance_seg)
+number_of_nuclei = instance_seg.max()
+print (f"There are {number_of_nuclei} individual nuclei")
+```
+```output
+There are 11 individual nuclei
+```
+Now let's re-run our measurement script from above.
 
+```python
+#Create an empty list
+nuclei_pixels = []
+#Go through each nuclei,
+for nuclei_id in range (1, number_of_nuclei + 1):
+  # And append the number of pixels to the list
+  nuclei_pixels.append(np.count_nonzero(instance_seg == nuclei_id))
 
-viewer.add_labels(semantic_seg)
+#Use Numpy's peak to peak function (ptp) to find the range.
+print (f"Range of Nuclei sizes = {np.ptp(nuclei_pixels)} pixels")
 
-eroded = binary_erosion(semantic_seg, footprint=ball(10))
-instance_seg = label(eroded)
-instance_seg = expand_labels(instance_seg, distance=10)
+#Find the mean nuclei size
+print (f"Nuclei size mean = {np.mean(nuclei_pixels):.2f} pixels")
 
-viewer.add_labels(instance_seg)
+#And the standard deviation
+print (f"Nuclei size standard dev. = {np.std(nuclei_pixels):.2f} pixels")
+```
+```output
+Range of Nuclei sizes = 29540 pixels
+Nuclei size mean = 43663.55 pixels
+Nuclei size standard dev. = 8681.43 pixels
+```
 
-#we only want to measure whole nuclei. 
-tools > segmentation post processing > remove 
-
-pixels = []
-for cell in range (final_image.max() + 1):
-    ...:     pixels.append(np.count_nonzero(final_image == cell))
-
-np_pix = np.array(pixels)
-
-#total cells = 60 * 256 * 256
-np_pix.sum()
-
-#average cell size
-np_pix[1:].mean()
-#std deviation of cell size
-np_pix[1:].std()
-max() min () etc.
 
 How would you measure distances. You'd have to fit an ellipse or similar.
 
