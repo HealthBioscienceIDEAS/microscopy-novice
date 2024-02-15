@@ -14,9 +14,11 @@ exercises: 10
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Perform a workflow to create an instance segmentation.
+- Create a workflow to perform instance segmentation.
 
-- Use python to measure the cell sizes.
+- Create a workflow to measure the cell sizes.
+
+- Save the workflow to file for re-use on subsequent images.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -180,29 +182,50 @@ print(nuclei_pixels)
 ```output
 [43945, 27187, 202258, 47652, 54018, 113935, 79226, 102444, 34421, 35227, 14525, 3258, 2000, 240, 155, 4709, 522, 7]
 ```
-Looking at the numbers above, there's a lot of variation in the size
-of the nuclei. We can do some statistical analysis.
+Knowing the size of each nuclei in pixels is of limited value. We should be
+measuring in physical units, to do that we need to know the pixel size. 
+In the lesson on [filetypes and metadata](
+filetypes-and-metadata.html#pixel-size) we learnt how to inspect the image
+metadata to determine the pixel size. Unfortunately the sample image
+we're using in this lesson has no metadata, so for the purposes of 
+demonstration we'll assume a pixel size of 0.20&mu;m (x axis),  0.20&mu;m 
+(y axis) and 0.35&mu;m (z axis). We can then convert pixel size to 
+physical size.
+
+```python
+#Let's keep everything in micrometres
+pixel_size = 0.2 * 0.2 * 0.35
+
+#We can mutliply all nuclei by the pixel size by first converting the
+#nuclei_pixels to a numpy array.
+nuclei_um = pixel_size * np.array(nuclei_pixels)
+
+```
+
+We can then do some statistical analysis.
 
 ```python
 #Use Numpy's peak to peak function (ptp) to find the range.
-print (f"Range of Nuclei sizes = {np.ptp(nuclei_pixels)} pixels")
+print (f"Range of Nuclei sizes = {np.ptp(nuclei_um)} cubic micrometres.")
 
 #Find the mean nuclei size
-print (f"Nuclei size mean = {np.mean(nuclei_pixels):.2f} pixels")
+print (f"Nuclei size mean = {np.mean(nuclei_um):.2f} cubic micrometres.")
 
 #And the standard deviation
-print (f"Nuclei size standard dev. = {np.std(nuclei_pixels):.2f} pixels")
+print (f"Nuclei size standard dev. = {np.std(nuclei_um):.2f} cubic micrometres.")
 ```
 ```output
-Range of Nuclei sizes = 202251 pixels
-Nuclei size mean = 42540.50 pixels
-Nuclei size standard dev. = 51971.86 pixels
+Range of Nuclei sizes = 2831.51 cubic micrometres.
+Nuclei size mean = 595.57 cubic micrometres.
+Nuclei size standard dev. = 727.61 cubic micrometres.
 ```
 
 Do these numbers reflect what we can see in the original images? Whilst 
 there is visible variation in the size of the nuclei, it is not of the 
-scale implied by these numbers. There are two reasons for this, 
-firstly the labelling has not correctly identified each separate 
+scale implied by these numbers. The fact that the standard deviation is 
+larger than the mean value suggests an extreme variation in the 
+nuclei size that is not apparent in the images. There are two reasons 
+for this, firstly the labelling has not correctly identified each separate 
 every nuclei, and secondly we haven't treated nuclei at the edge of the
 image correctly. 
 
@@ -344,7 +367,9 @@ instances it will have the effect of removing objects smaller than the
 erosion mask, in this case a sphere with radius 10 pixels. 
 If we compare the eroded and expanded image with the original mask, 
 what will we see?
+
 :::::::::::::::::::::::::solution
+
 ![](fig/instance_segmentation_vs_semantic_segmentation.png){
 alt="A comparison between the expanded instance segmentation and the
 original semantic segmentation showing some mismatch between the borders."}
@@ -354,7 +379,6 @@ our results be signifiant?
 
 :::::::::::::::::::::::::
 :::::::::::::::::::::::::
-
 ## Removing Border Cells
 If we do a pixel count on the instance segmentation now we will still get 
 some unrealistically small nuclei as some nuclei are only partially in the 
@@ -411,33 +435,37 @@ for nuclei_id in range (1, number_of_nuclei + 1):
   # And append the number of pixels to the list
   nuclei_pixels.append(np.count_nonzero(instance_seg == nuclei_id))
 
+#Convert size in pixels to size in cubic micrometres
+nuclei_um = pixel_size * np.array(nuclei_pixels)
+
 #Use Numpy's peak to peak function (ptp) to find the range.
-print (f"Range of Nuclei sizes = {np.ptp(nuclei_pixels)} pixels")
+print (f"Range of Nuclei sizes = {np.ptp(nuclei_um):.2f} cubic micrometres.")
 
 #Find the mean nuclei size
-print (f"Nuclei size mean = {np.mean(nuclei_pixels):.2f} pixels")
+print (f"Nuclei size mean = {np.mean(nuclei_um):.2f} cubic micrometres.")
 
 #And the standard deviation
-print (f"Nuclei size standard dev. = {np.std(nuclei_pixels):.2f} pixels")
+print (f"Nuclei size standard dev. = {np.std(nuclei_um):.2f} cubic micrometres.")
 ```
 ```output
-Range of Nuclei sizes = 29540 pixels
-Nuclei size mean = 43663.55 pixels
-Nuclei size standard dev. = 8681.43 pixels
+Range of Nuclei sizes = 413.56 cubic micrometres.
+Nuclei size mean = 611.29 cubic micrometres.
+Nuclei size standard dev. = 121.54 cubic micrometres.
 ```
+These numbers provide a good quantitative measure of the quantity and
+size of cell nuclei suitable for an experiment investigating how these
+quantities change over time. 
 
+We can save our work from the console for re-use on data from subsequent
+time points, creating a repeatable measurement pipeline. 
 
-How would you measure distances. You'd have to fit an ellipse or similar.
-
-can do marching cubes, then if so desired you could find the maximum distance between two points in the mesh:
-vertices, faces, normals, value = marching_cubes(final_image, level = 10)
-
-viewer.add_surface((vertices, faces, value))
-%save current_session ~0/
-
-then 
-execfile('current_session.py')
-load current_session.py seems nicer
+```python
+%save measurement_pipeline ~0/
+```
+This will create a Python file `measurement_pipepine.py` that we can 
+load into the Napari console and re-run. You may choose to edit the file 
+with any text editor to remove some of the redundant steps we've made 
+whilst learning.
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
