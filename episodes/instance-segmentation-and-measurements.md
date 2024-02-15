@@ -457,10 +457,10 @@ size of cell nuclei suitable for an experiment investigating how these
 quantities change over time. 
 
 We can save our work from the console for re-use on data from subsequent
-time points, creating a repeatable measurement pipeline. 
+time points, creating a repeatable measurement workflow.
 
 ```python
-%save measurement_pipeline ~0/
+%save measurement_workflow ~0/
 ```
 This will create a Python file `measurement_pipepine.py` that we can 
 load into the Napari console and re-run. You may choose to edit the file 
@@ -469,11 +469,14 @@ whilst learning.
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- Using Napari's Python console we can access a large library of image processing functions.
+- We use a workflow of standard image processing functions to get from
+an image to a measurement.
 
-- We can use Python's help function to get information on what each function does.
+- The Napari console can be used to test various functions and develop the
+workflow.
 
-- We can assemble these functions into our own custom function to automate image analysis tasks.
+- The console's save and load functions allow to create a reproducible 
+image processing workflow.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
