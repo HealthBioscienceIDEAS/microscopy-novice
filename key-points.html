@@ -262,6 +262,18 @@
 </div>
 <!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush9">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading9">
+        <a href="quality-control-and-manual-segmentation.html">8. Quality control and manual segmentation</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -415,6 +427,30 @@ resolution.</p></li>
 <li><p>Image histograms are a useful quality control measure during
 acquisition. In general, we want our histogram to show pixel values
 spread over most of the possible intensity range.</p></li>
+</ul></section><section id="quality-control-and-manual-segmentation"><h2 class="section-heading"><a href="quality-control-and-manual-segmentation.html">Quality control and manual segmentation</a></h2>
+<hr class="half-width">
+<ul>
+<li><p>The first step in any image processing workflow is quality
+control. For example, checking the histograms of your images.</p></li>
+<li><p>Segmentation is the process of identifying what each pixel in an
+image represents e.g. is that pixel part of a nucleus or not?</p></li>
+<li><p>Segmentation can be broadly split into ‘semantic segmentation’
+and ‘instance segmentation’. Semantic segmentation assigns pixels to
+specific classes (like nuclei or background), while instance
+segmentation assigns pixels to individual ‘instances’ of a class (like
+individual nuclei).</p></li>
+<li><p>Segmentations are represented in the computer in the same way as
+standard images. The difference is that pixel values represent classes
+or instances, rather than light intensity.</p></li>
+<li><p>Napari uses <code>Labels</code> layers for segmentations. These
+offer various annotation tools like the paintbrush, fill bucket
+etc.</p></li>
+<li><p>Fully manual segmentation is generally only suitable for small
+images. More automated approaches (based on classic image processing,
+machine learning or deep learning) are necessary to scale to larger
+images. Even with automated methods, manual segmentation is often still
+a key component - both for generating groundtruth data and cleaning up
+problematic areas of the final segmentation.</p></li>
 </ul></section>
 </div>
     </main>

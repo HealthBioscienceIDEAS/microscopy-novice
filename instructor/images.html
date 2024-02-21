@@ -263,6 +263,18 @@
 </div>
 <!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush9">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading9">
+        <a href="quality-control-and-manual-segmentation.html">8. Quality control and manual segmentation</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -690,7 +702,167 @@ image. This was acquired with confocal fluorescence microscopy.</figcaption></fi
 <figure><img src="../fig/aliasing.png" style="width:80.0%" alt="Top - a diagram of six round cells (blue, 5  micrometre wide) overlaid by a 10 micrometre pixel grid.  Bottom - the equivalent image with a grayscale colormap" class="figure mx-auto d-block"></figure><hr>
 <h3 id="choosing-acquisition-settings-figure-11">Figure 11</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Diagram of four example acquisition  image histograms (labelled a-d)’</p>
-<figure><img src="../fig/exercise-qc-histograms.png" alt="Diagram of four example acquisition  image histograms (labelled a-d)" class="figure mx-auto d-block"></figure><hr></section>
+<figure><img src="../fig/exercise-qc-histograms.png" alt="Diagram of four example acquisition  image histograms (labelled a-d)" class="figure mx-auto d-block"></figure><hr></section><section id="quality-control-and-manual-segmentation"><h2 class="section-heading"><a href="quality-control-and-manual-segmentation.html">Quality control and manual segmentation</a></h2>
+<hr class="half-width">
+<h3 id="quality-control-and-manual-segmentation-figure-1">Figure 1</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of a flourescence microscopy image  of some cells in Napari’</p>
+<figure><img src="../fig/cells-napari.png" alt="A screenshot of a flourescence microscopy image  of some cells in Napari" class="figure mx-auto d-block"></figure><hr>
+<h3 id="quality-control-and-manual-segmentation-figure-2">Figure 2</h3>
+<p aria-hidden="true">Image 1 of 2: ‘A screenshot of napari-matplotlib's zoom button’</p>
+<p aria-hidden="true">Image 2 of 2: ‘A screenshot of napari-matplotlib's home button’</p>
+<p>If you need a refresher on how to use <code>napari matplotlib</code>,
+check out the <a href="image-display.html#napari-plugins">image display
+episode</a>. It may also be useful to zoom into parts of the image
+histogram by clicking the <img src="https://raw.githubusercontent.com/matplotlib/napari-matplotlib/main/src/napari_matplotlib/icons/black/Zoom.png" alt="A screenshot of napari-matplotlib's zoom button" height="30" class="figure">
+icon at the top of histogram, then clicking and dragging a box around
+the region you want to zoom into. You can reset your histogram by
+clicking the <img src="https://raw.githubusercontent.com/matplotlib/napari-matplotlib/main/src/napari_matplotlib/icons/black/Home.png" alt="A screenshot of napari-matplotlib's home button" height="30" class="figure">
+icon.</p>
+<hr>
+<h3 id="quality-control-and-manual-segmentation-figure-3">Figure 3</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A histogram of the 29th z slice of Napari's  cell sample image’</p>
+<figure><img src="../fig/nuclei-histogram.png" alt="A histogram of the 29th z slice of Napari's  cell sample image" class="figure mx-auto d-block"></figure><hr>
+<h3 id="quality-control-and-manual-segmentation-figure-4">Figure 4</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of napari-matplotlib's zoom button’</p>
+<p>If we look at the brightest part of the image, near z=29, we can see
+that there are indeed pixel values over much of this possible range. At
+first glance, it may seem like there are no values at the right side of
+the histogram, but if we zoom in using the <img src="https://raw.githubusercontent.com/matplotlib/napari-matplotlib/main/src/napari_matplotlib/icons/black/Zoom.png" alt="A screenshot of napari-matplotlib's zoom button" height="30" class="figure">
+icon we can clearly see pixels at these higher values.</p>
+<hr>
+<h3 id="quality-control-and-manual-segmentation-figure-5">Figure 5</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A histogram of the 29th z slice of  Napari's cell sample image - zoomed in to the range from 25000 to 60000’</p>
+<figure><img src="../fig/nuclei-histogram-zoom.png" alt="A histogram of the 29th z slice of  Napari's cell sample image - zoomed in to the range from 25000 to 60000" class="figure mx-auto d-block"></figure><hr>
+<h3 id="quality-control-and-manual-segmentation-figure-6">Figure 6</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of Napari's console button’</p>
+<p>First, let’s take a quick look at a rough semantic segmentation. Open
+Napari’s console by pressing the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg" alt="A screenshot of Napari's console button" height="30" class="figure"> button,
+then copy and paste the code below. Don’t worry about the details of
+what’s happening in the code - we’ll look at some of these concepts like
+gaussian blur and otsu thresholding in later episodes!</p>
+<hr>
+<h3 id="quality-control-and-manual-segmentation-figure-7">Figure 7</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of a rough semantic  segmentation of nuclei in Napari’</p>
+<figure><img src="../fig/semantic-seg-napari.png" alt="A screenshot of a rough semantic  segmentation of nuclei in Napari" class="figure mx-auto d-block"></figure><hr>
+<h3 id="quality-control-and-manual-segmentation-figure-8">Figure 8</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of Napari's eye button’</p>
+<p>You should see an image appear that highlights the nuclei in brown.
+Try toggling the ‘semantic_seg’ layer on and off multiple times, by
+clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
+to its name in the layer list. You should see that the brown areas match
+the nucleus boundaries reasonably well.</p>
+<hr>
+<h3 id="quality-control-and-manual-segmentation-figure-9">Figure 9</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of a rough instance  segmentation of nuclei in Napari’</p>
+<figure><img src="../fig/instance-seg-napari.png" alt="A screenshot of a rough instance  segmentation of nuclei in Napari" class="figure mx-auto d-block"></figure><hr>
+<h3 id="quality-control-and-manual-segmentation-figure-10">Figure 10</h3>
+<p aria-hidden="true">Image 1 of 2: ‘A screenshot of Napari's eye button’</p>
+<p aria-hidden="true">Image 2 of 2: ‘A screenshot of Napari's eye button’</p>
+<p>You should see an image appear that highlights nuclei in different
+colours. Let’s hide the ‘semantic_seg’ layer by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
+to its name in Napari’s layer list. Then try toggling the ‘instance_seg’
+layer on and off multiple times, by clicking the corresponding <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon. You
+should see that the coloured areas match most of the nucleus boundaries
+reasonably well, although there are some areas that are less well
+labelled.</p>
+<hr>
+<h3 id="quality-control-and-manual-segmentation-figure-11">Figure 11</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of Napari's eye button’</p>
+<li>Click the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
+to ‘semantic_seg’ in the layer list to make it visible.</li>
+<hr>
+<h3 id="quality-control-and-manual-segmentation-figure-12">Figure 12</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of Napari's eye button’</p>
+<li>Click the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
+to ‘instance_seg’ in the layer list to hide it.</li>
+<hr>
+<h3 id="quality-control-and-manual-segmentation-figure-13">Figure 13</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot highlighting the pixel  value of a nuclei segmentation in Napari’</p>
+<figure><img src="../fig/pixel-value-segmentation.png" alt="A screenshot highlighting the pixel  value of a nuclei segmentation in Napari" class="figure mx-auto d-block"></figure><hr>
+<h3 id="quality-control-and-manual-segmentation-figure-14">Figure 14</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of Napari's eye button’</p>
+<li>Click the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
+to ‘instance_seg’ in the layer list to make it visible.</li>
+<hr>
+<h3 id="quality-control-and-manual-segmentation-figure-15">Figure 15</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of Napari's eye button’</p>
+<li>Click the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
+to ‘semantic_seg’ in the layer list to hide it.</li>
+<hr>
+<h3 id="quality-control-and-manual-segmentation-figure-16">Figure 16</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of Napari's delete layer button’</p>
+<li>Click the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
+icon to remove these layers.</li>
+<hr>
+<h3 id="quality-control-and-manual-segmentation-figure-17">Figure 17</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of Napari's labels layer button’</p>
+<p>Then click on the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_labels.svg" alt="A screenshot of Napari's labels layer button" height="30" class="figure">
+icon (at the top of the layer list) to create a new <code>Labels</code>
+layer.</p>
+<hr>
+<h3 id="quality-control-and-manual-segmentation-figure-18">Figure 18</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of the layer controls for  labels layers in Napari’</p>
+<figure><img src="../fig/label-layer-controls.png" alt="A screenshot of the layer controls for  labels layers in Napari" class="figure mx-auto d-block"></figure><hr>
+<h3 id="quality-control-and-manual-segmentation-figure-19">Figure 19</h3>
+<p aria-hidden="true">Image 1 of 3: ‘A screenshot of Napari's paintbrush button’</p>
+<p aria-hidden="true">Image 2 of 3: ‘A screenshot of Napari's pan arrows button’</p>
+<p aria-hidden="true">Image 3 of 3: ‘A screenshot of Napari's erase button’</p>
+<p>Let’s start by painting an individual nucleus. Select the paintbrush
+by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/paint.svg" alt="A screenshot of Napari's paintbrush button" height="30" class="figure"> icon
+in the top row of the layer controls. Then click and drag across the
+image to label pixels. You can change the size of the brush using the
+‘brush size’ slider in the layer controls. To return to normal movement,
+you can click the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/pan_arrows.svg" alt="A screenshot of Napari's pan arrows button" height="30" class="figure"> icon
+in the top row of the layer controls, or hold down spacebar to activate
+it temporarily (this is useful if you want to pan slightly while
+painting). To remove painted areas, you can activate the label eraser by
+clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/erase.svg" alt="A screenshot of Napari's erase button" height="30" class="figure"> icon.</p>
+<hr>
+<h3 id="quality-control-and-manual-segmentation-figure-20">Figure 20</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of a single manually  painted nucleus in Napari’</p>
+<figure><img src="../fig/single-painted-nucleus.png" alt="A screenshot of a single manually  painted nucleus in Napari" class="figure mx-auto d-block"></figure><hr>
+<h3 id="quality-control-and-manual-segmentation-figure-21">Figure 21</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of two manually painted nuclei  in Napari’</p>
+<figure><img src="../fig/two-painted-nuclei.png" alt="A screenshot of two manually painted nuclei  in Napari" class="figure mx-auto d-block"></figure><hr>
+<h3 id="quality-control-and-manual-segmentation-figure-22">Figure 22</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of Napari's shuffle button’</p>
+<p>When you paint with a new value, you’ll see that Napari automatically
+assigns it a new colour. This is because <code>Labels</code> layers use
+<a href="https://napari.org/stable/howtos/layers/labels.html#shuffling-label-colors" class="external-link">a
+special colormap/LUT for their pixel values</a>. Recall from the <a href="image-display.html#colormaps-luts">image display episode</a> that
+colormaps are a way to convert pixel values into corresponding colours
+for display. The colormap for <code>Labels</code> layers will assign
+random colours to each pixel value, trying to ensure that nearby values
+(like 2 vs 3) are given dissimilar colours. This helps to make it easier
+to distinguish different labels. You can shuffle the colours used by
+clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/shuffle.svg" alt="A screenshot of Napari's shuffle button" height="30" class="figure"> icon in
+the top row of the layer controls. Note that the pixel value of 0 will
+always be shown as transparent - this is because it is usually used to
+represent the background.</p>
+<hr>
+<h3 id="quality-control-and-manual-segmentation-figure-23">Figure 23</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of Napari's fill button’</p>
+<li>What does the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/fill.svg" alt="A screenshot of Napari's fill button" height="30" class="figure"> icon
+do?</li>
+<hr>
+<h3 id="quality-control-and-manual-segmentation-figure-24">Figure 24</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of Napari's picker button’</p>
+<li>What does the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/picker.svg" alt="A screenshot of Napari's picker button" height="30" class="figure"> icon
+do?</li>
+<hr>
+<h3 id="quality-control-and-manual-segmentation-figure-25">Figure 25</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of Napari's fill button’</p>
+<h3 id="icon">
+<img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/fill.svg" alt="A screenshot of Napari's fill button" height="30" class="figure"> icon<a class="anchor" aria-label="anchor" href="#icon"></a>
+</h3>
+<hr>
+<h3 id="quality-control-and-manual-segmentation-figure-26">Figure 26</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of Napari's picker button’</p>
+<h3 id="icon-1">
+<img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/picker.svg" alt="A screenshot of Napari's picker button" height="30" class="figure">
+icon<a class="anchor" aria-label="anchor" href="#icon-1"></a>
+</h3>
+<hr></section>
 </div>
     </main>
 </div>
