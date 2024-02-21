@@ -274,6 +274,18 @@
 </div>
 <!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush10">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading10">
+        <a href="filters-and-thresholding.html">9. Filters and thresholding</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -451,6 +463,22 @@ machine learning or deep learning) are necessary to scale to larger
 images. Even with automated methods, manual segmentation is often still
 a key component - both for generating groundtruth data and cleaning up
 problematic areas of the final segmentation.</p></li>
+</ul></section><section id="filters-and-thresholding"><h2 class="section-heading"><a href="filters-and-thresholding.html">Filters and thresholding</a></h2>
+<hr class="half-width">
+<ul>
+<li><p>Thresholding is simply choosing a specific pixel value to use as
+the cut-off between background and your class of interest.</p></li>
+<li><p>Thresholds can be chosen manually based on the image
+histogram</p></li>
+<li><p>Thresholds can be chosen automatically with various methods
+e.g. Otsu</p></li>
+<li><p>Filters modify pixel values in an image by using a specific
+‘kernel’</p></li>
+<li><p>Gaussian filters are useful to blur an image before thresholding.
+The ‘sigma’ controls the strength of the blurring effect.</p></li>
+<li><p>Image processing operations may modify the data type of your
+image - often converting it to <code>float32</code> or
+<code>float64</code>.</p></li>
 </ul></section>
 </div>
     </main>
