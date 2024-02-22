@@ -352,7 +352,7 @@ instance_seg = expand_labels(instance_seg, 10)
 viewer.add_labels(instance_seg)
 ```
 ![](fig/instance_segmentation_expanded.png){
-alt="Expanded Instance segmentation on the eroded segmentation mask"}
+alt="Expanded instance segmentation on the eroded segmentation mask"}
 There are now 19 apparently correctly labelled nuclei that appear to be 
 the same shape as in the original mask image.
 
