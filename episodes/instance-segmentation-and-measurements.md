@@ -237,7 +237,7 @@ Three of them are visibly touching, so it is not surprising that they have been 
 What about the forth apparently separate nuclei? We should remind ourselves
 that this a 3 dimensional image. 
  
-You may remember from our [first lesson](imaging-software.html#d3d) that 
+You may remember from our [first lesson](imaging-software.md#d3d) that 
 we can change to 3D view mode by pressing the ![](
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/2D.svg
 ){alt="Napari's 2D/3D toggle" height='30px'} button.
