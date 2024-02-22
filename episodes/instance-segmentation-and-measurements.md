@@ -29,7 +29,7 @@ session to a Python script that we can then re-use to easily repeat our
 workflow on new images.
 
 The first steps assume you are starting a new session, if you have come 
-straight from the last lesson and already have a binary mask image you 
+straight from the last lesson and already have a mask image you 
 can skip them.
 
 First, let's open one of Napari's sample images with:
