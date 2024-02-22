@@ -1,5 +1,5 @@
 ---
-title: 'Instance Segmentation and Measurements'
+title: 'Instance segmentation and measurements'
 teaching: 30
 exercises: 10
 ---
