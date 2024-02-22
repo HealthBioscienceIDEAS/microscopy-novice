@@ -375,7 +375,7 @@ alt="A comparison between the expanded instance segmentation and the
 original semantic segmentation showing some mismatch between the borders."}
 Looking at the above image we can see some small mismatches around the 
 edges of most of the nuclei. Will the effect of this on the accuracy of 
-our results be signifiant?
+our results be significant?
 
 :::::::::::::::::::::::::
 :::::::::::::::::::::::::
