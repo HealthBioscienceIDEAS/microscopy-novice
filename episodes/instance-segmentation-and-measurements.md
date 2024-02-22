@@ -185,7 +185,7 @@ print(nuclei_pixels)
 Knowing the size of each nuclei in pixels is of limited value. We should be
 measuring in physical units, to do that we need to know the pixel size. 
 In the lesson on [filetypes and metadata](
-filetypes-and-metadata.html#pixel-size) we learnt how to inspect the image
+filetypes-and-metadata.md#pixel-size) we learnt how to inspect the image
 metadata to determine the pixel size. Unfortunately the sample image
 we're using in this lesson has no metadata, so for the purposes of 
 demonstration we'll assume a pixel size of 0.20&mu;m (x axis),  0.20&mu;m 
