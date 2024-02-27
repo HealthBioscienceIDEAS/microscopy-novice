@@ -8,7 +8,7 @@ exercises: 10
 
 - How do we perform instance segmentation in Napari?
 - How do we measure cell size with Napari?
-- How do we save our work to create re-usable work flows.
+- How do we save our work to create re-usable workflows?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
