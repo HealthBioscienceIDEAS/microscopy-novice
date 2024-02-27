@@ -192,14 +192,16 @@ measuring in physical units, to do that we need to know the pixel size.
 In the lesson on [filetypes and metadata](
 filetypes-and-metadata.md#pixel-size) we learnt how to inspect the image
 metadata to determine the pixel size. Unfortunately the sample image
-we're using in this lesson has no metadata, so for the purposes of
-demonstration we'll assume a pixel size of 0.20&mu;m (x axis),  0.20&mu;m
-(y axis) and 0.35&mu;m (z axis). We can then convert pixel size to
-physical size.
+we're using in this lesson has no metadata. Fortunately the image pixel sizes
+can be found in the [scikit-image documentation](
+https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.cells3d)
+. So we can assign a pixel size of 0.26&mu;m (x axis), 0.26&mu;m
+(y axis) and 0.29&mu;m (z axis). We can then convert size in pixels to
+size in micrometres.
 
 ```python
 # Let's keep everything in micrometres
-pixel_size = 0.2 * 0.2 * 0.35
+pixel_volume = 0.26 * 0.26 * 0.29
 
 # We can mutliply all nuclei by the pixel size by first converting the
 # nucleus_pixels to a numpy array.
