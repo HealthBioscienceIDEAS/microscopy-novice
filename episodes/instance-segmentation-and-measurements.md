@@ -223,9 +223,9 @@ print(f"Nucleus volume mean = {np.mean(nucleus_volume):.2f} cubic micrometres.")
 print(f"Nucleus volume standard dev. = {np.std(nucleus_volume):.2f} cubic micrometres.")
 ```
 ```output
-Range of Nucleus volumes = 2831.51 cubic micrometres.
-Nucleus volume mean = 595.57 cubic micrometres.
-Nucleus volume standard dev. = 727.61 cubic micrometres.
+Range of Nucleus volumes = 3964.92 cubic micrometres.
+Nucleus volume mean = 833.97 cubic micrometres.
+Nucleus volume standard dev. = 1018.86 cubic micrometres.
 ```
 
 Do these numbers reflect what we can see in the original images? Whilst
@@ -456,9 +456,9 @@ print(f"Nucleus volume mean = {np.mean(nucleus_volume):.2f} cubic micrometres.")
 print(f"Nucleus volume standard dev. = {np.std(nucleus_volume):.2f} cubic micrometres.")
 ```
 ```output
-Range of Nucleus volumes = 413.56 cubic micrometres.
-Nucleus volume mean = 611.29 cubic micrometres.
-Nucleus volume standard dev. = 121.54 cubic micrometres.
+Range of Nucleus volumes = 579.10 cubic micrometres.
+Nucleus volume mean = 855.98 cubic micrometres.
+Nucleus volume standard dev. = 170.19 cubic micrometres.
 ```
 These numbers provide a good quantitative measure of the quantity and
 volume of cell nuclei suitable for an experiment investigating how these
