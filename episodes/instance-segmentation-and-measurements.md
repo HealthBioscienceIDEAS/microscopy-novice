@@ -393,7 +393,7 @@ from skimage.segmentation import clear_border
 
 viewer.layers.remove('instance_seg')
 
-instance_seg=clear_border(instance_seg)
+instance_seg = clear_border(instance_seg)
 
 viewer.add_labels(instance_seg)
 ```
