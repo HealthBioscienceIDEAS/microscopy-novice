@@ -79,7 +79,7 @@ nuclei_percent = nuclei_pixels / total_pixels * 100
 # And write the results to the console with some formatting.
 # The ":2f" part tells Python to only print 2 decimal points.
 
-print (f"Percent Nuclei = {nuclei_percent:.2f}%")
+print(f"Percent Nuclei = {nuclei_percent:.2f}%")
 
 ```
 
@@ -174,7 +174,7 @@ and add them to a python list.
 nuclei_pixels = []
 number_of_nuclei = instance_seg.max()
 # Go through each nuclei,
-for nuclei_id in range (1, number_of_nuclei + 1):
+for nuclei_id in range(1, number_of_nuclei + 1):
   # And append the number of pixels to the list
   nuclei_pixels.append(np.count_nonzero(instance_seg == nuclei_id))
 print(nuclei_pixels)
@@ -206,13 +206,13 @@ We can then do some statistical analysis.
 
 ```python
 # Use Numpy's peak to peak function (ptp) to find the range.
-print (f"Range of Nuclei sizes = {np.ptp(nuclei_um)} cubic micrometres.")
+print(f"Range of Nuclei sizes = {np.ptp(nuclei_um)} cubic micrometres.")
 
 # Find the mean nuclei size
-print (f"Nuclei size mean = {np.mean(nuclei_um):.2f} cubic micrometres.")
+print(f"Nuclei size mean = {np.mean(nuclei_um):.2f} cubic micrometres.")
 
 # And the standard deviation
-print (f"Nuclei size standard dev. = {np.std(nuclei_um):.2f} cubic micrometres.")
+print(f"Nuclei size standard dev. = {np.std(nuclei_um):.2f} cubic micrometres.")
 ```
 ```output
 Range of Nuclei sizes = 2831.51 cubic micrometres.
@@ -407,7 +407,7 @@ nuclei count as we did above.
 ```python
 # First count the nuclei
 number_of_nuclei = instance_seg.max()
-print (f"There are {number_of_nuclei} individual nuclei")
+print(f"There are {number_of_nuclei} individual nuclei")
 ```
 ```output
 There are 19 individual nuclei
@@ -420,7 +420,7 @@ correct this is to re label the image.
 ```python
 instance_seg = label(instance_seg)
 number_of_nuclei = instance_seg.max()
-print (f"There are {number_of_nuclei} individual nuclei")
+print(f"There are {number_of_nuclei} individual nuclei")
 ```
 ```output
 There are 11 individual nuclei
@@ -431,7 +431,7 @@ Now let's re-run our measurement script from above.
 # Create an empty list
 nuclei_pixels = []
 # Go through each nuclei,
-for nuclei_id in range (1, number_of_nuclei + 1):
+for nuclei_id in range(1, number_of_nuclei + 1):
   # And append the number of pixels to the list
   nuclei_pixels.append(np.count_nonzero(instance_seg == nuclei_id))
 
@@ -439,13 +439,13 @@ for nuclei_id in range (1, number_of_nuclei + 1):
 nuclei_um = pixel_size * np.array(nuclei_pixels)
 
 # Use Numpy's peak to peak function (ptp) to find the range.
-print (f"Range of Nuclei sizes = {np.ptp(nuclei_um):.2f} cubic micrometres.")
+print(f"Range of Nuclei sizes = {np.ptp(nuclei_um):.2f} cubic micrometres.")
 
 # Find the mean nuclei size
-print (f"Nuclei size mean = {np.mean(nuclei_um):.2f} cubic micrometres.")
+print(f"Nuclei size mean = {np.mean(nuclei_um):.2f} cubic micrometres.")
 
 # And the standard deviation
-print (f"Nuclei size standard dev. = {np.std(nuclei_um):.2f} cubic micrometres.")
+print(f"Nuclei size standard dev. = {np.std(nuclei_um):.2f} cubic micrometres.")
 ```
 ```output
 Range of Nuclei sizes = 413.56 cubic micrometres.
