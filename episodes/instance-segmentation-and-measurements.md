@@ -131,7 +131,7 @@ from skimage.measure import label
 # Run the label function on the binary mask image
 instance_seg = label(semantic_seg)
 
-# Add the result to out viewer
+# Add the result to the viewer
 viewer.add_labels(instance_seg)
 ```
 ![](fig/instance_segmentation_wrong.png){
