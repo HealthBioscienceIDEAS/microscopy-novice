@@ -157,32 +157,32 @@ print(f"Number of Nuclei = {instance_seg.max()}")
 Number of Nuclei = 18
 ```
 
-We can reuse Numpy's `count_nonzero` function on individual nuclei by
+We can reuse Numpy's `count_nonzero` function on an individual nucleus by
 specifying an integer value between 1 and 18
 
 ```python
-# How many pixels are there in nuclei 1
-nuclei_id = 1
-print(f"There are {np.count_nonzero(instance_seg == nuclei_id)}",
-      f" pixels in nuclei {nuclei_id}")
+# How many pixels are there in nucleus 1
+nucleus_id = 1
+print(f"There are {np.count_nonzero(instance_seg == nucleus_id)}",
+      f" pixels in nucleus {nucleus_id}")
 ```
 
 ```output
-There are 43945  pixels in nuclei 1
+There are 43945  pixels in nucleus 1
 ```
 
-More usefully we can can count the number of pixels in each of nuclei
+More usefully we can can count the number of pixels in each of the nuclei
 and add them to a python list.
 
 ```python
 # Create an empty list
-nuclei_pixels = []
+nucleus_pixels = []
 number_of_nuclei = instance_seg.max()
-# Go through each nuclei,
-for nuclei_id in range(1, number_of_nuclei + 1):
+# Go through each nucleus,
+for nucleus_id in range(1, number_of_nuclei + 1):
   # And append the number of pixels to the list
-  nuclei_pixels.append(np.count_nonzero(instance_seg == nuclei_id))
-print(nuclei_pixels)
+  nucleus_pixels.append(np.count_nonzero(instance_seg == nucleus_id))
+print(nucleus_pixels)
 ```
 ```output
 [43945, 27187, 202258, 47652, 54018, 113935, 79226, 102444, 34421, 35227, 14525, 3258, 2000, 240, 155, 4709, 522, 7]
@@ -202,8 +202,8 @@ physical size.
 pixel_size = 0.2 * 0.2 * 0.35
 
 # We can mutliply all nuclei by the pixel size by first converting the
-# nuclei_pixels to a numpy array.
-nuclei_um = pixel_size * np.array(nuclei_pixels)
+# nucleus_pixels to a numpy array.
+nucleus_um = pixel_size * np.array(nucleus_pixels)
 
 ```
 
@@ -211,18 +211,18 @@ We can then do some statistical analysis.
 
 ```python
 # Use Numpy's peak to peak function (ptp) to find the range.
-print(f"Range of Nuclei sizes = {np.ptp(nuclei_um)} cubic micrometres.")
+print(f"Range of Nucleus sizes = {np.ptp(nucleus_um)} cubic micrometres.")
 
-# Find the mean nuclei size
-print(f"Nuclei size mean = {np.mean(nuclei_um):.2f} cubic micrometres.")
+# Find the mean nucleus size
+print(f"Nucleus size mean = {np.mean(nucleus_um):.2f} cubic micrometres.")
 
 # And the standard deviation
-print(f"Nuclei size standard dev. = {np.std(nuclei_um):.2f} cubic micrometres.")
+print(f"Nucleus size standard dev. = {np.std(nucleus_um):.2f} cubic micrometres.")
 ```
 ```output
-Range of Nuclei sizes = 2831.51 cubic micrometres.
-Nuclei size mean = 595.57 cubic micrometres.
-Nuclei size standard dev. = 727.61 cubic micrometres.
+Range of Nucleus sizes = 2831.51 cubic micrometres.
+Nucleus size mean = 595.57 cubic micrometres.
+Nucleus size standard dev. = 727.61 cubic micrometres.
 ```
 
 Do these numbers reflect what we can see in the original images? Whilst
@@ -231,7 +231,7 @@ scale implied by these numbers. The fact that the standard deviation is
 larger than the mean value suggests an extreme variation in the
 nuclei size that is not apparent in the images. There are two reasons
 for this, firstly the labelling has not correctly identified each separate
-every nuclei, and secondly we haven't treated nuclei at the edge of the
+every nucleus, and secondly we haven't treated nuclei at the edge of the
 image correctly.
 
 Looking at the labelling problem first, there are several instances of
@@ -252,7 +252,7 @@ Try it now.
 alt="A screenshot of an instance segmentation of nuclei in 3D mode with some
 incorrectly joined instances."}
 You should see the image rendered in 3D, with a clear join between the
-upper most light blue nuclei and its neighour. So now we understand why the
+upper most light blue nucleus and its neighour. So now we understand why the
 instance labelling has failed, what can we do to fix it?
 
 ::::::::::::::::::::::::: challenge
@@ -317,7 +317,7 @@ Erosion with a radius of 10 separates all nuclei.
 :::::::::::::::::::::::::
 :::::::::::::::::::::::::
 
-Now we have separate nuclei lets try creating instance labels
+Now we have separate nuclei, lets try creating instance labels
 again.
 
 ```python
@@ -434,28 +434,28 @@ Now let's re-run our measurement script from above.
 
 ```python
 # Create an empty list
-nuclei_pixels = []
-# Go through each nuclei,
-for nuclei_id in range(1, number_of_nuclei + 1):
+nucleus_pixels = []
+# Go through each nucleus,
+for nucleus_id in range(1, number_of_nuclei + 1):
   # And append the number of pixels to the list
-  nuclei_pixels.append(np.count_nonzero(instance_seg == nuclei_id))
+  nucleus_pixels.append(np.count_nonzero(instance_seg == nucleus_id))
 
 # Convert size in pixels to size in cubic micrometres
-nuclei_um = pixel_size * np.array(nuclei_pixels)
+nucleus_um = pixel_size * np.array(nucleus_pixels)
 
 # Use Numpy's peak to peak function (ptp) to find the range.
-print(f"Range of Nuclei sizes = {np.ptp(nuclei_um):.2f} cubic micrometres.")
+print(f"Range of Nucleus sizes = {np.ptp(nucleus_um):.2f} cubic micrometres.")
 
 # Find the mean nuclei size
-print(f"Nuclei size mean = {np.mean(nuclei_um):.2f} cubic micrometres.")
+print(f"Nucleus size mean = {np.mean(nucleus_um):.2f} cubic micrometres.")
 
 # And the standard deviation
-print(f"Nuclei size standard dev. = {np.std(nuclei_um):.2f} cubic micrometres.")
+print(f"Nucleus size standard dev. = {np.std(nucleus_um):.2f} cubic micrometres.")
 ```
 ```output
-Range of Nuclei sizes = 413.56 cubic micrometres.
-Nuclei size mean = 611.29 cubic micrometres.
-Nuclei size standard dev. = 121.54 cubic micrometres.
+Range of Nucleus sizes = 413.56 cubic micrometres.
+Nucleus size mean = 611.29 cubic micrometres.
+Nucleus size standard dev. = 121.54 cubic micrometres.
 ```
 These numbers provide a good quantitative measure of the quantity and
 size of cell nuclei suitable for an experiment investigating how these
