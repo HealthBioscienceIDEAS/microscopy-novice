@@ -382,7 +382,7 @@ our results be significant?
 ## Removing Border Cells
 If we do a pixel count on the instance segmentation now we will still get
 some unrealistically small nuclei as some nuclei are only partially in the
-image. We can remove these from our analyse using scikit-image's
+image. We can remove these from our analysis using scikit-image's
 [clear border](
 https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.clear_border)
 function.
