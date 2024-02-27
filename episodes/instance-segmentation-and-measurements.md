@@ -139,7 +139,7 @@ alt="A screenshot of an instance segmentation of nuclei with some
 incorrectly joined instances."}
 You should see the above image in the Napari viewer. The different colours
 are used to represent different nuclei. The instance segmentation assigns
-a different integer value to each nuclei, so counting the number of
+a different integer value to each nucleus, so counting the number of
 nuclei can be done very easily by taking the maximum value of the instance
 segmentation image.
 
