@@ -213,8 +213,8 @@ nucleus_volume = pixel_volume * np.array(nucleus_pixels)
 We can then do some statistical analysis.
 
 ```python
-# Use Numpy's peak to peak function (ptp) to find the range.
-print(f"Range of Nucleus volumes = {np.ptp(nucleus_volume)} cubic micrometres.")
+# Find the range of nucleus sizes (maximum - minimum).
+print(f"Range of Nucleus volumes = {nucleus_volume.max() - nuclues_volume.min():.2f} cubic micrometres.")
 
 # Find the mean nucleus volume
 print(f"Nucleus volume mean = {np.mean(nucleus_volume):.2f} cubic micrometres.")
@@ -446,8 +446,8 @@ for nucleus_id in range(1, number_of_nuclei + 1):
 # Convert size in pixels to volume
 nucleus_volume = pixel_volume * np.array(nucleus_pixels)
 
-# Use Numpy's peak to peak function (ptp) to find the range.
-print(f"Range of Nucleus volumes = {np.ptp(nucleus_volume):.2f} cubic micrometres.")
+# Find the range of nucleus sizes (maximum - minimum).
+print(f"Range of Nucleus volumes = {nucleus_volume.max() - nuclues_volume.min():.2f} cubic micrometres.")
 
 # Find the mean nuclei volume
 print(f"Nucleus volume mean = {np.mean(nucleus_volume):.2f} cubic micrometres.")
