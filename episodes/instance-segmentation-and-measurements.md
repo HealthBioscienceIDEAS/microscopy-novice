@@ -233,7 +233,7 @@ Looking at the labelling problem first, there are several instances of
 nuclei that look separate being labelled as a single nuclei. Referring
  to the image of instance segmentation above, we can see that the 4 nuclei
 at the bottom left have all been given a single label (light blue).
-Three of them are visibly touching, so it is not surprising that they have been labelled as a single nuclei.
+Three of them are visibly touching, so it is not surprising that they have been labelled as a single nucleus.
 What about the forth apparently separate nuclei? We should remind ourselves
 that this a 3 dimensional image.
 
