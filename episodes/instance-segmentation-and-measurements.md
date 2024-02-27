@@ -237,7 +237,7 @@ image correctly.
 Looking at the labelling problem first, there are several instances of
 nuclei that look separate being labelled as a single nucleus. Referring
  to the image of instance segmentation above, we can see that the 4 nuclei
-at the bottom left have all been given a single label (light blue).
+at the bottom left have all been given a single label (light purple).
 Three of them are visibly touching, so it is not surprising that they have been labelled as a single nucleus.
 What about the fourth apparently separate nucleus? We should remind ourselves
 that this a 3 dimensional image.
@@ -252,7 +252,7 @@ Try it now.
 alt="A screenshot of an instance segmentation of nuclei in 3D mode with some
 incorrectly joined instances."}
 You should see the image rendered in 3D, with a clear join between the
-upper most light blue nucleus and its neighour. So now we understand why the
+upper most light purple nucleus and its neighbour. So now we understand why the
 instance labelling has failed, what can we do to fix it?
 
 ::::::::::::::::::::::::: challenge
