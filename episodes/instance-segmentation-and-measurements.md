@@ -63,8 +63,9 @@ And you should see the image above. You are now ready to begin this lesson.
 
 ## Our first measurement
 
-We now have a binary image with each pixel classified as either cell nuclei
-(True) or not (False). Try running the following code in the console.
+We now have a mask image with each pixel classified as either cell nuclei
+(pixel value 1) or not (pixel value 0). Try running the following code in
+the console.
 
 ```python
 # We're going to need some functions from the Numpy library.
@@ -73,7 +74,7 @@ import numpy as np
 # How many pixels are there in total in the image?
 total_pixels = semantic_seg.size
 
-# How many pixels are labelled as cell nuclei?
+# How many pixels are labelled as cell nuclei (pixel value = 1)?
 # We'll use Numpy's count_nonzero method.
 nuclei_pixels = np.count_nonzero(semantic_seg)
 
@@ -132,7 +133,7 @@ and assign each connected region a unique integer value. Let's try it.
 # Import the label function
 from skimage.measure import label
 
-# Run the label function on the binary mask image
+# Run the label function on the mask image
 instance_seg = label(semantic_seg)
 
 # Add the result to the viewer
@@ -293,7 +294,7 @@ for radius in range(1,11):
 
 ![](fig/binary_mask_no_erosion.png){
 alt="A screenshot of a semantic segmentation mask before erosion."}
-The first image shows the binary mask without any erosion for comparison.
+The first image shows the mask without any erosion for comparison.
 
 ![](fig/binary_mask_erosion_1.png){
 alt="A screenshot of a semantic segmentation mask eroded with a ball of
