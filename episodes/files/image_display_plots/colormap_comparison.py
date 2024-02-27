@@ -4,14 +4,31 @@ import matplotlib.pyplot as plt
 from skimage import data
 import matplotlib
 
-# Based on updating histogram colours:
-# https://matplotlib.org/stable/gallery/statistics/hist.html#sphx-glr-gallery-statistics-hist-py
-
 matplotlib.use('Qt5Agg')
 
 
 def plot_histogram(image, min, max, title, cmap, ax):
+    """
+    Plot image histogram on given matplotlib axes
 
+    Based on updating histogram colours:
+    https://matplotlib.org/stable/gallery/statistics/hist.html#sphx-glr-gallery-statistics-hist-py
+
+    Parameters
+    ----------
+    image : numpy.ndarray
+        Image to calculate histogram from
+    min : int
+        Histogram minimum (x axis)
+    max : int
+        Histogram maximum (x axis)
+    title : str
+        Title to display on the histogram's y axis
+    cmap : matplotlib colormap
+        Colormap to colour histogram with
+    ax : matplotlib axes
+        Axes to plot histogram onto
+    """
     ax.set_xlim(min, max)
     ax.set_ylabel(title, x=-0.3, y=0.3)
 
@@ -38,13 +55,36 @@ def plot_histogram(image, min, max, title, cmap, ax):
 
 
 def plot_image(image, min, max, cmap, ax):
+    """
+    Plot an image on the given matplotlib axis
+
+    Parameters
+    ----------
+    image : numpy.ndarray
+        Image to plot
+    min : int
+        Contrast minimum
+    max : int
+        Contrast maximum
+    cmap : matplotlib colormap
+        Colormap to use on image
+    ax : matplotlib axes
+        Axes to plot the image onto
+    """
     ax.imshow(image, cmap=cmap, vmin=min, vmax=max)
     ax.axis('off')
 
 
 def generate_colormap_plot(save_dir):
-    """Generate plot with coloured histograms and images side-by-side for four
-    different colormaps"""
+    """
+    Generate a plot (colorbar-comparison.png) showing the 'coins' sample image using four different colormaps.
+    Each row displays a coloured histogram and corresponding image for each colormap.
+
+    Parameters
+    ----------
+    save_dir : str
+        Path of directory to save plots into. If the directory does not exist a FileNotFoundError is raised.
+    """
 
     fig, all_axes = plt.subplots(4, 2)
     fig.subplots_adjust(hspace=0.3, wspace=0)
