@@ -9,13 +9,39 @@ matplotlib.use('Qt5Agg')
 
 
 def plot_image(image, min, max, cmap, ax, title):
+    """
+    Plot an image on the given matplotlib axis
+
+    Parameters
+    ----------
+    image : numpy.ndarray
+        Image to plot
+    min : int
+        Contrast minimum
+    max : int
+        Contrast maximum
+    cmap : matplotlib colormap
+        Colormap to use on image
+    ax :  matplotlib axes
+        Axes to plot the image onto
+    title : str
+        Title to display above image
+    """
     ax.imshow(image, cmap=cmap, vmin=min, vmax=max)
     ax.axis('off')
     ax.set_title(title, fontsize=10)
 
 
 def generate_image_with_noise(save_dir):
-    """Generate plot with two images. Left - a standard image of nuclei. Right - the same image with added noise"""
+    """
+    Generate plot ('image-with-noise.png') with two images. Left - a standard image of nuclei.
+    Right - the same image with added noise.
+
+    Parameters
+    ----------
+    save_dir : str
+        Path of directory to save plots into. If the directory does not exist a FileNotFoundError is raised.
+    """
 
     cells = data.cells3d()
     nucleus = cells[30, 1, :, :]
