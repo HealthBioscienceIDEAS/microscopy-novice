@@ -45,7 +45,7 @@ def generate_qc_histogram_exercise(save_dir):
     Parameters
     ----------
     save_dir : str
-        Path of directory to save plots into
+        Path of directory to save plots into. If the directory does not exist a FileNotFoundError is raised.
     """
 
     fig, [[ax1, ax2], [ax3, ax4]] = plt.subplots(2, 2)

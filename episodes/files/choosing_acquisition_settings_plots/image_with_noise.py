@@ -40,7 +40,7 @@ def generate_image_with_noise(save_dir):
     Parameters
     ----------
     save_dir : str
-        Path of directory to save plots into
+        Path of directory to save plots into. If the directory does not exist a FileNotFoundError is raised.
     """
 
     cells = data.cells3d()

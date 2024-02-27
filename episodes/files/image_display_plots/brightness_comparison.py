@@ -115,7 +115,7 @@ def generate_contrast_plot(save_dir):
     Parameters
     ----------
     save_dir : str
-        Path of directory to save plots into
+        Path of directory to save plots into. If the directory does not exist a FileNotFoundError is raised.
     """
 
     image = data.coins()

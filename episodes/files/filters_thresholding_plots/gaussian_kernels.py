@@ -80,7 +80,7 @@ def generate_gauss_plots(save_dir):
     Parameters
     ----------
     save_dir : str
-        Path of directory to save plots into
+        Path of directory to save plots into. If the directory does not exist a FileNotFoundError is raised.
     """
 
     # Plot 1D gaussian with three sigma values

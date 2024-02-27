@@ -39,7 +39,7 @@ def generate_snr_comparison_plots(save_dir):
     Parameters
     ----------
     save_dir : str
-        Path of directory to save plots into
+        Path of directory to save plots into. If the directory does not exist a FileNotFoundError is raised.
     """
 
     # Centre of normal distributions for [low, high]
