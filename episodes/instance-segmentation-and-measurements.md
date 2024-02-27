@@ -18,7 +18,7 @@ exercises: 10
 
 - Use connected components labelling on a thresholded image.
 
-- Calculate the number of cells and average cell size.
+- Calculate the number of cells and average cell volume.
 
 - Save and edit your workflow to re-use on subsequent images.
 
@@ -196,16 +196,17 @@ we're using in this lesson has no metadata. Fortunately the image pixel sizes
 can be found in the [scikit-image documentation](
 https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.cells3d)
 . So we can assign a pixel size of 0.26&mu;m (x axis), 0.26&mu;m
-(y axis) and 0.29&mu;m (z axis). We can then convert size in pixels to
-size in micrometres.
+(y axis) and 0.29&mu;m (z axis).
+Using this pixel size, we can then calculate the nucleus volume in
+cubic micrometres.
 
 ```python
 # Let's keep everything in micrometres
 pixel_volume = 0.26 * 0.26 * 0.29
 
-# We can mutliply all nuclei by the pixel size by first converting the
+# We can mutliply all nuclei by the pixel volume by first converting the
 # nucleus_pixels to a numpy array.
-nucleus_um = pixel_size * np.array(nucleus_pixels)
+nucleus_volume = pixel_volume * np.array(nucleus_pixels)
 
 ```
 
@@ -213,25 +214,25 @@ We can then do some statistical analysis.
 
 ```python
 # Use Numpy's peak to peak function (ptp) to find the range.
-print(f"Range of Nucleus sizes = {np.ptp(nucleus_um)} cubic micrometres.")
+print(f"Range of Nucleus volumes = {np.ptp(nucleus_volume)} cubic micrometres.")
 
-# Find the mean nucleus size
-print(f"Nucleus size mean = {np.mean(nucleus_um):.2f} cubic micrometres.")
+# Find the mean nucleus volume
+print(f"Nucleus volume mean = {np.mean(nucleus_volume):.2f} cubic micrometres.")
 
 # And the standard deviation
-print(f"Nucleus size standard dev. = {np.std(nucleus_um):.2f} cubic micrometres.")
+print(f"Nucleus volume standard dev. = {np.std(nucleus_volume):.2f} cubic micrometres.")
 ```
 ```output
-Range of Nucleus sizes = 2831.51 cubic micrometres.
-Nucleus size mean = 595.57 cubic micrometres.
-Nucleus size standard dev. = 727.61 cubic micrometres.
+Range of Nucleus volumes = 2831.51 cubic micrometres.
+Nucleus volume mean = 595.57 cubic micrometres.
+Nucleus volume standard dev. = 727.61 cubic micrometres.
 ```
 
 Do these numbers reflect what we can see in the original images? Whilst
-there is visible variation in the size of the nuclei, it is not of the
+there is visible variation in the volume of the nuclei, it is not of the
 scale implied by these numbers. The fact that the standard deviation is
 larger than the mean value suggests an extreme variation in the
-nuclei size that is not apparent in the images. There are two reasons
+nuclei volume that is not apparent in the images. There are two reasons
 for this, firstly the labelling has not correctly identified each separate
 every nucleus, and secondly we haven't treated nuclei at the edge of the
 image correctly.
@@ -442,25 +443,25 @@ for nucleus_id in range(1, number_of_nuclei + 1):
   # And append the number of pixels to the list
   nucleus_pixels.append(np.count_nonzero(instance_seg == nucleus_id))
 
-# Convert size in pixels to size in cubic micrometres
-nucleus_um = pixel_size * np.array(nucleus_pixels)
+# Convert size in pixels to volume
+nucleus_volume = pixel_volume * np.array(nucleus_pixels)
 
 # Use Numpy's peak to peak function (ptp) to find the range.
-print(f"Range of Nucleus sizes = {np.ptp(nucleus_um):.2f} cubic micrometres.")
+print(f"Range of Nucleus volumes = {np.ptp(nucleus_volume):.2f} cubic micrometres.")
 
-# Find the mean nuclei size
-print(f"Nucleus size mean = {np.mean(nucleus_um):.2f} cubic micrometres.")
+# Find the mean nuclei volume
+print(f"Nucleus volume mean = {np.mean(nucleus_volume):.2f} cubic micrometres.")
 
 # And the standard deviation
-print(f"Nucleus size standard dev. = {np.std(nucleus_um):.2f} cubic micrometres.")
+print(f"Nucleus volume standard dev. = {np.std(nucleus_volume):.2f} cubic micrometres.")
 ```
 ```output
-Range of Nucleus sizes = 413.56 cubic micrometres.
-Nucleus size mean = 611.29 cubic micrometres.
-Nucleus size standard dev. = 121.54 cubic micrometres.
+Range of Nucleus volumes = 413.56 cubic micrometres.
+Nucleus volume mean = 611.29 cubic micrometres.
+Nucleus volume standard dev. = 121.54 cubic micrometres.
 ```
 These numbers provide a good quantitative measure of the quantity and
-size of cell nuclei suitable for an experiment investigating how these
+volume of cell nuclei suitable for an experiment investigating how these
 quantities change over time.
 
 We can save our work from the console for re-use on data from subsequent
