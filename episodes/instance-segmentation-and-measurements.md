@@ -14,11 +14,15 @@ exercises: 10
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Create a workflow to perform instance segmentation.
+- Use simple morphological operations to clean up a segmentation.
 
-- Create a workflow to measure the cell sizes.
+- Use connected components labelling on a thresholded image.
 
-- Save the workflow to file for re-use on subsequent images.
+- Calculate the number of cells and average cell size.
+
+- Save and edit your workflow to re-use on subsequent images.
+
+- Perform more complex cell shape analysis using the regionprops plugin.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
