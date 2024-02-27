@@ -182,7 +182,7 @@ print(nuclei_pixels)
 ```output
 [43945, 27187, 202258, 47652, 54018, 113935, 79226, 102444, 34421, 35227, 14525, 3258, 2000, 240, 155, 4709, 522, 7]
 ```
-Knowing the size of each nuclei in pixels is of limited value. We should be
+Knowing the size of each nucleus in pixels is of limited value. We should be
 measuring in physical units, to do that we need to know the pixel size.
 In the lesson on [filetypes and metadata](
 filetypes-and-metadata.md#pixel-size) we learnt how to inspect the image
