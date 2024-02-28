@@ -30,8 +30,10 @@ In this lesson we'll continue to work with the Cells (3D + 2Ch) image we've
 been using in past lessons. We will expand our use of Napari's Python console
 to perform the work and save our workflow to a Python script. We chose to use
 the Python console for this lesson as some of the functions we require are
-not currently available via the Napari assistant or plugins. We have kept the
-level of programming knowledge required to the minimum possible.
+not currently available via the Napari assistant or plugins.
+We have kept the level of programming knowledge required to the minimum
+possible and all code can be run by copy and pasting, so don't worry if
+you don't understand it all yet.
 
 We recommend starting a new session in Napari in order to make sure
 the variable names in the console in are correct. If you have come
