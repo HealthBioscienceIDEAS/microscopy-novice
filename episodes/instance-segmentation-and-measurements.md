@@ -139,7 +139,7 @@ the semantic_seg layer should reappear. We will reuse the save function
 at the end of this lesson.
 ::::::::::::::::::::::::
 
-## Counting the Nuclei
+## Counting the nuclei
 
 We now need to count the number of nuclei in the image. We can use the
 the [label](
@@ -458,10 +458,66 @@ print(f"There are {number_of_nuclei} individual nuclei")
 There are 11 individual nuclei
 ```
 
-## Size in pixels to cell volume
+You now have a correct instance segmentation. You could return to
+using the napari-skimage-regionprops plugin to calculate the sizes
+of each nucleus and export the results to a speadsheet or your preferred
+analysis software using the `save as csv` function. However you've probably
+picked up enough Python during this course to complete the analysis you need
+with just the Napari console. Let's give it a try. The following commands
+should work with copy and paste, so don't worry too much if you don't think
+you've quite mastered Python for loops yet.
+
+Earlier in the lesson we used a Python [for loop](
+https://swcarpentry.github.io/python-novice-inflammation/05-loop.html)
+to try out three different erosion radii. Now let's use a for loop to
+count the number of pixels in each of the 11 nuclei. For this we'll
+take advantage of Python's `range` function which returns a list of numbers.
+
+```python
+
+# Create a list label values for each label in the instance segmetation
+# We need to add 1 the number of nuclei as python's range function
+# includes the lower limet (1) but not the upper limit.
+labels = range(1, number_of_nuclei + 1)
+
+# Print it to the console to check it's right
+for label in labels:
+  print (label)
+
+```
+```output
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+```
+
+Earlier in the lesson we used Numpy's `count_nonzero` function to find the
+size of
+a single nucleus. Let's put it inside the for loop to find the size of
+every nucleus. We'll use a Python list to store the results.
+
+```python
+# Create an empty list
+nucleus_pixels = []
+# Go through each nucleus,
+for label in labels:
+  # Append the number of pixels to the list
+  nucleus_pixels.append(np.count_nonzero(instance_seg == label))
+```
+We now have a list of nuclei sizes in pixels.
 Before we do too much analysis on the nuclei sizes we should convert
 them to a physical value, rather than pixels.
-To do that we need to know the pixel size.
+
+## Size in pixels to cell volume
+To convert to volumes we need to know the pixel size.
 In the lesson on [filetypes and metadata](
 filetypes-and-metadata.md#pixel-size) we learnt how to inspect the image
 metadata to determine the pixel size. Unfortunately the sample image
@@ -483,22 +539,12 @@ nucleus_volume = pixel_volume * np.array(nucleus_pixels)
 
 ```
 
-
-Now let's re-run our measurement script from above.
-
+We can now use some simple functions to find the range, mean, and
+standard deviation of the nuclei in micrometers.
 ```python
-# Create an empty list
-nucleus_pixels = []
-# Go through each nucleus,
-for nucleus_id in range(1, number_of_nuclei + 1):
-  # And append the number of pixels to the list
-  nucleus_pixels.append(np.count_nonzero(instance_seg == nucleus_id))
-
-# Convert size in pixels to volume
-nucleus_volume = pixel_volume * np.array(nucleus_pixels)
 
 # Find the range of nucleus sizes (maximum - minimum).
-print(f"Range of Nucleus volumes = {nucleus_volume.max() - nuclues_volume.min():.2f} cubic micrometres.")
+print(f"Range of nucleus volumes = {nucleus_volume.max() - nucleus_volume.min():.2f} cubic micrometres.")
 
 # Find the mean nuclei volume
 print(f"Nucleus volume mean = {np.mean(nucleus_volume):.2f} cubic micrometres.")
@@ -507,7 +553,7 @@ print(f"Nucleus volume mean = {np.mean(nucleus_volume):.2f} cubic micrometres.")
 print(f"Nucleus volume standard dev. = {np.std(nucleus_volume):.2f} cubic micrometres.")
 ```
 ```output
-Range of Nucleus volumes = 579.10 cubic micrometres.
+Range of nucleus volumes = 579.10 cubic micrometres.
 Nucleus volume mean = 855.98 cubic micrometres.
 Nucleus volume standard dev. = 170.19 cubic micrometres.
 ```
