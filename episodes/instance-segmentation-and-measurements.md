@@ -35,6 +35,20 @@ We have kept the level of programming knowledge required to the minimum
 possible and all code can be run by copy and pasting, so don't worry if
 you don't understand it all yet.
 
+## Before you begin
+
+We'll be using the [napari-skimage-regionprops](
+https://www.napari-hub.org/plugins/napari-skimage-regionprops) plugin
+in this lesson. If it is not already installed you should do that now.
+Use tool bar to navigate to `Plugins > Install/Uninstall Plugins...`.
+Type `region` into the filter bar at the top left and you should
+see `napari-skimage-regionprops` in the dialog like the image below.
+![](fig/install-region-props.png){alt="A screenshot of the plugin installation
+dialog for napari-skimage-regionprops"}
+If it is already installed you need do nothing.
+If it is not installed, press install and when finished restart Napari.
+
+## Loading an image and creating a mask
 We recommend starting a new session in Napari in order to make sure
 the variable names in the console in are correct. If you have come
 straight from the last lesson the first few steps will be familiar,
@@ -171,84 +185,71 @@ specifying an integer value between 1 and 18
 # How many pixels are there in nucleus 1
 nucleus_id = 1
 print(f"There are {np.count_nonzero(instance_seg == nucleus_id)}",
-      f" pixels in nucleus {nucleus_id}")
+      f"pixels in nucleus {nucleus_id}")
 ```
 
 ```output
 There are 43945  pixels in nucleus 1
 ```
 
-More usefully we can can count the number of pixels in each of the nuclei
-and add them to a python list.
+Congratulations, you've measured the size (in pixels) of the first nucleus.
+Later in this lesson we'll cover how to convert the size in pixels to
+volume in cubic micrometres and how to get statistics on the sizes of all
+the nuclei. Before we do that we'll use the [napari-skimage-regionprops](
+https://www.napari-hub.org/plugins/napari-skimage-regionprops) plugin to
+interactively examine the size and shape of the different nuclei.
 
-```python
-# Create an empty list
-nucleus_pixels = []
-number_of_nuclei = instance_seg.max()
-# Go through each nucleus,
-for nucleus_id in range(1, number_of_nuclei + 1):
-  # And append the number of pixels to the list
-  nucleus_pixels.append(np.count_nonzero(instance_seg == nucleus_id))
-print(nucleus_pixels)
-```
-```output
-[43945, 27187, 202258, 47652, 54018, 113935, 79226, 102444, 34421, 35227, 14525, 3258, 2000, 240, 155, 4709, 522, 7]
-```
-Knowing the size of each nucleus in pixels is of limited value. We should be
-measuring in physical units, to do that we need to know the pixel size.
-In the lesson on [filetypes and metadata](
-filetypes-and-metadata.md#pixel-size) we learnt how to inspect the image
-metadata to determine the pixel size. Unfortunately the sample image
-we're using in this lesson has no metadata. Fortunately the image pixel sizes
-can be found in the [scikit-image documentation](
-https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.cells3d)
-. So we can assign a pixel size of 0.26&mu;m (x axis), 0.26&mu;m
-(y axis) and 0.29&mu;m (z axis).
-Using this pixel size, we can then calculate the nucleus volume in
-cubic micrometres.
+## Using napari-skimage-regionprops plugin to measure nuclei size
 
-```python
-# Let's keep everything in micrometres
-pixel_volume = 0.26 * 0.26 * 0.29
+If you followed the instructions [above](#before-you-begin) the
+napari-skimage-regionprops plugin should already be installed. If not then
+do it now and restart Napari. If the plugin is installed you can use the
+toolbar to open `tools > measurement tables > Regionsprops(skimage, nsr)`.
+You should see a dialog like this:
+![](fig/region_props_before.png){alt="A screenshot of the
+napari-skimage-regionprops plugin at startup."}
 
-# We can mutliply all nuclei by the pixel volume by first converting the
-# nucleus_pixels to a numpy array.
-nucleus_volume = pixel_volume * np.array(nucleus_pixels)
+Select `nuclei(data)` in the image drop down box and `instance_seg(data)`
+in the labels drop down box. You can choose to measure various shape
+properties with this plugin but for now let's keep it simple, making
+sure that only the `size` and `position` tick boxes are selected.
+Click `run`. A table of numeric values should appear under the plugin
+dialog box, like the image below.
+![](fig/region_props_after.png){alt="A screenshot of the numeric value table
+created by the napari-skimage-regionprops plugin"}
 
-```
+The numeric values show the size (in pixels) and the position of each
+labelled Nucleus. Let's look more closely at some the extreme values.
 
-We can then do some statistical analysis.
 
-```python
-# Find the range of nucleus sizes (maximum - minimum).
-print(f"Range of Nucleus volumes = {nucleus_volume.max() - nuclues_volume.min():.2f} cubic micrometres.")
+Let's start with label 3 which is largest labelled nucleus.
+![](fig/region_props_after_3.png){alt="A screenshot of the
+region-props dialog highlighting the largest nucleus."}
+According to the table nucleus 3 is larger than the other nuclui
+(202258 pixels). In the [what is an image](what-is-an-image.html#pixels)
+lesson we learnt to use the mouse pointer to find particular values in an
+image. Hovering the mouse pointer over the light purple nuclei at the bottom
+left of the image we see that these apparently four separate nuclei have
+been labelled as a single nuclei. Before we examine the reasons for this
+we'll look at the other extreme value, the smallest nucleus.
 
-# Find the mean nucleus volume
-print(f"Nucleus volume mean = {np.mean(nucleus_volume):.2f} cubic micrometres.")
+The smallest nucleus is labelled 18, at the bottom of the table with
+a size of 7 pixels. We can use the position data in the table to help
+find this nucleus. We need to navigate to slice 33 and get the mouse
+near the top left corner (33 64 0) to find label 18 in the image.
+![](fig/region_props_after_18.png){alt="A screenshot
+region-props dialog highlighting the smallest nucleus."}
+Nucleus 18 is right at the edge of the image, so is only a partial
+nucleus. Partial nuclei will need to be excluded from our analysis. We'll do
+this later in the lesson with a[clear border](#removing-border-cells) filter.
+But first we need to solve the problem of joined nuclei.
 
-# And the standard deviation
-print(f"Nucleus volume standard dev. = {np.std(nucleus_volume):.2f} cubic micrometres.")
-```
-```output
-Range of Nucleus volumes = 3964.92 cubic micrometres.
-Nucleus volume mean = 833.97 cubic micrometres.
-Nucleus volume standard dev. = 1018.86 cubic micrometres.
-```
-
-Do these numbers reflect what we can see in the original images? Whilst
-there is visible variation in the volume of the nuclei, it is not of the
-scale implied by these numbers. The fact that the standard deviation is
-larger than the mean value suggests an extreme variation in the
-nuclei volume that is not apparent in the images. There are two reasons
-for this, firstly the labelling has not correctly identified each separate
-every nucleus, and secondly we haven't treated nuclei at the edge of the
-image correctly.
-
-Looking at the labelling problem first, there are several instances of
-nuclei that look separate being labelled as a single nucleus. Referring
- to the image of instance segmentation above, we can see that the 4 nuclei
-at the bottom left have all been given a single label (light purple).
-Three of them are visibly touching, so it is not surprising that they have been labelled as a single nucleus.
+## Separating joined nuclei
+Back our first problem of the four apparently separate light purple nuclei
+being labelled as a single nucleus. Referring to the images above, three of
+the light purple nuclei
+are visibly touching, so it is not surprising that they have been labelled
+as a single nucleus.
 What about the fourth apparently separate nucleus? We should remind ourselves
 that this a 3 dimensional image.
 
@@ -346,11 +347,11 @@ instance_seg = label(eroded_semantic_seg)
 
 viewer.add_labels(instance_seg)
 
-print(f"Number of Nuclei after erosion  = {instance_seg.max()}")
+print(f"Number of nuclei after erosion  = {instance_seg.max()}")
 ```
 
-```outout
-Number of Nuclei after erosion  = 19
+```output
+Number of nuclei after erosion  = 19
 ```
 
 ![](fig/instance_segmentation_eroded.png){
@@ -369,10 +370,13 @@ function.
 ```python
 from skimage.segmentation import expand_labels
 
+#remove the eroded instance segmentation from the viewer
 viewer.layers.remove('instance_seg')
 
+#Expand the labels using the same radius we used when eroding them (10)
 instance_seg = expand_labels(instance_seg, 10)
 
+#put the new instance segmentation back in the viewer
 viewer.add_labels(instance_seg)
 ```
 ![](fig/instance_segmentation_expanded.png){
@@ -404,9 +408,9 @@ our results be significant?
 :::::::::::::::::::::::::
 :::::::::::::::::::::::::
 ## Removing Border Cells
-If we do a pixel count on the instance segmentation now, we will still get
-some unrealistically small nuclei as some nuclei are only partially in the
-image. We can remove these from our analysis using scikit-image's
+Now we return to the second problem with our initial instance segmentation,
+the presence of partial nuclei around the image borders.
+We can remove these from our analysis using scikit-image's
 [clear border](
 https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.clear_border)
 function.
@@ -436,7 +440,8 @@ print(f"There are {number_of_nuclei} individual nuclei")
 ```output
 There are 19 individual nuclei
 ```
-What's happened here? When we ran `clear_borders` the pixels corresponding
+Why are there still 19 nuclei? When we ran `clear_borders` the pixels
+corresponding
 to border nuclei were set to zero, however the total number of labels
 in the image was not changed, so whilst there are 19 labels in the
 image some of them have no corresponding pixels. The easiest way to
@@ -449,6 +454,33 @@ print(f"There are {number_of_nuclei} individual nuclei")
 ```output
 There are 11 individual nuclei
 ```
+
+## Size in pixels to cell volume
+Before we do too much analysis on the nuclei sizes we should convert
+them to a physical value, rather than pixels.
+To do that we need to know the pixel size.
+In the lesson on [filetypes and metadata](
+filetypes-and-metadata.md#pixel-size) we learnt how to inspect the image
+metadata to determine the pixel size. Unfortunately the sample image
+we're using in this lesson has no metadata. Fortunately the image pixel sizes
+can be found in the [scikit-image documentation](
+https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.cells3d)
+. So we can assign a pixel size of 0.26&mu;m (x axis), 0.26&mu;m
+(y axis) and 0.29&mu;m (z axis).
+Using this pixel size, we can then calculate the nucleus volume in
+cubic micrometres.
+
+```python
+# Let's keep everything in micrometres
+pixel_volume = 0.26 * 0.26 * 0.29
+
+# We can mutliply all nuclei by the pixel volume by first converting the
+# nucleus_pixels to a numpy array.
+nucleus_volume = pixel_volume * np.array(nucleus_pixels)
+
+```
+
+
 Now let's re-run our measurement script from above.
 
 ```python
