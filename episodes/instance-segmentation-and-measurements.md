@@ -100,7 +100,10 @@ nuclei_pixels = np.count_nonzero(semantic_seg)
 nuclei_percent = nuclei_pixels / total_pixels * 100
 
 # And write the results to the console with some formatting.
-# The ":2f" part tells Python to only print 2 decimal points.
+# Python's f-string format allows us to easily mix text and
+# code in our print statements. The curly brackets contain
+# code and the ":2f" provides formatting instructions, here
+# telling Python to only print 2 decimal points.
 
 print(f"Percent Nuclei = {nuclei_percent:.2f}%")
 
