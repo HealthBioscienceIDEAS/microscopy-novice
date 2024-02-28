@@ -341,8 +341,11 @@ Now we have separate nuclei, lets try creating instance labels
 again.
 
 ```python
-eroded_semantic_seg = viewer.layers['eroded ball 10'].data
+# Remove the incorrect instance segmentation from the viewer
+viewer.layers.remove('instance_seg')
 
+eroded_semantic_seg = viewer.layers['eroded ball 10'].data
+# Create a new instace segmentation using the eroded mask
 instance_seg = label(eroded_semantic_seg)
 
 viewer.add_labels(instance_seg)
@@ -370,13 +373,13 @@ function.
 ```python
 from skimage.segmentation import expand_labels
 
-#remove the eroded instance segmentation from the viewer
+# Remove the eroded instance segmentation from the viewer
 viewer.layers.remove('instance_seg')
 
-#Expand the labels using the same radius we used when eroding them (10)
+# Expand the labels using the same radius we used when eroding them (10)
 instance_seg = expand_labels(instance_seg, 10)
 
-#put the new instance segmentation back in the viewer
+# Put the new instance segmentation back in the viewer
 viewer.add_labels(instance_seg)
 ```
 ![](fig/instance_segmentation_expanded.png){
