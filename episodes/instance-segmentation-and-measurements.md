@@ -574,14 +574,20 @@ whilst learning.
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
-- We use a workflow of standard image processing functions to get from
-an image to a measurement.
-
-- The Napari console can be used to test various functions and develop the
-workflow.
-
-- The console's save and load functions allow to create a reproducible
-image processing workflow.
+- Connected component analysis (the label function) was used to assign
+each connected region of a mask a unique integer value.
+This produces an instance segmentation
+from a semantic segmentation.
+- Erosion and dilation filters were used to correct the instance
+segmentation. Erosion was used to separate individual nuclei.
+Dilation (or expansion) was used to return the nuclei to their
+(approximate) original size.
+- Partial nuclei at the image edges can be removed with the clear_border
+function.
+- The napari-skimage-regionprops plugin can be used to interactively
+examine the nuclei shapes.
+- The Python console can be used to automate and save the image
+analysis pipeline.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
