@@ -295,11 +295,15 @@ viewer.add_labels(eroded_mask, name = f'eroded ball {radius}')
 ```
 
 :::::::::::::::::::::::::solution
-
+To test different values of radius, you can assign a different value to
+radius, e.g. `radius = 5` and rerun the second two lines from above. Or
+you can try with a Python [for loop](
+https://swcarpentry.github.io/python-novice-inflammation/05-loop.html)
+which enables us to test multiple values of radius quickly.
 ```python
-# We can use a for loop to test many values of radius. This will test all
-# integers from 1 to 10
-for radius in range(1,11):
+# The for loop will repeat the indented lines of codes for each value
+# of radius in the list (1, 5, 10).
+for radius in 1, 5, 10:
   eroded_mask = binary_erosion(semantic_seg, footprint = ball(radius = 1))
   viewer.add_labels(eroded_mask, name = f'eroded ball {radius}')
 
