@@ -27,14 +27,16 @@ exercises: 10
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 In this lesson we'll continue to work with the Cells (3D + 2Ch) image we've
-been using in past lessons. We will use Napari's Python console
-to perform our workflow. At the end of the lesson we will save our console
-session to a Python script that we can then re-use to easily repeat our
-workflow on new images.
+been using in past lessons. We will expand our use of Napari's Python console
+to perform the work and save our workflow to a Python script. We chose to use
+the Python console for this lesson as some of the functions we require are
+not currently available via the Napari assistant or plugins. We have kept the
+level of programming knowledge required to the minimum possible.
 
-The first steps assume you are starting a new session, if you have come
-straight from the last lesson and already have a mask image you
-can skip them.
+We recommend starting a new session in Napari in order to make sure
+the variable names in the console in are correct. If you have come
+straight from the last lesson the first few steps will be familiar,
+but can be quickly repeated by copy and pasting into the console.
 
 First, let's open one of Napari's sample images with:
 
