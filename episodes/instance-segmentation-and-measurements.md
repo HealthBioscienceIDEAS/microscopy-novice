@@ -268,11 +268,16 @@ instance labelling has failed, what can we do to fix it?
 ### Erode the semantic segmentation so all nuclei are separate
 In order to use the label function to count the cell nuclei we first need
 to make sure all the nuclei are separate. We can do this by reducing the
-apparent size of the nuclei by eroding the image. scikit-image's
+apparent size of the nuclei by eroding the image.
+Image erosion is an image filter, similar to those we covered in the
+[filters and thresholding](filters-and-thresholding.md) lesson.
+Napari has a plugin for erosion
+`filtering > background removal > Minimum(scipy, nsbatwm)`,
+however this won't work on masks. So we will use scikit-image's
 [binary_erosion](
 https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.binary_erosion)
-function is a good tool to do this. The function sets a pixel to the
-minimum value in the neighbourhood defined by a 'footprint' parameter.
+function. The function sets a pixel to the
+minimum value in the neighbourhood defined by a `footprint` parameter.
 We'll use scikit-image's [ball](
 https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.ball)
 function to generate a sphere to use as the footprint. We can change
