@@ -128,7 +128,10 @@ at the end of this lesson.
 We now need to count the number of nuclei in the image. We can use the
 the [label](
 https://scikit-image.org/docs/stable/api/skimage.measure.html#skimage.measure.label)
-function from scikit-image. The label function will go through the image
+function from scikit-image. The label function is an example of
+[connected component analysis](
+https://datacarpentry.org/image-processing/08-connected-components.html#connected-component-analysis)
+. Connected component analysis will go through the entire image
 and assign each connected region a unique integer value. Let's try it.
 
 ```python
