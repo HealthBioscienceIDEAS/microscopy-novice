@@ -45,7 +45,7 @@ Type `region` into the filter bar at the top left and you should
 see `napari-skimage-regionprops` in the dialog like the image below.
 ![](fig/install-region-props.png){alt="A screenshot of the plugin installation
 dialog for napari-skimage-regionprops"}
-If it is already installed you need do nothing.
+If it is already installed, then nothing else needs to be done.
 If it is not installed, press install and when finished restart Napari.
 
 ## Loading an image and creating a mask
