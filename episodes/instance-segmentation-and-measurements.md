@@ -150,8 +150,7 @@ https://scikit-image.org/docs/stable/api/skimage.measure.html#skimage.measure.la
 function from scikit-image. The label function is an example of
 [connected component analysis](
 https://datacarpentry.org/image-processing/08-connected-components.html#connected-component-analysis)
-. Connected component analysis will go through the entire image
-and assign each connected region a unique integer value. Let's try it.
+. Connected component analysis will go through the entire image, determine which parts of the segmentation are connected to each other and form separate objects. Then it will assign each connected region a unique integer value. Let's try it.
 
 ```python
 # Import the label function
