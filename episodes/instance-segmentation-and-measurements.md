@@ -434,7 +434,13 @@ viewer.add_labels(instance_seg)
 ![](fig/instance_segmentation_clear_border.png){
 alt="The instance segmentation with any nuclei crossing the image boundary
 removed"}
-We now have an image with 11 clearly labelled nuclei. Let's check the
+We now have an image with 11 clearly labelled nuclei. 
+You may notice that the smaller nucleus (dark orange) near the top left
+of the image has been removed even though we can't see where it touches the
+image border. Remember that this is a 3D image and clear border removes
+nuclei touching any border. This nucleus has been removed because it touches
+the top or bottom (z axis) of the image.
+Let's check the
 nuclei count as we did above.
 
 ```python
