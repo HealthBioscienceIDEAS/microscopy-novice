@@ -407,7 +407,7 @@ what will we see?
 alt="A comparison between the expanded instance segmentation and the
 original semantic segmentation showing some mismatch between the borders."}
 Looking at the above image we can see some small mismatches around the
-edges of most of the nuclei. Will the effect of this on the accuracy of
+edges of most of the nuclei. It should be remembered when looking at this image that it is a single slice though a 3D image, so in some cases where the differences look large (for example the nucleus at the bottom right) they may still be only one pixel deep. Will the effect of this on the accuracy of
 our results be significant?
 
 :::::::::::::::::::::::::
