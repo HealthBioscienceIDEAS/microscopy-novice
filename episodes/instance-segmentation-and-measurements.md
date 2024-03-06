@@ -195,11 +195,11 @@ There are 43945  pixels in nucleus 1
 ```
 
 Congratulations, you've measured the size (in pixels) of the first nucleus.
-Later in this lesson we'll cover how to convert the size in pixels to
+Later in this lesson, we'll cover how to convert the size in pixels to
 volume in cubic micrometres and how to get statistics on the sizes of all
-the nuclei. Before we do that we'll use the [napari-skimage-regionprops](
+the nuclei. Before we do that, we'll use the [napari-skimage-regionprops](
 https://www.napari-hub.org/plugins/napari-skimage-regionprops) plugin to
-interactively examine the size and shape of the different nuclei.
+interactively examine the size and shape of individual nuclei.
 
 ## Using napari-skimage-regionprops plugin to measure nuclei size
 
