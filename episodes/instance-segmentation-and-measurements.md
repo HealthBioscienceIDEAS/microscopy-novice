@@ -414,7 +414,8 @@ our results be significant?
 :::::::::::::::::::::::::
 ## Removing Border Cells
 Now we return to the second problem with our initial instance segmentation,
-the presence of partial nuclei around the image borders.
+the presence of partial nuclei around the image borders. As we're measuring nuclei size, 
+the presence of any partially visible nuclei could substantially bias our statistics.
 We can remove these from our analysis using scikit-image's
 [clear border](
 https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.clear_border)
