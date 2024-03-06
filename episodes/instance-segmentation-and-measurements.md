@@ -370,7 +370,10 @@ Performing any size or shape analysis on these nuclei will be flawed, as
 they are heavily eroded. We can largely undo much of the erosion by using
 the scikit-images [expand labels](
 https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.expand_labels)
-function.
+function. The expand labels function is a filter which performs a `dilation`
+, expanding the bright (non-zero) parts of the image.
+The expand labels function adds an extra step to stop the dilation
+when two neighbouring labels meet, preventing overlapping labels.
 
 ```python
 from skimage.segmentation import expand_labels
@@ -414,7 +417,7 @@ our results be significant?
 :::::::::::::::::::::::::
 ## Removing Border Cells
 Now we return to the second problem with our initial instance segmentation,
-the presence of partial nuclei around the image borders. As we're measuring nuclei size, 
+the presence of partial nuclei around the image borders. As we're measuring nuclei size,
 the presence of any partially visible nuclei could substantially bias our statistics.
 We can remove these from our analysis using scikit-image's
 [clear border](
@@ -435,7 +438,7 @@ viewer.add_labels(instance_seg)
 ![](fig/instance_segmentation_clear_border.png){
 alt="The instance segmentation with any nuclei crossing the image boundary
 removed"}
-We now have an image with 11 clearly labelled nuclei. 
+We now have an image with 11 clearly labelled nuclei.
 You may notice that the smaller nucleus (dark orange) near the top left
 of the image has been removed even though we can't see where it touches the
 image border. Remember that this is a 3D image and clear border removes
