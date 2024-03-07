@@ -408,7 +408,7 @@ mask erosion followed by a label expansion. This is a common image
 operation often used to remove background noise, known as as `opening`,
 or an erosion followed by a dilation. In addition to helping us separate
 instances it will have the effect of removing objects smaller than the
-erosion mask, in this case a sphere with radius 10 pixels.
+erosion footprint, in this case a sphere with radius 10 pixels.
 If we compare the eroded and expanded image with the original mask,
 what will we see?
 
