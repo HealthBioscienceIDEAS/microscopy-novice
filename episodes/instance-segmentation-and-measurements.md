@@ -243,7 +243,7 @@ near the top left corner (33 64 0) to find label 18 in the image.
 region-props dialog highlighting the smallest nucleus."}
 Nucleus 18 is right at the edge of the image, so is only a partial
 nucleus. Partial nuclei will need to be excluded from our analysis. We'll do
-this later in the lesson with a[clear border](#removing-border-cells) filter.
+this later in the lesson with a [clear border](#removing-border-cells) filter.
 But first we need to solve the problem of joined nuclei.
 
 ## Separating joined nuclei
