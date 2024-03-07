@@ -376,7 +376,7 @@ image.
 
 Performing any size or shape analysis on these nuclei will be flawed, as
 they are heavily eroded. We can largely undo much of the erosion by using
-the scikit-images [expand labels](
+the scikit-image's [expand labels](
 https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.expand_labels)
 function. The expand labels function is a filter which performs a `dilation`
 , expanding the bright (non-zero) parts of the image.
