@@ -50,7 +50,7 @@ If it is not installed, press install, and when finished, restart Napari.
 
 ## Loading an image and creating a mask
 We recommend starting a new session in Napari in order to make sure
-the variable names in the console in are correct. If you have come
+the variable names in the console are correct. If you have come
 straight from the last lesson the first few steps will be familiar,
 but can be quickly repeated by copy and pasting into the console.
 
