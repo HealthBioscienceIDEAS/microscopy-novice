@@ -14,7 +14,7 @@ exercises: 10
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Use simple morphological operations (like erosion and dilation) to clean up a segmentation.
+- Use simple operations (like erosion and dilation) to clean up a segmentation.
 
 - Use connected components labelling on a thresholded image.
 
@@ -150,7 +150,10 @@ https://scikit-image.org/docs/stable/api/skimage.measure.html#skimage.measure.la
 function from scikit-image. The label function is an example of
 [connected component analysis](
 https://datacarpentry.org/image-processing/08-connected-components.html#connected-component-analysis)
-. Connected component analysis will go through the entire image, determine which parts of the segmentation are connected to each other and form separate objects. Then it will assign each connected region a unique integer value. Let's try it.
+. Connected component analysis will go through the entire image, determine
+which parts of the segmentation are connected to each other and form separate
+objects. Then it will assign each connected region a unique integer value.
+Let's try it.
 
 ```python
 # Import the label function
@@ -250,11 +253,15 @@ this later in the lesson with a [clear border](#removing-border-cells) filter.
 However, first we need to solve the problem of joined nuclei.
 
 ## Separating joined nuclei
-Our first problem is how to deal with four apparently distinct nuclei (labelled with a light purple colour) being segmented as a single nucleus. Referring to the images above, three of
-the light purple nuclei
-are visibly touching, so it is not surprising that they have been considered as a single `connected component` and thus labelled
-as a single nucleus.
-What about the fourth apparently separate nucleus? It is important to remember that this is a three-dimensional image and so pixels will be considered as "connected" if they are adjacent to another segmented pixel in any of the three dimensions (and not just in the two-dimensional slice that you are looking at).
+Our first problem is how to deal with four apparently distinct nuclei (labelled
+with a light purple colour) being segmented as a single nucleus. Referring to
+the images above, three of the light purple nuclei are visibly touching, so
+it is not surprising that they have been considered as a single
+`connected component` and thus labelled as a single nucleus. What about the
+fourth apparently separate nucleus? It is important to remember that this is
+a three-dimensional image and so pixels will be considered as "connected" if
+they are adjacent to another segmented pixel in any of the three dimensions
+(and not just in the two-dimensional slice that you are looking at).
 
 You may remember from our [first lesson](imaging-software.md#d3d) that
 we can change to 3D view mode by pressing the ![](
@@ -418,16 +425,19 @@ what will we see?
 alt="A comparison between the expanded instance segmentation and the
 original semantic segmentation showing some mismatch between the borders."}
 Looking at the above image we can see some small mismatches around the
-edges of most of the nuclei. It should be remembered when looking at this image that it is a single slice though a 3D image, so in some cases where the differences look large (for example the nucleus at the bottom right) they may still be only one pixel deep. Will the effect of this on the accuracy of
+edges of most of the nuclei. It should be remembered when looking at this image
+that it is a single slice though a 3D image, so in some cases where the
+differences look large (for example the nucleus at the bottom right) they may
+still be only one pixel deep. Will the effect of this on the accuracy of
 our results be significant?
 
 :::::::::::::::::::::::::
 :::::::::::::::::::::::::
 ## Removing Border Cells
 Now we return to the second problem with our initial instance segmentation,
-the presence of partial nuclei around the image borders. As we're measuring nuclei size,
-the presence of any partially visible nuclei could substantially bias our statistics.
-We can remove these from our analysis using scikit-image's
+the presence of partial nuclei around the image borders. As we're measuring
+nuclei size, the presence of any partially visible nuclei could substantially
+bias our statistics. We can remove these from our analysis using scikit-image's
 [clear border](
 https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.clear_border)
 function.
