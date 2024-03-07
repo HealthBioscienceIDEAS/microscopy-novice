@@ -314,7 +314,7 @@ which enables us to test multiple values of radius quickly.
 # The for loop will repeat the indented lines of codes for each value
 # of radius in the list (1, 5, 10).
 for radius in 1, 5, 10:
-  eroded_mask = binary_erosion(semantic_seg, footprint = ball(radius = 1))
+  eroded_mask = binary_erosion(semantic_seg, footprint = ball(radius))
   viewer.add_labels(eroded_mask, name = f'eroded ball {radius}')
 
 ```
