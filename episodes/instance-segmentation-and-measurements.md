@@ -524,7 +524,16 @@ for label in labels:
   # Append the number of pixels to the list
   nucleus_pixels.append(np.count_nonzero(instance_seg == label))
 ```
-We now have a list of nuclei sizes in pixels.
+We now have a list of nuclei sizes in pixels. We can check what is in the
+list with a print statement.
+```python
+print(nucleus_pixels)
+```
+```output
+[40960, 26847, 60268, 46545, 51409, 46866, 53108, 37869, 36523, 40809, 14548]
+```
+We see 11 values within the list. Each value tells us the number of pixels
+in a particular nucleus.
 Before we do too much analysis on the nuclei sizes we should convert
 them to a physical value, rather than pixels.
 
