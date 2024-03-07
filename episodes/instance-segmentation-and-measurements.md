@@ -495,9 +495,9 @@ take advantage of Python's `range` function which returns a list of numbers.
 
 ```python
 
-# Create a list label values for each label in the instance segmetation
-# We need to add 1 the number of nuclei as python's range function
-# includes the lower limet (1) but not the upper limit.
+# Create a list of label values for each label in the instance segmentation
+# We need to add 1 to the number of nuclei as python's range function
+# includes the lower limit (1) but not the upper limit.
 labels = range(1, number_of_nuclei + 1)
 
 # Print it to the console to check it's right
