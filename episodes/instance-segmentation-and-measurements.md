@@ -14,7 +14,7 @@ exercises: 10
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Use simple morphological operations to clean up a segmentation.
+- Use simple morphological operations (like erosion and dilation) to clean up a segmentation.
 
 - Use connected components labelling on a thresholded image.
 
