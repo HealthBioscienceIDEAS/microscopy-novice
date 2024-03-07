@@ -40,7 +40,7 @@ you don't understand it all yet.
 We'll be using the [napari-skimage-regionprops](
 https://www.napari-hub.org/plugins/napari-skimage-regionprops) plugin
 in this lesson. If it is not already installed you should do that now.
-Use tool bar to navigate to `Plugins > Install/Uninstall Plugins...`.
+Use the tool bar to navigate to `Plugins > Install/Uninstall Plugins...`.
 Type `region` into the filter bar at the top left and you should
 see `napari-skimage-regionprops` in the dialog like the image below.
 ![](fig/install-region-props.png){alt="A screenshot of the plugin installation
