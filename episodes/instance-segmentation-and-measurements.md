@@ -562,7 +562,7 @@ cubic micrometres.
 # Let's keep everything in micrometres
 pixel_volume = 0.26 * 0.26 * 0.29
 
-# We can mutliply all nuclei by the pixel volume by first converting the
+# We can multiply all nuclei by the pixel volume by first converting the
 # nucleus_pixels to a numpy array.
 nucleus_volume = pixel_volume * np.array(nucleus_pixels)
 
