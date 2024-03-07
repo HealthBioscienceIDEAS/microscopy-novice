@@ -5,14 +5,36 @@ from skimage import data
 import matplotlib
 import numpy as np
 
-# Based on updating histogram colours:
-# https://matplotlib.org/stable/gallery/statistics/hist.html#sphx-glr-gallery-statistics-hist-py
-# + https://stackoverflow.com/questions/14777066/matplotlib-discrete-colorbar
-
 matplotlib.use('Qt5Agg')
 
 
 def plot_histogram(image, ax, min, max, contrast_min, contrast_max, cmap, hide_x_ticks=True):
+    """
+    Plot image histogram on given matplotlib axes
+
+    Based on updating histogram colours:
+    https://matplotlib.org/stable/gallery/statistics/hist.html#sphx-glr-gallery-statistics-hist-py
+    + https://stackoverflow.com/questions/14777066/matplotlib-discrete-colorbar
+
+    Parameters
+    ----------
+    image : numpy.ndarray
+        Image to calculate histogram from
+    ax : matplotlib axes
+        Axes to plot histogram onto
+    min : int
+        X axis minimum
+    max : int
+        X axis maximum
+    contrast_min : int
+        Contrast minimum (i.e. pixel value colormap begins at)
+    contrast_max : int
+        Contrast maximum (i.e. pixel value colormap ends at)
+    cmap : matplotlib colormap
+        Colormap to colour histogram with
+    hide_x_ticks : bool
+        Whether to hide ticks on the x axis
+    """
     ax.set_xlim(min, max)
 
     if hide_x_ticks:
@@ -64,13 +86,37 @@ def plot_histogram(image, ax, min, max, contrast_min, contrast_max, cmap, hide_x
 
 
 def plot_image(image, min, max, cmap, ax):
+    """
+    Plot an image on the given matplotlib axis
+
+    Parameters
+    ----------
+    image : numpy.ndarray
+        Image to plot
+    min : int
+        Contrast minimum
+    max : int
+        Contrast maximum
+    cmap : matplotlib colormap
+        Colormap to use on image
+    ax : matplotlib axes
+        Axes to plot the image onto
+    """
     ax.imshow(image, cmap=cmap, vmin=min, vmax=max)
     ax.axis('off')
 
 
 def generate_contrast_plot(save_dir):
-    """generate multiple plots with different contrast settings - showing a coloured histogram,
-    colorbar and corresponding image"""
+    """
+    Generate multiple plots of the 'coins' sample image with different contrast settings
+    (named 'contrast-comparison-{contrast_min}-{contrast_max}.png). Each shows a coloured histogram, colorbar and
+    corresponding image.
+
+    Parameters
+    ----------
+    save_dir : str
+        Path of directory to save plots into. If the directory does not exist a FileNotFoundError is raised.
+    """
 
     image = data.coins()
     cmap = plt.cm.gray
