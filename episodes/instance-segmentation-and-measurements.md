@@ -236,7 +236,7 @@ been labelled as a single nuclei. Before we examine the reasons for this
 we'll look at the other extreme value, the smallest nucleus.
 
 The smallest nucleus is labelled 18, at the bottom of the table with
-a size of 7 pixels. We can use the position data in the table to help
+a size of 7 pixels. We can use the position data (the `centroid` and `bbox` columns) in the table to help
 find this nucleus. We need to navigate to slice 33 and get the mouse
 near the top left corner (33 64 0) to find label 18 in the image.
 ![](fig/region_props_after_18.png){alt="A screenshot
