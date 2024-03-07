@@ -128,7 +128,7 @@ informative measurement.
 
 Let's assume that measuring percentage of nuclei is sufficient for your
 research question. How do we automate and repeat this workflow on new
-images. The Napari Python console has a built in save function.
+images? The Napari Python console has a built in save function.
 ```python
 # Save current session to a file called measure_percent.py
 %save measure_percent ~0/
