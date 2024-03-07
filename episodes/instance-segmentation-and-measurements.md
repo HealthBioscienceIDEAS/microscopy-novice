@@ -341,7 +341,7 @@ radius 10."}
 Erosion with a radius of 10 separates all nuclei.
 
 An alternative to performing a single large erosion (radius = 10) is to
-perform a small erosion (radius = 1) 10 times. Doing this will get
+perform a small erosion (radius = 1) 10 times. Doing this will give
 subtly different results. As an extra activity you could try doing this
 using a `for loop` and comparing the results?
 :::::::::::::::::::::::::
