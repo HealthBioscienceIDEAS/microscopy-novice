@@ -234,7 +234,7 @@ According to the table nucleus 3 is larger than the other nuclei
 lesson, we learnt to use the mouse pointer to find particular values in an
 image. Hovering the mouse pointer over the light purple nuclei at the bottom
 left of the image we see that these apparently four separate nuclei have
-been labelled as a single nuclei. Before we examine the reasons for this
+been labelled as a single nucleus. Before we examine the reasons for this
 we'll look at the other extreme value, the smallest nucleus.
 
 The smallest nucleus is labelled 18, at the bottom of the table with
