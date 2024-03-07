@@ -249,7 +249,7 @@ However, first we need to solve the problem of joined nuclei.
 ## Separating joined nuclei
 Our first problem is how to deal four apparently distinct nuclei (labelled with a light purple colour) being segmented as a single nucleus. Referring to the images above, three of
 the light purple nuclei
-are visibly touching, so it is not surprising that they have been labelled
+are visibly touching, so it is not surprising that they have been considered as a single `connected component` and thus labelled
 as a single nucleus.
 What about the fourth apparently separate nucleus? We should remind ourselves
 that this a 3 dimensional image.
