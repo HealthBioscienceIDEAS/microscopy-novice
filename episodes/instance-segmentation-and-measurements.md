@@ -250,7 +250,7 @@ this later in the lesson with a [clear border](#removing-border-cells) filter.
 However, first we need to solve the problem of joined nuclei.
 
 ## Separating joined nuclei
-Our first problem is how to deal four apparently distinct nuclei (labelled with a light purple colour) being segmented as a single nucleus. Referring to the images above, three of
+Our first problem is how to deal with four apparently distinct nuclei (labelled with a light purple colour) being segmented as a single nucleus. Referring to the images above, three of
 the light purple nuclei
 are visibly touching, so it is not surprising that they have been considered as a single `connected component` and thus labelled
 as a single nucleus.
