@@ -306,7 +306,7 @@ viewer.add_labels(eroded_mask, name = f'eroded ball {radius}')
 
 :::::::::::::::::::::::::solution
 To test different values of radius, you can assign a different value to
-radius, e.g. `radius = 5` and rerun the second two lines from above. Or
+radius, e.g. `radius = 5` and rerun the last two lines from above. Or
 you can try with a Python [for loop](
 https://swcarpentry.github.io/python-novice-inflammation/05-loop.html)
 which enables us to test multiple values of radius quickly.
