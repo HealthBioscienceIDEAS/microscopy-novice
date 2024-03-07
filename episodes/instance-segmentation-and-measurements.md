@@ -226,7 +226,7 @@ move across the table and see more. For now we will focus only on the
 second column, headed `area`, which shows the size (in pixels).
 Let's look more closely at some the extreme values.
 
-Let's start with label 3 which is largest labelled nucleus.
+Let's start with label 3 which is the largest labelled nucleus.
 ![](fig/region_props_after_3.png){alt="A screenshot of the
 region-props dialog highlighting the largest nucleus."}
 According to the table nucleus 3 is larger than the other nuclei
