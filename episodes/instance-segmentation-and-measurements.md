@@ -405,7 +405,7 @@ the same shape as in the original mask image.
 ### Is the erosion completely reversible?
 In order to create a correct instance segmentation we have performed a
 mask erosion followed by a label expansion. This is a common image
-operation often used to remove back ground noise, known as as `opening`,
+operation often used to remove background noise, known as as `opening`,
 or an erosion followed by a dilation. In addition to helping us separate
 instances it will have the effect of removing objects smaller than the
 erosion mask, in this case a sphere with radius 10 pixels.
