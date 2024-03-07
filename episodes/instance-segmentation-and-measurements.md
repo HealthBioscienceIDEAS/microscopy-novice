@@ -251,8 +251,7 @@ Our first problem is how to deal four apparently distinct nuclei (labelled with 
 the light purple nuclei
 are visibly touching, so it is not surprising that they have been considered as a single `connected component` and thus labelled
 as a single nucleus.
-What about the fourth apparently separate nucleus? We should remind ourselves
-that this a 3 dimensional image.
+What about the fourth apparently separate nucleus? It is important to remember that this is a three-dimensional image and so pixels will be considered as "connected" if they are adjacent to another segmented pixel in any of the three dimensions (and not just in the two-dimensional slice that you are looking at).
 
 You may remember from our [first lesson](imaging-software.md#d3d) that
 we can change to 3D view mode by pressing the ![](
