@@ -286,7 +286,11 @@ function. The function sets a pixel to the
 minimum value in the neighbourhood defined by a `footprint` parameter.
 We'll use scikit-image's [ball](
 https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.ball)
-function to generate a sphere to use as the footprint. We can change
+function to generate a sphere to use as the footprint.
+Image erosion has the effect of making bright areas of the image smaller.
+In this case the labelled (non-zero) nuclei will become smaller, as any
+pixels closer to the edge of the nucleus than the radius of the footprint
+will be set to zero. We can change
 the radius of the footprint to control the amount of erosion. Try eroding
 the `semantic_seg` layer with different integer values for the radius.
 What radius do you need to ensure all nuclei are separate?
@@ -336,7 +340,10 @@ alt="A screenshot of a semantic segmentation mask eroded with a ball of
 radius 10."}
 Erosion with a radius of 10 separates all nuclei.
 
-
+An alternative to performing a single large erosion (radius = 10) is to
+perform a small erosion (radius = 1) 10 times. Doing this will get
+subtly different results. As an extra activity you could try doing this
+using a `for loop` and comparing the results?
 :::::::::::::::::::::::::
 :::::::::::::::::::::::::
 
