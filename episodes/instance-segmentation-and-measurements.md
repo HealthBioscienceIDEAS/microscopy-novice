@@ -220,9 +220,11 @@ dialog box, like the image below.
 ![](fig/region_props_after.png){alt="A screenshot of the numeric value table
 created by the napari-skimage-regionprops plugin"}
 
-The numeric values show the size (in pixels) and the position of each
-labelled Nucleus. Let's look more closely at some the extreme values.
-
+The regionprops plugin can generate a lot of information on the shape and
+size of each connected region. You can use the horizontal scroll bar to
+move across the table and see more. For now we will focus only on the
+second column, headed `area`, which shows the size (in pixels).
+Let's look more closely at some the extreme values.
 
 Let's start with label 3 which is largest labelled nucleus.
 ![](fig/region_props_after_3.png){alt="A screenshot of the
@@ -236,7 +238,8 @@ been labelled as a single nuclei. Before we examine the reasons for this
 we'll look at the other extreme value, the smallest nucleus.
 
 The smallest nucleus is labelled 18, at the bottom of the table with
-a size of 7 pixels. We can use the position data (the `centroid` and `bbox` columns) in the table to help
+a size of 7 pixels. We can use the position data (the `centroid` and `bbox`
+columns) in the table to help
 find this nucleus. We need to navigate to slice 33 and get the mouse
 near the top left corner (33 64 0) to find label 18 in the image.
 ![](fig/region_props_after_18.png){alt="A screenshot
