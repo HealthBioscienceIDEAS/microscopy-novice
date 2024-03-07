@@ -86,11 +86,11 @@
   Image Analysis for Microscopy
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 89%" class="percentage">
-    89%
+<aside class="col-md-12 lesson-progress"><div style="width: 86%" class="percentage">
+    86%
   </div>
   <div class="progress IDEAS">
-    <div class="progress-bar IDEAS" role="progressbar" style="width: 89%" aria-valuenow="89" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar IDEAS" role="progressbar" style="width: 86%" aria-valuenow="86" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -242,6 +242,15 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush11">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading11">
+        <a href="additional-resources.html">10. Additional resources</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -285,7 +294,7 @@
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="quality-control-and-manual-segmentation.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="index.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="additional-resources.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -293,8 +302,8 @@
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
           Previous: Quality control and
         </a>
-        <a class="chapter-link float-end" href="index.html" rel="next">
-          Home
+        <a class="chapter-link float-end" href="additional-resources.html" rel="next">
+          Next: Additional resources... 
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -436,15 +445,14 @@ some of our mask regions.</p>
 <p>To improve the mask we must find a way to reduce these fluctuations
 in pixel value. This is usually achieved by blurring the image (also
 referred to as smoothing). We’ll look at this in detail <a href="#filters">later in the episode</a>.</p>
-<div id="callout1" class="callout">
+<div id="add_labels-vs-.add_image" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="add_labels-vs--add_image">
-<code>.add_labels()</code> vs
-<code>.add_image</code>
-<a class="anchor" aria-label="anchor" href="#add_labels-vs--add_image"></a></h3>
+<div id="add_labels-vs-.add_image" class="callout-inner">
+<h3 class="callout-title">
+<code>.add_labels()</code>vs<code>.add_image</code><a class="anchor" aria-label="anchor" href="#add_labels-vs-.add_image"></a>
+</h3>
 <div class="callout-content">
 <p>In the code blocks above, you will notice that we use
 <code>.add_labels()</code>, rather than <code>.add_image()</code> as we
@@ -518,11 +526,9 @@ value:</p>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>First, we show a histogram for the image by selecting the ‘image’
 layer, then:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
@@ -677,13 +683,14 @@ carpentry image processing lesson</a> and Pete Bankhead’s <a href="https://bio
 book</a> have chapters going into great detail. Note that here we have
 focused on ‘linear’ filters, but there are many types of ‘non-linear’
 filter that process pixel values in different ways.</p>
-<div id="callout2" class="callout">
+<div id="sigma-vs-full-width-at-half-maximum-fwhm" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="sigma-vs-full-width-at-half-maximum-fwhm">Sigma vs full width at half maximum
-(FWHM)<a class="anchor" aria-label="anchor" href="#sigma-vs-full-width-at-half-maximum-fwhm"></a></h3>
+<div id="sigma-vs-full-width-at-half-maximum-fwhm" class="callout-inner">
+<h3 class="callout-title">Sigma vs full width at half maximum
+(FWHM)<a class="anchor" aria-label="anchor" href="#sigma-vs-full-width-at-half-maximum-fwhm"></a>
+</h3>
 <div class="callout-content">
 <p>In this episode, we have focused on the gaussian function’s standard
 deviation (sigma) as the main way to control the width of the central
@@ -730,11 +737,9 @@ name online.</p>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="median">Median<a class="anchor" aria-label="anchor" href="#median"></a></h3>
@@ -945,11 +950,9 @@ the top row of the layer controls.</p>
 <div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Standard Otsu thresholding chooses a threshold that separates the
 background from the three shapes:</p>
@@ -1036,7 +1039,7 @@ in the next episode.</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
 <ul><li><p>Thresholding is simply choosing a specific pixel value to use as
@@ -1062,7 +1065,7 @@ any links that you are not going to use.
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="quality-control-and-manual-segmentation.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="index.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="additional-resources.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -1070,8 +1073,8 @@ any links that you are not going to use.
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
           Previous: Quality control and
         </a>
-        <a class="chapter-link float-end" href="index.html" rel="next">
-          Home
+        <a class="chapter-link float-end" href="additional-resources.html" rel="next">
+          Next: Additional resources... 
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -1095,8 +1098,8 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/HealthBioscienceIDEAS/sandpaper/tree/IDEAS" class="external-link">sandpaper (0.14.1.9000)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/1bc5753e917d515c3d888ce6cc013c0a680eacfc" class="external-link">pegboard (0.7.3)</a>,
+        <p>Built with <a href="https://github.com/HealthBioscienceIDEAS/sandpaper/tree/IDEAS" class="external-link">sandpaper (0.16.2)</a>,
+        <a href="https://github.com/carpentries/pegboard/tree/e9ca729c7db3ca97f016480679f9f58d115d2721" class="external-link">pegboard (0.7.4)</a>,
       and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (0.3.3.9000)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
@@ -1110,6 +1113,7 @@ any links that you are not going to use.
   "@context": "https://schema.org",
   "@type": "TrainingMaterial",
   "@id": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/filters-and-thresholding.html",
+  "inLanguage": "en",
   "dct:conformsTo": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "software, data, lesson, The Carpentries",
@@ -1119,7 +1123,7 @@ any links that you are not going to use.
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/filters-and-thresholding.html",
   "dateCreated": "2023-10-26",
   "dateModified": "2024-02-21",
-  "datePublished": "2024-03-05"
+  "datePublished": "2024-03-07"
 }
 
   </script><script>

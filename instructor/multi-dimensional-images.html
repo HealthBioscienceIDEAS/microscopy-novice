@@ -86,11 +86,11 @@
   Image Analysis for Microscopy
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 33%" class="percentage">
-    33%
+<aside class="col-md-12 lesson-progress"><div style="width: 32%" class="percentage">
+    32%
   </div>
   <div class="progress IDEAS">
-    <div class="progress-bar IDEAS" role="progressbar" style="width: 33%" aria-valuenow="33" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar IDEAS" role="progressbar" style="width: 32%" aria-valuenow="32" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -237,6 +237,15 @@
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
         <a href="filters-and-thresholding.html">9. Filters and thresholding</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush11">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading11">
+        <a href="additional-resources.html">10. Additional resources</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -420,12 +429,13 @@ axis and dimension 2 is the x axis. We can check this in Napari by
 looking at the number at the very left of the slider. Here it’s labelled
 ‘0’, showing that it controls movement along dimension 0 (i.e. the z
 axis).</p>
-<div id="callout1" class="callout">
+<div id="axis-labels" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="axis-labels">Axis labels<a class="anchor" aria-label="anchor" href="#axis-labels"></a></h3>
+<div id="axis-labels" class="callout-inner">
+<h3 class="callout-title">Axis labels<a class="anchor" aria-label="anchor" href="#axis-labels"></a>
+</h3>
 <div class="callout-content">
 <p>By default, sliders will be labelled by the index of the dimension
 they move along e.g. 0, 1, 2… Note that it is possible to re-name these
@@ -533,12 +543,13 @@ slider (labelled 1) moves along the z axis, while the bottom slider
 defaults of the min/max possible values. You’ll need to adjust the
 contrast limits on the membrane layer to see it clearly again after
 splitting.</p>
-<div id="callout2" class="callout">
+<div id="reading-channels-in-napari" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="reading-channels-in-napari">Reading channels in Napari<a class="anchor" aria-label="anchor" href="#reading-channels-in-napari"></a></h3>
+<div id="reading-channels-in-napari" class="callout-inner">
+<h3 class="callout-title">Reading channels in Napari<a class="anchor" aria-label="anchor" href="#reading-channels-in-napari"></a>
+</h3>
 <div class="callout-content">
 <p>When we open the cells image through the Napari menu, it is really
 calling something like:</p>
@@ -555,13 +566,14 @@ axis.</p>
 </div>
 </div>
 </div>
-<div id="callout3" class="callout">
+<div id="when-to-split-channels-into-layers-in-napari" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="when-to-split-channels-into-layers-in-napari">When to split channels into layers in
-Napari?<a class="anchor" aria-label="anchor" href="#when-to-split-channels-into-layers-in-napari"></a></h3>
+<div id="when-to-split-channels-into-layers-in-napari" class="callout-inner">
+<h3 class="callout-title">When to split channels into layers in
+Napari?<a class="anchor" aria-label="anchor" href="#when-to-split-channels-into-layers-in-napari"></a>
+</h3>
 <div class="callout-content">
 <p>As we saw above, we have two choices when loading images with
 multiple channels into Napari:</p>
@@ -576,11 +588,9 @@ shown below:</p>
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">
-  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
-  Pros and cons
-  </h3>
+<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Pros and cons</h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p><strong>Channels as separate layers</strong></p>
 <ol style="list-style-type: decimal"><li><p>Channels can be overlaid on top of each other (rather than only
@@ -718,11 +728,9 @@ large size.</p>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="section">1<a class="anchor" aria-label="anchor" href="#section"></a></h3>
@@ -824,12 +832,13 @@ when preparing figures for papers and presentations - RGB images can be
 opened in all imaging software (not just scientific research focused
 ones), so are useful when preparing images for display. As usual, always
 make sure you keep a copy of your original raw data!</p>
-<div id="callout4" class="callout">
+<div id="reading-rgb-in-napari" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="reading-rgb-in-napari">Reading RGB in Napari<a class="anchor" aria-label="anchor" href="#reading-rgb-in-napari"></a></h3>
+<div id="reading-rgb-in-napari" class="callout-inner">
+<h3 class="callout-title">Reading RGB in Napari<a class="anchor" aria-label="anchor" href="#reading-rgb-in-napari"></a>
+</h3>
 <div class="callout-content">
 <p>How does Napari know an image is RGB? If an image’s final dimension
 has a length of 3 or 4, Napari will assume it is RGB and <a href="https://napari.org/stable/howtos/layers/image.html#viewing-rgb-vs-luminance-grayscale-images" class="external-link">display
@@ -861,11 +870,9 @@ manually set it to load as rgb:</p>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>If you haven’t completed the <a href="image-display.html">image
 display episode</a>, you will need to <a href="image-display.html#napari-plugins">install the
@@ -901,11 +908,9 @@ produce? Each value has a minimum of 0 and a maximum of 255.</p>
 <div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <figure><img src="../fig/rgb-exercise.png" style="width:50.0%" alt="Diagram of (R, G, B) values next to corresponding  colours" class="figure mx-auto d-block"></figure></div>
 </div>
@@ -916,7 +921,7 @@ produce? Each value has a minimum of 0 and a maximum of 255.</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
 <ul><li>Microscopy images can have many dimensions, usually representing
@@ -971,8 +976,8 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/HealthBioscienceIDEAS/sandpaper/tree/IDEAS" class="external-link">sandpaper (0.14.1.9000)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/1bc5753e917d515c3d888ce6cc013c0a680eacfc" class="external-link">pegboard (0.7.3)</a>,
+        <p>Built with <a href="https://github.com/HealthBioscienceIDEAS/sandpaper/tree/IDEAS" class="external-link">sandpaper (0.16.2)</a>,
+        <a href="https://github.com/carpentries/pegboard/tree/e9ca729c7db3ca97f016480679f9f58d115d2721" class="external-link">pegboard (0.7.4)</a>,
       and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (0.3.3.9000)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
@@ -986,6 +991,7 @@ any links that you are not going to use.
   "@context": "https://schema.org",
   "@type": "TrainingMaterial",
   "@id": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/multi-dimensional-images.html",
+  "inLanguage": "en",
   "dct:conformsTo": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "software, data, lesson, The Carpentries",
@@ -995,7 +1001,7 @@ any links that you are not going to use.
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/multi-dimensional-images.html",
   "dateCreated": "2023-10-26",
   "dateModified": "2023-12-20",
-  "datePublished": "2024-03-05"
+  "datePublished": "2024-03-07"
 }
 
   </script><script>

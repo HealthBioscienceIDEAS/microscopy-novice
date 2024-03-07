@@ -245,6 +245,15 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush11">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading11">
+        <a href="additional-resources.html">10. Additional resources</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -379,12 +388,13 @@ layers…</p>
 <p>First, open Napari’s built-in Python console by pressing the console
 button <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg" alt="A screenshot of Napari's console button" height="30" class="figure">. Note
 this can take a few seconds to open, so give it some time:</p>
-<figure><img src="../fig/console.png" alt="A screenshot of Napari's console" class="figure mx-auto d-block"></figure><div id="callout1" class="callout">
+<figure><img src="../fig/console.png" alt="A screenshot of Napari's console" class="figure mx-auto d-block"></figure><div id="console-readability" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="console-readability">Console readability<a class="anchor" aria-label="anchor" href="#console-readability"></a></h3>
+<div id="console-readability" class="callout-inner">
+<h3 class="callout-title">Console readability<a class="anchor" aria-label="anchor" href="#console-readability"></a>
+</h3>
 <div class="callout-content">
 <p>You can increase the font size in the console by clicking inside it,
 then pressing <kbd>Ctrl</kbd> and <kbd>+</kbd> together. The font size
@@ -616,9 +626,7 @@ on the bit depth?</p></li>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
@@ -701,12 +709,13 @@ choosing the best fit for your specific project!</p>
 <p>For more information on bit depths and types - we highly recommend <a href="https://bioimagebook.github.io/chapters/1-concepts/3-bit_depths/bit_depths.html" class="external-link">the
 ‘Types &amp; bit-depths’ chapter from Pete Bankhead’s free bioimage
 book</a>.</p>
-<div id="callout2" class="callout">
+<div id="clipping-and-overflow" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="clipping-and-overflow">Clipping and overflow<a class="anchor" aria-label="anchor" href="#clipping-and-overflow"></a></h3>
+<div id="clipping-and-overflow" class="callout-inner">
+<h3 class="callout-title">Clipping and overflow<a class="anchor" aria-label="anchor" href="#clipping-and-overflow"></a>
+</h3>
 <div class="callout-content">
 <p>It’s important to be aware of what image type and bit depth you are
 using. If you try to store values outside of the valid range, this can
@@ -799,9 +808,7 @@ value - is it correct? If not, why not?</li>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
@@ -885,7 +892,7 @@ value for this 8-bit image (max 255). The value therefore overflows and
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
 <ul><li>Digital images are made of pixels</li>
@@ -941,8 +948,8 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/HealthBioscienceIDEAS/sandpaper/tree/IDEAS" class="external-link">sandpaper (0.14.1.9000)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/1bc5753e917d515c3d888ce6cc013c0a680eacfc" class="external-link">pegboard (0.7.3)</a>,
+        <p>Built with <a href="https://github.com/HealthBioscienceIDEAS/sandpaper/tree/IDEAS" class="external-link">sandpaper (0.16.2)</a>,
+        <a href="https://github.com/carpentries/pegboard/tree/e9ca729c7db3ca97f016480679f9f58d115d2721" class="external-link">pegboard (0.7.4)</a>,
       and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (0.3.3.9000)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
@@ -956,6 +963,7 @@ any links that you are not going to use.
   "@context": "https://schema.org",
   "@type": "TrainingMaterial",
   "@id": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/what-is-an-image.html",
+  "inLanguage": "en",
   "dct:conformsTo": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "software, data, lesson, The Carpentries",
@@ -965,7 +973,7 @@ any links that you are not going to use.
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/what-is-an-image.html",
   "dateCreated": "2023-10-26",
   "dateModified": "2024-01-15",
-  "datePublished": "2024-03-05"
+  "datePublished": "2024-03-07"
 }
 
   </script><script>
