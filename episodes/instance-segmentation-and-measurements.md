@@ -478,11 +478,16 @@ corresponding
 to border nuclei were set to zero, however the total number of labels
 in the image was not changed, so whilst there are 19 labels in the
 image some of them have no corresponding pixels. The easiest way to
-correct this is to re label the image.
+correct this is to re label the image (and replace the old instance
+segmentation in the viewer.)
 ```python
+viewer.layers.remove('instance_seg')
+
 instance_seg = label(instance_seg)
 number_of_nuclei = instance_seg.max()
 print(f"There are {number_of_nuclei} individual nuclei")
+
+viewer.add_labels(instance_seg)
 ```
 ```output
 There are 11 individual nuclei
