@@ -290,7 +290,19 @@
 <div class="accordion accordion-flush" id="accordionFlush11">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading11">
-        <a href="additional-resources.html">10. Additional resources</a>
+        <a href="instance-segmentation-and-measurements.html">10. Instance segmentation and measurements</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush12">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading12">
+        <a href="additional-resources.html">11. Additional resources</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -1072,7 +1084,149 @@ their top left corner.</p>
 <figure><img src="../fig/remove-noise-options.png" alt="Screenshot of settings for removing noise  in Napari" class="figure mx-auto d-block"></figure><hr>
 <h3 id="filters-and-thresholding-figure-39">Figure 39</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Screenshot of settings for binarize in  Napari’</p>
-<figure><img src="../fig/binarize-options.png" alt="Screenshot of settings for binarize in  Napari" class="figure mx-auto d-block"></figure><hr></section><section id="additional-resources"><h2 class="section-heading"><a href="additional-resources.html">Additional resources</a></h2>
+<figure><img src="../fig/binarize-options.png" alt="Screenshot of settings for binarize in  Napari" class="figure mx-auto d-block"></figure><hr></section><section id="instance-segmentation-and-measurements"><h2 class="section-heading"><a href="instance-segmentation-and-measurements.html">Instance segmentation and measurements</a></h2>
+<hr class="half-width">
+<h3 id="instance-segmentation-and-measurements-figure-1">Figure 1</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of the plugin installation dialog for napari-skimage-regionprops’</p>
+<p>We’ll be using the <a href="https://www.napari-hub.org/plugins/napari-skimage-regionprops" class="external-link">napari-skimage-regionprops</a>
+plugin in this lesson. If it is not already installed you should do that
+now. Use the tool bar to navigate to
+<code>Plugins &gt; Install/Uninstall Plugins...</code>. Type
+<code>region</code> into the filter bar at the top left and you should
+see <code>napari-skimage-regionprops</code> in the dialog like the image
+below. <img src="../fig/install-region-props.png" alt="A screenshot of the plugin installation dialog for napari-skimage-regionprops" class="figure">
+If it is already installed, then nothing else needs to be done. If it is
+not installed, press install, and when finished, restart Napari.</p>
+<hr>
+<h3 id="instance-segmentation-and-measurements-figure-2">Figure 2</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of Napari's console button’</p>
+<p>Open Napari’s console by pressing the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg" alt="A screenshot of Napari's console button" height="30" class="figure"> button,
+then copy and paste the code below.</p>
+<hr>
+<h3 id="instance-segmentation-and-measurements-figure-3">Figure 3</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of a rough semantic segmentation of nuclei in Napari’</p>
+<figure><img src="../fig/semantic-seg-napari.png" alt="A screenshot of a rough semantic segmentation of nuclei in Napari" class="figure mx-auto d-block"></figure><hr>
+<h3 id="instance-segmentation-and-measurements-figure-4">Figure 4</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of an instance segmentation of nuclei with some incorrectly joined instances.’</p>
+<p><img src="../fig/instance_segmentation_wrong.png" alt="A screenshot of an instance segmentation of nuclei with some incorrectly joined instances." class="figure">
+You should see the above image in the Napari viewer. The different
+colours are used to represent different nuclei. The instance
+segmentation assigns a different integer value to each nucleus, so
+counting the number of nuclei can be done very easily by taking the
+maximum value of the instance segmentation image.</p>
+<hr>
+<h3 id="instance-segmentation-and-measurements-figure-5">Figure 5</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of the napari-skimage-regionprops plugin at startup.’</p>
+<p>If you followed the instructions <a href="#before-you-begin">above</a> the napari-skimage-regionprops plugin
+should already be installed. If not then do it now and restart Napari.
+If the plugin is installed you can use the toolbar to open
+<code>tools &gt; measurement tables &gt; Regionsprops(skimage, nsr)</code>.
+You should see a dialog like this: <img src="../fig/region_props_before.png" alt="A screenshot of the napari-skimage-regionprops plugin at startup." class="figure"></p>
+<hr>
+<h3 id="instance-segmentation-and-measurements-figure-6">Figure 6</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of the numeric value table created by the napari-skimage-regionprops plugin’</p>
+<p>Select <code>nuclei(data)</code> in the image drop down box and
+<code>instance_seg(data)</code> in the labels drop down box. You can
+choose to measure various shape properties with this plugin but for now
+let’s keep it simple, making sure that only the <code>size</code> and
+<code>position</code> tick boxes are selected. Click <code>run</code>. A
+table of numeric values should appear under the plugin dialog box, like
+the image below. <img src="../fig/region_props_after.png" alt="A screenshot of the numeric value table created by the napari-skimage-regionprops plugin" class="figure"></p>
+<hr>
+<h3 id="instance-segmentation-and-measurements-figure-7">Figure 7</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of the region-props dialog highlighting the largest nucleus.’</p>
+<p>Let’s start with label 3 which is the largest labelled nucleus. <img src="../fig/region_props_after_3.png" alt="A screenshot of the region-props dialog highlighting the largest nucleus." class="figure">
+According to the table, nucleus 3 is larger than the other nuclei
+(202258 pixels). In the <a href="what-is-an-image.html#pixels">what is
+an image</a> lesson, we learnt to use the mouse pointer to find
+particular values in an image. Hovering the mouse pointer over the light
+purple nuclei at the bottom left of the image we see that these
+apparently four separate nuclei have been labelled as a single nucleus.
+Before we examine the reasons for this we’ll look at the other extreme
+value, the smallest nucleus.</p>
+<hr>
+<h3 id="instance-segmentation-and-measurements-figure-8">Figure 8</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot region-props dialog highlighting the smallest nucleus.’</p>
+<p>The smallest nucleus is labelled 18, at the bottom of the table with
+a size of 7 pixels. We can use the position data (the
+<code>centroid</code> and <code>bbox</code> columns) in the table to
+help find this nucleus. We need to navigate to slice 33 and get the
+mouse near the top left corner (33 64 0) to find label 18 in the image.
+<img src="../fig/region_props_after_18.png" alt="A screenshot region-props dialog highlighting the smallest nucleus." class="figure">
+Nucleus 18 is right at the edge of the image, so is only a partial
+nucleus. Partial nuclei will need to be excluded from our analysis.
+We’ll do this later in the lesson with a <a href="#removing-border-cells">clear border</a> filter. However, first we
+need to solve the problem of joined nuclei.</p>
+<hr>
+<h3 id="instance-segmentation-and-measurements-figure-9">Figure 9</h3>
+<p aria-hidden="true">Image 1 of 1: ‘Napari's 2D/3D toggle’</p>
+<p>You may remember from our <a href="imaging-software.html#d3d">first
+lesson</a> that we can change to 3D view mode by pressing the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/2D.svg" alt="Napari's 2D/3D toggle" height="30" class="figure"> button. Try it now.</p>
+<hr>
+<h3 id="instance-segmentation-and-measurements-figure-10">Figure 10</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of an instance segmentation of nuclei in 3D mode with some incorrectly joined instances.’</p>
+<p><img src="../fig/instance_segmentation_wrong3d.png" alt="A screenshot of an instance segmentation of nuclei in 3D mode with some incorrectly joined instances." class="figure">
+You should see the image rendered in 3D, with a clear join between the
+upper most light purple nucleus and its neighbour. So now we understand
+why the instance labelling has failed, what can we do to fix it?</p>
+<hr>
+<h3 id="instance-segmentation-and-measurements-figure-11">Figure 11</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of a semantic segmentation mask before erosion.’</p>
+<p><img src="../fig/binary_mask_no_erosion.png" alt="A screenshot of a semantic segmentation mask before erosion." class="figure">
+The first image shows the mask without any erosion for comparison.</p>
+<hr>
+<h3 id="instance-segmentation-and-measurements-figure-12">Figure 12</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of a semantic segmentation mask eroded with a ball of radius 1.’</p>
+<p><img src="../fig/binary_mask_erosion_1.png" alt="A screenshot of a semantic segmentation mask eroded with a ball of radius 1." class="figure">
+Erosion with a radius of 1 makes a small difference, but the nuclei
+remain joined.</p>
+<hr>
+<h3 id="instance-segmentation-and-measurements-figure-13">Figure 13</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of a semantic segmentation mask eroded with a ball of radius 5.’</p>
+<p><img src="../fig/binary_mask_erosion_5.png" alt="A screenshot of a semantic segmentation mask eroded with a ball of radius 5." class="figure">
+Erosion with a radius of 5 makes a more noticeable difference, but some
+nuclei remain joined.</p>
+<hr>
+<h3 id="instance-segmentation-and-measurements-figure-14">Figure 14</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A screenshot of a semantic segmentation mask eroded with a ball of radius 10.’</p>
+<p><img src="../fig/binary_mask_erosion_10.png" alt="A screenshot of a semantic segmentation mask eroded with a ball of radius 10." class="figure">
+Erosion with a radius of 10 separates all nuclei.</p>
+<hr>
+<h3 id="instance-segmentation-and-measurements-figure-15">Figure 15</h3>
+<p aria-hidden="true">Image 1 of 1: ‘Instance segmentation on the eroded segmentation mask’</p>
+<p><img src="../fig/instance_segmentation_eroded.png" alt="Instance segmentation on the eroded segmentation mask" class="figure"> Looking
+at the image above, there are no longer any incorrectly joined nuclei.
+The absolute number of nuclei found hasn’t changed much as the erosion
+process has removed some partial nuclei around the edges of the
+image.</p>
+<hr>
+<h3 id="instance-segmentation-and-measurements-figure-16">Figure 16</h3>
+<p aria-hidden="true">Image 1 of 1: ‘Expanded instance segmentation on the eroded segmentation mask’</p>
+<p><img src="../fig/instance_segmentation_expanded.png" alt="Expanded instance segmentation on the eroded segmentation mask" class="figure">
+There are now 19 apparently correctly labelled nuclei that appear to be
+the same shape as in the original mask image.</p>
+<hr>
+<h3 id="instance-segmentation-and-measurements-figure-17">Figure 17</h3>
+<p aria-hidden="true">Image 1 of 1: ‘A comparison between the expanded instance segmentation and the original semantic segmentation showing some mismatch between the borders.’</p>
+<p><img src="../fig/instance_segmentation_vs_semantic_segmentation.png" alt="A comparison between the expanded instance segmentation and the original semantic segmentation showing some mismatch between the borders." class="figure">
+Looking at the above image we can see some small mismatches around the
+edges of most of the nuclei. It should be remembered when looking at
+this image that it is a single slice though a 3D image, so in some cases
+where the differences look large (for example the nucleus at the bottom
+right) they may still be only one pixel deep. Will the effect of this on
+the accuracy of our results be significant?</p>
+<hr>
+<h3 id="instance-segmentation-and-measurements-figure-18">Figure 18</h3>
+<p aria-hidden="true">Image 1 of 1: ‘The instance segmentation with any nuclei crossing the image boundary removed’</p>
+<p><img src="../fig/instance_segmentation_clear_border.png" alt="The instance segmentation with any nuclei crossing the image boundary removed" class="figure">
+We now have an image with 11 clearly labelled nuclei. You may notice
+that the smaller nucleus (dark orange) near the top left of the image
+has been removed even though we can’t see where it touches the image
+border. Remember that this is a 3D image and clear border removes nuclei
+touching any border. This nucleus has been removed because it touches
+the top or bottom (z axis) of the image. Let’s check the nuclei count as
+we did above.</p>
+<hr></section><section id="additional-resources"><h2 class="section-heading"><a href="additional-resources.html">Additional resources</a></h2>
 <hr class="half-width"></section>
 </div>
     </main>

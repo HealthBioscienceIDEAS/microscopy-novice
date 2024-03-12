@@ -289,7 +289,19 @@
 <div class="accordion accordion-flush" id="accordionFlush11">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading11">
-        <a href="additional-resources.html">10. Additional resources</a>
+        <a href="instance-segmentation-and-measurements.html">10. Instance segmentation and measurements</a>
+    </div>
+<!--/div.accordion-header-->
+        
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush12">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading12">
+        <a href="additional-resources.html">11. Additional resources</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -491,6 +503,22 @@ The ‘sigma’ controls the strength of the blurring effect.</p></li>
 <li><p>Image processing operations may modify the data type of your
 image - often converting it to <code>float32</code> or
 <code>float64</code>.</p></li>
+</ul></section><section id="instance-segmentation-and-measurements"><h2 class="section-heading"><a href="instance-segmentation-and-measurements.html">Instance segmentation and measurements</a></h2>
+<hr class="half-width">
+<ul>
+<li>Connected component analysis (the label function) was used to assign
+each connected region of a mask a unique integer value. This produces an
+instance segmentation from a semantic segmentation.</li>
+<li>Erosion and dilation filters were used to correct the instance
+segmentation. Erosion was used to separate individual nuclei. Dilation
+(or expansion) was used to return the nuclei to their (approximate)
+original size.</li>
+<li>Partial nuclei at the image edges can be removed with the
+clear_border function.</li>
+<li>The napari-skimage-regionprops plugin can be used to interactively
+examine the nuclei shapes.</li>
+<li>The Python console can be used to automate and save the image
+analysis pipeline.</li>
 </ul></section><section id="additional-resources"><h2 class="section-heading"><a href="additional-resources.html">Additional resources</a></h2>
 <hr class="half-width"></section>
 </div>
