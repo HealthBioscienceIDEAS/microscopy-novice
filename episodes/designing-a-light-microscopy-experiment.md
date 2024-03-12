@@ -186,7 +186,7 @@ and power, with larger sample sizes resulting in higher power to detect the same
 effect. Conducting a 'power analysis' is a good way to assess a reasonable 
 minimum sample size for your experiment. A full discussion of this is outside of 
 the scope of this course, but there are links to further resources in the 
-[final episode](FIXME.md). 
+[final episode](additional-resources.md). 
 
 
 ::::::::::::::::::::::::::::::::::::: challenge 
@@ -237,8 +237,9 @@ However, as we are looking to quantify many nuclei at many different timepoints,
 it's not feasible to do this manually - we'll need to develop an automated 
 workflow to segment the nuclei and measure their volume and sphericity. We'll 
 look at some techniques for this kind of analysis in the 
-[manual segmentation](FIXME.md), [thresholding](FIXME.md) and 
-[instance segmentation](FIXME.md) episodes.
+[manual segmentation](quality-control-and-manual-segmentation.md), 
+[thresholding](filters-and-thresholding.md) and [instance segmentation
+](instance-segmentation-and-measurements.md) episodes.
 
 :::::::::::::::::::::::::::::::::
 
@@ -248,7 +249,7 @@ look at some techniques for this kind of analysis in the
 
 For the final part of this episode, let's look at how we can choose a light 
 microscopy method for our experiment. We'll look at the last step (choosing 
-acquisition settings) in the next episode.
+acquisition settings) in the [next episode](choosing-acquisition-settings.md).
 
 Often the first step in choosing a light microscopy technique is discussing with 
 other members of your research group or department. What are most of them using, 
