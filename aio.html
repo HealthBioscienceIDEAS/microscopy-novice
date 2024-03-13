@@ -366,7 +366,7 @@
         
 <section id="aio-imaging-software"><p>Content from <a href="imaging-software.html">Imaging Software</a></p>
 <hr>
-<p> Last updated on 2023-12-19 | 
+<p> Last updated on 2024-03-13 | 
         
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/imaging-software.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -408,7 +408,8 @@ views…)</li>
 </h2>
 <hr class="half-width">
 <p>Light microscopes can produce a very wide range of image data (we’ll
-see some examples in episode X) - for example:</p>
+see some examples in the <a href="multi-dimensional-images.html">multi-dimensional images
+episode</a>) - for example:</p>
 <ul>
 <li>2D or 3D</li>
 <li>Time series or snapshots</li>
@@ -599,9 +600,10 @@ new features and attracting a wide range of new plugin developers.</p>
 <p><strong>Built-in tools</strong><br>
 Fiji/ImageJ comes with many image processing tools built-in by default -
 e.g.  making image histograms, thresholding and gaussian blur (we will
-look at these terms in a later episode). Napari, in contrast, is more
-minimal by default - mostly focusing on image display. It requires
-installation of additional plugins to add many of these features.</p>
+look at these terms in the <a href="filters-and-thresholding.html">filters and thresholding
+episode</a>). Napari, in contrast, is more minimal by default - mostly
+focusing on image display. It requires installation of additional
+plugins to add many of these features.</p>
 <p><strong>Specific plugins</strong><br>
 There are excellent plugins available for Fiji/ImageJ and Napari that
 focus on specific types of image data or processing steps. The
@@ -689,8 +691,8 @@ control various aspects of the Napari viewer:</p>
 <div class="section level3">
 <h3 id="console">Console <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg" alt="A screenshot of Napari's console button" height="30" class="figure"><a class="anchor" aria-label="anchor" href="#console"></a>
 </h3>
-<p>This button opens Napari’s built-in python console - we’ll look at
-this in later episodes.</p>
+<p>This button opens Napari’s built-in python console - we’ll use the
+console more in later episodes.</p>
 </div>
 <div class="section level3">
 <h3 id="d3d">2D/3D <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/2D.svg" alt="A screenshot of Napari's 2D button" height="25" class="figure"> / <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/3D.svg" alt="A screenshot of Napari's 3D button" height="25" class="figure"><a class="anchor" aria-label="anchor" href="#d3d"></a>
@@ -726,9 +728,10 @@ orientation.</p>
 <h3 id="grid">Grid <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/grid.svg" alt="A screenshot of Napari's grid button" height="25" class="figure"><a class="anchor" aria-label="anchor" href="#grid"></a>
 </h3>
 <p>This button displays all image layers in a grid (+ any additional
-layer types, as we’ll see later in the episode). Using this for our
-cells image, we see the nuclei (green) displayed next to the cell
-membranes (purple), rather than on top of each other.</p>
+layer types, as we’ll see <a href="#layer-buttons">later in the
+episode</a>). Using this for our cells image, we see the nuclei (green)
+displayed next to the cell membranes (purple), rather than on top of
+each other.</p>
 </div>
 <div class="section level3">
 <h3 id="home">Home <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/home.svg" alt="A screenshot of Napari's home button" height="25" class="figure"><a class="anchor" aria-label="anchor" href="#home"></a>
@@ -754,7 +757,7 @@ nuclei. You should see the nuclei disappear from the viewer (as they are
 now hidden by the membrane image on top).</p>
 <figure><img src="fig/layer-reordering.png" alt="A screenshot of Napari with the nuclei and  membrane layer swapped" class="figure mx-auto d-block"></figure><p>Here we only have <code>Image</code> layers, but there are many more
 types like <code>Points</code>, <code>Shapes</code> and
-<code>Labels</code>, some of which we will see later in the episode.</p>
+<code>Labels</code>, some of which we will see <a href="#layer-buttons">later in the episode</a>.</p>
 </section><section id="layer-controls"><h2 class="section-heading">Layer controls<a class="anchor" aria-label="anchor" href="#layer-controls"></a>
 </h2>
 <hr class="half-width">
@@ -764,8 +767,7 @@ blue in the layer list). For example, if we click on the nuclei layer
 then we can see a <code>colormap</code> of green, while if we click on
 the membrane layer we see a <code>colormap</code> of magenta.</p>
 <p>Controls will also vary depending on layer type (like
-<code>Image</code> vs <code>Points</code>) as we will see later in this
-episode.</p>
+<code>Image</code> vs <code>Points</code>) as we will see <a href="#layer-buttons">later in this episode</a>.</p>
 <p>Let’s take a quick look at some of the main image layer controls:</p>
 <div class="section level3">
 <h3 id="opacity">Opacity<a class="anchor" aria-label="anchor" href="#opacity"></a>
@@ -778,19 +780,19 @@ again.</p>
 <div class="section level3">
 <h3 id="contrast-limits">Contrast limits<a class="anchor" aria-label="anchor" href="#contrast-limits"></a>
 </h3>
-<p>We’ll discuss this in detail in a later episode, but briefly - the
-contrast limits adjust what parts of the image we can see and how bright
-they appear in the viewer. Moving the left node adjusts what is shown as
-fully black, while moving the right node adjusts what is shown as fully
-bright.</p>
+<p>We’ll discuss this in detail in the <a href="image-display.html#brightness-and-contrast">image display
+episode</a>, but briefly - the contrast limits adjust what parts of the
+image we can see and how bright they appear in the viewer. Moving the
+left node adjusts what is shown as fully black, while moving the right
+node adjusts what is shown as fully bright.</p>
 </div>
 <div class="section level3">
 <h3 id="colormap">Colormap<a class="anchor" aria-label="anchor" href="#colormap"></a>
 </h3>
-<p>Again, we’ll discuss this in detail in a later episode, but briefly -
-the colormap determines what colours an image is displayed with.
-Clicking in the dropdown shows a wide range of options that you can swap
-between.</p>
+<p>Again, we’ll discuss this in detail in the <a href="image-display.html#colormaps-luts">image display episode</a>, but
+briefly - the colormap determines what colours an image is displayed
+with. Clicking in the dropdown shows a wide range of options that you
+can swap between.</p>
 </div>
 <div class="section level3">
 <h3 id="blending">Blending<a class="anchor" aria-label="anchor" href="#blending"></a>
@@ -953,7 +955,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-what-is-an-image"><p>Content from <a href="what-is-an-image.html">What is an image?</a></p>
 <hr>
-<p> Last updated on 2024-01-15 | 
+<p> Last updated on 2024-03-13 | 
         
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/what-is-an-image.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1018,7 +1020,7 @@ bright areas of the image and see how the value changes in the bottom
 left of the viewer:</p>
 <figure><img src="fig/pixel-value.png" alt="A screenshot of Napari - with the mouse cursor  hovering over a pixel and highlighting the corresponding pixel value" class="figure mx-auto d-block"></figure><p>You should see that brighter areas have higher values than darker
 areas (we’ll see exactly how these values are converted to colours in
-the next episode).</p>
+the <a href="image-display.html">image display episode</a>).</p>
 </section><section id="images-are-arrays-of-numbers"><h2 class="section-heading">Images are arrays of numbers<a class="anchor" aria-label="anchor" href="#images-are-arrays-of-numbers"></a>
 </h2>
 <hr class="half-width">
@@ -1370,7 +1372,8 @@ use? A higher bit depth will allow a wider range of values to be stored,
 but it will also result in larger file sizes for the resulting images.
 In general, a 16-bit image will have a file size that is about twice as
 large as an 8-bit image if no compression is used (we’ll discuss
-compression in a later episode).</p>
+compression in the <a href="filetypes-and-metadata.html#compression">filetypes and metadata
+episode</a>).</p>
 <p>The best bit depth choice will depend on your particular imaging
 experiment and research question. For example, if you know you have to
 recognise features that only differ slightly in their brightness, then
@@ -1429,10 +1432,11 @@ example, from making graphs):</p>
 e.g. [1,3] would be the pixel in row 1 and column 3. Remember that these
 coordinates always start from 0 as you can see in the diagram below:</p>
 <figure><img src="fig/coordinates-on-image.png" style="width:50.0%" alt="A diagram showing how pixel coordinates change over a simple 4x4 image" class="figure mx-auto d-block"></figure><p>For the mitosis image, these coordinates are in pixels, but we’ll see
-in later episodes that images can also be scaled based on resolution to
-represent distances in the physical world (e.g. in micrometres). Also,
-bear in mind that images with more dimensions (e.g. a 3D image) will
-have longer coordinates like [z, y, x]…</p>
+in the <a href="filetypes-and-metadata.html#pixel-size">filetypes and
+metadata episode</a> that images can also be scaled based on resolution
+to represent distances in the physical world (e.g. in micrometres).
+Also, bear in mind that images with more dimensions (e.g. a 3D image)
+will have longer coordinates like [z, y, x]…</p>
 <div id="reading-and-modifying-pixel-values" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -1598,7 +1602,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-image-display"><p>Content from <a href="image-display.html">Image display</a></p>
 <hr>
-<p> Last updated on 2024-01-31 | 
+<p> Last updated on 2024-03-13 | 
         
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/image-display.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1819,9 +1823,9 @@ unexpected ways. Also, even with scientific software, some image
 processing steps (that we’ll see in later episodes) will change the
 pixel values.</p>
 <p>Keep this in mind and make sure you always retain a copy of your
-original data, in its original file format! We’ll see in the <a href="./FIXME.html">‘Filetypes and metadata’ episode</a> that original
-image files contain important metadata that should be kept for future
-reference.</p>
+original data, in its original file format! We’ll see in the <a href="filetypes-and-metadata.html">‘Filetypes and metadata’ episode</a>
+that original image files contain important metadata that should be kept
+for future reference.</p>
 </section><section id="colormaps-luts"><h2 class="section-heading">Colormaps / LUTs<a class="anchor" aria-label="anchor" href="#colormaps-luts"></a>
 </h2>
 <hr class="half-width">
@@ -1961,7 +1965,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-multi-dimensional-images"><p>Content from <a href="multi-dimensional-images.html">Multi-dimensional images</a></p>
 <hr>
-<p> Last updated on 2023-12-20 | 
+<p> Last updated on 2024-03-13 | 
         
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/multi-dimensional-images.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -2213,10 +2217,10 @@ viewer.add_image(data.cells3d(), channel_axis=1)</code></pre>
 that dimension 1 is the channel axis. This allows Napari to split the
 channels automatically into different layers.</p>
 <p>Usually when loading your own images into Napari e.g. with the
-napari-aicsimageio plugin (as we will see in the next episode), the
-channel axis should be recognised automatically. If not, you may need to
-add the image via the console as above, manually stating the channel
-axis.</p>
+napari-aicsimageio plugin (as we will see in the <a href="filetypes-and-metadata.html">filetypes and metadata episode</a>),
+the channel axis should be recognised automatically. If not, you may
+need to add the image via the console as above, manually stating the
+channel axis.</p>
 </div>
 </div>
 </div>
@@ -2773,7 +2777,7 @@ What is its excitation and emission wavelength?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="microscope-model">Microscope model<a class="anchor" aria-label="anchor" href="#microscope-model"></a>
@@ -2922,7 +2926,7 @@ tall as their original size in the viewer</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="section">1<a class="anchor" aria-label="anchor" href="#section"></a>
@@ -3125,7 +3129,7 @@ do they differ? How does each compare to timepoint 30 of the original
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="file-sizes">File sizes<a class="anchor" aria-label="anchor" href="#file-sizes"></a>
@@ -3299,7 +3303,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-designing-a-light-microscopy-experiment"><p>Content from <a href="designing-a-light-microscopy-experiment.html">Designing a light microscopy experiment</a></p>
 <hr>
-<p> Last updated on 2024-02-07 | 
+<p> Last updated on 2024-03-13 | 
         
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/designing-a-light-microscopy-experiment.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -3418,7 +3422,7 @@ may be best to discuss in a group, so you can share different ideas.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="structures-events">Structures / events<a class="anchor" aria-label="anchor" href="#structures-events"></a>
@@ -3508,7 +3512,8 @@ larger sample sizes resulting in higher power to detect the same effect.
 Conducting a ‘power analysis’ is a good way to assess a reasonable
 minimum sample size for your experiment. A full discussion of this is
 outside of the scope of this course, but there are links to further
-resources in the <a href="FIXME.html">final episode</a>.</p>
+resources in the <a href="additional-resources.html">final
+episode</a>.</p>
 <div id="what-do-you-need-to-measure" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -3535,7 +3540,7 @@ ideas.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="what-to-quantify">What to quantify?<a class="anchor" aria-label="anchor" href="#what-to-quantify"></a>
@@ -3570,7 +3575,8 @@ However, as we are looking to quantify many nuclei at many different
 timepoints, it’s not feasible to do this manually - we’ll need to
 develop an automated workflow to segment the nuclei and measure their
 volume and sphericity. We’ll look at some techniques for this kind of
-analysis in the <a href="FIXME.html">manual segmentation</a>, <a href="FIXME.html">thresholding</a> and <a href="FIXME.html">instance
+analysis in the <a href="quality-control-and-manual-segmentation.html">manual
+segmentation</a>, <a href="filters-and-thresholding.html">thresholding</a> and <a href="instance-segmentation-and-measurements.html">instance
 segmentation</a> episodes.</p>
 </div>
 </div>
@@ -3582,7 +3588,7 @@ segmentation</a> episodes.</p>
 <hr class="half-width">
 <p>For the final part of this episode, let’s look at how we can choose a
 light microscopy method for our experiment. We’ll look at the last step
-(choosing acquisition settings) in the next episode.</p>
+(choosing acquisition settings) in the <a href="choosing-acquisition-settings.html">next episode</a>.</p>
 <p>Often the first step in choosing a light microscopy technique is
 discussing with other members of your research group or department. What
 are most of them using, for what kind of experiments? If you are working
@@ -3813,7 +3819,7 @@ may be best to discuss in a group, so you can share different ideas.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Again, there’s no one solution here - it depends on which elements of
 nucleus shape and size we’re focusing on. If we’re happy with 2D
@@ -4663,7 +4669,7 @@ icon.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>In the top menu bar of Napari select:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
 <p>Make sure you have the ‘nuclei’ layer selected in the layer list
@@ -4933,7 +4939,7 @@ integers) Choose from 8-bit, 16-bit or 32-bit.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="shapes-pattern">Shapes + pattern<a class="anchor" aria-label="anchor" href="#shapes-pattern"></a>
@@ -5114,7 +5120,7 @@ documentation</a> on <code>Labels</code> layers.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="icon">
@@ -5241,7 +5247,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-filters-and-thresholding"><p>Content from <a href="filters-and-thresholding.html">Filters and thresholding</a></p>
 <hr>
-<p> Last updated on 2024-02-21 | 
+<p> Last updated on 2024-03-13 | 
         
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/filters-and-thresholding.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -5392,7 +5398,7 @@ referred to as smoothing). We’ll look at this in detail <a href="#filters">lat
 have in previous episodes. <code>.add_labels()</code> will ensure our
 mask is added as a <code>Labels</code> layer, giving us access to all
 the annotation tools and settings for segmentations (as covered in the
-<a href="quality-control-and-manual_segmentation.html">manual
+<a href="quality-control-and-manual-segmentation.html">manual
 segmentation episode</a>). <code>add_image()</code> would create a
 standard <code>Image</code> layer, which doesn’t give us easy access to
 the annotation tools.</p>
@@ -6873,8 +6879,8 @@ any links that you are not going to use.
   "url": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/aio.html",
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/aio.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2024-03-12",
-  "datePublished": "2024-03-12"
+  "dateModified": "2024-03-13",
+  "datePublished": "2024-03-13"
 }
 
   </script><script>
