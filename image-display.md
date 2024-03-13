@@ -163,7 +163,9 @@ we see the highest bars to the left, with shorter bars to the right. This means
 this image has a lot of very dark (low intensity) pixels and fewer bright 
 (high intensity) pixels.
 
-The vertical white lines at 0 and 255 represent the current 'contrast limits' - we'll look at this in detail in a [later section of this episode](#brightness-and-contrast).
+The vertical white lines at 0 and 255 represent the current 'contrast limits' - 
+we'll look at this in detail in a [later section of this episode
+](#brightness-and-contrast).
 
 Let's quickly compare to another image. Open the 'coins' image with:  
 `File > Open Sample > napari builtins > Coins`
@@ -222,8 +224,8 @@ pixel values.
 
 Keep this in mind and make sure you always retain a copy of your original data, 
 in its original file format! We'll see in the ['Filetypes and metadata' episode
-](./FIXME.md) that original image files contain important metadata that should 
-be kept for future reference.
+](filetypes-and-metadata.md) that original image files contain important 
+metadata that should be kept for future reference.
 
 ## Colormaps / LUTs
 

@@ -163,7 +163,7 @@ In the code blocks above, you will notice that we use `.add_labels()`, rather
 than `.add_image()` as we have in previous episodes. `.add_labels()` will ensure 
 our mask is added as a `Labels` layer, giving us access to all the annotation 
 tools and settings for segmentations (as covered in the [manual segmentation 
-episode](quality-control-and-manual_segmentation.md)). `add_image()` would 
+episode](quality-control-and-manual-segmentation.md)). `add_image()` would 
 create a standard `Image` layer, which doesn't give us easy access to the 
 annotation tools.
 

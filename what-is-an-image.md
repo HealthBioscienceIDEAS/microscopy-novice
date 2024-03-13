@@ -61,7 +61,8 @@ image and see how the value changes in the bottom left of the viewer:
 hovering over a pixel and highlighting the corresponding pixel value"}
 
 You should see that brighter areas have higher values than darker areas (we'll 
-see exactly how these values are converted to colours in the next episode).
+see exactly how these values are converted to colours in the 
+[image display episode](image-display.md)).
 
 ## Images are arrays of numbers
 
@@ -365,7 +366,8 @@ Most images are either 8-bit or 16-bit - so how to choose which to use?
 A higher bit depth will allow a wider range of values to be stored, but it will 
 also result in larger file sizes for the resulting images. In general, a 16-bit 
 image will have a file size that is about twice as large as an 8-bit image 
-if no compression is used (we'll discuss compression in a later episode).
+if no compression is used (we'll discuss compression in the 
+[filetypes and metadata episode](filetypes-and-metadata.md#compression)).
 
 The best bit depth choice will depend on your particular imaging experiment and 
 research question. For example, if you know you have to recognise features that 
@@ -431,11 +433,11 @@ start from 0 as you can see in the diagram below:
 ![](fig/coordinates-on-image.png
 ){alt="A diagram showing how pixel coordinates change over a simple 4x4 image" width=50%}
 
-For the mitosis image, these coordinates are in pixels, but we'll see in later 
-episodes that images can also be scaled based on resolution to represent 
-distances in the physical world (e.g. in micrometres). Also, bear in mind that 
-images with more dimensions (e.g. a 3D image) will have longer coordinates 
-like [z, y, x]...
+For the mitosis image, these coordinates are in pixels, but we'll see in the 
+[filetypes and metadata episode](filetypes-and-metadata.md#pixel-size) that 
+images can also be scaled based on resolution to represent distances in the 
+physical world (e.g. in micrometres). Also, bear in mind that images with more 
+dimensions (e.g. a 3D image) will have longer coordinates like [z, y, x]...
 
 ::::::::::::::::::::::::::::::::::::: challenge 
 

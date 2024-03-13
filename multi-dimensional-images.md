@@ -64,8 +64,7 @@ known) due to the lack of sliders under the image, and by checking its shape in
 the Napari console. Remember that we looked at [how to open the console
 ](what-is-an-image.md#images-are-arrays-of-numbers) and how to check the 
 [`.shape`](what-is-an-image.md#image-dimensions) in detail in the ['What is an 
-image?'
-episode](what-is-an-image.md):
+image?' episode](what-is-an-image.md):
 
 ```python
 image = viewer.layers["human_mitosis"].data
@@ -262,7 +261,8 @@ dimension 1 is the channel axis. This allows Napari to split the channels
 automatically into different layers.
 
 Usually when loading your own images into Napari e.g. with the 
-napari-aicsimageio plugin (as we will see in the next episode), the channel 
+napari-aicsimageio plugin (as we will see in the 
+[filetypes and metadata episode](filetypes-and-metadata.md)), the channel 
 axis should be recognised automatically. If not, you may need to add the image 
 via the console as above, manually stating the channel axis.
 

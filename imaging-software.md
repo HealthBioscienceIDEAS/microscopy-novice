@@ -24,7 +24,8 @@ Napari and proprietary options)
 ## Choosing the right tool for the job
 
 Light microscopes can produce a very wide range of image data (we'll see some 
-examples in episode X) - for example:
+examples in the [multi-dimensional images episode](multi-dimensional-images.md)) 
+- for example:
 
 - 2D or 3D
 - Time series or snapshots
@@ -204,9 +205,10 @@ developers.
 **Built-in tools**    
 Fiji/ImageJ comes with many image processing tools built-in by default - e.g. 
 making image histograms, thresholding and gaussian blur (we will look at these 
-terms in a later episode). Napari, in contrast, is more minimal by default - 
-mostly focusing on image display. It requires installation of additional plugins 
-to add many of these features.
+terms in the [filters and thresholding episode](filters-and-thresholding.md)). 
+Napari, in contrast, is more minimal by default - mostly focusing on image 
+display. It requires installation of additional plugins to add many of these 
+features.
 
 **Specific plugins**   
 There are excellent plugins available for Fiji/ImageJ and Napari that focus on 
@@ -315,8 +317,8 @@ various aspects of the Napari viewer:
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg
 ){alt="A screenshot of Napari's console button" height='30px'}
 
-This button opens Napari's built-in python console - we'll look at this in later 
-episodes.
+This button opens Napari's built-in python console - we'll use the console more
+in later episodes.
 
 ### 2D/3D ![](
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/2D.svg
@@ -365,9 +367,9 @@ https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/grid
 ){alt="A screenshot of Napari's grid button" height='25px'}
 
 This button displays all image layers in a grid (+ any additional layer types,
-as we'll see later in the episode). Using this for our cells image, we see the 
-nuclei (green) displayed next to the cell membranes (purple), rather than on 
-top of each other.
+as we'll see [later in the episode](#layer-buttons)). Using this for our cells 
+image, we see the nuclei (green) displayed next to the cell membranes (purple), 
+rather than on top of each other.
 
 ### Home ![](
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/home.svg
@@ -400,7 +402,8 @@ image on top).
 membrane layer swapped"}
 
 Here we only have `Image` layers, but there are many more types like `Points`, 
-`Shapes` and `Labels`, some of which we will see later in the episode.
+`Shapes` and `Labels`, some of which we will see [later in the episode
+](#layer-buttons).
 
 
 ## Layer controls
@@ -412,7 +415,7 @@ list). For example, if we click on the nuclei layer then we can see a
 `colormap` of magenta.
 
 Controls will also vary depending on layer type (like `Image` vs `Points`) as we 
-will see later in this episode.
+will see [later in this episode](#layer-buttons).
 
 Let's take a quick look at some of the main image layer controls:
 
@@ -422,15 +425,17 @@ example, reducing the opacity of the membrane layer (if it is still on top of
 the nuclei), allows us to see the nuclei again.
 
 ### Contrast limits 
-We'll discuss this in detail in a later episode, but briefly - the contrast 
+We'll discuss this in detail in the [image display episode
+](image-display.md#brightness-and-contrast), but briefly - the contrast 
 limits adjust what parts of the image we can see and how bright they appear in 
 the viewer. Moving the left node adjusts what is shown as fully black, while 
 moving the right node adjusts what is shown as fully bright. 
 
 ### Colormap
-Again, we'll discuss this in detail in a later episode, but briefly - the 
-colormap determines what colours an image is displayed with. Clicking in the 
-dropdown shows a wide range of options that you can swap between.
+Again, we'll discuss this in detail in the [image display episode
+](image-display.md#colormaps-luts), but briefly - the colormap determines what 
+colours an image is displayed with. Clicking in the dropdown shows a wide range 
+of options that you can swap between.
 
 ### Blending    
 This controls how multiple layers are blended together to give the final result 
