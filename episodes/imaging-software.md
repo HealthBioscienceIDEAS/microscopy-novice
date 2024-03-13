@@ -317,8 +317,8 @@ various aspects of the Napari viewer:
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg
 ){alt="A screenshot of Napari's console button" height='30px'}
 
-This button opens Napari's built-in python console - we'll look at this in the 
-['What is an image?' episode](what-is-an-image.md#images-are-arrays-of-numbers).
+This button opens Napari's built-in python console - we'll use the console more
+in later episodes.
 
 ### 2D/3D ![](
 https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/2D.svg
