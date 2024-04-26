@@ -311,6 +311,9 @@ eroded_mask = binary_erosion(semantic_seg, footprint = ball(radius))
 viewer.add_labels(eroded_mask, name = f'eroded ball {radius}')
 ```
 
+Note that larger radius values will take longer to run on your computer. Keep 
+your radius values <= 10.
+
 :::::::::::::::::::::::::solution
 To test different values of radius, you can assign a different value to
 radius, e.g. `radius = 5` and rerun the last two lines from above. Or
