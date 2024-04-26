@@ -1,7 +1,7 @@
 ---
 title: 'Quality control and manual segmentation'
 teaching: 30
-exercises: 10
+exercises: 15
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 

@@ -1,6 +1,6 @@
 ---
 title: 'Instance segmentation and measurements'
-teaching: 30
+teaching: 50
 exercises: 10
 ---
 

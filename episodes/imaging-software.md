@@ -1,6 +1,6 @@
 ---
 title: 'Imaging Software'
-teaching: 30
+teaching: 35
 exercises: 10
 ---
 

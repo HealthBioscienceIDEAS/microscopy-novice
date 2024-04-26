@@ -1,6 +1,6 @@
 ---
 title: 'Filetypes and metadata'
-teaching: 30
+teaching: 35
 exercises: 10
 ---
 
