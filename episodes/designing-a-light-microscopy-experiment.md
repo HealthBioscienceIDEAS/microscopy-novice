@@ -1,7 +1,7 @@
 ---
 title: 'Designing a light microscopy experiment'
 teaching: 35
-exercises: 15
+exercises: 20
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 

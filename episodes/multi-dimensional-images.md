@@ -1,7 +1,7 @@
 ---
 title: 'Multi-dimensional images'
-teaching: 35
-exercises: 15
+teaching: 40
+exercises: 20
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 

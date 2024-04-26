@@ -1,7 +1,7 @@
 ---
 title: 'What is an image?'
-teaching: 30
-exercises: 15
+teaching: 35
+exercises: 20
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 

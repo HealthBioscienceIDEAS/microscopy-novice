@@ -1,7 +1,7 @@
 ---
 title: 'Choosing acquisition settings'
 teaching: 35
-exercises: 15
+exercises: 20
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 

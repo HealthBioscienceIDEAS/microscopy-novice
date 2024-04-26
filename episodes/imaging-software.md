@@ -1,7 +1,7 @@
 ---
 title: 'Imaging Software'
 teaching: 35
-exercises: 10
+exercises: 20
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 

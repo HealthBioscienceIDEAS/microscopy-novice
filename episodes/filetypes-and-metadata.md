@@ -1,7 +1,7 @@
 ---
 title: 'Filetypes and metadata'
 teaching: 35
-exercises: 10
+exercises: 20
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
