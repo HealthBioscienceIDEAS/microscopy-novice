@@ -1,7 +1,7 @@
 ---
 title: 'Instance segmentation and measurements'
-teaching: 30
-exercises: 10
+teaching: 45
+exercises: 15
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions

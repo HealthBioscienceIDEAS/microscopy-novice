@@ -1,7 +1,7 @@
 ---
 title: 'Filters and thresholding'
-teaching: 30
-exercises: 10
+teaching: 40
+exercises: 20
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
