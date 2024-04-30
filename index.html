@@ -430,6 +430,25 @@ error.</p>
 </div>
 </div>
 </div>
+<p>If you are using an M1/M2 mac, you may encounter errors when running
+the commands above. If so, try the alternative commands below:</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Remove the old environment</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="ex">conda</span> remove <span class="at">--name</span> napari-env <span class="at">--all</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co"># This line will create a "virtual environment" (called napari-env)</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="co"># that will contain all of the software that will be used in the lessons</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-y</span> <span class="at">-n</span> napari-env <span class="at">-c</span> conda-forge python=3.9 napari pyqt bioformats_jar napari-aicsimageio</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="co"># Activate the napari-env virtual environment.</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="co"># Running this should change the terminal prompt to '(napari-env)'.</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co"># Install czi file reader</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="ex">pip</span> install aicspylibczi<span class="op">&gt;</span>=3.0.5 fsspec<span class="op">&gt;</span>=2022.7.1</span></code></pre>
+</div>
 </section><section id="post-setup-checks"><h2 class="section-heading">Post Setup Checks<a class="anchor" aria-label="anchor" href="#post-setup-checks"></a>
 </h2>
 <hr class="half-width"><p>Before starting the course it is important to check that your setup
@@ -446,11 +465,11 @@ is working.</p>
 napari. Note that if you’re already in the napari-env virtual
 environment from the installation steps it is not necessary to run
 <code>conda activate napari-env</code>.</p>
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="ex">napari</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="ex">napari</span></span></code></pre>
 </div>
 <p>You should now see the napari viewer like this …</p>
 <figure><img src="fig/blank-napari-ui.png" style="width:60.0%" alt="A  screenshot of the default Napari user interface" class="figure mx-auto d-block"></figure><p>Open a file with</p>
@@ -495,11 +514,11 @@ working.</p>
 (tiff image) then it should not be necessary to run
 <code>conda activate napari-env</code>. However, it is necessary to
 restart napari to ensure the image display is correctly formatted.</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="ex">napari</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="ex">napari</span></span></code></pre>
 </div>
 <p><code>File &gt; Open file(s)...</code></p>
 <ul><li>Navigate to the directory where you saved
