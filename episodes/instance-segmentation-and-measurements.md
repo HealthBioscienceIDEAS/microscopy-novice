@@ -288,7 +288,7 @@ We will use scikit-image's
 [binary_erosion](
 https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.binary_erosion)
 function. In this lesson we will run the binary erosion function using
-the Napari console to enable us develop our scripting skills. It is also
+the Napari console to help develop our scripting skills. It is also
 possible to run the binary erosion function through a plugin:
 `Tools > Segmentation post-processing > Binary erosion (scikit-image, nsbatwm)`
 if you prefer.
