@@ -206,16 +206,19 @@ histogram.
 You can set a threshold as all pixels above a certain value:
 ```python
 mask = image > 40
+viewer.add_labels(mask)
 ```
 
 Or all pixels below a certain value:
 ```python
 mask = image < 40
+viewer.add_labels(mask)
 ```
 
 Or all pixels between two values:
 ```python
 mask = (image > 20) & (image < 40)
+viewer.add_labels(mask)
 ```
 
 :::::::::::::::::::::::: solution 
