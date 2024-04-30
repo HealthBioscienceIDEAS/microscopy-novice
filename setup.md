@@ -92,6 +92,24 @@ to start is any messages in the text expanding on the source of the error.
 
 ::::::::::::::::::::::::::::::::::::::
 
+If you are using an M1/M2 mac, you may encounter errors when running the 
+commands above. If so, try the alternative commands below:
+```bash
+# Remove the old environment
+conda remove --name napari-env --all
+
+# This line will create a "virtual environment" (called napari-env)
+# that will contain all of the software that will be used in the lessons
+conda create -y -n napari-env -c conda-forge python=3.9 napari pyqt bioformats_jar napari-aicsimageio
+
+# Activate the napari-env virtual environment.
+# Running this should change the terminal prompt to '(napari-env)'.
+conda activate napari-env
+
+# Install czi file reader
+pip install aicspylibczi>=3.0.5 fsspec>=2022.7.1
+```
+
 ## Post Setup Checks
 
 Before starting the course it is important to check that your setup is working.
