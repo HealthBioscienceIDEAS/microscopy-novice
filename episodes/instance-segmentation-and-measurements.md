@@ -284,12 +284,16 @@ to make sure all the nuclei are separate. We can do this by reducing the
 apparent size of the nuclei by eroding the image.
 Image erosion is an image filter, similar to those we covered in the
 [filters and thresholding](filters-and-thresholding.md) lesson.
-Napari has a plugin for erosion
-`filtering > background removal > Minimum(scipy, nsbatwm)`,
-however this won't work on masks. So we will use scikit-image's
+We will use scikit-image's
 [binary_erosion](
 https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.binary_erosion)
-function. The function sets a pixel to the
+function. In this lesson we will run the binary erosion function using
+the Napari console to enable us develop our scripting skills. It is also
+possible to run the binary erosion function through a plugin:
+`Tools > Segmentation post-processing > Binary erosion (scikit-image, nsbatwm)`
+if you prefer.
+
+The binary erosion function sets a pixel to the
 minimum value in the neighbourhood defined by a `footprint` parameter.
 We'll use scikit-image's [ball](
 https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.ball)
