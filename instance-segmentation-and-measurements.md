@@ -29,11 +29,16 @@ exercises: 15
 In this lesson we'll continue to work with the Cells (3D + 2Ch) image we've
 been using in past lessons. We will expand our use of Napari's Python console
 to perform the work and save our workflow to a Python script. We chose to use
-the Python console for this lesson as some of the functions we require are
-not currently available via the Napari assistant or plugins.
+the Python console for this lesson to further develop skills in script writing
+and automating the image analysis pipeline. Being able to use the console and
+save the script will help with automation and repetition in later work.
+
 We have kept the level of programming knowledge required to the minimum
 possible and all code can be run by copy and pasting, so don't worry if
 you don't understand it all yet.
+Most, if not all, of the functions we will use in this lesson are also
+accessible via various Napari plugins, so the analysis pipeline could also be
+assembled with the Napari assistant if you prefer.
 
 ## Before you begin
 
@@ -284,12 +289,16 @@ to make sure all the nuclei are separate. We can do this by reducing the
 apparent size of the nuclei by eroding the image.
 Image erosion is an image filter, similar to those we covered in the
 [filters and thresholding](filters-and-thresholding.md) lesson.
-Napari has a plugin for erosion
-`filtering > background removal > Minimum(scipy, nsbatwm)`,
-however this won't work on masks. So we will use scikit-image's
+We will use scikit-image's
 [binary_erosion](
 https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.binary_erosion)
-function. The function sets a pixel to the
+function. In this lesson we will run the binary erosion function using
+the Napari console to help develop our scripting skills. It is also
+possible to run the binary erosion function through a plugin:
+`Tools > Segmentation post-processing > Binary erosion (scikit-image, nsbatwm)`
+if you prefer.
+
+The binary erosion function sets a pixel to the
 minimum value in the neighbourhood defined by a `footprint` parameter.
 We'll use scikit-image's [ball](
 https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.ball)
