@@ -57,7 +57,7 @@
     </div>
   </div>
   <hr></header><nav class="navbar navbar-expand-xl navbar-light bg-white bottom-nav IDEAS" aria-label="Main Navigation"><div class="container-fluid nav-container">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
       <span class="navbar-toggler-icon"></span>
       <span class="menu-title">Menu</span>
     </button>
@@ -69,7 +69,7 @@
     </div>
     <div class="search-icon-sm">
       <!-- TODO: do not show until we have search
-      <i role="img" aria-label="search button" data-feather="search"></i>
+        <i role="img" aria-label="Search the All In One page" data-feather="search"></i>
       -->
     </div>
     <div class="desktop-nav">
@@ -99,13 +99,17 @@
 </li>
       </ul>
 </div>
+    <!--
     <form class="d-flex col-md-2 search-form">
       <fieldset disabled>
-<input class="form-control me-2 searchbox" type="search" placeholder="Search" aria-label="Search"><button class="btn btn-outline-success tablet-search-button" type="submit">
-          <i class="search-icon" data-feather="search" role="img" aria-label="search button"></i>
+      <input class="form-control me-2 searchbox" type="search" placeholder="" aria-label="">
+        <button class="btn btn-outline-success tablet-search-button"  type="submit">
+          <i class="search-icon" data-feather="search" role="img" aria-label="Search the All In One page"></i>
         </button>
       </fieldset>
-</form>
+    </form>
+    -->
+    <a class="btn btn-primary" href="../instructor/aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div>
 <!--/div.container-fluid -->
 </nav><div class="col-md-12 mobile-title">
@@ -124,7 +128,7 @@
         <!-- START: inst/pkgdown/templates/navbar.html -->
 <div id="sidebar-col" class="col-lg-4">
   <div id="sidebar" class="sidebar">
-      <nav aria-labelledby="flush-headingEleven"><button role="button" aria-label="close menu" alt="close menu" aria-expanded="true" aria-controls="sidebar" class="collapse-toggle">
+      <nav aria-labelledby="flush-headingEleven"><button role="button" aria-label="close menu" alt="close menu" aria-expanded="true" aria-controls="sidebar" class="collapse-toggle" data-collapse="Collapse " data-episodes="Episodes ">
           <i class="search-icon" data-feather="x" role="img"></i>
         </button>
         <div class="sidebar-inner">
@@ -368,12 +372,12 @@
         
 <section id="aio-imaging-software"><p>Content from <a href="imaging-software.html">Imaging Software</a></p>
 <hr>
-<p> Last updated on 2024-04-26 | 
+<p>Last updated on 2024-04-26 |
         
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/imaging-software.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 55 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 55 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -526,8 +530,7 @@ following:</p>
 <div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
-  <h3 class="accordion-header" id="headingSpoiler1">
-<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Pros and cons of open-source / proprietary</h3>
+  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Pros and cons of open-source / proprietary </h3>
 </button>
 <div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
@@ -578,8 +581,7 @@ below if you are interested:</p>
 <div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
-  <h3 class="accordion-header" id="headingSpoiler2">
-<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Differences between Fiji/ImageJ and Napari</h3>
+  <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Differences between Fiji/ImageJ and Napari </h3>
 </button>
 <div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
@@ -824,7 +826,7 @@ result below:</p>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
@@ -910,7 +912,7 @@ buttons will usually show a summary tooltip.</p>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
@@ -958,12 +960,12 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-what-is-an-image"><p>Content from <a href="what-is-an-image.html">What is an image?</a></p>
 <hr>
-<p> Last updated on 2024-04-26 | 
+<p>Last updated on 2024-04-26 |
         
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/what-is-an-image.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 55 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 55 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -1286,7 +1288,7 @@ on the bit depth?</p></li>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
@@ -1494,7 +1496,7 @@ value - is it correct? If not, why not?</li>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
@@ -1606,12 +1608,12 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-image-display"><p>Content from <a href="image-display.html">Image display</a></p>
 <hr>
-<p> Last updated on 2024-04-26 | 
+<p>Last updated on 2024-04-26 |
         
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/image-display.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 55 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 55 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -1716,7 +1718,7 @@ Napari users?</li>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
@@ -1797,7 +1799,7 @@ values:</p>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
@@ -1924,7 +1926,7 @@ these limits work?</li>
 <div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
@@ -1970,12 +1972,12 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-multi-dimensional-images"><p>Content from <a href="multi-dimensional-images.html">Multi-dimensional images</a></p>
 <hr>
-<p> Last updated on 2024-04-26 | 
+<p>Last updated on 2024-04-26 |
         
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/multi-dimensional-images.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 60 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 60 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -2235,8 +2237,7 @@ channel axis.</p>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="when-to-split-channels-into-layers-in-napari" class="callout-inner">
-<h3 class="callout-title">When to split channels into layers in
-Napari?<a class="anchor" aria-label="anchor" href="#when-to-split-channels-into-layers-in-napari"></a>
+<h3 class="callout-title">When to split channels into layers in Napari?<a class="anchor" aria-label="anchor" href="#when-to-split-channels-into-layers-in-napari"></a>
 </h3>
 <div class="callout-content">
 <p>As we saw above, we have two choices when loading images with
@@ -2253,8 +2254,7 @@ shown below:</p>
 <div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
-  <h3 class="accordion-header" id="headingSpoiler1">
-<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Pros and cons</h3>
+  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Pros and cons </h3>
 </button>
 <div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
@@ -2404,7 +2404,7 @@ large size.</p>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
@@ -2553,7 +2553,7 @@ manually set it to load as rgb:</p>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
@@ -2593,7 +2593,7 @@ produce? Each value has a minimum of 0 and a maximum of 255.</p>
 <div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
@@ -2630,12 +2630,12 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-filetypes-and-metadata"><p>Content from <a href="filetypes-and-metadata.html">Filetypes and metadata</a></p>
 <hr>
-<p> Last updated on 2024-04-26 | 
+<p>Last updated on 2024-04-26 |
         
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/filetypes-and-metadata.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 55 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 55 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -2782,9 +2782,9 @@ What is its excitation and emission wavelength?</li>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="microscope-model">Microscope model<a class="anchor" aria-label="anchor" href="#microscope-model"></a>
@@ -2826,8 +2826,7 @@ used.</p>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="napari-aicsimagio-image-metadata-support" class="callout-inner">
-<h3 class="callout-title">Napari-aicsimagio image / metadata
-support<a class="anchor" aria-label="anchor" href="#napari-aicsimagio-image-metadata-support"></a>
+<h3 class="callout-title">Napari-aicsimagio image / metadata support<a class="anchor" aria-label="anchor" href="#napari-aicsimagio-image-metadata-support"></a>
 </h3>
 <div class="callout-content">
 <p>Only certain file types will support browsing metadata via the ‘OME
@@ -2931,9 +2930,9 @@ tall as their original size in the viewer</li>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="section">1<a class="anchor" aria-label="anchor" href="#section"></a>
@@ -3134,9 +3133,9 @@ do they differ? How does each compare to timepoint 30 of the original
 <div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="file-sizes">File sizes<a class="anchor" aria-label="anchor" href="#file-sizes"></a>
@@ -3310,12 +3309,12 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-designing-a-light-microscopy-experiment"><p>Content from <a href="designing-a-light-microscopy-experiment.html">Designing a light microscopy experiment</a></p>
 <hr>
-<p> Last updated on 2024-04-26 | 
+<p>Last updated on 2024-04-26 |
         
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/designing-a-light-microscopy-experiment.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 55 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 55 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -3428,7 +3427,7 @@ may be best to discuss in a group, so you can share different ideas.</p>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
@@ -3546,7 +3545,7 @@ ideas.</p>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
@@ -3825,7 +3824,7 @@ may be best to discuss in a group, so you can share different ideas.</p>
 <div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
@@ -3895,12 +3894,12 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-choosing-acquisition-settings"><p>Content from <a href="choosing-acquisition-settings.html">Choosing acquisition settings</a></p>
 <hr>
-<p> Last updated on 2024-04-26 | 
+<p>Last updated on 2024-04-26 |
         
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/choosing-acquisition-settings.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 55 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 55 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -4214,9 +4213,9 @@ you can share different ideas.</p>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>There’s no one correct answer here, as it will depend on which type
 of light microscope you are using and which aspects of nucleus size and
@@ -4361,9 +4360,9 @@ magnification?</li>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="x16-image">16x16 image<a class="anchor" aria-label="anchor" href="#x16-image"></a>
@@ -4511,9 +4510,9 @@ it?</p></li>
 <div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="a">a<a class="anchor" aria-label="anchor" href="#a"></a>
@@ -4592,12 +4591,12 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-quality-control-and-manual-segmentation"><p>Content from <a href="quality-control-and-manual-segmentation.html">Quality control and manual segmentation</a></p>
 <hr>
-<p> Last updated on 2024-04-26 | 
+<p>Last updated on 2024-04-26 |
         
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/quality-control-and-manual-segmentation.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 55 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 55 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -4677,7 +4676,7 @@ icon.</p>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
@@ -4947,7 +4946,7 @@ integers) Choose from 8-bit, 16-bit or 32-bit.</p></li>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
@@ -5128,7 +5127,7 @@ documentation</a> on <code>Labels</code> layers.</p>
 <div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
@@ -5257,12 +5256,12 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-filters-and-thresholding"><p>Content from <a href="filters-and-thresholding.html">Filters and thresholding</a></p>
 <hr>
-<p> Last updated on 2024-04-30 | 
+<p>Last updated on 2024-04-30 |
         
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/filters-and-thresholding.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 60 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 60 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -5401,7 +5400,8 @@ referred to as smoothing). We’ll look at this in detail <a href="#filters">lat
 </div>
 <div id="add_labels-vs-.add_image" class="callout-inner">
 <h3 class="callout-title">
-<code>.add_labels()</code>vs<code>.add_image</code><a class="anchor" aria-label="anchor" href="#add_labels-vs-.add_image"></a>
+<code>.add_labels()</code> vs
+<code>.add_image</code><a class="anchor" aria-label="anchor" href="#add_labels-vs-.add_image"></a>
 </h3>
 <div class="callout-content">
 <p>In the code blocks above, you will notice that we use
@@ -5479,7 +5479,7 @@ value:</p>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
@@ -5645,8 +5645,7 @@ filter that process pixel values in different ways.</p>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="sigma-vs-full-width-at-half-maximum-fwhm" class="callout-inner">
-<h3 class="callout-title">Sigma vs full width at half maximum
-(FWHM)<a class="anchor" aria-label="anchor" href="#sigma-vs-full-width-at-half-maximum-fwhm"></a>
+<h3 class="callout-title">Sigma vs full width at half maximum (FWHM)<a class="anchor" aria-label="anchor" href="#sigma-vs-full-width-at-half-maximum-fwhm"></a>
 </h3>
 <div class="callout-content">
 <p>In this episode, we have focused on the gaussian function’s standard
@@ -5696,7 +5695,7 @@ name online.</p>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
@@ -5917,7 +5916,7 @@ the top row of the layer controls.</p>
 <div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
@@ -6037,12 +6036,12 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-instance-segmentation-and-measurements"><p>Content from <a href="instance-segmentation-and-measurements.html">Instance segmentation and measurements</a></p>
 <hr>
-<p> Last updated on 2024-05-01 | 
+<p>Last updated on 2024-05-01 |
         
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/instance-segmentation-and-measurements.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 60 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 60 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -6325,8 +6324,7 @@ why the instance labelling has failed, what can we do to fix it?</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="erode-the-semantic-segmentation-so-all-nuclei-are-separate" class="callout-inner">
-<h3 class="callout-title">Erode the semantic segmentation so all nuclei
-are separate<a class="anchor" aria-label="anchor" href="#erode-the-semantic-segmentation-so-all-nuclei-are-separate"></a>
+<h3 class="callout-title">Erode the semantic segmentation so all nuclei are separate<a class="anchor" aria-label="anchor" href="#erode-the-semantic-segmentation-so-all-nuclei-are-separate"></a>
 </h3>
 <div class="callout-content">
 <p>In order to use the label function to count the cell nuclei we first
@@ -6368,7 +6366,7 @@ computer. Keep your radius values &lt;= 10.</p>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
@@ -6476,7 +6474,7 @@ original mask, what will we see?</p>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
@@ -6716,12 +6714,12 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-additional-resources"><p>Content from <a href="additional-resources.html">Additional resources</a></p>
 <hr>
-<p> Last updated on 2024-03-07 | 
+<p>Last updated on 2024-03-07 |
         
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/additional-resources.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 10 minutes </p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 10 minutes</p>
 <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
@@ -6865,30 +6863,28 @@ any links that you are not going to use.
 <!--/div.row-->
       		<footer class="row footer mx-md-3"><hr>
 <div class="col-md-6">
-				<p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
+        <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
         
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/README.md" class="external-link">Edit on GitHub</a>
         
 	
-        | <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a> 
+        | <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/" class="external-link">Source</a></p>
 				<p><a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:team@carpentries.org">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 			</div>
 			<div class="col-md-6">
         
-        <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
+        <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
-        <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/HealthBioscienceIDEAS/sandpaper/tree/IDEAS" class="external-link">sandpaper (0.16.4)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/a32a7836d4455f407c3cafe8ab95edc636e5e919" class="external-link">pegboard (0.7.5)</a>,
-      and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (0.3.3.9000)</a>.</p>
+        <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
+        <p>Built with <a href="https://github.com/HealthBioscienceIDEAS/sandpaper/tree/IDEAS" class="external-link">sandpaper (0.16.5.9000)</a>, <a href="https://github.com/carpentries/pegboard/tree/a32a7836d4455f407c3cafe8ab95edc636e5e919" class="external-link">pegboard (0.7.5)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
 			</div>
 		</footer>
 </div> <!-- / div.container -->
 	<div id="to-top">
 		<a href="#top">
-			<i class="search-icon" data-feather="arrow-up" role="img" aria-label="Back to top"></i><br><span class="d-none d-sm-none d-md-none d-lg-none d-xl-block">Back</span> To Top
+      <i class="search-icon" data-feather="arrow-up" role="img" aria-label="Back To Top"></i><br><!-- <span class="d-none d-sm-none d-md-none d-lg-none d-xl-block">Back</span> To Top --><span class="d-none d-sm-none d-md-none d-lg-none d-xl-block">Back</span> To Top
 		</a>
 	</div>
   <script type="application/ld+json">
@@ -6905,35 +6901,13 @@ any links that you are not going to use.
   "url": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/aio.html",
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/aio.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2024-05-28",
-  "datePublished": "2024-05-28"
+  "dateModified": "2024-06-04",
+  "datePublished": "2024-06-04"
 }
 
   </script><script>
 		feather.replace();
-	</script><!-- Matomo
-    2022-11-07: we have gotten a notification that we have an overage for our
-    tracking and I'm pretty sure this has to do with Workbench usage.
-    Considering that I am not _currently_ using this tracking because I do not
-    yet know how to access the data, I am turning this off for now.
-  <script>
-    var _paq = window._paq = window._paq || [];
-    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-    _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-    _paq.push(["setDomains", ["*.preview.carpentries.org","*.datacarpentry.github.io","*.datacarpentry.org","*.librarycarpentry.github.io","*.librarycarpentry.org","*.swcarpentry.github.io", "*.carpentries.github.io"]]);
-    _paq.push(["setDoNotTrack", true]);
-    _paq.push(["disableCookies"]);
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function() {
-          var u="https://carpentries.matomo.cloud/";
-          _paq.push(['setTrackerUrl', u+'matomo.php']);
-          _paq.push(['setSiteId', '1']);
-          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-          g.async=true; g.src='https://cdn.matomo.cloud/carpentries.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
-        })();
-  </script>
-  End Matomo Code -->
+	</script>
 </body>
 </html><!-- END:   inst/pkgdown/templates/layout.html-->
 
