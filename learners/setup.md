@@ -68,7 +68,7 @@ conda config --set pip_interop_enabled True
 
 # This line will create a "virtual environment" (called napari-env)
 # that will contain all of the software that will be used in the lessons
-conda create -y -n napari-env -c conda-forge python=3.9 bioformats_jar
+conda create -y -n napari-env -c conda-forge python=3.10 bioformats_jar
 
 # Activate the napari-env virtual environment.
 # Running this should change the terminal prompt to '(napari-env)'.
@@ -100,7 +100,7 @@ conda remove --name napari-env --all
 
 # This line will create a "virtual environment" (called napari-env)
 # that will contain all of the software that will be used in the lessons
-conda create -y -n napari-env -c conda-forge python=3.9 napari pyqt bioformats_jar napari-aicsimageio
+conda create -y -n napari-env -c conda-forge python=3.10 napari pyqt bioformats_jar napari-aicsimageio
 
 # Activate the napari-env virtual environment.
 # Running this should change the terminal prompt to '(napari-env)'.
