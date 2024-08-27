@@ -14,11 +14,11 @@
       }
     });
     </script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><!-- Responsive Favicon for The Carpentries --><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"><link rel="manifest" href="site.webmanifest"><link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5"><meta name="msapplication-TileColor" content="#da532c"><meta name="theme-color" content="#ffffff"></head><body>
-    <header id="top" class="navbar navbar-expand-md navbar-light bg-white top-nav "><a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
+    <header id="top" class="navbar navbar-expand-md navbar-light bg-white top-nav IDEAS"><a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
   <div class="container-fluid top-nav-container">
     <div class="col-md-6">
       <div class="large-logo">
-        <img alt="" src="assets/images/-logo.svg"><abbr class="badge badge-light" title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught." style="background-color: #FF4955; border-radius: 5px">
+        <img alt="IDEAS" src="assets/images/IDEAS-logo.svg"><abbr class="badge badge-light" title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught." style="background-color: #FF4955; border-radius: 5px">
           <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#early-development-pre-alpha-through-alpha" class="external-link alert-link" style="color: #000">
             <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="border-radius: 5px"></i>
             Pre-Alpha
@@ -39,13 +39,13 @@
         </ul></div>
     </div>
   </div>
-  <hr></header><nav class="navbar navbar-expand-xl navbar-light bg-white bottom-nav " aria-label="Main Navigation"><div class="container-fluid nav-container">
+  <hr></header><nav class="navbar navbar-expand-xl navbar-light bg-white bottom-nav IDEAS" aria-label="Main Navigation"><div class="container-fluid nav-container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
       <span class="navbar-toggler-icon"></span>
       <span class="menu-title">Menu</span>
     </button>
     <div class="nav-logo">
-      <img class="small-logo" alt="" src="assets/images/-logo-sm.svg"></div>
+      <img class="small-logo" alt="IDEAS" src="assets/images/IDEAS-logo-sm.svg"></div>
     <div class="lesson-title-md">
       Image Analysis for Microscopy
     </div>
@@ -95,8 +95,8 @@
 <aside class="col-md-12 lesson-progress"><div style="width: 77%" class="percentage">
     77%
   </div>
-  <div class="progress ">
-    <div class="progress-bar " role="progressbar" style="width: 77%" aria-valuenow="77" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress IDEAS">
+    <div class="progress-bar IDEAS" role="progressbar" style="width: 77%" aria-valuenow="77" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -385,8 +385,7 @@ automated methods has the benefit of making your image processing more
 <em>reproducible</em> - by having a clear record of every step that
 produced your final result, it will be easier for other researchers to
 replicate your work and also try similar methods on their own data.</p>
-<section><h2 class="section-heading" id="thresholding">Thresholding<a class="anchor" aria-label="anchor" href="#thresholding"></a>
-<a class="anchor" aria-label="anchor" href="#thresholding"></a></h2>
+<section><h2 class="section-heading" id="thresholding">Thresholding<a class="anchor" aria-label="anchor" href="#thresholding"></a></h2>
 <hr class="half-width"><p>If you don’t have Napari’s ‘Cells (3D + 2Ch)’ image open, then open
 it with:<br><code>File &gt; Open Sample &gt; napari builtins &gt; Cells (3D + 2Ch)</code></p>
 <p>Make sure you only have ‘nuclei’ in the layer list. Select any
@@ -467,7 +466,7 @@ referred to as smoothing). We’ll look at this in detail <a href="#filters">lat
 <div id="add_labels-vs-.add_image" class="callout-inner">
 <h3 class="callout-title">
 <code>.add_labels()</code> vs
-<code>.add_image</code><a class="anchor" aria-label="anchor" href="#add_labels-vs-.add_image"></a>
+<code>.add_image</code>
 </h3>
 <div class="callout-content">
 <p>In the code blocks above, you will notice that we use
@@ -487,8 +486,7 @@ the annotation tools.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="manual-thresholds" class="callout-inner">
-<h3 class="callout-title">Manual thresholds<a class="anchor" aria-label="anchor" href="#manual-thresholds"></a>
-</h3>
+<h3 class="callout-title">Manual thresholds</h3>
 <div class="callout-content">
 <p>In this exercise, we’ll practice choosing manual thresholds based on
 an image’s histogram. For this, we’ll use a simple test image containing
@@ -547,7 +545,7 @@ value:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>First, we show a histogram for the image by selecting the ‘image’
 layer, then:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
@@ -578,8 +576,7 @@ gaps between the peaks in the image histogram.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="adding-plugins-to-help-with-segmentation">Adding plugins to help with segmentation<a class="anchor" aria-label="anchor" href="#adding-plugins-to-help-with-segmentation"></a>
-<a class="anchor" aria-label="anchor" href="#adding-plugins-to-help-with-segmentation"></a></h2>
+</section><section><h2 class="section-heading" id="adding-plugins-to-help-with-segmentation">Adding plugins to help with segmentation<a class="anchor" aria-label="anchor" href="#adding-plugins-to-help-with-segmentation"></a></h2>
 <hr class="half-width"><p>Fortunately for us, segmenting images in the presence of noise is a
 widely studied problem, so there are a many existing plugins we can
 install to help. If you need a refresher on the details of how to find
@@ -604,8 +601,7 @@ click the blue install button. Wait for the installation to
 complete.</p>
 <figure><img src="fig/napari-simple-itk-installation.png" alt="Screenshot of plugin  installation window for napari-simpleitk-image-processing" class="figure mx-auto d-block"></figure><p>Once both plugins are installed, <strong>you will need to close and
 re-open Napari</strong>.</p>
-</section><section><h2 class="section-heading" id="filters">Filters<a class="anchor" aria-label="anchor" href="#filters"></a>
-<a class="anchor" aria-label="anchor" href="#filters"></a></h2>
+</section><section><h2 class="section-heading" id="filters">Filters<a class="anchor" aria-label="anchor" href="#filters"></a></h2>
 <hr class="half-width"><p>Let’s open the cells image in Napari again:<br><code>File &gt; Open Sample &gt; napari builtins &gt; Cells (3D + 2Ch)</code></p>
 <p>As before, make sure you only have ‘nuclei’ in the layer list. Select
 any additional layers, then click the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
@@ -707,8 +703,7 @@ filter that process pixel values in different ways.</p>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="sigma-vs-full-width-at-half-maximum-fwhm" class="callout-inner">
-<h3 class="callout-title">Sigma vs full width at half maximum (FWHM)<a class="anchor" aria-label="anchor" href="#sigma-vs-full-width-at-half-maximum-fwhm"></a>
-</h3>
+<h3 class="callout-title">Sigma vs full width at half maximum (FWHM)</h3>
 <div class="callout-content">
 <p>In this episode, we have focused on the gaussian function’s standard
 deviation (sigma) as the main way to control the width of the central
@@ -728,8 +723,7 @@ sigma\sqrt{8ln(2)}\]</span></p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="filters-1" class="callout-inner">
-<h3 class="callout-title">Filters<a class="anchor" aria-label="anchor" href="#filters-1"></a>
-</h3>
+<h3 class="callout-title">Filters</h3>
 <div class="callout-content">
 <p>Try some of the other filters included with the
 <code>napari-segment-blobs-and-things-with-membranes</code> and
@@ -757,7 +751,7 @@ name online.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="median">Median<a class="anchor" aria-label="anchor" href="#median"></a></h3>
@@ -794,8 +788,7 @@ enhances the effect.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="thresholding-the-blurred-image">Thresholding the blurred image<a class="anchor" aria-label="anchor" href="#thresholding-the-blurred-image"></a>
-<a class="anchor" aria-label="anchor" href="#thresholding-the-blurred-image"></a></h2>
+</section><section><h2 class="section-heading" id="thresholding-the-blurred-image">Thresholding the blurred image<a class="anchor" aria-label="anchor" href="#thresholding-the-blurred-image"></a></h2>
 <hr class="half-width"><p>First, let’s clean up our layer list. Make sure you only have the
 ‘nuclei’ and ‘Result of gaussian_blur’ layers in the layer list - select
 any others and remove them by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
@@ -900,8 +893,7 @@ common method to provide a smoother, more complete mask. Note that it
 still isn’t perfect! If you browse through the z slices with the slider
 at the bottom of the image, it’s clear that some areas are still missed
 or incorrectly labelled.</p>
-</section><section><h2 class="section-heading" id="automated-thresholding">Automated thresholding<a class="anchor" aria-label="anchor" href="#automated-thresholding"></a>
-<a class="anchor" aria-label="anchor" href="#automated-thresholding"></a></h2>
+</section><section><h2 class="section-heading" id="automated-thresholding">Automated thresholding<a class="anchor" aria-label="anchor" href="#automated-thresholding"></a></h2>
 <hr class="half-width"><p>First, let’s clean up our layer list again. Make sure you only have
 the ‘nuclei’, ‘mask’, ‘blurred_mask’ and ‘Result of gaussian_blur’
 layers in the layer list - select any others and remove them by clicking
@@ -945,8 +937,7 @@ result.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="automated-thresholding-1" class="callout-inner">
-<h3 class="callout-title">Automated thresholding<a class="anchor" aria-label="anchor" href="#automated-thresholding-1"></a>
-</h3>
+<h3 class="callout-title">Automated thresholding</h3>
 <div class="callout-content">
 <p>For this exercise, we’ll use the same example image as the <a href="#manual-thresholds">manual thresholding exercise</a>. If you don’t
 have that image open, run the top code block in that exercise to open
@@ -970,7 +961,7 @@ the top row of the layer controls.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Standard Otsu thresholding chooses a threshold that separates the
 background from the three shapes:</p>
@@ -998,8 +989,7 @@ dataset.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="the-napari-assistant">The Napari assistant<a class="anchor" aria-label="anchor" href="#the-napari-assistant"></a>
-<a class="anchor" aria-label="anchor" href="#the-napari-assistant"></a></h2>
+</section><section><h2 class="section-heading" id="the-napari-assistant">The Napari assistant<a class="anchor" aria-label="anchor" href="#the-napari-assistant"></a></h2>
 <hr class="half-width"><p>In this episode, we have directly applied methods from the
 <code>Tools</code> menu to our images. It’s worth mentioning though that
 these methods are also available via the ‘Napari assistant’.</p>
@@ -1039,8 +1029,7 @@ replicate our work and try the same methods on their own data. The
 napari-assistant can export workflows as python scripts or jupyter
 notebooks, which you can read more about in their <a href="https://www.napari-hub.org/plugins/napari-assistant" class="external-link">online
 documentation</a>.</p>
-</section><section><h2 class="section-heading" id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a>
-<a class="anchor" aria-label="anchor" href="#summary"></a></h2>
+</section><section><h2 class="section-heading" id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a></h2>
 <hr class="half-width"><p>To summarise, here are some of the main steps you can use to make a
 mask:</p>
 <ol style="list-style-type: decimal"><li>Quality control</li>
@@ -1057,8 +1046,7 @@ in the next episode.</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
-</h3>
+<h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
 <ul><li><p>Thresholding is simply choosing a specific pixel value to use as
 the cut-off between background and your class of interest.</p></li>
@@ -1116,7 +1104,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.6" class="external-link">sandpaper (0.16.6)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1139,7 +1127,7 @@ any links that you are not going to use.
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/filters-and-thresholding.html",
   "dateCreated": "2023-10-26",
   "dateModified": "2024-08-16",
-  "datePublished": "2024-08-20"
+  "datePublished": "2024-08-27"
 }
 
   </script><script>

@@ -14,11 +14,11 @@
       }
     });
     </script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><!-- Responsive Favicon for The Carpentries --><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"><link rel="manifest" href="site.webmanifest"><link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5"><meta name="msapplication-TileColor" content="#da532c"><meta name="theme-color" content="#ffffff"></head><body>
-    <header id="top" class="navbar navbar-expand-md navbar-light bg-white top-nav "><a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
+    <header id="top" class="navbar navbar-expand-md navbar-light bg-white top-nav IDEAS"><a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
   <div class="container-fluid top-nav-container">
     <div class="col-md-6">
       <div class="large-logo">
-        <img alt="" src="assets/images/-logo.svg"><abbr class="badge badge-light" title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught." style="background-color: #FF4955; border-radius: 5px">
+        <img alt="IDEAS" src="assets/images/IDEAS-logo.svg"><abbr class="badge badge-light" title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught." style="background-color: #FF4955; border-radius: 5px">
           <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#early-development-pre-alpha-through-alpha" class="external-link alert-link" style="color: #000">
             <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="border-radius: 5px"></i>
             Pre-Alpha
@@ -39,13 +39,13 @@
         </ul></div>
     </div>
   </div>
-  <hr></header><nav class="navbar navbar-expand-xl navbar-light bg-white bottom-nav " aria-label="Main Navigation"><div class="container-fluid nav-container">
+  <hr></header><nav class="navbar navbar-expand-xl navbar-light bg-white bottom-nav IDEAS" aria-label="Main Navigation"><div class="container-fluid nav-container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
       <span class="navbar-toggler-icon"></span>
       <span class="menu-title">Menu</span>
     </button>
     <div class="nav-logo">
-      <img class="small-logo" alt="" src="assets/images/-logo-sm.svg"></div>
+      <img class="small-logo" alt="IDEAS" src="assets/images/IDEAS-logo-sm.svg"></div>
     <div class="lesson-title-md">
       Image Analysis for Microscopy
     </div>
@@ -95,8 +95,8 @@
 <aside class="col-md-12 lesson-progress"><div style="width: 68%" class="percentage">
     68%
   </div>
-  <div class="progress ">
-    <div class="progress-bar " role="progressbar" style="width: 68%" aria-valuenow="68" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress IDEAS">
+    <div class="progress-bar IDEAS" role="progressbar" style="width: 68%" aria-valuenow="68" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -364,8 +364,7 @@ segmentation tools (e.g. paintbrush/fill bucket)</p></li>
 <p>For the next few episodes, we will work through an example of
 counting the number of cells in an image.</p>
 <p>First, let’s open one of Napari’s sample images with:<br><code>File &gt; Open Sample &gt; napari builtins &gt; Cells (3D + 2Ch)</code></p>
-<figure><img src="fig/cells-napari.png" alt="A screenshot of a flourescence microscopy image  of some cells in Napari" class="figure mx-auto d-block"></figure><section><h2 class="section-heading" id="quality-control">Quality control<a class="anchor" aria-label="anchor" href="#quality-control"></a>
-<a class="anchor" aria-label="anchor" href="#quality-control"></a></h2>
+<figure><img src="fig/cells-napari.png" alt="A screenshot of a flourescence microscopy image  of some cells in Napari" class="figure mx-auto d-block"></figure><section><h2 class="section-heading" id="quality-control">Quality control<a class="anchor" aria-label="anchor" href="#quality-control"></a></h2>
 <hr class="half-width"><p>The first step in any image processing workflow is always quality
 control. We have to check that the images we acquired at the microscope
 capture the features we are interested in, with a reasonable signal to
@@ -387,8 +386,7 @@ below:</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="histogram-quality-control" class="callout-inner">
-<h3 class="callout-title">Histogram quality control<a class="anchor" aria-label="anchor" href="#histogram-quality-control"></a>
-</h3>
+<h3 class="callout-title">Histogram quality control</h3>
 <div class="callout-content">
 <p>Plot the image histogram with <code>napari matplotlib</code>:</p>
 <ul><li>Do you see any issues with the histogram?</li>
@@ -408,7 +406,7 @@ icon.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>In the top menu bar of Napari select:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
 <p>Make sure you have the ‘nuclei’ layer selected in the layer list
@@ -418,8 +416,7 @@ icon.</p>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="z-slices-and-contrast-limits" class="callout-inner">
-<h3 class="callout-title">Z slices and contrast limits<a class="anchor" aria-label="anchor" href="#z-slices-and-contrast-limits"></a>
-</h3>
+<h3 class="callout-title">Z slices and contrast limits</h3>
 <div class="callout-content">
 <p>Note that as this image is 3D <code>napari matplotlib</code> only
 shows the histogram of the current z slice (in this case z=29 as shown
@@ -469,8 +466,7 @@ maximum value resulting in information loss.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="what-is-segmentation">What is segmentation?<a class="anchor" aria-label="anchor" href="#what-is-segmentation"></a>
-<a class="anchor" aria-label="anchor" href="#what-is-segmentation"></a></h2>
+</section><section><h2 class="section-heading" id="what-is-segmentation">What is segmentation?<a class="anchor" aria-label="anchor" href="#what-is-segmentation"></a></h2>
 <hr class="half-width"><p>In order to count the number of cells, we must ‘segment’ the nuclei
 in this image. Segmentation is the process of labelling each pixel in an
 image e.g. is that pixel part of a nucleus or not? Segmentation comes in
@@ -541,8 +537,7 @@ in our image.</p>
 first making a semantic segmentation, then splitting it into individual
 instances. This isn’t always the case though - it will depend on the
 type of segmentation method you use.</p>
-</section><section><h2 class="section-heading" id="how-are-segmentations-represented">How are segmentations represented?<a class="anchor" aria-label="anchor" href="#how-are-segmentations-represented"></a>
-<a class="anchor" aria-label="anchor" href="#how-are-segmentations-represented"></a></h2>
+</section><section><h2 class="section-heading" id="how-are-segmentations-represented">How are segmentations represented?<a class="anchor" aria-label="anchor" href="#how-are-segmentations-represented"></a></h2>
 <hr class="half-width"><p>How are segmentations represented in the computer? What pixel values
 do they use?</p>
 <p>First, let’s focus on the ‘semantic_seg’ layer we created
@@ -639,8 +634,7 @@ denoting their probability.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="segmentation-shapes-and-data-types" class="callout-inner">
-<h3 class="callout-title">Segmentation shapes and data types<a class="anchor" aria-label="anchor" href="#segmentation-shapes-and-data-types"></a>
-</h3>
+<h3 class="callout-title">Segmentation shapes and data types</h3>
 <div class="callout-content">
 <p>Copy and paste the following into Napari’s console:</p>
 <div class="codewrapper sourceCode" id="cb9">
@@ -670,7 +664,7 @@ integers) Choose from 8-bit, 16-bit or 32-bit.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="shapes-pattern">Shapes + pattern<a class="anchor" aria-label="anchor" href="#shapes-pattern"></a></h3>
@@ -750,8 +744,7 @@ from 0-65535 and would therefore be sufficient in this case.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="how-to-create-segmentations">How to create segmentations?<a class="anchor" aria-label="anchor" href="#how-to-create-segmentations"></a>
-<a class="anchor" aria-label="anchor" href="#how-to-create-segmentations"></a></h2>
+</section><section><h2 class="section-heading" id="how-to-create-segmentations">How to create segmentations?<a class="anchor" aria-label="anchor" href="#how-to-create-segmentations"></a></h2>
 <hr class="half-width"><p>There are many, many different methods for creating segmentations!
 These range from fully manual methods where you ‘paint’ the pixels in
 each category, to complicated automated methods relying on classical
@@ -761,8 +754,7 @@ datasets. As we’ve mentioned before, it’s usually best to use the
 simplest method that works well for your data. In this episode we’ll
 look at manual methods for segmentation within Napari, before moving on
 to more automated methods in later episodes.</p>
-</section><section><h2 class="section-heading" id="manual-segmentation-in-napari">Manual segmentation in Napari<a class="anchor" aria-label="anchor" href="#manual-segmentation-in-napari"></a>
-<a class="anchor" aria-label="anchor" href="#manual-segmentation-in-napari"></a></h2>
+</section><section><h2 class="section-heading" id="manual-segmentation-in-napari">Manual segmentation in Napari<a class="anchor" aria-label="anchor" href="#manual-segmentation-in-napari"></a></h2>
 <hr class="half-width"><p>Let’s look at how we can create our own segmentations in Napari.
 First remove the two segmentation layers:</p>
 <ul><li>Click on ‘instance_seg’, then <kbd>shift</kbd> + click
@@ -814,8 +806,7 @@ represent the background.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="manual-segmentation-in-napari-1" class="callout-inner">
-<h3 class="callout-title">Manual segmentation in Napari<a class="anchor" aria-label="anchor" href="#manual-segmentation-in-napari-1"></a>
-</h3>
+<h3 class="callout-title">Manual segmentation in Napari</h3>
 <div class="callout-content">
 <p>Try labelling more individual nuclei in this image, making sure each
 gets its own pixel value (label). Investigate the other settings in the
@@ -841,7 +832,7 @@ documentation</a> on <code>Labels</code> layers.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="icon">
@@ -891,8 +882,7 @@ affecting them.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="manual-vs-automated">Manual vs automated?<a class="anchor" aria-label="anchor" href="#manual-vs-automated"></a>
-<a class="anchor" aria-label="anchor" href="#manual-vs-automated"></a></h2>
+</section><section><h2 class="section-heading" id="manual-vs-automated">Manual vs automated?<a class="anchor" aria-label="anchor" href="#manual-vs-automated"></a></h2>
 <hr class="half-width"><p>Now that we’ve done some manual segmentation in Napari, you can
 probably tell that this is a very slow and time consuming process
 (especially if you want to segment in full 3D!). It’s also difficult to
@@ -927,8 +917,7 @@ segmentation cleanup from time to time.</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
-</h3>
+<h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
 <ul><li><p>The first step in any image processing workflow is quality
 control. For example, checking the histograms of your images.</p></li>
@@ -994,7 +983,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.6" class="external-link">sandpaper (0.16.6)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1017,7 +1006,7 @@ any links that you are not going to use.
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/quality-control-and-manual-segmentation.html",
   "dateCreated": "2023-10-26",
   "dateModified": "2024-08-16",
-  "datePublished": "2024-08-20"
+  "datePublished": "2024-08-27"
 }
 
   </script><script>

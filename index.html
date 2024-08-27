@@ -14,11 +14,11 @@
       }
     });
     </script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><!-- Responsive Favicon for The Carpentries --><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"><link rel="manifest" href="site.webmanifest"><link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5"><meta name="msapplication-TileColor" content="#da532c"><meta name="theme-color" content="#ffffff"></head><body>
-    <header id="top" class="navbar navbar-expand-md navbar-light bg-white top-nav "><a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
+    <header id="top" class="navbar navbar-expand-md navbar-light bg-white top-nav IDEAS"><a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
   <div class="container-fluid top-nav-container">
     <div class="col-md-6">
       <div class="large-logo">
-        <img alt="" src="assets/images/-logo.svg"><abbr class="badge badge-light" title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught." style="background-color: #FF4955; border-radius: 5px">
+        <img alt="IDEAS" src="assets/images/IDEAS-logo.svg"><abbr class="badge badge-light" title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught." style="background-color: #FF4955; border-radius: 5px">
           <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#early-development-pre-alpha-through-alpha" class="external-link alert-link" style="color: #000">
             <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="border-radius: 5px"></i>
             Pre-Alpha
@@ -39,13 +39,13 @@
         </ul></div>
     </div>
   </div>
-  <hr></header><nav class="navbar navbar-expand-xl navbar-light bg-white bottom-nav " aria-label="Main Navigation"><div class="container-fluid nav-container">
+  <hr></header><nav class="navbar navbar-expand-xl navbar-light bg-white bottom-nav IDEAS" aria-label="Main Navigation"><div class="container-fluid nav-container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
       <span class="navbar-toggler-icon"></span>
       <span class="menu-title">Menu</span>
     </button>
     <div class="nav-logo">
-      <img class="small-logo" alt="" src="assets/images/-logo-sm.svg"></div>
+      <img class="small-logo" alt="IDEAS" src="assets/images/IDEAS-logo-sm.svg"></div>
     <div class="lesson-title-md">
       Image Analysis for Microscopy
     </div>
@@ -95,8 +95,8 @@
 <aside class="col-md-12 lesson-progress"><div style="width: %" class="percentage">
     %
   </div>
-  <div class="progress ">
-    <div class="progress-bar " role="progressbar" style="width: %" aria-valuenow="" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress IDEAS">
+    <div class="progress-bar IDEAS" role="progressbar" style="width: %" aria-valuenow="" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -323,8 +323,7 @@ key fundamentals.</p>
 <i class="callout-icon" data-feather="check"></i>
 </div>
 <div id="prerequisites" class="callout-inner">
-<h3 class="callout-title">Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"></a>
-</h3>
+<h3 class="callout-title">Prerequisites</h3>
 <div class="callout-content">
 <ul><li><p>Some prior experience with acquiring/working with light
 microscopy data would be useful, but isn’t necessary. This course is
@@ -346,8 +345,7 @@ any links that you are not going to use.
  -->
 
 
-      <section id="setup"><section><h2 class="section-heading" id="download-data">Download Data<a class="anchor" aria-label="anchor" href="#download-data"></a>
-<a class="anchor" aria-label="anchor" href="#download-data"></a></h2>
+      <section id="setup"><section><h2 class="section-heading" id="download-data">Download Data<a class="anchor" aria-label="anchor" href="#download-data"></a></h2>
 <hr class="half-width"><p>During these lessons we will be using two microscopy images and
 creating images of our own. Create an empty folder somewhere on your
 computer to use during the course, this will be your
@@ -361,8 +359,7 @@ working directory.</p>
 (<a href="https://downloads.openmicroscopy.org/images/Zeiss-CZI/idr0011/readme.txt" class="external-link">CC
 BY 4.0 Licence</a>) from the open microscopy environment pages to your
 working directory.</p>
-</section><section><h2 class="section-heading" id="software-setup">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a>
-<a class="anchor" aria-label="anchor" href="#software-setup"></a></h2>
+</section><section><h2 class="section-heading" id="software-setup">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a></h2>
 <hr class="half-width"><p>During these lessons we will use the <a href="https://napari.org/stable/" class="external-link">napari</a> image viewer and the <a href="https://github.com/AllenCellModeling/napari-aicsimageio" class="external-link">napari-aicsimagio</a>
 plugin to load imaging data files of various file formats. For beginners
 we recommend using Anaconda to install and manage these packages. The
@@ -379,7 +376,7 @@ instructions below to open a terminal on your operating system.</p>
   Opening a Terminal
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <ul><li>Windows: Click Start &gt; Search for Anaconda Prompt &gt; Click to
 Open</li>
@@ -426,7 +423,7 @@ key.</p>
   Why is there so much text appearing on the screen?
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
 <p>If you’re new to running commands in the terminal you may be alarmed
 if running some of these commands results in a lot of text output to the
@@ -459,8 +456,7 @@ the commands above. If so, try the alternative commands below:</p>
 <span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co"># Install czi file reader</span></span>
 <span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="ex">pip</span> install aicspylibczi<span class="op">&gt;</span>=3.0.5 fsspec<span class="op">&gt;</span>=2022.7.1</span></code></pre>
 </div>
-</section><section><h2 class="section-heading" id="post-setup-checks">Post Setup Checks<a class="anchor" aria-label="anchor" href="#post-setup-checks"></a>
-<a class="anchor" aria-label="anchor" href="#post-setup-checks"></a></h2>
+</section><section><h2 class="section-heading" id="post-setup-checks">Post Setup Checks<a class="anchor" aria-label="anchor" href="#post-setup-checks"></a></h2>
 <hr class="half-width"><p>Before starting the course it is important to check that your setup
 is working.</p>
 <div id="check-napari-opens-a-tiff-image." class="callout discussion">
@@ -468,8 +464,7 @@ is working.</p>
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="check-napari-opens-a-tiff-image." class="callout-inner">
-<h3 class="callout-title">Check napari opens a tiff image.<a class="anchor" aria-label="anchor" href="#check-napari-opens-a-tiff-image."></a>
-</h3>
+<h3 class="callout-title">Check napari opens a tiff image.</h3>
 <div class="callout-content">
 <p>Any napari installation should be able to open a tiff image. Start
 napari. Note that if you’re already in the napari-env virtual
@@ -499,7 +494,7 @@ environment from the installation steps it is not necessary to run
   Expected Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <figure><img src="fig/ome_00001.png" style="width:80.0%" alt="A screenshot of freshly opened 00001_01.ome.tiff" class="figure mx-auto d-block"><div class="figcaption">If this is what you see your napari installation
 is working as expected. If not then please check the installation first
@@ -516,8 +511,7 @@ organisers for help.</div>
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="check-napari-opens-a-czi-image." class="callout-inner">
-<h3 class="callout-title">Check napari opens a czi image.<a class="anchor" aria-label="anchor" href="#check-napari-opens-a-czi-image."></a>
-</h3>
+<h3 class="callout-title">Check napari opens a czi image.</h3>
 <div class="callout-content">
 <p>During the course we’ll be working with czi images. To open these the
 napari-aicsimageio plugin is needed. Let’s check the plugin is
@@ -549,7 +543,7 @@ open.</li>
   Expected Output
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <figure><img src="fig/plate1-blue.png" style="width:80.0%" alt="A screenshot of freshly opened Plate1-Blue-A-12-Scene-3-P3-F2-03.czi" class="figure mx-auto d-block"><div class="figcaption">If this is what you see your napari and
 aicsimageio plugin installation is working as expected. If not then
@@ -592,7 +586,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.6" class="external-link">sandpaper (0.16.6)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -614,8 +608,8 @@ any links that you are not going to use.
   "url": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/index.html",
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/index.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2024-08-20",
-  "datePublished": "2024-08-20"
+  "dateModified": "2024-08-27",
+  "datePublished": "2024-08-27"
 }
 
   </script><script>

@@ -14,11 +14,11 @@
       }
     });
     </script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><!-- Responsive Favicon for The Carpentries --><link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png"><link rel="manifest" href="../site.webmanifest"><link rel="mask-icon" href="../safari-pinned-tab.svg" color="#5bbad5"><meta name="msapplication-TileColor" content="#da532c"><meta name="theme-color" content="#ffffff"></head><body>
-    <header id="top" class="navbar navbar-expand-md navbar-light bg-white top-nav "><a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
+    <header id="top" class="navbar navbar-expand-md navbar-light bg-white top-nav IDEAS"><a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
   <div class="container-fluid top-nav-container">
     <div class="col-md-6">
       <div class="large-logo">
-        <img alt="" src="../assets/images/-logo.svg"><abbr class="badge badge-light" title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught." style="background-color: #FF4955; border-radius: 5px">
+        <img alt="IDEAS" src="../assets/images/IDEAS-logo.svg"><abbr class="badge badge-light" title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught." style="background-color: #FF4955; border-radius: 5px">
           <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#early-development-pre-alpha-through-alpha" class="external-link alert-link" style="color: #000">
             <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="border-radius: 5px"></i>
             Pre-Alpha
@@ -39,13 +39,13 @@
         </ul></div>
     </div>
   </div>
-  <hr></header><nav class="navbar navbar-expand-xl navbar-light bg-white bottom-nav " aria-label="Main Navigation"><div class="container-fluid nav-container">
+  <hr></header><nav class="navbar navbar-expand-xl navbar-light bg-white bottom-nav IDEAS" aria-label="Main Navigation"><div class="container-fluid nav-container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
       <span class="navbar-toggler-icon"></span>
       <span class="menu-title">Menu</span>
     </button>
     <div class="nav-logo">
-      <img class="small-logo" alt="" src="../assets/images/-logo-sm.svg"></div>
+      <img class="small-logo" alt="IDEAS" src="../assets/images/IDEAS-logo-sm.svg"></div>
     <div class="lesson-title-md">
       Image Analysis for Microscopy
     </div>
@@ -95,8 +95,8 @@
 <aside class="col-md-12 lesson-progress"><div style="width: 10%" class="percentage">
     10%
   </div>
-  <div class="progress ">
-    <div class="progress-bar " role="progressbar" style="width: 10%" aria-valuenow="10" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress IDEAS">
+    <div class="progress-bar IDEAS" role="progressbar" style="width: 10%" aria-valuenow="10" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -373,8 +373,7 @@ take a step back now and try to understand how Napari (or ImageJ or any
 other viewer) understands how to display images properly. To do that we
 must first be able to answer the fundamental question - what is an
 image?</p>
-<section><h2 class="section-heading" id="pixels">Pixels<a class="anchor" aria-label="anchor" href="#pixels"></a>
-<a class="anchor" aria-label="anchor" href="#pixels"></a></h2>
+<section><h2 class="section-heading" id="pixels">Pixels<a class="anchor" aria-label="anchor" href="#pixels"></a></h2>
 <hr class="half-width"><p>Let’s start by removing all the layers we added to the Napari viewer
 last episode. Then we can open a new sample image:</p>
 <ul><li><p>Click on the top layer in the layer list and <kbd>shift</kbd> +
@@ -394,8 +393,7 @@ left of the viewer:</p>
 <figure><img src="../fig/pixel-value.png" alt="A screenshot of Napari - with the mouse cursor  hovering over a pixel and highlighting the corresponding pixel value" class="figure mx-auto d-block"></figure><p>You should see that brighter areas have higher values than darker
 areas (we’ll see exactly how these values are converted to colours in
 the <a href="image-display.html">image display episode</a>).</p>
-</section><section><h2 class="section-heading" id="images-are-arrays-of-numbers">Images are arrays of numbers<a class="anchor" aria-label="anchor" href="#images-are-arrays-of-numbers"></a>
-<a class="anchor" aria-label="anchor" href="#images-are-arrays-of-numbers"></a></h2>
+</section><section><h2 class="section-heading" id="images-are-arrays-of-numbers">Images are arrays of numbers<a class="anchor" aria-label="anchor" href="#images-are-arrays-of-numbers"></a></h2>
 <hr class="half-width"><p>We’ve seen that images are made of individual units called pixels
 that have specific values - but how is an image really represented in
 the computer? Let’s dig deeper into Napari’s <code>Image</code>
@@ -408,8 +406,7 @@ this can take a few seconds to open, so give it some time:</p>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="console-readability" class="callout-inner">
-<h3 class="callout-title">Console readability<a class="anchor" aria-label="anchor" href="#console-readability"></a>
-</h3>
+<h3 class="callout-title">Console readability</h3>
 <div class="callout-content">
 <p>You can increase the font size in the console by clicking inside it,
 then pressing <kbd>Ctrl</kbd> and <kbd>+</kbd> together. The font size
@@ -474,8 +471,7 @@ just means they can support any number of dimensions - for example, 2D
 beyond (like time series, images with many channels etc. where we would
 have multiple rectangles or cuboids of data which provide further
 information all at the same location).</p>
-</section><section><h2 class="section-heading" id="creating-an-image">Creating an image<a class="anchor" aria-label="anchor" href="#creating-an-image"></a>
-<a class="anchor" aria-label="anchor" href="#creating-an-image"></a></h2>
+</section><section><h2 class="section-heading" id="creating-an-image">Creating an image<a class="anchor" aria-label="anchor" href="#creating-an-image"></a></h2>
 <hr class="half-width"><p>Where do the numbers in our image array come from? The exact details
 of how an image is created will depend on the type of microscope you are
 using e.g.  widefield, confocal, superresolution etc. In general though,
@@ -508,8 +504,7 @@ etc.</p>
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Discussion<a class="anchor" aria-label="anchor" href="#discussion1"></a>
-</h3>
+<h3 class="callout-title">Discussion</h3>
 <div class="callout-content">
 <p>Read the <a href="https://bioimagebook.github.io/chapters/1-concepts/1-images_and_pixels/images_and_pixels.html#a-simple-microscope" class="external-link">‘A
 simple microscope’ section of Pete Bankhead’s bioimage book</a>.</p>
@@ -518,8 +513,7 @@ simple microscope’ section of Pete Bankhead’s bioimage book</a>.</p>
 </ul></div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="image-dimensions">Image dimensions<a class="anchor" aria-label="anchor" href="#image-dimensions"></a>
-<a class="anchor" aria-label="anchor" href="#image-dimensions"></a></h2>
+</section><section><h2 class="section-heading" id="image-dimensions">Image dimensions<a class="anchor" aria-label="anchor" href="#image-dimensions"></a></h2>
 <hr class="half-width"><p>Let’s return to our human mitosis image and explore some of the key
 features of its image array. First, what size is it?</p>
 <p>We can find this out by running the following in Napari’s
@@ -541,8 +535,7 @@ meaning this image is 512 pixels high and 512 pixels wide. Two values
 are printed as this image is two dimensional (2D), for a 3D image there
 would be 3, for a 4D image (e.g. with an additional time series) there
 would be 4 and so on…</p>
-</section><section><h2 class="section-heading" id="image-data-type">Image data type<a class="anchor" aria-label="anchor" href="#image-data-type"></a>
-<a class="anchor" aria-label="anchor" href="#image-data-type"></a></h2>
+</section><section><h2 class="section-heading" id="image-data-type">Image data type<a class="anchor" aria-label="anchor" href="#image-data-type"></a></h2>
 <hr class="half-width"><p>The other key feature of an image array is its ‘data type’ - this
 controls which values can be stored inside of it. For example, let’s
 look at the data type for our human mitosis image - this is stored in
@@ -563,8 +556,7 @@ look at the data type for our human mitosis image - this is stored in
 <code>uint8</code>. This is short for ‘unsigned integer 8-bit’. Let’s
 break this down further into two parts - the type (unsigned integer) and
 the bit-depth (8-bit).</p>
-</section><section><h2 class="section-heading" id="type">Type<a class="anchor" aria-label="anchor" href="#type"></a>
-<a class="anchor" aria-label="anchor" href="#type"></a></h2>
+</section><section><h2 class="section-heading" id="type">Type<a class="anchor" aria-label="anchor" href="#type"></a></h2>
 <hr class="half-width"><p>The type determines what kind of values can be stored in the array,
 for example:</p>
 <ul><li>Unsigned integer: positive whole numbers</li>
@@ -575,8 +567,7 @@ e.g. 3.14</li>
 whole numbers can be stored inside. You can see this by hovering over
 the pixels in the image again in Napari - the pixel value down in the
 bottom left is always a positive whole number.</p>
-</section><section><h2 class="section-heading" id="bit-depth">Bit depth<a class="anchor" aria-label="anchor" href="#bit-depth"></a>
-<a class="anchor" aria-label="anchor" href="#bit-depth"></a></h2>
+</section><section><h2 class="section-heading" id="bit-depth">Bit depth<a class="anchor" aria-label="anchor" href="#bit-depth"></a></h2>
 <hr class="half-width"><p>The bit depth determines the range of values that can be stored
 e.g. only values between 0 and 255. This is directly related to how the
 array is stored in the computer.</p>
@@ -616,8 +607,7 @@ exceed the limit of 255.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="dimensions-and-data-types" class="callout-inner">
-<h3 class="callout-title">Dimensions and data types<a class="anchor" aria-label="anchor" href="#dimensions-and-data-types"></a>
-</h3>
+<h3 class="callout-title">Dimensions and data types</h3>
 <div class="callout-content">
 <p>Let’s open a new image by removing all layers from the Napari viewer,
 then copying and pasting the following lines into the Napari
@@ -643,7 +633,7 @@ on the bit depth?</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="dimensions">Dimensions<a class="anchor" aria-label="anchor" href="#dimensions"></a></h3>
@@ -686,8 +676,7 @@ on the bit depth?</p></li>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="common-data-types">Common data types<a class="anchor" aria-label="anchor" href="#common-data-types"></a>
-<a class="anchor" aria-label="anchor" href="#common-data-types"></a></h2>
+</section><section><h2 class="section-heading" id="common-data-types">Common data types<a class="anchor" aria-label="anchor" href="#common-data-types"></a></h2>
 <hr class="half-width"><p>NumPy supports a <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#sized-aliases" class="external-link">very
 wide range of data types</a>, but there are a few that are most common
 for image data:</p>
@@ -705,8 +694,7 @@ for image data:</p>
 from light microscopes. <code>float32</code> and <code>float64</code>
 are common during image processing (as we will see in later
 episodes).</p>
-</section><section><h2 class="section-heading" id="choosing-a-bit-depth">Choosing a bit depth<a class="anchor" aria-label="anchor" href="#choosing-a-bit-depth"></a>
-<a class="anchor" aria-label="anchor" href="#choosing-a-bit-depth"></a></h2>
+</section><section><h2 class="section-heading" id="choosing-a-bit-depth">Choosing a bit depth<a class="anchor" aria-label="anchor" href="#choosing-a-bit-depth"></a></h2>
 <hr class="half-width"><p>Most images are either 8-bit or 16-bit - so how to choose which to
 use? A higher bit depth will allow a wider range of values to be stored,
 but it will also result in larger file sizes for the resulting images.
@@ -730,8 +718,7 @@ book</a>.</p>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="clipping-and-overflow" class="callout-inner">
-<h3 class="callout-title">Clipping and overflow<a class="anchor" aria-label="anchor" href="#clipping-and-overflow"></a>
-</h3>
+<h3 class="callout-title">Clipping and overflow</h3>
 <div class="callout-content">
 <p>It’s important to be aware of what image type and bit depth you are
 using. If you try to store values outside of the valid range, this can
@@ -750,8 +737,7 @@ episodes), and also when converting between different bit depths.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="coordinate-system">Coordinate system<a class="anchor" aria-label="anchor" href="#coordinate-system"></a>
-<a class="anchor" aria-label="anchor" href="#coordinate-system"></a></h2>
+</section><section><h2 class="section-heading" id="coordinate-system">Coordinate system<a class="anchor" aria-label="anchor" href="#coordinate-system"></a></h2>
 <hr class="half-width"><p>We’ve seen that images are arrays of numbers with a specific shape
 (dimensions) and data type. How do we access specific values from this
 array? What coordinate system is Napari using?</p>
@@ -779,8 +765,7 @@ will have longer coordinates like [z, y, x]…</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="reading-and-modifying-pixel-values" class="callout-inner">
-<h3 class="callout-title">Reading and modifying pixel values<a class="anchor" aria-label="anchor" href="#reading-and-modifying-pixel-values"></a>
-</h3>
+<h3 class="callout-title">Reading and modifying pixel values</h3>
 <div class="callout-content">
 <p>First, make sure you only have the human mitosis image open (close
 any others). Run the following line in the console to ensure you are
@@ -827,7 +812,7 @@ value - is it correct? If not, why not?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="section">1<a class="anchor" aria-label="anchor" href="#section"></a></h3>
@@ -909,8 +894,7 @@ value for this 8-bit image (max 255). The value therefore overflows and
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
-</h3>
+<h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
 <ul><li>Digital images are made of pixels</li>
 <li>Digital images store these pixels as arrays of numbers</li>
@@ -965,7 +949,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.6" class="external-link">sandpaper (0.16.6)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -988,7 +972,7 @@ any links that you are not going to use.
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/what-is-an-image.html",
   "dateCreated": "2023-10-26",
   "dateModified": "2024-08-16",
-  "datePublished": "2024-08-20"
+  "datePublished": "2024-08-27"
 }
 
   </script><script>

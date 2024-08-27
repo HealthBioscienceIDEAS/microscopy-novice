@@ -14,11 +14,11 @@
       }
     });
     </script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><!-- Responsive Favicon for The Carpentries --><link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png"><link rel="manifest" href="../site.webmanifest"><link rel="mask-icon" href="../safari-pinned-tab.svg" color="#5bbad5"><meta name="msapplication-TileColor" content="#da532c"><meta name="theme-color" content="#ffffff"></head><body>
-    <header id="top" class="navbar navbar-expand-md navbar-light bg-white top-nav "><a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
+    <header id="top" class="navbar navbar-expand-md navbar-light bg-white top-nav IDEAS"><a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
   <div class="container-fluid top-nav-container">
     <div class="col-md-6">
       <div class="large-logo">
-        <img alt="" src="../assets/images/-logo.svg"><abbr class="badge badge-light" title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught." style="background-color: #FF4955; border-radius: 5px">
+        <img alt="IDEAS" src="../assets/images/IDEAS-logo.svg"><abbr class="badge badge-light" title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught." style="background-color: #FF4955; border-radius: 5px">
           <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#early-development-pre-alpha-through-alpha" class="external-link alert-link" style="color: #000">
             <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="border-radius: 5px"></i>
             Pre-Alpha
@@ -39,13 +39,13 @@
         </ul></div>
     </div>
   </div>
-  <hr></header><nav class="navbar navbar-expand-xl navbar-light bg-white bottom-nav " aria-label="Main Navigation"><div class="container-fluid nav-container">
+  <hr></header><nav class="navbar navbar-expand-xl navbar-light bg-white bottom-nav IDEAS" aria-label="Main Navigation"><div class="container-fluid nav-container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
       <span class="navbar-toggler-icon"></span>
       <span class="menu-title">Menu</span>
     </button>
     <div class="nav-logo">
-      <img class="small-logo" alt="" src="../assets/images/-logo-sm.svg"></div>
+      <img class="small-logo" alt="IDEAS" src="../assets/images/IDEAS-logo-sm.svg"></div>
     <div class="lesson-title-md">
       Image Analysis for Microscopy
     </div>
@@ -95,8 +95,8 @@
 <aside class="col-md-12 lesson-progress"><div style="width: 88%" class="percentage">
     88%
   </div>
-  <div class="progress ">
-    <div class="progress-bar " role="progressbar" style="width: 88%" aria-valuenow="88" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress IDEAS">
+    <div class="progress-bar IDEAS" role="progressbar" style="width: 88%" aria-valuenow="88" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -383,8 +383,7 @@ worry if you don’t understand it all yet. Most, if not all, of the
 functions we will use in this lesson are also accessible via various
 Napari plugins, so the analysis pipeline could also be assembled with
 the Napari assistant if you prefer.</p>
-<section><h2 class="section-heading" id="before-you-begin">Before you begin<a class="anchor" aria-label="anchor" href="#before-you-begin"></a>
-<a class="anchor" aria-label="anchor" href="#before-you-begin"></a></h2>
+<section><h2 class="section-heading" id="before-you-begin">Before you begin<a class="anchor" aria-label="anchor" href="#before-you-begin"></a></h2>
 <hr class="half-width"><p>We’ll be using the <a href="https://www.napari-hub.org/plugins/napari-skimage-regionprops" class="external-link">napari-skimage-regionprops</a>
 plugin in this lesson. If it is not already installed you should do that
 now. Use the tool bar to navigate to
@@ -394,8 +393,7 @@ see <code>napari-skimage-regionprops</code> in the dialog like the image
 below. <img src="../fig/install-region-props.png" alt="A screenshot of the plugin installation dialog for napari-skimage-regionprops" class="figure">
 If it is already installed, then nothing else needs to be done. If it is
 not installed, press install, and when finished, restart Napari.</p>
-</section><section><h2 class="section-heading" id="loading-an-image-and-creating-a-mask">Loading an image and creating a mask<a class="anchor" aria-label="anchor" href="#loading-an-image-and-creating-a-mask"></a>
-<a class="anchor" aria-label="anchor" href="#loading-an-image-and-creating-a-mask"></a></h2>
+</section><section><h2 class="section-heading" id="loading-an-image-and-creating-a-mask">Loading an image and creating a mask<a class="anchor" aria-label="anchor" href="#loading-an-image-and-creating-a-mask"></a></h2>
 <hr class="half-width"><p>We recommend starting a new session in Napari in order to make sure
 the variable names in the console are correct. If you have come straight
 from the last lesson the first few steps will be familiar, but can be
@@ -419,8 +417,7 @@ then copy and paste the code below.</p>
 </div>
 <figure><img src="../fig/semantic-seg-napari.png" alt="A screenshot of a rough semantic segmentation of nuclei in Napari" class="figure mx-auto d-block"></figure><p>And you should see the image above. You are now ready to begin this
 lesson.</p>
-</section><section><h2 class="section-heading" id="our-first-measurement">Our first measurement<a class="anchor" aria-label="anchor" href="#our-first-measurement"></a>
-<a class="anchor" aria-label="anchor" href="#our-first-measurement"></a></h2>
+</section><section><h2 class="section-heading" id="our-first-measurement">Our first measurement<a class="anchor" aria-label="anchor" href="#our-first-measurement"></a></h2>
 <hr class="half-width"><p>We now have a mask image with each pixel classified as either cell
 nuclei (pixel value 1) or not (pixel value 0). Try running the following
 code in the console.</p>
@@ -465,8 +462,7 @@ questions we will need a more informative measurement.</p>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="saving-and-repeating-your-work" class="callout-inner">
-<h3 class="callout-title">Saving and repeating your work<a class="anchor" aria-label="anchor" href="#saving-and-repeating-your-work"></a>
-</h3>
+<h3 class="callout-title">Saving and repeating your work</h3>
 <div class="callout-content">
 <p>Let’s assume that measuring percentage of nuclei is sufficient for
 your research question. How do we automate and repeat this workflow on
@@ -489,8 +485,7 @@ at the end of this lesson.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="counting-the-nuclei">Counting the nuclei<a class="anchor" aria-label="anchor" href="#counting-the-nuclei"></a>
-<a class="anchor" aria-label="anchor" href="#counting-the-nuclei"></a></h2>
+</section><section><h2 class="section-heading" id="counting-the-nuclei">Counting the nuclei<a class="anchor" aria-label="anchor" href="#counting-the-nuclei"></a></h2>
 <hr class="half-width"><p>We now need to count the number of nuclei in the image. We can use
 the the <a href="https://scikit-image.org/docs/stable/api/skimage.measure.html#skimage.measure.label" class="external-link">label</a>
 function from scikit-image. The label function is an example of <a href="https://datacarpentry.org/image-processing/08-connected-components.html#connected-component-analysis" class="external-link">connected
@@ -549,8 +544,7 @@ pixels to volume in cubic micrometres and how to get statistics on the
 sizes of all the nuclei. Before we do that, we’ll use the <a href="https://www.napari-hub.org/plugins/napari-skimage-regionprops" class="external-link">napari-skimage-regionprops</a>
 plugin to interactively examine the size and shape of individual
 nuclei.</p>
-</section><section><h2 class="section-heading" id="using-napari-skimage-regionprops-plugin-to-measure-nuclei-size">Using napari-skimage-regionprops plugin to measure nuclei size<a class="anchor" aria-label="anchor" href="#using-napari-skimage-regionprops-plugin-to-measure-nuclei-size"></a>
-<a class="anchor" aria-label="anchor" href="#using-napari-skimage-regionprops-plugin-to-measure-nuclei-size"></a></h2>
+</section><section><h2 class="section-heading" id="using-napari-skimage-regionprops-plugin-to-measure-nuclei-size">Using napari-skimage-regionprops plugin to measure nuclei size<a class="anchor" aria-label="anchor" href="#using-napari-skimage-regionprops-plugin-to-measure-nuclei-size"></a></h2>
 <hr class="half-width"><p>If you followed the instructions <a href="#before-you-begin">above</a> the napari-skimage-regionprops plugin
 should already be installed. If not then do it now and restart Napari.
 If the plugin is installed you can use the toolbar to open
@@ -587,8 +581,7 @@ Nucleus 18 is right at the edge of the image, so is only a partial
 nucleus. Partial nuclei will need to be excluded from our analysis.
 We’ll do this later in the lesson with a <a href="#removing-border-cells">clear border</a> filter. However, first we
 need to solve the problem of joined nuclei.</p>
-</section><section><h2 class="section-heading" id="separating-joined-nuclei">Separating joined nuclei<a class="anchor" aria-label="anchor" href="#separating-joined-nuclei"></a>
-<a class="anchor" aria-label="anchor" href="#separating-joined-nuclei"></a></h2>
+</section><section><h2 class="section-heading" id="separating-joined-nuclei">Separating joined nuclei<a class="anchor" aria-label="anchor" href="#separating-joined-nuclei"></a></h2>
 <hr class="half-width"><p>Our first problem is how to deal with four apparently distinct nuclei
 (labelled with a light purple colour) being segmented as a single
 nucleus. Referring to the images above, three of the light purple nuclei
@@ -610,8 +603,7 @@ why the instance labelling has failed, what can we do to fix it?</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="erode-the-semantic-segmentation-so-all-nuclei-are-separate" class="callout-inner">
-<h3 class="callout-title">Erode the semantic segmentation so all nuclei are separate<a class="anchor" aria-label="anchor" href="#erode-the-semantic-segmentation-so-all-nuclei-are-separate"></a>
-</h3>
+<h3 class="callout-title">Erode the semantic segmentation so all nuclei are separate</h3>
 <div class="callout-content">
 <p>In order to use the label function to count the cell nuclei we first
 need to make sure all the nuclei are separate. We can do this by
@@ -743,8 +735,7 @@ the same shape as in the original mask image.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="is-the-erosion-completely-reversible" class="callout-inner">
-<h3 class="callout-title">Is the erosion completely reversible?<a class="anchor" aria-label="anchor" href="#is-the-erosion-completely-reversible"></a>
-</h3>
+<h3 class="callout-title">Is the erosion completely reversible?</h3>
 <div class="callout-content">
 <p>In order to create a correct instance segmentation we have performed
 a mask erosion followed by a label expansion. This is a common image
@@ -775,8 +766,7 @@ the accuracy of our results be significant?</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="removing-border-cells">Removing Border Cells<a class="anchor" aria-label="anchor" href="#removing-border-cells"></a>
-<a class="anchor" aria-label="anchor" href="#removing-border-cells"></a></h2>
+</section><section><h2 class="section-heading" id="removing-border-cells">Removing Border Cells<a class="anchor" aria-label="anchor" href="#removing-border-cells"></a></h2>
 <hr class="half-width"><p>Now we return to the second problem with our initial instance
 segmentation, the presence of partial nuclei around the image borders.
 As we’re measuring nuclei size, the presence of any partially visible
@@ -909,8 +899,7 @@ the list with a print statement.</p>
 pixels in a particular nucleus. Before we do too much analysis on the
 nuclei sizes we should convert them to a physical value, rather than
 pixels.</p>
-</section><section><h2 class="section-heading" id="size-in-pixels-to-cell-volume">Size in pixels to cell volume<a class="anchor" aria-label="anchor" href="#size-in-pixels-to-cell-volume"></a>
-<a class="anchor" aria-label="anchor" href="#size-in-pixels-to-cell-volume"></a></h2>
+</section><section><h2 class="section-heading" id="size-in-pixels-to-cell-volume">Size in pixels to cell volume<a class="anchor" aria-label="anchor" href="#size-in-pixels-to-cell-volume"></a></h2>
 <hr class="half-width"><p>To convert to volumes we need to know the pixel size. In the lesson
 on <a href="filetypes-and-metadata.html#pixel-size">filetypes and
 metadata</a> we learnt how to inspect the image metadata to determine
@@ -971,8 +960,7 @@ we’ve made whilst learning.</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
-</h3>
+<h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
 <ul><li>Connected component analysis (the label function) was used to assign
 each connected region of a mask a unique integer value. This produces an
@@ -1030,7 +1018,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.6" class="external-link">sandpaper (0.16.6)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1053,7 +1041,7 @@ any links that you are not going to use.
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/instance-segmentation-and-measurements.html",
   "dateCreated": "2023-10-26",
   "dateModified": "2024-08-16",
-  "datePublished": "2024-08-20"
+  "datePublished": "2024-08-27"
 }
 
   </script><script>
