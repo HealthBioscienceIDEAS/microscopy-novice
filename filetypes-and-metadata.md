@@ -439,7 +439,7 @@ Which is smallest?
 
 - Open all four images in Napari. Zoom in very close to a bright nucleus, and 
 try showing / hiding different layers with the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
 ){alt="A screenshot of Napari's eye button" height='30px'} icon. 
 How do they differ? How does each compare to timepoint 30 of the original 
 '00001_01.ome' image?

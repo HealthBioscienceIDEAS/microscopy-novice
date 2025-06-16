@@ -38,7 +38,7 @@ episode. Then we can open a new sample image:
 bottom layer. This should highlight all layers in blue.
 
 - Press the remove layer button ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'} 
 
 - Go to the top menu-bar of Napari and select:  
@@ -71,7 +71,7 @@ specific values - but how is an image really represented in the computer? Let's
 dig deeper into Napari's `Image` layers...
 
 First, open Napari's built-in Python console by pressing the console button ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/console.svg
 ){alt="A screenshot of Napari's console button" height='30px'}. 
 Note this can take a few seconds to open, so give it some time:
 
@@ -87,7 +87,7 @@ decreased with <kbd>Ctrl</kbd> and <kbd>-</kbd> together.
 
 Note that you can also pop the console out into its own window by clicking the 
 small ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/pop_out.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/pop_out.svg
 ){alt="A screenshot of Napari's float panel button" height='30px'} 
 icon on the left side.
 
