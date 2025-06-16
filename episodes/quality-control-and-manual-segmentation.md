@@ -151,7 +151,7 @@ to each other, using some simple examples.
 
 First, let's take a quick look at a rough semantic segmentation. Open Napari's 
 console by pressing the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/console.svg
 ){alt="A screenshot of Napari's console button" height='30px'} button, then copy 
 and paste the code below. Don't worry about the details of what's happening in 
 the code - we'll look at some of these concepts like gaussian blur and otsu 
@@ -174,7 +174,7 @@ segmentation of nuclei in Napari"}
 
 You should see an image appear that highlights the nuclei in brown. Try toggling 
 the 'semantic_seg' layer on and off multiple times, by clicking the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
 ){alt="A screenshot of Napari's eye button" height='30px'} icon next to its name 
 in the layer list. You should see that the brown areas match the nucleus 
 boundaries reasonably well.
@@ -208,11 +208,11 @@ segmentation of nuclei in Napari"}
 
 You should see an image appear that highlights nuclei in different colours. 
 Let's hide the 'semantic_seg' layer by clicking the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
 ){alt="A screenshot of Napari's eye button" height='30px'} icon next to its name 
 in Napari's layer list. Then try toggling the 'instance_seg' layer on and off 
 multiple times, by clicking the corresponding ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
 ){alt="A screenshot of Napari's eye button" height='30px'} icon. You should see 
 that the coloured areas match most of the nucleus boundaries reasonably well, 
 although there are some areas that are less well labelled.
@@ -235,11 +235,11 @@ use?
 First, let's focus on the 'semantic_seg' layer we created earlier:
 
 - Click the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
 ){alt="A screenshot of Napari's eye button" height='30px'} icon next to 
 'semantic_seg' in the layer list to make it visible. 
 - Click the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
 ){alt="A screenshot of Napari's eye button" height='30px'} icon next to 
 'instance_seg' in the layer list to hide it.
 - Make sure the 'semantic_seg' layer is selected in the layer list. It should be 
@@ -291,11 +291,11 @@ values of 0, 1, 2 and 3.
 Let's take a look at the pixel values in the instance segmentation:
 
 - Click the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
 ){alt="A screenshot of Napari's eye button" height='30px'} icon next to 
 'instance_seg' in the layer list to make it visible. 
 - Click the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
 ){alt="A screenshot of Napari's eye button" height='30px'} icon next to 
 'semantic_seg' in the layer list to hide it.
 - Make sure the 'instance_seg' layer is selected in the layer list. It should be 
@@ -459,12 +459,12 @@ the two segmentation layers:
 
 - Click on 'instance_seg', then <kbd>shift</kbd> + click 'semantic_seg'
 - Click the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'} icon to 
 remove these layers.
 
 Then click on the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_labels.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/new_labels.svg
 ){alt="A screenshot of Napari's labels layer button" height='30px'} icon (at the 
 top of the layer list) to create a new `Labels` layer.
 
@@ -479,17 +479,17 @@ labels layers in Napari"}
 
 Let's start by painting an individual nucleus. Select the paintbrush by clicking 
 the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/paint.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/paint.svg
 ){alt="A screenshot of Napari's paintbrush button" height='30px'} icon in the 
 top row of the layer controls. Then click and drag across the image to label 
 pixels. You can change the size of the brush using the 'brush size' slider in 
 the layer controls. To return to normal movement, you can click the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/pan_arrows.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/pan_arrows.svg
 ){alt="A screenshot of Napari's pan arrows button" height='30px'} icon in the 
 top row of the layer controls, or hold down spacebar to activate it temporarily 
 (this is useful if you want to pan slightly while painting). To remove painted 
 areas, you can activate the label eraser by clicking the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/erase.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/erase.svg
 ){alt="A screenshot of Napari's erase button" height='30px'} icon.
 
 ![](fig/single-painted-nucleus.png){alt="A screenshot of a single manually 
@@ -516,7 +516,7 @@ display. The colormap for `Labels` layers will assign random colours to each
 pixel value, trying to ensure that nearby values (like 2 vs 3) are given 
 dissimilar colours. This helps to make it easier to distinguish different 
 labels. You can shuffle the colours used by clicking the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/shuffle.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/shuffle.svg
 ){alt="A screenshot of Napari's shuffle button" height='30px'} icon in the top 
 row of the layer controls. Note that the pixel value of 0 will always be shown 
 as transparent - this is because it is usually used to represent the background.
@@ -529,10 +529,10 @@ Try labelling more individual nuclei in this image, making sure each gets its
 own pixel value (label). Investigate the other settings in the layer controls:
 
 - What does the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/fill.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/fill.svg
 ){alt="A screenshot of Napari's fill button" height='30px'} icon do?
 - What does the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/picker.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/picker.svg
 ){alt="A screenshot of Napari's picker button" height='30px'} icon do?
 - What does the 'contour' setting control?
 - What does the 'n edit dim' setting control?
@@ -551,7 +551,7 @@ undo your last action. If you need to re-do it use
 ### Solution
 
 ###  ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/fill.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/fill.svg
 ){alt="A screenshot of Napari's fill button" height='30px'} icon
 
 This icon activates the 'fill bucket'. It will fill whatever label you click on 
@@ -562,7 +562,7 @@ in [Napari's documentation
 ](https://napari.org/stable/howtos/layers/labels.html#using-the-fill-bucket)
 
 ### ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/picker.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/picker.svg
 ){alt="A screenshot of Napari's picker button" height='30px'} icon
 
 This icon activates the 'colour picker'. This allows you to click on a pixel in 

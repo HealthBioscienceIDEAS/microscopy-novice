@@ -325,7 +325,7 @@ limit will remove any low intensity parts of the image from the display.
 ## Adjusting contrast
 
 Open the Napari console with the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/console.svg
 ){alt="A screenshot of Napari's console button" height='30px'}
 button and copy and paste the code below:
 ```

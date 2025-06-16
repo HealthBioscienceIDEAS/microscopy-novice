@@ -57,7 +57,7 @@ If you don't have Napari's 'Cells (3D + 2Ch)' image open, then open it with:
 
 Make sure you only have 'nuclei' in the layer list. Select any additional 
 layers, then click the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'} icon to 
 remove them. Also, select the nuclei layer (should be highlighted in blue), and 
 change its colormap from 'green' to 'gray' in the layer controls.
@@ -130,7 +130,7 @@ You should see a mask appear that highlights the nuclei in brown. If we set the
 nuclei contrast limits back to normal (select 'nuclei' in the layer list, then 
 drag the left contrast limits node back to zero), then toggle on/off the mask 
 or nuclei layers with the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
 ){alt="A screenshot of Napari's eye button" height='30px'} icon, you should see 
 that the brown areas match the nucleus boundaries reasonably well. They aren't 
 perfect though! The brown regions have a speckled appearance where some regions 
@@ -303,7 +303,7 @@ Let's open the cells image in Napari again:
 
 As before, make sure you only have 'nuclei' in the layer list. Select any 
 additional layers, then click the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'} icon to 
 remove them. Also, select the nuclei layer (should be highlighted in blue), and 
 change its colormap from 'green' to 'gray' in the layer controls.
@@ -527,11 +527,11 @@ shrink in size. Increasing the 'radius' of the filter enhances the effect.
 First, let's clean up our layer list. Make sure you only have the 'nuclei' and 
 'Result of gaussian_blur' layers in the layer list - select any others and 
 remove them by clicking the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'} icon. Also, 
 close all filter settings panels on the right side of Napari (apart from the 
 gaussian settings) by clicking the tiny ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility_off.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility_off.svg
 ){alt="A screenshot of Napari's hide button" height='20px'} icon at their top 
 left corner.
 
@@ -585,11 +585,11 @@ processing, and it's good to keep an eye out for when this is required!
 
 Let's return to thresholding our image. Close the gaussian panel by clicking the 
 tiny ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility_off.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility_off.svg
 ){alt="A screenshot of Napari's hide button" height='20px'} icon at its top left 
 corner. Then select the 'blurred_mask' in the layer list and remove it by 
 clicking the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'} icon. 
 Finally, open the `napari-matplotlib` histogram again with:  
 `Plugins > napari Matplotlib > Histogram`
@@ -655,7 +655,7 @@ clear that some areas are still missed or incorrectly labelled.
 First, let's clean up our layer list again. Make sure you only have the 
 'nuclei', 'mask', 'blurred_mask' and 'Result of gaussian_blur' layers in the 
 layer list - select any others and remove them by clicking the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'} icon. Then, 
 if you still have the `napari-matplotlib` histogram open, close it by clicking 
 the tiny `x` icon in the top left corner.
@@ -682,10 +682,10 @@ name in the layer list - for example, rename 'mask' to 'manual_mask',
 'blurred_mask' to 'manual_blurred_mask', and 'Result of threshold_otsu' to 
 'otsu_blurred_mask'. Recall that you can change the colour of a mask by clicking 
 the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/shuffle.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/shuffle.svg
 ){alt="A screenshot of Napari's shuffle button" height='30px'} icon in the top 
 row of the layer controls. By toggling on/off the relevant ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
 ){alt="A screenshot of Napari's eye button" height='30px'} icons, you should see 
 that Otsu chooses a slightly different threshold than we did in our 
 'manual_blurred_mask', labelling slightly smaller regions as nuclei in the final 
@@ -727,7 +727,7 @@ How do they compare to standard Otsu thresholding?
 `Tools > Segmentation / binarization > Threshold (Otsu et al 1979, scikit-image, nsbatwm)`
 
 Recall that you can change the colour of a mask by clicking the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/shuffle.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/shuffle.svg
 ){alt="A screenshot of Napari's shuffle button" height='30px'} icon in the top 
 row of the layer controls.
 
@@ -787,10 +787,10 @@ the 'Napari assistant'.
 
 First, let's clean up our layer list again. Make sure you only have the 'nuclei' 
 layer in the layer list - select any others and remove them by clicking the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'} icon. Also, 
 close all settings panels on the right side of Napari by clicking the tiny ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility_off.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility_off.svg
 ){alt="A screenshot of Napari's hide button" height='20px'} icon at their top 
 left corner.
 
