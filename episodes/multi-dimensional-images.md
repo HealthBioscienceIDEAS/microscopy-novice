@@ -83,7 +83,7 @@ for the y and x axes). These comments won't appear in the output in your console
 ## 3D
 
 Let's remove the mitosis image by clicking the remove layer button ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'} at the top 
 right of the layer list. Then, let's open a new 3D image:  
 `File > Open Sample > napari builtins > Brain (3D)`
@@ -292,7 +292,7 @@ depend on your image and preference. Some pros and cons are shown below:
 a time)
 
 2. Channels can be easily shown/hidden with the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
 ){alt="A screenshot of Napari's eye button" height='20px'} icons
 
 3. Display settings like contrast limits and colormaps can be controlled 
@@ -338,11 +338,11 @@ This image is a 2D time series (tyx) of some human cells undergoing mitosis. The
 slider at the bottom now moves through time, rather than z or channels. Try 
 moving the slider from left to right -  you should see some nuclei divide and 
 the total number of nuclei increase. You can also press the small ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/right_arrow.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/right_arrow.svg
 ){alt="A screenshot of Napari's play button" height='20px'} icon at the 
 left side of the slider to automatically move along it. The icon will change 
 into a ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/square.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/square.svg
 ){alt="A screenshot of Napari's stop button" height='25px'}- pressing this will 
 stop the movement.
 
@@ -417,7 +417,7 @@ This is a fluorescence microscopy image of mouse kidney tissue.
 
 2. What do each of those dimensions represent? (e.g. t, c, z, y, x) **Hint:** 
 try using the roll dimensions button ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/roll.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/roll.svg
 ){alt="A screenshot of Napari's roll dimensions button" height='25px'} to view 
 different combinations of axes.
 
@@ -451,7 +451,7 @@ image.shape
 
 ### 2
 If we press the roll dimensions button ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/roll.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/roll.svg
 ){alt="A screenshot of Napari's roll dimensions button" height='25px'} once, we 
 can see an image of various cells and nuclei. Moving the slider labelled '0' 
 seems to move up and down in this image (i.e. the z axis), while moving the 
@@ -511,7 +511,7 @@ image layer and select:
 
 This shows the red, green and blue channels as separate image layers. Try 
 inspecting each one individually by clicking the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
 ){alt="A screenshot of Napari's eye button" height='30px'} icons to hide the 
 other layers.
 

@@ -64,7 +64,7 @@ First, let's open one of Napari's sample images with:
 `File > Open Sample > napari builtins > Cells (3D + 2Ch)`
 
 Open Napari's console by pressing the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/console.svg
 ){alt="A screenshot of Napari's console button" height='30px'} button,
 then copy and paste the code below.
 
@@ -270,7 +270,7 @@ they are adjacent to another segmented pixel in any of the three dimensions
 
 You may remember from our [first lesson](imaging-software.md#d3d) that
 we can change to 3D view mode by pressing the ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/2D.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/2D.svg
 ){alt="Napari's 2D/3D toggle" height='30px'} button.
 Try it now.
 
