@@ -324,7 +324,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Filters and thresholding</h1>
-        <p>Last updated on 2024-08-16 |
+        <p>Last updated on 2025-06-25 |
 
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/filters-and-thresholding.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -391,7 +391,7 @@ replicate your work and also try similar methods on their own data.</p>
 <hr class="half-width"><p>If you don’t have Napari’s ‘Cells (3D + 2Ch)’ image open, then open
 it with:<br><code>File &gt; Open Sample &gt; napari builtins &gt; Cells (3D + 2Ch)</code></p>
 <p>Make sure you only have ‘nuclei’ in the layer list. Select any
-additional layers, then click the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
+additional layers, then click the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
 icon to remove them. Also, select the nuclei layer (should be
 highlighted in blue), and change its colormap from ‘green’ to ‘gray’ in
 the layer controls.</p>
@@ -442,7 +442,7 @@ interested in, and we should set our threshold accordingly.</p>
 <p>You should see a mask appear that highlights the nuclei in brown. If
 we set the nuclei contrast limits back to normal (select ‘nuclei’ in the
 layer list, then drag the left contrast limits node back to zero), then
-toggle on/off the mask or nuclei layers with the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon, you
+toggle on/off the mask or nuclei layers with the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon, you
 should see that the brown areas match the nucleus boundaries reasonably
 well. They aren’t perfect though! The brown regions have a speckled
 appearance where some regions inside nuclei aren’t labelled and some
@@ -547,7 +547,7 @@ value:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>First, we show a histogram for the image by selecting the ‘image’
 layer, then:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
@@ -606,7 +606,7 @@ re-open Napari</strong>.</p>
 </section><section><h2 class="section-heading" id="filters">Filters<a class="anchor" aria-label="anchor" href="#filters"></a></h2>
 <hr class="half-width"><p>Let’s open the cells image in Napari again:<br><code>File &gt; Open Sample &gt; napari builtins &gt; Cells (3D + 2Ch)</code></p>
 <p>As before, make sure you only have ‘nuclei’ in the layer list. Select
-any additional layers, then click the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
+any additional layers, then click the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
 icon to remove them. Also, select the nuclei layer (should be
 highlighted in blue), and change its colormap from ‘green’ to ‘gray’ in
 the layer controls.</p>
@@ -753,7 +753,7 @@ name online.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="median">Median<a class="anchor" aria-label="anchor" href="#median"></a></h3>
@@ -793,9 +793,9 @@ enhances the effect.</p>
 </section><section><h2 class="section-heading" id="thresholding-the-blurred-image">Thresholding the blurred image<a class="anchor" aria-label="anchor" href="#thresholding-the-blurred-image"></a></h2>
 <hr class="half-width"><p>First, let’s clean up our layer list. Make sure you only have the
 ‘nuclei’ and ‘Result of gaussian_blur’ layers in the layer list - select
-any others and remove them by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
+any others and remove them by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
 icon. Also, close all filter settings panels on the right side of Napari
-(apart from the gaussian settings) by clicking the tiny <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility_off.svg" alt="A screenshot of Napari's hide button" height="20" class="figure"> icon at
+(apart from the gaussian settings) by clicking the tiny <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility_off.svg" alt="A screenshot of Napari's hide button" height="20" class="figure"> icon at
 their top left corner.</p>
 <p>Now let’s try thresholding our image again. Make sure you set your
 gaussian blur sigma to three, then click ‘Run’.</p>
@@ -847,9 +847,9 @@ slight errors after multiple operations are applied one after the other.
 In summary, changes in data type are expected in image processing, and
 it’s good to keep an eye out for when this is required!</p>
 <p>Let’s return to thresholding our image. Close the gaussian panel by
-clicking the tiny <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility_off.svg" alt="A screenshot of Napari's hide button" height="20" class="figure"> icon at
+clicking the tiny <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility_off.svg" alt="A screenshot of Napari's hide button" height="20" class="figure"> icon at
 its top left corner. Then select the ‘blurred_mask’ in the layer list
-and remove it by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
+and remove it by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
 icon. Finally, open the <code>napari-matplotlib</code> histogram again
 with:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
 <figure><img src="../fig/blurred-nuclei-histogram.png" alt="A histogram of the 29th z slice of  the nuclei image after a gaussian blur. The left contrast limit is set  to 0.134." class="figure mx-auto d-block"></figure><p>Make sure you have ‘Result of gaussian_blur’ selected in the layer
@@ -899,7 +899,7 @@ or incorrectly labelled.</p>
 <hr class="half-width"><p>First, let’s clean up our layer list again. Make sure you only have
 the ‘nuclei’, ‘mask’, ‘blurred_mask’ and ‘Result of gaussian_blur’
 layers in the layer list - select any others and remove them by clicking
-the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
+the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
 icon. Then, if you still have the <code>napari-matplotlib</code>
 histogram open, close it by clicking the tiny <code>x</code> icon in the
 top left corner.</p>
@@ -920,8 +920,8 @@ our layers by double clicking on their name in the layer list - for
 example, rename ‘mask’ to ‘manual_mask’, ‘blurred_mask’ to
 ‘manual_blurred_mask’, and ‘Result of threshold_otsu’ to
 ‘otsu_blurred_mask’. Recall that you can change the colour of a mask by
-clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/shuffle.svg" alt="A screenshot of Napari's shuffle button" height="30" class="figure"> icon in
-the top row of the layer controls. By toggling on/off the relevant <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icons, you
+clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/shuffle.svg" alt="A screenshot of Napari's shuffle button" height="30" class="figure"> icon in
+the top row of the layer controls. By toggling on/off the relevant <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icons, you
 should see that Otsu chooses a slightly different threshold than we did
 in our ‘manual_blurred_mask’, labelling slightly smaller regions as
 nuclei in the final result.</p>
@@ -953,7 +953,7 @@ the image:</p>
 <li><code>Tools &gt; Segmentation / binarization &gt; Threshold (Li et al 1993, scikit-image, nsbatwm)</code></li>
 <li><code>Tools &gt; Segmentation / binarization &gt; Threshold Otsu, multiple thresholds (n-SimpleITK)</code></li>
 </ul><p>How do they compare to standard Otsu thresholding?<br><code>Tools &gt; Segmentation / binarization &gt; Threshold (Otsu et al 1979, scikit-image, nsbatwm)</code></p>
-<p>Recall that you can change the colour of a mask by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/shuffle.svg" alt="A screenshot of Napari's shuffle button" height="30" class="figure"> icon in
+<p>Recall that you can change the colour of a mask by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/shuffle.svg" alt="A screenshot of Napari's shuffle button" height="30" class="figure"> icon in
 the top row of the layer controls.</p>
 </div>
 </div>
@@ -963,7 +963,7 @@ the top row of the layer controls.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Standard Otsu thresholding chooses a threshold that separates the
 background from the three shapes:</p>
@@ -997,9 +997,9 @@ dataset.</p>
 these methods are also available via the ‘Napari assistant’.</p>
 <p>First, let’s clean up our layer list again. Make sure you only have
 the ‘nuclei’ layer in the layer list - select any others and remove them
-by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
+by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
 icon. Also, close all settings panels on the right side of Napari by
-clicking the tiny <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility_off.svg" alt="A screenshot of Napari's hide button" height="20" class="figure"> icon at
+clicking the tiny <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility_off.svg" alt="A screenshot of Napari's hide button" height="20" class="figure"> icon at
 their top left corner.</p>
 <p>We can open the assistant with:<br><code>Tools &gt; Utilities &gt; Assistant (na)</code></p>
 <figure><img src="../fig/napari-assistant.png" alt="Screenshot of the Napari assistant user  interface" class="figure mx-auto d-block"></figure><p>The assistant splits image processing operations into broad
@@ -1128,8 +1128,8 @@ any links that you are not going to use.
   "url": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/filters-and-thresholding.html",
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/filters-and-thresholding.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2024-08-16",
-  "datePublished": "2025-06-24"
+  "dateModified": "2025-06-25",
+  "datePublished": "2025-06-25"
 }
 
   </script><script>

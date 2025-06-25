@@ -323,7 +323,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Quality control and manual segmentation</h1>
-        <p>Last updated on 2024-08-16 |
+        <p>Last updated on 2025-06-25 |
 
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/quality-control-and-manual-segmentation.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -475,7 +475,7 @@ this section we’ll describe what both kinds of segmentation represent,
 as well as how they relate to each other, using some simple
 examples.</p>
 <p>First, let’s take a quick look at a rough semantic segmentation. Open
-Napari’s console by pressing the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg" alt="A screenshot of Napari's console button" height="30" class="figure"> button,
+Napari’s console by pressing the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/console.svg" alt="A screenshot of Napari's console button" height="30" class="figure"> button,
 then copy and paste the code below. Don’t worry about the details of
 what’s happening in the code - we’ll look at some of these concepts like
 gaussian blur and otsu thresholding in later episodes!</p>
@@ -494,7 +494,7 @@ gaussian blur and otsu thresholding in later episodes!</p>
 </div>
 <figure><img src="fig/semantic-seg-napari.png" alt="A screenshot of a rough semantic  segmentation of nuclei in Napari" class="figure mx-auto d-block"></figure><p>You should see an image appear that highlights the nuclei in brown.
 Try toggling the ‘semantic_seg’ layer on and off multiple times, by
-clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
+clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
 to its name in the layer list. You should see that the brown areas match
 the nucleus boundaries reasonably well.</p>
 <p>This is an example of a ‘semantic segmentation’. In a semantic
@@ -522,9 +522,9 @@ these concepts in later episodes.</p>
 <span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>viewer.add_labels(instance_seg)</span></code></pre>
 </div>
 <figure><img src="fig/instance-seg-napari.png" alt="A screenshot of a rough instance  segmentation of nuclei in Napari" class="figure mx-auto d-block"></figure><p>You should see an image appear that highlights nuclei in different
-colours. Let’s hide the ‘semantic_seg’ layer by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
+colours. Let’s hide the ‘semantic_seg’ layer by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
 to its name in Napari’s layer list. Then try toggling the ‘instance_seg’
-layer on and off multiple times, by clicking the corresponding <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon. You
+layer on and off multiple times, by clicking the corresponding <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon. You
 should see that the coloured areas match most of the nucleus boundaries
 reasonably well, although there are some areas that are less well
 labelled.</p>
@@ -542,9 +542,9 @@ type of segmentation method you use.</p>
 do they use?</p>
 <p>First, let’s focus on the ‘semantic_seg’ layer we created
 earlier:</p>
-<ul><li>Click the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
+<ul><li>Click the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
 to ‘semantic_seg’ in the layer list to make it visible.</li>
-<li>Click the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
+<li>Click the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
 to ‘instance_seg’ in the layer list to hide it.</li>
 <li>Make sure the ‘semantic_seg’ layer is selected in the layer list. It
 should be highlighted in blue.</li>
@@ -590,9 +590,9 @@ cell membrane and background, which would give four possible values of
 0, 1, 2 and 3.</p>
 <p>Let’s take a look at the pixel values in the instance
 segmentation:</p>
-<ul><li>Click the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
+<ul><li>Click the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
 to ‘instance_seg’ in the layer list to make it visible.</li>
-<li>Click the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
+<li>Click the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
 to ‘semantic_seg’ in the layer list to hide it.</li>
 <li>Make sure the ‘instance_seg’ layer is selected in the layer list. It
 should be highlighted in blue.</li>
@@ -759,9 +759,9 @@ to more automated methods in later episodes.</p>
 First remove the two segmentation layers:</p>
 <ul><li>Click on ‘instance_seg’, then <kbd>shift</kbd> + click
 ‘semantic_seg’</li>
-<li>Click the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
+<li>Click the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
 icon to remove these layers.</li>
-</ul><p>Then click on the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_labels.svg" alt="A screenshot of Napari's labels layer button" height="30" class="figure">
+</ul><p>Then click on the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/new_labels.svg" alt="A screenshot of Napari's labels layer button" height="30" class="figure">
 icon (at the top of the layer list) to create a new <code>Labels</code>
 layer.</p>
 <p>Recall from the <a href="imaging-software.html#layer-list">imaging
@@ -772,15 +772,15 @@ shapes like rectangles, ellipses or lines etc… <code>Labels</code>
 layers are the type used for segmentations, and provide access to many
 new settings in the layer controls:</p>
 <figure><img src="fig/label-layer-controls.png" alt="A screenshot of the layer controls for  labels layers in Napari" class="figure mx-auto d-block"></figure><p>Let’s start by painting an individual nucleus. Select the paintbrush
-by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/paint.svg" alt="A screenshot of Napari's paintbrush button" height="30" class="figure"> icon
+by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/paint.svg" alt="A screenshot of Napari's paintbrush button" height="30" class="figure"> icon
 in the top row of the layer controls. Then click and drag across the
 image to label pixels. You can change the size of the brush using the
 ‘brush size’ slider in the layer controls. To return to normal movement,
-you can click the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/pan_arrows.svg" alt="A screenshot of Napari's pan arrows button" height="30" class="figure"> icon
+you can click the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/pan_arrows.svg" alt="A screenshot of Napari's pan arrows button" height="30" class="figure"> icon
 in the top row of the layer controls, or hold down spacebar to activate
 it temporarily (this is useful if you want to pan slightly while
 painting). To remove painted areas, you can activate the label eraser by
-clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/erase.svg" alt="A screenshot of Napari's erase button" height="30" class="figure"> icon.</p>
+clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/erase.svg" alt="A screenshot of Napari's erase button" height="30" class="figure"> icon.</p>
 <figure><img src="fig/single-painted-nucleus.png" alt="A screenshot of a single manually  painted nucleus in Napari" class="figure mx-auto d-block"></figure><p>If you hover over the image and examine the pixel values, you will
 see that all your painted areas have a pixel value of 1. This
 corresponds to the number shown next to ‘label:’ in the layer
@@ -797,7 +797,7 @@ for display. The colormap for <code>Labels</code> layers will assign
 random colours to each pixel value, trying to ensure that nearby values
 (like 2 vs 3) are given dissimilar colours. This helps to make it easier
 to distinguish different labels. You can shuffle the colours used by
-clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/shuffle.svg" alt="A screenshot of Napari's shuffle button" height="30" class="figure"> icon in
+clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/shuffle.svg" alt="A screenshot of Napari's shuffle button" height="30" class="figure"> icon in
 the top row of the layer controls. Note that the pixel value of 0 will
 always be shown as transparent - this is because it is usually used to
 represent the background.</p>
@@ -811,9 +811,9 @@ represent the background.</p>
 <p>Try labelling more individual nuclei in this image, making sure each
 gets its own pixel value (label). Investigate the other settings in the
 layer controls:</p>
-<ul><li>What does the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/fill.svg" alt="A screenshot of Napari's fill button" height="30" class="figure"> icon
+<ul><li>What does the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/fill.svg" alt="A screenshot of Napari's fill button" height="30" class="figure"> icon
 do?</li>
-<li>What does the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/picker.svg" alt="A screenshot of Napari's picker button" height="30" class="figure"> icon
+<li>What does the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/picker.svg" alt="A screenshot of Napari's picker button" height="30" class="figure"> icon
 do?</li>
 <li>What does the ‘contour’ setting control?</li>
 <li>What does the ‘n edit dim’ setting control?</li>
@@ -836,7 +836,7 @@ documentation</a> on <code>Labels</code> layers.</p>
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="icon">
-<img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/fill.svg" alt="A screenshot of Napari's fill button" height="30" class="figure"> icon<a class="anchor" aria-label="anchor" href="#icon"></a></h3>
+<img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/fill.svg" alt="A screenshot of Napari's fill button" height="30" class="figure"> icon<a class="anchor" aria-label="anchor" href="#icon"></a></h3>
 <p>This icon activates the ‘fill bucket’. It will fill whatever label
 you click on with the currently active label (as shown next to ‘label:’
 in the layer controls). For example, if your active label is 2, then
@@ -846,7 +846,7 @@ documentation</a></p>
 </div>
 <div class="section level3">
 <h3 id="icon-1">
-<img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/picker.svg" alt="A screenshot of Napari's picker button" height="30" class="figure">
+<img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/picker.svg" alt="A screenshot of Napari's picker button" height="30" class="figure">
 icon<a class="anchor" aria-label="anchor" href="#icon-1"></a></h3>
 <p>This icon activates the ‘colour picker’. This allows you to click on
 a pixel in the viewer and immediately select the corresponding label.
@@ -1005,8 +1005,8 @@ any links that you are not going to use.
   "url": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/quality-control-and-manual-segmentation.html",
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/quality-control-and-manual-segmentation.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2024-08-16",
-  "datePublished": "2025-06-24"
+  "dateModified": "2025-06-25",
+  "datePublished": "2025-06-25"
 }
 
   </script><script>

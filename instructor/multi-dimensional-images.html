@@ -324,7 +324,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Multi-dimensional images</h1>
-        <p>Last updated on 2024-08-16 |
+        <p>Last updated on 2025-06-25 |
 
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/multi-dimensional-images.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -414,7 +414,7 @@ represent (e.g. (y, x) for the y and x axes). These comments won’t
 appear in the output in your console.</p>
 </section><section><h2 class="section-heading" id="d-1">3D<a class="anchor" aria-label="anchor" href="#d-1"></a></h2>
 <hr class="half-width"><p>Let’s remove the mitosis image by clicking the remove layer button
-<img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure"> at
+<img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure"> at
 the top right of the layer list. Then, let’s open a new 3D image:<br><code>File &gt; Open Sample &gt; napari builtins &gt; Brain (3D)</code></p>
 <figure><img src="../fig/brain-napari.png" alt="A screenshot of a head X-ray in Napari" class="figure mx-auto d-block"></figure><p>This image shows part of a human head acquired using X-ray
 Computerised Tomography (CT). We can see it has three dimensions due to
@@ -596,12 +596,12 @@ shown below:</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Pros and cons </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p><strong>Channels as separate layers</strong></p>
 <ol style="list-style-type: decimal"><li><p>Channels can be overlaid on top of each other (rather than only
 viewed one at a time)</p></li>
-<li><p>Channels can be easily shown/hidden with the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="20" class="figure">
+<li><p>Channels can be easily shown/hidden with the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="20" class="figure">
 icons</p></li>
 <li><p>Display settings like contrast limits and colormaps can be
 controlled independently for each channel (rather than only for the
@@ -639,9 +639,9 @@ Alternatively, you can select in the top menu-bar:<br><code>File &gt; Open File(
 mitosis. The slider at the bottom now moves through time, rather than z
 or channels. Try moving the slider from left to right - you should see
 some nuclei divide and the total number of nuclei increase. You can also
-press the small <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/right_arrow.svg" alt="A screenshot of Napari's play button" height="20" class="figure"> icon at
+press the small <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/right_arrow.svg" alt="A screenshot of Napari's play button" height="20" class="figure"> icon at
 the left side of the slider to automatically move along it. The icon
-will change into a <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/square.svg" alt="A screenshot of Napari's stop button" height="25" class="figure">- pressing
+will change into a <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/square.svg" alt="A screenshot of Napari's stop button" height="25" class="figure">- pressing
 this will stop the movement.</p>
 <p>We can again check the image dimensions by running the following:</p>
 <div class="codewrapper sourceCode" id="cb11">
@@ -708,7 +708,7 @@ the following into Napari’s console:</p>
 <p>This is a fluorescence microscopy image of mouse kidney tissue.</p>
 <ol style="list-style-type: decimal"><li><p>How many dimensions does it have?</p></li>
 <li><p>What do each of those dimensions represent? (e.g. t, c, z, y, x)
-<strong>Hint:</strong> try using the roll dimensions button <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/roll.svg" alt="A screenshot of Napari's roll dimensions button" height="25" class="figure">
+<strong>Hint:</strong> try using the roll dimensions button <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/roll.svg" alt="A screenshot of Napari's roll dimensions button" height="25" class="figure">
 to view different combinations of axes.</p></li>
 <li><p>Once you know which dimension represent channels, remove the
 image and load it again with:</p></li>
@@ -733,7 +733,7 @@ large size.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="section">1<a class="anchor" aria-label="anchor" href="#section"></a></h3>
@@ -751,7 +751,7 @@ large size.</p>
 </div>
 <div class="section level3">
 <h3 id="section-1">2<a class="anchor" aria-label="anchor" href="#section-1"></a></h3>
-<p>If we press the roll dimensions button <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/roll.svg" alt="A screenshot of Napari's roll dimensions button" height="25" class="figure">
+<p>If we press the roll dimensions button <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/roll.svg" alt="A screenshot of Napari's roll dimensions button" height="25" class="figure">
 once, we can see an image of various cells and nuclei. Moving the slider
 labelled ‘0’ seems to move up and down in this image (i.e. the z axis),
 while moving the slider labelled ‘3’ changes between highlighting
@@ -802,7 +802,7 @@ left representing (R, G, B).</p>
 <figure><img src="../fig/rgb-values.png" alt="A screenshot of an H+E slide of skin layers in  Napari, highlighting the (R,G,B) values" class="figure mx-auto d-block"></figure><p>We can see these different channels more clearly if we right click on
 the ‘skin’ image layer and select:<br><code>Split RGB</code></p>
 <p>This shows the red, green and blue channels as separate image layers.
-Try inspecting each one individually by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icons to
+Try inspecting each one individually by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icons to
 hide the other layers.</p>
 <p>We can understand these RGB pixel values better by opening a
 different sample image. Remove all layers, then select:<br><code>File &gt; Open Sample &gt; napari builtins &gt; Colorwheel (RGB)</code></p>
@@ -872,7 +872,7 @@ manually set it to load as rgb:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>If you haven’t completed the <a href="image-display.html">image
 display episode</a>, you will need to <a href="image-display.html#napari-plugins">install the
@@ -909,7 +909,7 @@ produce? Each value has a minimum of 0 and a maximum of 255.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <figure><img src="../fig/rgb-exercise.png" style="width:50.0%" alt="Diagram of (R, G, B) values next to corresponding  colours" class="figure mx-auto d-block"></figure></div>
 </div>
@@ -996,8 +996,8 @@ any links that you are not going to use.
   "url": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/multi-dimensional-images.html",
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/multi-dimensional-images.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2024-08-16",
-  "datePublished": "2025-06-24"
+  "dateModified": "2025-06-25",
+  "datePublished": "2025-06-25"
 }
 
   </script><script>
