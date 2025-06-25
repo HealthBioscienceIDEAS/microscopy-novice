@@ -314,16 +314,16 @@ The viewer buttons (the row of buttons at the bottom left of Napari) control
 various aspects of the Napari viewer:
 
 ### Console ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/console.svg
 ){alt="A screenshot of Napari's console button" height='30px'}
 
 This button opens Napari's built-in python console - we'll use the console more
 in later episodes.
 
 ### 2D/3D ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/2D.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/2D.svg
 ){alt="A screenshot of Napari's 2D button" height='25px'}  / ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/3D.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/3D.svg
 ){alt="A screenshot of Napari's 3D button" height='25px'}
 
 This switches the canvas between 2D and 3D display. Try switching to the 3D view 
@@ -339,7 +339,7 @@ Zoom - Scroll in/out
 ```
 
 ### Roll dimensions ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/roll.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/roll.svg
 ){alt="A screenshot of Napari's roll dimensions button" height='25px'} 
 
 This changes which image dimensions are displayed in the viewer. For example, 
@@ -352,7 +352,7 @@ will bring us back to the original orientation.
 with different axes being visualised"}
 
 ### Transpose dimensions ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/transpose.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/transpose.svg
 ){alt="A screenshot of Napari's transpose dimensions button" height='25px'}
 
 This button swaps the two currently displayed dimensions. Again trying this for 
@@ -363,7 +363,7 @@ again brings us back to the original orientation.
 with dimensions swapped"}
 
 ### Grid ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/grid.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/canvas-grid-view.svg
 ){alt="A screenshot of Napari's grid button" height='25px'}
 
 This button displays all image layers in a grid (+ any additional layer types,
@@ -372,7 +372,7 @@ image, we see the nuclei (green) displayed next to the cell membranes (purple),
 rather than on top of each other.
 
 ### Home ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/home.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/home.svg
 ){alt="A screenshot of Napari's home button" height='25px'}
 
 This button brings the canvas back to its default view. This is useful if you 
@@ -475,7 +475,7 @@ supported by Napari. The layer buttons allow us to add additional layers of
 these new types:
 
 ### Points ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_points.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/new_points.svg
 ){alt="A screenshot of Napari's point layer button" height='30px'}
 
 This button creates a new 
@@ -483,7 +483,7 @@ This button creates a new
 be used to mark specific locations in an image.
 
 ### Shapes ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_shapes.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/new_shapes.svg
 ){alt="A screenshot of Napari's shape layer button" height='30px'} 
 
 This button creates a new 
@@ -491,7 +491,7 @@ This button creates a new
 be used to mark regions of interest e.g. with rectangles, ellipses or lines.
 
 ### Labels ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_labels.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/new_labels.svg
 ){alt="A screenshot of Napari's labels layer button" height='30px'}
 
 This button creates a new 
@@ -500,7 +500,7 @@ usually used to label specific regions in an image e.g. to label individual
 nuclei.
 
 ### Remove layer ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'}  
 
 This button removes the currently selected layer (highlighted in blue) from the 
@@ -536,11 +536,11 @@ Add points and adjust settings to give the result below:
 :::::::::::::::::::::::: solution 
  
 - Click the 'add points' button ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/add.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/add.svg
 ){alt="Screenshot of Napari's add points button" height='30px'}
 - Click on nuclei to add points on top of them
 - Click the 'select points' button ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/select.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/select.svg
 ){alt="Screenshot of Napari's select points button" height='30px'}
 - Click on the point over the dividing nucleus
 - Increase the point size slider
