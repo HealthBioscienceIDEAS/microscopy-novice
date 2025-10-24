@@ -46,7 +46,7 @@ operating system. Then install as below:
 - If you get a "Windows protected your PC" pop-up from Microsoft Defender 
   SmartScreen, click on "More info" and select "Run anyway"
 - Follow through the installer using all of the defaults for installation 
-except make sure to check **Add Miniforge3 to my PATH environment variable**.
+_except_ make sure to check **Add Miniforge3 to my PATH environment variable**.
 
 :::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::: spoiler
@@ -178,6 +178,7 @@ installation steps it is not necessary to run `conda activate napari-env`.
 conda activate napari-env
 napari
 ```
+Note: Napari may take a few minutes to open the first time.
 You should now see the napari viewer like this ...
 
 ![](../episodes/fig/blank-napari-ui.png){alt="A
@@ -212,7 +213,7 @@ Close napari: `File > exit`
 ## Check napari opens a czi image.
 
 During the course we'll be working with czi images. To open these the
-napari-aicsimageio plugin is needed. Let's check the plugin is working.
+BioIO package is needed. Let's check this package is working.
 
 Start napari. Note that if you've already done the previous test (tiff image)
 then it should not be necessary to run `conda activate napari-env`.
@@ -229,14 +230,14 @@ napari
 - Navigate to the directory where you saved
 `Plate1-Blue-A-12-Scene-3-P3-F2-03.czi` to earlier on.
 - Select `Plate1-Blue-A-12-Scene-3-P3-F2-03.czi` and click open.
-- If you see a `Choose reader` dialog, select `napari-aicsimageio`.
+- If you see a `Choose reader` dialog, select `Bioio Reader`.
 
 ::::::::::::::::::::::::::
 ::::::::::::::::::: solution
 
 ## Expected Output
 
-![If this is what you see your napari and aicsimageio plugin installation
+![If this is what you see your napari and BioIO plugin installation
  is working as expected.
 If not then please check the installation first
 by re-running the above steps and checking for any error messages in the
