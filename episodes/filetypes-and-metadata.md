@@ -49,7 +49,7 @@ For example, let's take a look at the metadata in the
 the [BioIO package](https://bioio-devs.github.io/bioio/OVERVIEW.html), along 
 with its corresponding napari plugin: 
 [napari-bioio-reader](https://napari-hub.org/plugins/napari-bioio-reader.html). 
-BioIO allows a wide variety of file formats to be opened in python + Napari that 
+BioIO allows a wide variety of file formats to be opened in python and Napari that 
 aren't supported by default. BioIO was already installed in the [setup instructions
 ](../learners/setup.md), so you should be able to start using it straight away.
 
@@ -96,7 +96,7 @@ print(image.dims) # print size of each axis (in pixels)
 <Dimensions [T: 1, C: 3, Z: 21, Y: 512, X: 672]>
 ```
 
-`BioIO always loads images as `(t, c, z, y, x)` - time, then channels, then the 
+BioIO always loads images as `(t, c, z, y, x)` - time, then channels, then the 
 3 spatial image dimensions. You'll notice this image has a 'time' axis with 
 length 1 i.e. this dataset only represents a single timepoint.
 
@@ -107,7 +107,7 @@ print(image.standard_metadata)
 This includes the image dimensions, the date/time the image was acquired, as 
 well as information about the pixel size 
 (`pixel_size_x`, `pixel_size_y`, `pixel_size_z`). The pixel size is essential 
-for making accuratequantitative measurements from our images, and will be 
+for making accurate quantitative measurements from our images, and will be 
 discussed [in the next section of this episode](#pixel-size).
 
 :::::::::::::::::::::::::::::::::::::: callout
@@ -134,7 +134,7 @@ pprint.pp(image.standard_metadata)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-We can browwe the full metadata with:
+We can browse the full metadata with:
 ```python
 metadata = image.ome_metadata
 print(metadata)
@@ -149,7 +149,7 @@ OME(
 
 In this case, we can see it is split into three categories: 
 `experimenters`, `images` and `instruments`. You can look inside each of these
-using with `.category` e.g.:
+using `.category` e.g.:
 ```python
 print(metadata.instruments)
 ```
