@@ -82,7 +82,10 @@ let's explore with `BioIO` in napari's console.
 Open the console and run:
 ```python
 from bioio import BioImage
-image = BioImage("Plate1-Blue-A-12-Scene-3-P3-F2-03.czi")
+
+# get the file path from the image layer
+image_path = viewer.layers[0].source.path
+image = BioImage(image_path)
 ```
 
 Now we can explore some of the image's properties:
@@ -147,11 +150,11 @@ OME(
 In this case, we can see it is split into three categories: 
 `experimenters`, `images` and `instruments`. You can look inside each of these
 using with `.category` e.g.:
-```output
+```python
 print(metadata.instruments)
 ```
 The metadata is nested, so we can keep going deeper e.g.
-```output
+```python
 print(metadata.instruments[0].objectives)
 ```
 
@@ -239,16 +242,6 @@ metadata!)
 
 ## Pixel size
 
-Let's open the image in  napari again, split by individual channels. First,
-remove the `Plate1-Blue-A-12-Scene-3-P3-F2-03.czi` layer, then run:
-```python
-# Get the numpy array and remove the un-needed time axis
-image_np = image.data[0,]
-
-# Display it, giving the correct 'channel_axis' to split on
-viewer.add_image(image_np, rgb=False, channel_axis=0)
-```
-
 One of the most important pieces of metadata is the pixel size. In our .czi 
 image, this is stored as:
 ```python
@@ -258,13 +251,12 @@ print(image.physical_pixel_sizes)
 PhysicalPixelSizes(Z=0.35, Y=0.20476190476190476, X=0.20476190476190476)
 ```
 
-`images > Image:0 > pixels` as `physical_size` and 
-`physical_size_unit` for each axis (x, y and z). The pixel size states how large 
-a pixel is in physical units i.e. 'real world' units of measurement like 
-micrometre, or millimetre. In this case the unit given is '&mu;m' (micrometre). 
-This means that each pixel has a size of 0.20&mu;m (x axis),  0.20&mu;m (y axis) 
-and 0.35&mu;m (z axis). As this image is 3D, you will sometimes hear the pixels 
-referred to as 'voxels', which is just a term for a 3D pixel.
+The pixel size states how large a pixel is in physical units i.e. 'real world' 
+units of measurement like micrometre, or millimetre. In this case the unit is 
+'&mu;m' (micrometre). This means that each pixel has a size of 0.20&mu;m 
+(x axis),  0.20&mu;m (y axis) and 0.35&mu;m (z axis). As this image is 3D, you 
+will sometimes hear the pixels referred to as 'voxels', which is just a term for 
+a 3D pixel.
 
 The pixel size is important to ensure that any measurements made on the image 
 are correct. For example, how long is a particular cell? Or how wide is each 
@@ -274,11 +266,19 @@ It's also useful when we want to overlay different images on top of each other
 size appropriately will ensure their overall size matches correctly in the 
 Napari viewer.
 
-How do we set the pixel size in Napari? Most of the time, if the pixel size is 
-provided in the image metadata, napari-aicsimageio will set it automatically 
-in a property called `scale`. We can check this by running the following in 
-Napari's console:
+Let's open the image in  napari again, split by individual channels and 
+with the pixel size set correctly. First,
+remove the `Plate1-Blue-A-12-Scene-3-P3-F2-03.czi` layer, then run:
+```python
+# Get the numpy array and remove the un-needed time axis
+image_np = image.data[0,]
 
+# Display it, giving the correct 'channel_axis' to split on + pixel size
+viewer.add_image(image_np, rgb=False, channel_axis=0, scale=[0.35, 0.2047619, 0.2047619])
+```
+
+Each image layer in Napari has a `.scale` which is equivalent to the pixel size. 
+We can check this is set correctly with:
 ```python
 # Get the first image layer
 image_layer = viewer.layers[0]
@@ -292,14 +292,23 @@ print(image_layer.scale)
 [0.35 0.2047619 0.2047619]
 ```
 
-Each image layer in Napari has a `.scale` which is equivalent to the pixel size. 
-Here we can see that it is already set to values matching the image metadata. 
+:::::::::::::::::::::::::::::::::::::: callout
 
-If the pixel size isn't listed in the metadata, or napari-aicsimagio doesn't 
-read it correctly, you can set it manually like so:
+### Automatically setting scale
+
+Depending on the BioIO reader you use, you may find that `.scale` is set 
+automatically from the image metadata when you open it in `napari` (via drag
+and drop or `File > Open File(s)...`).
+
+It's always worth checking the `.scale` property is set correctly before making 
+measurements from your images. You can set the `.scale` of an already open
+image layer with:
+
 ```python
 image_layer.scale = (0.35, 0.2047619, 0.2047619)
 ```
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: challenge 
 
@@ -420,7 +429,7 @@ software that wasn't created by the same company.
 
 [Bio-Formats](https://www.openmicroscopy.org/bio-formats/) is an open-source 
 project that helps to solve this problem - allowing over 100 file formats to be 
-opened in many pieces of open source software. Napari-aicsimageio (that we used 
+opened in many pieces of open source software. BioIO (that we used 
 earlier in this episode) integrates with Bio-Formats to allow many different 
 file formats to be opened in Napari. Bio-Formats is really essential to allow us 
 to work with these multitude of formats! Even so, it won't support absolutely 
@@ -617,8 +626,8 @@ website).
 - Image files contain pixel values and metadata.
 - Metadata is an important record of how an image was acquired and what it 
 represents.
-- Napari-aicsimagio allows many more image file formats to be opened in Napari,
-along with providing easy browsing of some metadata.
+- BioIO allows many more image file formats to be opened in Napari,
+along with providing access to some metadata.
 - Pixel size states how large a pixel is in physical units (e.g. micrometre).
 - Compression can be lossless or lossy - lossless is best for microscopy images.
 - There are many, many different microscopy file formats. The best format to use 
