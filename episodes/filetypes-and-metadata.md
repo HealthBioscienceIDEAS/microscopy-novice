@@ -14,7 +14,7 @@ exercises: 20
 
 - Explain the pros and cons of some popular image file formats
 - Explain the difference between lossless and lossy compression
-- Inspect image metadata with the napari-aicsimageio plugin
+- Inspect image metadata with the BioIO package
 - Inspect and set an image's scale in Napari
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -46,15 +46,16 @@ about the image and how it was acquired.
 For example, let's take a look at the metadata in the 
 'Plate1-Blue-A-12-Scene-3-P3-F2-03.czi' file we downloaded as part of the 
 [setup instructions](../learners/setup.md). To browse the metadata we will use 
-a Napari plugin called [napari-aicsimageio
-](https://www.napari-hub.org/plugins/napari-aicsimageio). This plugin allows a 
-wide variety of file formats to be opened in Napari that aren't supported by 
-default. This plugin was already installed in the [setup instructions
+the [BioIO package](https://bioio-devs.github.io/bioio/OVERVIEW.html), along 
+with its corresponding napari plugin: 
+[napari-bioio-reader](https://napari-hub.org/plugins/napari-bioio-reader.html). 
+BioIO allows a wide variety of file formats to be opened in python and Napari that 
+aren't supported by default. BioIO was already installed in the [setup instructions
 ](../learners/setup.md), so you should be able to start using it straight away.
 
 Let's open the 'Plate1-Blue-A-12-Scene-3-P3-F2-03.czi' file by removing any 
-existing image layers, then dragging and dropping it onto the canvas. In the 
-pop-up menu that appears, select 'napari-aicsimageio'. Note this can take a 
+existing image layers, then dragging and dropping it onto the canvas. If a 
+pop-up menu appears, select 'BioIO Reader'. Note this can take a 
 while to open, so give it some time! Alternatively, you can select in Napari's 
 top menu-bar:  
 `File > Open File(s)...`
@@ -68,29 +69,94 @@ This image is part of a [published dataset on Image Data Resource
 ](https://downloads.openmicroscopy.org/images/Zeiss-CZI/idr0011/). It is a 3D 
 fluorescence microscopy image of yeast with three channels (we'll explore what
 these channels represent in the [Exploring metadata exercise
-](#exploring-metadata)). Napari has automatically recognised these three 
-channels and split them into three separate image layers. Recall that we looked
+](#exploring-metadata)). 
+
+In this case, Napari hasn't automatically recognised the three channels - so it 
+is loaded as one combined image layer. Recall that we looked
 at how Napari handles channels in the [multi-dimensional images 
 episode](multi-dimensional-images.md#channels).
 
-We can browse its metadata by selecting in the top menu-bar:  
-`Plugins > OME Tree Widget (ome-types)`
+To split the image into its individual channels, and to browse its metadata, 
+let's explore with `BioIO` in napari's console.
 
-![](fig/ome-tree-widget.png){alt="A screenshot of napari-aicsimageio's OME Tree 
-Widget"}
+Open the console and run:
+```python
+from bioio import BioImage
 
-This opens a panel on the right-hand side of Napari listing different metadata 
-stored in the file. In this case, we can see it is split into categories like 
-`experimenters`, `images` and `instruments`... You can click on the different 
-categories to expand them and see more detail. For example, under 
-`images > Image:0`, we see useful metadata about this specific image. We can 
-see the `acquisition_date` when this image was acquired. Also, under `pixels` 
-we can see information about the `dimension_order`, the size of different 
-dimensions (`size_c`, `size_t`, `size_x`, `size_y` and `size_z`), the type and 
-bit-depth (`type`) and importantly the pixel size (`physical_size_x`, 
-`physical_size_x_unit` etc.). The pixel size is essential for making accurate
-quantitative measurements from our images, and will be discussed [in the next 
-section of this episode](#pixel-size).
+# get the file path from the image layer
+image_path = viewer.layers[0].source.path
+image = BioImage(image_path)
+```
+
+Now we can explore some of the image's properties:
+```python
+print(image.dims) # print size of each axis (in pixels)
+```
+```output
+<Dimensions [T: 1, C: 3, Z: 21, Y: 512, X: 672]>
+```
+
+BioIO always loads images as `(t, c, z, y, x)` - time, then channels, then the 
+3 spatial image dimensions. You'll notice this image has a 'time' axis with 
+length 1 i.e. this dataset only represents a single timepoint.
+
+We can browse a small summary of common metadata with:
+```python
+print(image.standard_metadata)
+```
+This includes the image dimensions, the date/time the image was acquired, as 
+well as information about the pixel size 
+(`pixel_size_x`, `pixel_size_y`, `pixel_size_z`). The pixel size is essential 
+for making accurate quantitative measurements from our images, and will be 
+discussed [in the next section of this episode](#pixel-size).
+
+:::::::::::::::::::::::::::::::::::::: callout
+
+### Exploring metadata in the console
+
+You can use python's [rich](https://github.com/Textualize/rich) library to add 
+colour-coding to make the output easier to read:
+
+```python
+import rich
+rich.print(image.standard_metadata)
+```
+
+![](fig/metadata-console.png){alt="Screenshot of metadata printed to Napari's 
+console"}
+
+If you'd prefer not to have colour-coding, but keep the clearer formatting
+of one item per line - you can run this instead:
+```python
+import pprint
+pprint.pp(image.standard_metadata)
+```
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+We can browse the full metadata with:
+```python
+metadata = image.ome_metadata
+print(metadata)
+```
+```output
+OME(
+   experimenters=[{'id': 'Experimenter:0', 'user_name': 'Zeiss'}],
+   instruments=[<1 field_type>],
+   images=[<1 field_type>],
+)
+```
+
+In this case, we can see it is split into three categories: 
+`experimenters`, `images` and `instruments`. You can look inside each of these
+using `.category` e.g.:
+```python
+print(metadata.instruments)
+```
+The metadata is nested, so we can keep going deeper e.g.
+```python
+print(metadata.instruments[0].objectives)
+```
 
 This metadata is a vital record of exactly how the image was acquired and what 
 it represents. As we've mentioned in previous episodes - it's important to 
@@ -101,40 +167,18 @@ metadata, so it's always worthwhile keeping a copy of your image safely in its
 original raw file format. You should take extra care to ensure that additional 
 processing steps don't overwrite this original image.
 
-
-:::::::::::::::::::::::::::::::::::::: callout
-
-### Exploring metadata in the console
-
-Note that you can also inspect some metadata via the console (as below). Here we 
-use python's [rich](https://github.com/Textualize/rich) library to add 
-colour-coding to make the output easier to read:
-
-```python
-import rich
-rich.print(viewer.layers[0].metadata)
-```
-
-![](fig/metadata-console.png){alt="Screenshot of metadata printed to Napari's 
-console"}
-
-See the [napari-aicsimageio readme
-](https://github.com/AllenCellModeling/napari-aicsimageio?tab=readme-ov-file#access-to-the-aicsimage-object-and-metadata) 
-for details.
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
 ::::::::::::::::::::::::::::::::::::: challenge 
 
 ## Exploring metadata
 
-Explore the metadata in the OME Tree Widget panel to answer the following 
+Explore the metadata in the console to answer the following 
 questions:
 
-- What manufacturer made the microscope used to take this image?
+- What type of microscope was used to take this image?
 - What detector was used to take this image?
 - What does each channel show? For example, which fluorophore is used? What is 
-its excitation and emission wavelength?
+its excitation and emission wavelength? (hint: look inside the image's 
+pixel metadata: `metadata.images[0].pixels`)
 
 :::::::::::::::::::::::: solution 
  
@@ -142,28 +186,30 @@ its excitation and emission wavelength?
 
 ### Microscope model
 
-Under `instruments > Instrument:0 > microscope`, we can see that the 
-manufacturer was Zeiss.
+Under `metadata.instruments[0].microscope`, we can see that an 'Axio Imager Z2' 
+microscope was used.
 
 ### Detector
-Under `instruments > Instrument:0 > detectors > Detector:HDCam`, we can see 
+Under `metadata.instruments[0].detectors`, we can see 
 that this used an HDCamC10600-30B (ORCA-R2) detector.
 
 ### Channels
 
-Under `images > Image:0 > pixels > channels`, we can see one entry per channel 
-- `Channel:1-0`, `Channel:2-0` and `Channel:3-0`. 
+Under `metadata.images[0].pixels.channels`, we can see one entry per channel 
+- `Channel:0:0`, `Channel:0:1` and `Channel:0:2`. 
 
-Expanding the first, we can see that its `fluor` is TagYFP, a fluorophore with 
-`emission_wavelength` of 524nm and `excitation_wavelength` of 508nm.
+In the first (`metadata.images[0].pixels.channels[0]`), we can see that its 
+`name` is TagYFP, a fluorophore with `emission_wavelength` of 524nm and 
+`excitation_wavelength` of 508nm.
 
-Expanding the second, we can see that its `fluor` is mRFP1.2, a fluorophore with 
-`emission_wavelength` of 612nm and `excitation_wavelength` of 590nm.
+In the first (`metadata.images[0].pixels.channels[1]`), we can see that its 
+`name` is mRFP1.2, a fluorophore with `emission_wavelength` of 612nm and 
+`excitation_wavelength` of 590nm.
 
-Expanding the third, we see that it has no `fluor`, `emission_wavelength` or 
-`excitation_wavelength` listed. Its `illumination_type` is listed as 
-'transmitted', so this is simply an image of the yeast cells with no 
-fluorophores used.
+In the first (`metadata.images[0].pixels.channels[2]`), we see that its name 
+is `TL DIC` and no `emission_wavelength` or `excitation_wavelength` is listed. 
+Its `illumination_type` is listed as 'transmitted', so this is simply an image 
+of the yeast cells with no fluorophores used.
 
 :::::::::::::::::::::::::::::::::
 
@@ -171,19 +217,20 @@ fluorophores used.
 
 :::::::::::::::::::::::::::::::::::::: callout
 
-### Napari-aicsimagio image / metadata support
+### BioIO image / metadata support
 
-Only certain file types will support browsing metadata via the 'OME Tree Widget' 
-in napari-aicsimageio. The plugin is still under development - so more formats 
-are likely to be supported in future!
+BioIO supports various file formats via 
+[its different readers](https://bioio-devs.github.io/bioio/OVERVIEW.html#reader-installation). 
+During the [setup instructions](../learners/setup.md), we installed the 
+`bioio-czi` reader to allow us to open the `czi` image for this lesson.
 
-Napari-aicsimageio also has [limits on the size of images
-](https://github.com/AllenCellModeling/napari-aicsimageio?tab=readme-ov-file#reading-mode-threshold) 
-it will load directly into memory. Only images with a filesize less than 4GB and 
-less than 30% of available memory will be loaded directly. Otherwise, images are 
-loaded as smaller chunks as required.
+If you want to open more types of file, you will have to install the relevant 
+reader following the 
+[intructions in the BioIO docs](https://bioio-devs.github.io/bioio/OVERVIEW.html).
+Note the `bioio-bioformats` reader should allow a wide range of file formats to 
+be read.
 
-If you have difficulty opening a specific file format with napari-aicsimageio, 
+If you have difficulty opening a specific file format with BioIO, 
 it's worth trying to open it in [Fiji](https://imagej.net/software/fiji/) also. 
 Fiji has very well established integration with Bio-Formats, and so tends to 
 support a wider range of formats. Note that you can always save your image (or 
@@ -196,13 +243,20 @@ metadata!)
 ## Pixel size
 
 One of the most important pieces of metadata is the pixel size. In our .czi 
-image, this is stored under `images > Image:0 > pixels` as `physical_size` and 
-`physical_size_unit` for each axis (x, y and z). The pixel size states how large 
-a pixel is in physical units i.e. 'real world' units of measurement like 
-micrometre, or millimetre. In this case the unit given is '&mu;m' (micrometre). 
-This means that each pixel has a size of 0.20&mu;m (x axis),  0.20&mu;m (y axis) 
-and 0.35&mu;m (z axis). As this image is 3D, you will sometimes hear the pixels 
-referred to as 'voxels', which is just a term for a 3D pixel.
+image, this is stored as:
+```python
+print(image.physical_pixel_sizes)
+```
+```output
+PhysicalPixelSizes(Z=0.35, Y=0.20476190476190476, X=0.20476190476190476)
+```
+
+The pixel size states how large a pixel is in physical units i.e. 'real world' 
+units of measurement like micrometre, or millimetre. In this case the unit is 
+'&mu;m' (micrometre). This means that each pixel has a size of 0.20&mu;m 
+(x axis),  0.20&mu;m (y axis) and 0.35&mu;m (z axis). As this image is 3D, you 
+will sometimes hear the pixels referred to as 'voxels', which is just a term for 
+a 3D pixel.
 
 The pixel size is important to ensure that any measurements made on the image 
 are correct. For example, how long is a particular cell? Or how wide is each 
@@ -212,11 +266,19 @@ It's also useful when we want to overlay different images on top of each other
 size appropriately will ensure their overall size matches correctly in the 
 Napari viewer.
 
-How do we set the pixel size in Napari? Most of the time, if the pixel size is 
-provided in the image metadata, napari-aicsimageio will set it automatically 
-in a property called `scale`. We can check this by running the following in 
-Napari's console:
+Let's open the image in  napari again, split by individual channels and 
+with the pixel size set correctly. First,
+remove the `Plate1-Blue-A-12-Scene-3-P3-F2-03.czi` layer, then run:
+```python
+# Get the numpy array and remove the un-needed time axis
+image_np = image.data[0,]
 
+# Display it, giving the correct 'channel_axis' to split on + pixel size
+viewer.add_image(image_np, rgb=False, channel_axis=0, scale=[0.35, 0.2047619, 0.2047619])
+```
+
+Each image layer in Napari has a `.scale` which is equivalent to the pixel size. 
+We can check this is set correctly with:
 ```python
 # Get the first image layer
 image_layer = viewer.layers[0]
@@ -230,14 +292,23 @@ print(image_layer.scale)
 [0.35 0.2047619 0.2047619]
 ```
 
-Each image layer in Napari has a `.scale` which is equivalent to the pixel size. 
-Here we can see that it is already set to values matching the image metadata. 
+:::::::::::::::::::::::::::::::::::::: callout
 
-If the pixel size isn't listed in the metadata, or napari-aicsimagio doesn't 
-read it correctly, you can set it manually like so:
+### Automatically setting scale
+
+Depending on the BioIO reader you use, you may find that `.scale` is set 
+automatically from the image metadata when you open it in `napari` (via drag
+and drop or `File > Open File(s)...`).
+
+It's always worth checking the `.scale` property is set correctly before making 
+measurements from your images. You can set the `.scale` of an already open
+image layer with:
+
 ```python
 image_layer.scale = (0.35, 0.2047619, 0.2047619)
 ```
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: challenge 
 
@@ -358,7 +429,7 @@ software that wasn't created by the same company.
 
 [Bio-Formats](https://www.openmicroscopy.org/bio-formats/) is an open-source 
 project that helps to solve this problem - allowing over 100 file formats to be 
-opened in many pieces of open source software. Napari-aicsimageio (that we used 
+opened in many pieces of open source software. BioIO (that we used 
 earlier in this episode) integrates with Bio-Formats to allow many different 
 file formats to be opened in Napari. Bio-Formats is really essential to allow us 
 to work with these multitude of formats! Even so, it won't support absolutely 
@@ -416,7 +487,7 @@ high quality .jpg). Note: these files will be written to the same folder as the
 '00001_01.ome.tiff' image!
 
 ```python
-from skimage.io import imsave
+import imageio.v3 as iio
 from pathlib import Path
 
 # Get the 00001_01.ome layer, and get timepoint = 30
@@ -425,10 +496,10 @@ image = layer.data[30, :, :]
 
 # Save as different file formats in same folder as 00001_01.ome
 folder_path = Path(layer.source.path).parent
-imsave( folder_path / "test-tiff.tiff", image)
-imsave( folder_path / "test-png.png", image)
-imsave( folder_path / "test-jpg-high-quality.jpg", image, quality=75)
-imsave( folder_path / "test-jpg-low-quality.jpg", image, quality=30)
+iio.imwrite( folder_path / "test-tiff.tiff", image)
+iio.imwrite( folder_path / "test-png.png", image)
+iio.imwrite( folder_path / "test-jpg-high-quality.jpg", image, quality=75)
+iio.imwrite( folder_path / "test-jpg-low-quality.jpg", image, quality=30)
 
 ```
 
@@ -555,8 +626,8 @@ website).
 - Image files contain pixel values and metadata.
 - Metadata is an important record of how an image was acquired and what it 
 represents.
-- Napari-aicsimagio allows many more image file formats to be opened in Napari,
-along with providing easy browsing of some metadata.
+- BioIO allows many more image file formats to be opened in Napari,
+along with providing access to some metadata.
 - Pixel size states how large a pixel is in physical units (e.g. micrometre).
 - Compression can be lossless or lossy - lossless is best for microscopy images.
 - There are many, many different microscopy file formats. The best format to use 

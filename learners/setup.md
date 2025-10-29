@@ -23,15 +23,70 @@ https://downloads.openmicroscopy.org/images/Zeiss-CZI/idr0011/Plate1-Blue-A_TS-S
 https://downloads.openmicroscopy.org/images/Zeiss-CZI/idr0011/readme.txt))
 from the open microscopy environment pages to your working directory.
 
-## Software Setup
+## Install conda
 
 During these lessons we will use the [napari](https://napari.org/stable/)
-image viewer and the
-[napari-aicsimagio](https://github.com/AllenCellModeling/napari-aicsimageio)
- plugin to load imaging data files of various file formats.
-For beginners we recommend using Anaconda to install and manage these
-packages. The first step is to
-[download and install Anaconda](https://www.anaconda.com/download#downloads).
+image viewer and 
+[BioIO](https://bioio-devs.github.io/bioio/OVERVIEW.html)
+ to load imaging data files of various file formats.
+ 
+We will use conda to install / manage these packages. If you already have
+conda installed (e.g. via Miniforge, Anaconda or similar), you can skip to the
+[install python packages](#install-python-packages) section below.
+
+Otherwise, download the latest 
+[Miniforge distribution of Python](https://conda-forge.org/download/) for your
+operating system. Then install as below:
+
+::::::::::::::::::::::::::::::::::::::::::: spoiler
+
+### Windows
+
+- Double click on the downloaded `.exe` file
+- If you get a "Windows protected your PC" pop-up from Microsoft Defender 
+  SmartScreen, click on "More info" and select "Run anyway"
+- Follow through the installer using all of the defaults for installation 
+_except_ make sure to check **Add Miniforge3 to my PATH environment variable**.
+
+:::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::: spoiler
+
+### MacOS or Linux
+
+1. Open a terminal. (for macOS - this is done via 
+  `Launchpad > Other Application > Terminal`)
+ 
+2. Type the following into the terminal and click <kbd>Enter</kbd> 
+  (or <kbd>Return</kbd> depending on your keyboard).
+  ```bash
+  cd ~/Downloads
+  ```
+   
+3. Type the following into the terminal, then `Tab` to autocomplete the full 
+  file name. The name of the file you just downloaded should appear. 
+  Press <kbd>Enter</kbd>.
+  ```bash
+  bash Miniforge3-
+  ```
+   
+4. Follow the text-only prompts in the terminal. To move through the text, 
+  press <kbd>Spacebar</kbd>.
+  - Type `yes` and press <kbd>Enter</kbd> to approve the license.
+  - Press <kbd>Enter</kbd> to approve the default location for the files.
+  - Type `yes` and press <kbd>Enter</kbd> to prepend Miniforge to your PATH 
+    (this makes the Miniforge distribution the default Python).
+
+:::::::::::::::::::::::::::::::::::::::::::
+
+If you encounter issues installing / using Miniforge, you can 
+[download and install Anaconda](https://www.anaconda.com/download#downloads)
+instead.
+
+(The installation instructions above are modified from the 
+[Carpentries workshop template](https://github.com/carpentries/workshop-template) 
+- [CC BY 4.0](https://github.com/carpentries/workshop-template/blob/gh-pages/LICENSE.md))
+
+## Install python packages
 
 The remaining instructions are written assuming you will be installing and
 running the software from a terminal.
@@ -42,41 +97,57 @@ instructions below to open a terminal on your operating system.
 
 ### Opening a Terminal
 
- - Windows: Click Start > Search for Anaconda Prompt > Click to Open
+ - Windows (if you used Miniforge): Click Start > Search for Miniforge Prompt > Click to Open
+ - Windows (if you used Anaconda): Click Start > Search for Anaconda Prompt > Click to Open
  - macOS: Launchpad > Other Application > Terminal
  - Linux: Open a terminal window
 
 :::::::::::::::::::::::::::::::::::::::::::
 
-For more information on starting and running Anaconda you may visit the
-['Starting Conda' section of the Anaconda getting started pages](
-https://conda.io/projects/conda/en/latest/user-guide/getting-started.html#starting-conda).
-
-Run the following commands in the terminal (lines starting
-with # are comments and do not need to be run).
+Run the commands below (using the dropdown for your operating system) in the 
+terminal. Lines starting with # are comments and do not need to be run.
 You can run the commands by copy and pasting them into the terminal and
 pressing the <kbd>Enter</kbd> key.
+
+::::::::::::::::::::::::::::::::::::::::::: spoiler
+
+### Windows and Linux
 
 ```bash
 # Make sure conda is up to date
 conda update -n base conda
 
-# We need to use a python program called pip to install
-# the napari-aicsimagio plugin, so we need to configure
-# conda to work well with pip
-conda config --set pip_interop_enabled True
-
 # This line will create a "virtual environment" (called napari-env)
 # that will contain all of the software that will be used in the lessons
-conda create -y -n napari-env -c conda-forge python=3.10 bioformats_jar
+conda create -y -n napari-env -c conda-forge python=3.12
 
 # Activate the napari-env virtual environment.
 # Running this should change the terminal prompt to '(napari-env)'.
 conda activate napari-env
 
 # Install napari and plugins using pip
-pip install "napari[all]" napari-aicsimageio
+pip install "napari[all]" napari-bioio-reader bioio-czi
 ```
+
+:::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::: spoiler
+
+### MacOS
+
+```bash
+# This line will create a "virtual environment" (called napari-env)
+# that will contain all of the software that will be used in the lessons
+conda create -y -n napari-env -c conda-forge python=3.12 napari pyqt
+
+# Activate the napari-env virtual environment.
+# Running this should change the terminal prompt to '(napari-env)'.
+conda activate napari-env
+
+# Install czi file reader
+pip install napari-bioio-reader bioio-czi
+```
+
+:::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::: spoiler
 
@@ -91,24 +162,6 @@ it is possible something has gone wrong. In this case the best place
 to start is any messages in the text expanding on the source of the error.
 
 ::::::::::::::::::::::::::::::::::::::
-
-If you are using an M1/M2 mac, you may encounter errors when running the 
-commands above. If so, try the alternative commands below:
-```bash
-# Remove the old environment
-conda remove --name napari-env --all
-
-# This line will create a "virtual environment" (called napari-env)
-# that will contain all of the software that will be used in the lessons
-conda create -y -n napari-env -c conda-forge python=3.10 napari pyqt bioformats_jar napari-aicsimageio
-
-# Activate the napari-env virtual environment.
-# Running this should change the terminal prompt to '(napari-env)'.
-conda activate napari-env
-
-# Install czi file reader
-pip install aicspylibczi>=3.0.5 fsspec>=2022.7.1
-```
 
 ## Post Setup Checks
 
@@ -125,6 +178,7 @@ installation steps it is not necessary to run `conda activate napari-env`.
 conda activate napari-env
 napari
 ```
+Note: Napari may take a few minutes to open the first time.
 You should now see the napari viewer like this ...
 
 ![](../episodes/fig/blank-napari-ui.png){alt="A
@@ -159,7 +213,7 @@ Close napari: `File > exit`
 ## Check napari opens a czi image.
 
 During the course we'll be working with czi images. To open these the
-napari-aicsimageio plugin is needed. Let's check the plugin is working.
+BioIO package is needed. Let's check this package is working.
 
 Start napari. Note that if you've already done the previous test (tiff image)
 then it should not be necessary to run `conda activate napari-env`.
@@ -176,14 +230,20 @@ napari
 - Navigate to the directory where you saved
 `Plate1-Blue-A-12-Scene-3-P3-F2-03.czi` to earlier on.
 - Select `Plate1-Blue-A-12-Scene-3-P3-F2-03.czi` and click open.
-- If you see a `Choose reader` dialog, select `napari-aicsimageio`.
+- If you see a `Choose reader` dialog, select `Bioio Reader`.
+
+Note: the `Bioio Reader` automatically installs the `bioio-bioformats` reader, 
+which has additional java dependencies. The first time you open the `czi` image, 
+you may see lots of text printed to the terminal as it downloads these extra 
+files. This may take up to 5 minutes - so give it some time. This will only 
+happen once, and the `czi` image will open much faster next time.
 
 ::::::::::::::::::::::::::
 ::::::::::::::::::: solution
 
 ## Expected Output
 
-![If this is what you see your napari and aicsimageio plugin installation
+![If this is what you see your napari and BioIO plugin installation
  is working as expected.
 If not then please check the installation first
 by re-running the above steps and checking for any error messages in the
