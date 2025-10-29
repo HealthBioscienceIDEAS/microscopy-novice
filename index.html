@@ -155,7 +155,8 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#download-data">Download Data</a></li>
-<li><a href="#software-setup">Software Setup</a></li>
+<li><a href="#install-conda">Install conda</a></li>
+<li><a href="#install-python-packages">Install python packages</a></li>
 <li><a href="#post-setup-checks">Post Setup Checks</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -360,71 +361,176 @@ working directory.</p>
 (<a href="https://downloads.openmicroscopy.org/images/Zeiss-CZI/idr0011/readme.txt" class="external-link">CC
 BY 4.0 Licence</a>) from the open microscopy environment pages to your
 working directory.</p>
-</section><section><h2 class="section-heading" id="software-setup">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a></h2>
-<hr class="half-width"><p>During these lessons we will use the <a href="https://napari.org/stable/" class="external-link">napari</a> image viewer and the <a href="https://github.com/AllenCellModeling/napari-aicsimageio" class="external-link">napari-aicsimagio</a>
-plugin to load imaging data files of various file formats. For beginners
-we recommend using Anaconda to install and manage these packages. The
-first step is to <a href="https://www.anaconda.com/download#downloads" class="external-link">download and install
-Anaconda</a>.</p>
-<p>The remaining instructions are written assuming you will be
-installing and running the software from a terminal. Follow the
-instructions below to open a terminal on your operating system.</p>
+</section><section><h2 class="section-heading" id="install-conda">Install conda<a class="anchor" aria-label="anchor" href="#install-conda"></a></h2>
+<hr class="half-width"><p>During these lessons we will use the <a href="https://napari.org/stable/" class="external-link">napari</a> image viewer and <a href="https://bioio-devs.github.io/bioio/OVERVIEW.html" class="external-link">BioIO</a> to
+load imaging data files of various file formats.</p>
+<p>We will use conda to install / manage these packages. If you already
+have conda installed (e.g. via Miniforge, Anaconda or similar), you can
+skip to the <a href="#install-python-packages">install python
+packages</a> section below.</p>
+<p>Otherwise, download the latest <a href="https://conda-forge.org/download/" class="external-link">Miniforge distribution of
+Python</a> for your operating system. Then install as below:</p>
 <div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
-  Opening a Terminal
+  Windows
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
-<ul><li>Windows: Click Start &gt; Search for Anaconda Prompt &gt; Click to
-Open</li>
-<li>macOS: Launchpad &gt; Other Application &gt; Terminal</li>
-<li>Linux: Open a terminal window</li>
+<ul><li>Double click on the downloaded <code>.exe</code> file</li>
+<li>If you get a “Windows protected your PC” pop-up from Microsoft
+Defender SmartScreen, click on “More info” and select “Run anyway”</li>
+<li>Follow through the installer using all of the defaults for
+installation <em>except</em> make sure to check <strong>Add Miniforge3
+to my PATH environment variable</strong>.</li>
 </ul></div>
 </div>
 </div>
-</div>
-<p>For more information on starting and running Anaconda you may visit
-the <a href="https://conda.io/projects/conda/en/latest/user-guide/getting-started.html#starting-conda" class="external-link">‘Starting
-Conda’ section of the Anaconda getting started pages</a>.</p>
-<p>Run the following commands in the terminal (lines starting with # are
-comments and do not need to be run). You can run the commands by copy
-and pasting them into the terminal and pressing the <kbd>Enter</kbd>
-key.</p>
-<div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># Make sure conda is up to date</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">conda</span> update <span class="at">-n</span> base conda</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co"># We need to use a python program called pip to install</span></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co"># the napari-aicsimagio plugin, so we need to configure</span></span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="co"># conda to work well with pip</span></span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--set</span> pip_interop_enabled True</span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="co"># This line will create a "virtual environment" (called napari-env)</span></span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="co"># that will contain all of the software that will be used in the lessons</span></span>
-<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-y</span> <span class="at">-n</span> napari-env <span class="at">-c</span> conda-forge python=3.10 bioformats_jar</span>
-<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="co"># Activate the napari-env virtual environment.</span></span>
-<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="co"># Running this should change the terminal prompt to '(napari-env)'.</span></span>
-<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
-<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a><span class="co"># Install napari and plugins using pip</span></span>
-<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a><span class="ex">pip</span> install <span class="st">"napari[all]"</span> napari-aicsimageio</span></code></pre>
 </div>
 <div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
   <h3 class="accordion-header" id="headingSpoiler2">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  MacOS or Linux
+  </h3>
+</button>
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div class="accordion-body">
+<ol style="list-style-type: decimal"><li><p>Open a terminal. (for macOS - this is done via
+<code>Launchpad &gt; Other Application &gt; Terminal</code>)</p></li>
+<li><p>Type the following into the terminal and click <kbd>Enter</kbd>
+(or <kbd>Return</kbd> depending on your keyboard).</p></li>
+</ol><div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="bu">cd</span> ~/Downloads</span></code></pre>
+</div>
+<ol start="3" style="list-style-type: decimal"><li>Type the following into the terminal, then <code>Tab</code> to
+autocomplete the full file name. The name of the file you just
+downloaded should appear. Press <kbd>Enter</kbd>.</li>
+</ol><div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">bash</span> Miniforge3-</span></code></pre>
+</div>
+<ol start="4" style="list-style-type: decimal"><li>Follow the text-only prompts in the terminal. To move through the
+text, press <kbd>Spacebar</kbd>.</li>
+</ol><ul><li>Type <code>yes</code> and press <kbd>Enter</kbd> to approve the
+license.</li>
+<li>Press <kbd>Enter</kbd> to approve the default location for the
+files.</li>
+<li>Type <code>yes</code> and press <kbd>Enter</kbd> to prepend
+Miniforge to your PATH (this makes the Miniforge distribution the
+default Python).</li>
+</ul></div>
+</div>
+</div>
+</div>
+<p>If you encounter issues installing / using Miniforge, you can <a href="https://www.anaconda.com/download#downloads" class="external-link">download and install
+Anaconda</a> instead.</p>
+<p>(The installation instructions above are modified from the <a href="https://github.com/carpentries/workshop-template" class="external-link">Carpentries
+workshop template</a> - <a href="https://github.com/carpentries/workshop-template/blob/gh-pages/LICENSE.md" class="external-link">CC
+BY 4.0</a>)</p>
+</section><section><h2 class="section-heading" id="install-python-packages">Install python packages<a class="anchor" aria-label="anchor" href="#install-python-packages"></a></h2>
+<hr class="half-width"><p>The remaining instructions are written assuming you will be
+installing and running the software from a terminal. Follow the
+instructions below to open a terminal on your operating system.</p>
+<div id="accordionSpoiler3" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler3" aria-expanded="false" aria-controls="collapseSpoiler3">
+  <h3 class="accordion-header" id="headingSpoiler3">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Opening a Terminal
+  </h3>
+</button>
+<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
+<div class="accordion-body">
+<ul><li>Windows (if you used Miniforge): Click Start &gt; Search for
+Miniforge Prompt &gt; Click to Open</li>
+<li>Windows (if you used Anaconda): Click Start &gt; Search for Anaconda
+Prompt &gt; Click to Open</li>
+<li>macOS: Launchpad &gt; Other Application &gt; Terminal</li>
+<li>Linux: Open a terminal window</li>
+</ul></div>
+</div>
+</div>
+</div>
+<p>Run the commands below (using the dropdown for your operating system)
+in the terminal. Lines starting with # are comments and do not need to
+be run. You can run the commands by copy and pasting them into the
+terminal and pressing the <kbd>Enter</kbd> key.</p>
+<div id="accordionSpoiler4" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler4" aria-expanded="false" aria-controls="collapseSpoiler4">
+  <h3 class="accordion-header" id="headingSpoiler4">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Windows and Linux
+  </h3>
+</button>
+<div id="collapseSpoiler4" class="accordion-collapse collapse" aria-labelledby="headingSpoiler4" data-bs-parent="#accordionSpoiler4">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Make sure conda is up to date</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="ex">conda</span> update <span class="at">-n</span> base conda</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co"># This line will create a "virtual environment" (called napari-env)</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co"># that will contain all of the software that will be used in the lessons</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-y</span> <span class="at">-n</span> napari-env <span class="at">-c</span> conda-forge python=3.12</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co"># Activate the napari-env virtual environment.</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co"># Running this should change the terminal prompt to '(napari-env)'.</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="co"># Install napari and plugins using pip</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="ex">pip</span> install <span class="st">"napari[all]"</span> napari-bioio-reader bioio-czi</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSpoiler5" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler5" aria-expanded="false" aria-controls="collapseSpoiler5">
+  <h3 class="accordion-header" id="headingSpoiler5">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  MacOS
+  </h3>
+</button>
+<div id="collapseSpoiler5" class="accordion-collapse collapse" aria-labelledby="headingSpoiler5" data-bs-parent="#accordionSpoiler5">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># This line will create a "virtual environment" (called napari-env)</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co"># that will contain all of the software that will be used in the lessons</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-y</span> <span class="at">-n</span> napari-env <span class="at">-c</span> conda-forge python=3.12 napari pyqt</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co"># Activate the napari-env virtual environment.</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co"># Running this should change the terminal prompt to '(napari-env)'.</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co"># Install czi file reader</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="ex">pip</span> install napari-bioio-reader bioio-czi</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSpoiler6" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler6" aria-expanded="false" aria-controls="collapseSpoiler6">
+  <h3 class="accordion-header" id="headingSpoiler6">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
   Why is there so much text appearing on the screen?
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler6" class="accordion-collapse collapse" aria-labelledby="headingSpoiler6" data-bs-parent="#accordionSpoiler6">
 <div class="accordion-body">
 <p>If you’re new to running commands in the terminal you may be alarmed
 if running some of these commands results in a lot of text output to the
@@ -437,25 +543,6 @@ error.</p>
 </div>
 </div>
 </div>
-</div>
-<p>If you are using an M1/M2 mac, you may encounter errors when running
-the commands above. If so, try the alternative commands below:</p>
-<div class="codewrapper sourceCode" id="cb2">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Remove the old environment</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="ex">conda</span> remove <span class="at">--name</span> napari-env <span class="at">--all</span></span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co"># This line will create a "virtual environment" (called napari-env)</span></span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="co"># that will contain all of the software that will be used in the lessons</span></span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-y</span> <span class="at">-n</span> napari-env <span class="at">-c</span> conda-forge python=3.10 napari pyqt bioformats_jar napari-aicsimageio</span>
-<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="co"># Activate the napari-env virtual environment.</span></span>
-<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="co"># Running this should change the terminal prompt to '(napari-env)'.</span></span>
-<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
-<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co"># Install czi file reader</span></span>
-<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="ex">pip</span> install aicspylibczi<span class="op">&gt;</span>=3.0.5 fsspec<span class="op">&gt;</span>=2022.7.1</span></code></pre>
 </div>
 </section><section><h2 class="section-heading" id="post-setup-checks">Post Setup Checks<a class="anchor" aria-label="anchor" href="#post-setup-checks"></a></h2>
 <hr class="half-width"><p>Before starting the course it is important to check that your setup
@@ -472,13 +559,14 @@ is working.</p>
 napari. Note that if you’re already in the napari-env virtual
 environment from the installation steps it is not necessary to run
 <code>conda activate napari-env</code>.</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="ex">napari</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="ex">napari</span></span></code></pre>
 </div>
-<p>You should now see the napari viewer like this …</p>
+<p>Note: Napari may take a few minutes to open the first time. You
+should now see the napari viewer like this …</p>
 <figure><img src="fig/blank-napari-ui.png" style="width:60.0%" alt="A  screenshot of the default Napari user interface" class="figure mx-auto d-block"></figure><p>Open a file with</p>
 <p><code>File &gt; Open file(s)...</code></p>
 <ul><li>Navigate to the directory where you saved
@@ -496,7 +584,7 @@ environment from the installation steps it is not necessary to run
   Expected Output
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <figure><img src="fig/ome_00001.png" style="width:80.0%" alt="A screenshot of freshly opened 00001_01.ome.tiff" class="figure mx-auto d-block"><div class="figcaption">If this is what you see your napari installation
 is working as expected. If not then please check the installation first
@@ -517,17 +605,16 @@ organisers for help.</div>
 <h3 class="callout-title">Check napari opens a czi image.</h3>
 <div class="callout-content">
 <p>During the course we’ll be working with czi images. To open these the
-napari-aicsimageio plugin is needed. Let’s check the plugin is
-working.</p>
+BioIO package is needed. Let’s check this package is working.</p>
 <p>Start napari. Note that if you’ve already done the previous test
 (tiff image) then it should not be necessary to run
 <code>conda activate napari-env</code>. However, it is necessary to
 restart napari to ensure the image display is correctly formatted.</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="ex">napari</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="ex">napari</span></span></code></pre>
 </div>
 <p><code>File &gt; Open file(s)...</code></p>
 <ul><li>Navigate to the directory where you saved
@@ -535,8 +622,15 @@ restart napari to ensure the image display is correctly formatted.</p>
 <li>Select <code>Plate1-Blue-A-12-Scene-3-P3-F2-03.czi</code> and click
 open.</li>
 <li>If you see a <code>Choose reader</code> dialog, select
-<code>napari-aicsimageio</code>.</li>
-</ul></div>
+<code>Bioio Reader</code>.</li>
+</ul><p>Note: the <code>Bioio Reader</code> automatically installs the
+<code>bioio-bioformats</code> reader, which has additional java
+dependencies. The first time you open the <code>czi</code> image, you
+may see lots of text printed to the terminal as it downloads these extra
+files. This may take up to 5 minutes - so give it some time. This will
+only happen once, and the <code>czi</code> image will open much faster
+next time.</p>
+</div>
 </div>
 </div>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
@@ -546,13 +640,13 @@ open.</li>
   Expected Output
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
-<figure><img src="fig/plate1-blue.png" style="width:80.0%" alt="A screenshot of freshly opened Plate1-Blue-A-12-Scene-3-P3-F2-03.czi" class="figure mx-auto d-block"><div class="figcaption">If this is what you see your napari and
-aicsimageio plugin installation is working as expected. If not then
-please check the installation first by re-running the above steps and
-checking for any error messages in the terminal output. If that fails
-please get in touch with the course organisers for help.</div>
+<figure><img src="fig/plate1-blue.png" style="width:80.0%" alt="A screenshot of freshly opened Plate1-Blue-A-12-Scene-3-P3-F2-03.czi" class="figure mx-auto d-block"><div class="figcaption">If this is what you see your napari and BioIO
+plugin installation is working as expected. If not then please check the
+installation first by re-running the above steps and checking for any
+error messages in the terminal output. If that fails please get in touch
+with the course organisers for help.</div>
 </figure><p>Close napari: <code>File &gt; exit</code></p>
 </div>
 </div>
@@ -611,8 +705,8 @@ any links that you are not going to use.
   "url": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/index.html",
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/index.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2025-10-28",
-  "datePublished": "2025-10-28"
+  "dateModified": "2025-10-29",
+  "datePublished": "2025-10-29"
 }
 
   </script><script>
