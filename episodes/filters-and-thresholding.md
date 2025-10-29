@@ -300,7 +300,7 @@ the top menu-bar of Napari. You can find out more about these options using the
 [plugin's documentation](https://github.com/guiwitz/napari-skimage/blob/main/README.md).
 
 For now, we are interested in the _gaussian blur_ under:  
-`Layers > Filter > Filtering > Gaussian filter (napari-skimge)`
+`Layers > Filter > Filtering > Gaussian filter (napari-skimage)`
 
 If you click on this option, you should see a new panel appear on the right side 
 of Napari:
@@ -456,7 +456,7 @@ How does it compare to the gaussian filter we used earlier?
 
 - What does `Layers > Filter > Edge detection > Farid filter (napari skimage)` do?
 
-- What does `Layers > Filter > Filtering > Rank filters (napari_skimage)` 
+- What does `Layers > Filter > Filtering > Rank filters (napari skimage)` 
 do?
   - Try a 'Filter Type' of 'Maximum` and 'Minimum' + compare
   - (you may say see a warning relating to bin number when you run this - 
@@ -643,7 +643,8 @@ such methods exist - for example, open
 `Layers > Filter > Thresholding > Automated Threshold (napari skimage)`. One of 
 the most common methods is _Otsu thresholding_, which we will look at now.
 
-Let's go ahead and apply this to our blurred image: 
+Let's go ahead and apply this to our blurred image:
+
 - Select 'nuclei_gaussian_σ=3.0' in the `Image` row
 - Select 'otsu' as the method
 - Click the 'Apply Thresholding' button
