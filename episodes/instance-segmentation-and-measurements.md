@@ -22,7 +22,7 @@ exercises: 15
 
 - Save and edit your workflow to re-use on subsequent images.
 
-- Perform more complex cell shape analysis using the regionprops plugin.
+- Perform more complex cell shape analysis using scikit-image's `regionprops`.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -38,20 +38,7 @@ possible and all code can be run by copy and pasting, so don't worry if
 you don't understand it all yet.
 Most, if not all, of the functions we will use in this lesson are also
 accessible via various Napari plugins, so the analysis pipeline could also be
-assembled with the Napari assistant if you prefer.
-
-## Before you begin
-
-We'll be using the [napari-skimage-regionprops](
-https://www.napari-hub.org/plugins/napari-skimage-regionprops) plugin
-in this lesson. If it is not already installed you should do that now.
-Use the tool bar to navigate to `Plugins > Install/Uninstall Plugins...`.
-Type `region` into the filter bar at the top left and you should
-see `napari-skimage-regionprops` in the dialog like the image below.
-![](fig/install-region-props.png){alt="A screenshot of the plugin installation
-dialog for napari-skimage-regionprops"}
-If it is already installed, then nothing else needs to be done.
-If it is not installed, press install, and when finished, restart Napari.
+assembled within Napari if you prefer.
 
 ## Loading an image and creating a mask
 We recommend starting a new session in Napari in order to make sure
@@ -205,38 +192,43 @@ There are 43945  pixels in nucleus 1
 Congratulations, you've measured the size (in pixels) of the first nucleus.
 Later in this lesson, we'll cover how to convert the size in pixels to
 volume in cubic micrometres and how to get statistics on the sizes of all
-the nuclei. Before we do that, we'll use the [napari-skimage-regionprops](
-https://www.napari-hub.org/plugins/napari-skimage-regionprops) plugin to
+the nuclei. Before we do that, we'll use the [napari-skimage](
+https://napari-hub.org/plugins/napari-skimage.html) plugin to
 interactively examine the size and shape of individual nuclei.
 
-## Using napari-skimage-regionprops plugin to measure nuclei size
+## Using napari-skimage plugin to measure nuclei size
 
-If you followed the instructions [above](#before-you-begin) the
-napari-skimage-regionprops plugin should already be installed. If not then
-do it now and restart Napari. If the plugin is installed you can use the
-toolbar to open `tools > measurement tables > Regionsprops(skimage, nsr)`.
+In the napari toolbar, open `Layers > Measure > Regionprops (labels) (skimage)`.
 You should see a dialog like this:
 ![](fig/region_props_before.png){alt="A screenshot of the
-napari-skimage-regionprops plugin at startup."}
+napari-skimage Regionprops widget at startup."}
 
-Select `nuclei(data)` in the image drop down box and `instance_seg(data)`
-in the labels drop down box. You can choose to measure various shape
+Select `instance_seg` in the 'Labels layer' drop down box and `nuclei` in the 
+'Intensity Image Layer' drop down box.You can choose to measure various shape
 properties with this plugin but for now let's keep it simple, making
-sure that only the `size` and `position` tick boxes are selected.
-Click `run`. A table of numeric values should appear under the plugin
-dialog box, like the image below.
-![](fig/region_props_after.png){alt="A screenshot of the numeric value table
-created by the napari-skimage-regionprops plugin"}
+sure that only `area`, `centroid` and `label` are selected. You will need to hold 
+down <kbd>ctrl</kbd> to select multiple items in the list.
 
-The regionprops plugin can generate a lot of information on the shape and
+Click `Analyze` - a table of numeric values should appear in napari. If it 
+opens in an inconvenient location, you can click and drag on the header containing the `x`, ![](
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility_off.svg
+){alt="Napari's hide visibility icon" height='30px'} and other icons next
+to the table window to reposition it. 
+![](fig/region_props_after.png){alt="A screenshot of the numeric value table
+created by the napari-skimage plugin"}
+
+Regionprops can generate a lot of information on the shape and
 size of each connected region. You can use the horizontal scroll bar to
 move across the table and see more. For now we will focus only on the
-second column, headed `area`, which shows the size (in pixels).
+first column, headed `area`, which shows the size (in pixels).
 Let's look more closely at some the extreme values.
 
-Let's start with label 3 which is the largest labelled nucleus.
+Let's start with label 3 which is the largest labelled nucleus (the `label` 
+column is last in the table).
+
 ![](fig/region_props_after_3.png){alt="A screenshot of the
 region-props dialog highlighting the largest nucleus."}
+
 According to the table, nucleus 3 is larger than the other nuclei
 (202258 pixels). In the [what is an image](what-is-an-image.html#pixels)
 lesson, we learnt to use the mouse pointer to find particular values in an
@@ -246,9 +238,8 @@ been labelled as a single nucleus. Before we examine the reasons for this
 we'll look at the other extreme value, the smallest nucleus.
 
 The smallest nucleus is labelled 18, at the bottom of the table with
-a size of 7 pixels. We can use the position data (the `centroid` and `bbox`
-columns) in the table to help
-find this nucleus. We need to navigate to slice 33 and get the mouse
+a size of 7 pixels. We can use the position data (the `centroid` columns) in the 
+table to help find this nucleus. We need to navigate to slice 33 and get the mouse
 near the top left corner (33 64 0) to find label 18 in the image.
 ![](fig/region_props_after_18.png){alt="A screenshot
 region-props dialog highlighting the smallest nucleus."}
@@ -295,7 +286,7 @@ https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphol
 function. In this lesson we will run the binary erosion function using
 the Napari console to help develop our scripting skills. It is also
 possible to run the binary erosion function through a plugin:
-`Tools > Segmentation post-processing > Binary erosion (scikit-image, nsbatwm)`
+`Layers > Filter > Morphology > Binary Morphology (napari skimage)`
 if you prefer.
 
 The binary erosion function sets a pixel to the
@@ -506,9 +497,9 @@ There are 11 individual nuclei
 ```
 
 You now have a correct instance segmentation. You could return to
-using the napari-skimage-regionprops plugin to calculate the sizes
+using the napari-skimage plugin to calculate the sizes
 of each nucleus and export the results to a speadsheet or your preferred
-analysis software using the `save as csv` function. However you've probably
+analysis software using the `Save Results` function. However you've probably
 picked up enough Python during this course to complete the analysis you need
 with just the Napari console. Let's give it a try. The following commands
 should work with copy and paste, so don't worry too much if you don't think
@@ -623,7 +614,7 @@ time points, creating a repeatable measurement workflow.
 ```python
 %save measurement_workflow ~0/
 ```
-This will create a Python file `measurement_pipepine.py` that we can
+This will create a Python file `measurement_workflow.py` that we can
 load into the Napari console and re-run. You may choose to edit the file
 with any text editor to remove some of the redundant steps we've made
 whilst learning.
@@ -640,7 +631,7 @@ Dilation (or expansion) was used to return the nuclei to their
 (approximate) original size.
 - Partial nuclei at the image edges can be removed with the clear_border
 function.
-- The napari-skimage-regionprops plugin can be used to interactively
+- The napari-skimage plugin can be used to interactively
 examine the nuclei shapes.
 - The Python console can be used to automate and save the image
 analysis pipeline.

@@ -220,9 +220,9 @@ measure the nucleus 'roundness' (a measure of how circular it is). In 3D, we
 could measure nucleus 'sphericity' (a measure of how spherical it is). Which 
 measures you use will often depend on which image analysis software you use. 
 Many analysis packages have a wide range of shape (morphological) features 
-built-in e.g. Napari has a plugin called 'napari-skimage-regionprops' that 
-offers [many different features
-](https://www.napari-hub.org/plugins/napari-skimage-regionprops#features).
+built-in e.g. Napari has a plugin called 'napari-skimage', which provides 
+access to scikit-image's `regionprops` that offers [many different features
+](https://scikit-image.org/docs/stable/api/skimage.measure.html#skimage.measure.regionprops).
 
 ### How to quantify?
 

@@ -266,35 +266,20 @@ studied problem, so there are a many existing plugins we can install to help. If
 you need a refresher on the details of how to find and install plugins in 
 Napari, see the [image display episode](image-display.md#napari-plugins).
 
-We will use two plugins: [`napari-segment-blobs-and-things-with-membranes`
-](https://www.napari-hub.org/plugins/napari-segment-blobs-and-things-with-membranes) 
-and [`napari-simpleitk-image-processing`
-](https://www.napari-hub.org/plugins/napari-simpleitk-image-processing). Both of 
-these plugins add many features that can aid with image segmentation and other 
-image processing tasks. Here, we've selected only these two to keep installation 
-fast and easy for this course. If you use Napari more in your own work though, 
-you may want to consider using [`devbio-napari`
-](https://www.napari-hub.org/plugins/devbio-napari) instead. `devbio-napari` 
-bundles many plugins into one useful package (including the two plugins we are 
-about to install!). There's detailed information on their documentation pages if 
-you're interested.
+We will use the [`napari-skimage`](https://napari-hub.org/plugins/napari-skimage.html) 
+plugin, which adds many features that can aid with image segmentation and other 
+image processing tasks.
 
 In the top menu-bar of Napari select:  
 `Plugins > Install/Uninstall Plugins...`
 
-Then search for `napari-segment-blobs-and-things-with-membranes` and click the 
-blue button labelled 'install'. Wait for the installation to complete.
+Then search for `napari-skimage` and click the blue button labelled 'install'. 
+Wait for the installation to complete.
 
-![](fig/napari-segment-blobs-installation.png){alt="Screenshot of plugin 
-installation window for napari-segment-blobs-and-things-with-membranes"}
+![](fig/napari-skimage-installation.png){alt="Screenshot of plugin 
+installation window for napari-skimage"}
 
-Then search for `napari-simpleitk-image-processing` and click the blue install 
-button. Wait for the installation to complete.
-
-![](fig/napari-simple-itk-installation.png){alt="Screenshot of plugin 
-installation window for napari-simpleitk-image-processing"}
-
-Once both plugins are installed, **you will need to close and re-open Napari**.
+Once the plugin is installed, **you will need to close and re-open Napari**.
 
 ## Filters
 
@@ -310,21 +295,12 @@ change its colormap from 'green' to 'gray' in the layer controls.
 
 ![](fig/nuclei-gray.png){alt="Nuclei image with gray colormap" width='40%'}
 
-With the new plugins installed, you should see many new options under `Tools` in 
+With the new plugin installed, you should see many new options under `Layers` in 
 the top menu-bar of Napari. You can find out more about these options using the 
-plugin's documentation which was linked in the [previous section
-](#adding-plugins-to-help-with-segmentation).
+[plugin's documentation](https://github.com/guiwitz/napari-skimage/blob/main/README.md).
 
-For now, we are interested in the options under:  
-`Tools > Filtering / noise removal`
-
-Specifically, the two options labelled 'gaussian' - you should see one ending in 
-'n-SimpleITK' and another ending 'scikit-image, nsbatwm'. These are two slightly 
-different implementations of a _gaussian blur_, one from the 
-`napari-simpleitk-image-processing` plugin and the other from the 
-`napari-segment-blobs-and-things-with-membranes` plugin. Both should work 
-perfectly well for our image, but let's use the one ending with 'scikit-image, 
-nsbatwm' for now.
+For now, we are interested in the _gaussian blur_ under:  
+`Layers > Filter > Filtering > Gaussian filter (napari-skimage)`
 
 If you click on this option, you should see a new panel appear on the right side 
 of Napari:
@@ -332,22 +308,22 @@ of Napari:
 ![](fig/gaussian-options.png){alt="Screenshot of settings for gaussian blur in 
 Napari" width='40%'}
 
-Make sure you have 'nuclei(data)' selected on the 'image' row, then click run:
+Make sure you have 'nuclei' selected on the 'image' row, then click 
+'Apply Gaussian Filter':
 
 ![](fig/nuclei-blurred-1.png){alt="Nuclei image after gaussian blur with sigma 
 of 1" width='40%'}
 
-You should see a new image appear in the layer list called 'Result of 
-gaussian_blur', which is a slightly blurred version of the original nuclei 
-image.
+You should see a new image appear in the layer list called 
+'nuclei_gaussian_σ=1.0', which is a slightly blurred version of the 
+original nuclei image.
 
 Try increasing the 'sigma' value to three and clicking run again:
 
 ![](fig/nuclei-blurred-3.png){alt="Nuclei image after gaussian blur with sigma 
 of 3" width='40%'}
 
-You should see that the 'Result of gaussian_blur' layer is updated to show a 
-much more heavily blurred version of the original nuclei image.
+You should see a new 'nuclei_gaussian_σ=3.0' layer that is much more heavily blurred.
 
 What's happening here? What exactly does a gaussian blur do? A gaussian blur is 
 an example of a 'linear filter' which is used to manipulate pixel values in 
@@ -420,8 +396,8 @@ highest weights at the centre, this means that a gaussian filter produces an
 average where central pixels contribute more than those further away.
 
 Larger sigma values result in larger kernels, which average larger areas of the 
-image. For example, the [`scikit-image, nsbatwm`
-](https://scikit-image.org/docs/stable/api/skimage.filters.html#skimage.filters.gaussian) 
+image. For example, the 
+[`scikit-image`](https://scikit-image.org/docs/stable/api/skimage.filters.html#skimage.filters.gaussian) 
 implementation we are currently using truncates the kernel after four standard 
 deviations (sigma). This means that the blurring effect of the gaussian filter 
 is enhanced with larger sigma, but will also take longer to calculate. This is a 
@@ -463,22 +439,28 @@ that there is a clear relationship between sigma and FWHM where:
 
 ## Filters
 
-Try some of the other filters included with the 
-`napari-segment-blobs-and-things-with-membranes` and 
-`napari-simpleitk-image-processing` plugins.
+Try some of the other filters included with the `napari-skimage` plugin.
+Some of these only support 2D images for now (the plugin is still being 
+actively updated - so more 3D support should be added soon).
 
-For example:
+Create a 2D image by running the following in the console:
+```python
+nuclei = viewer.layers["nuclei"].data
+viewer.add_image(nuclei[30, :, :], name="nuclei_2D")
+```
 
-- What does `Tools > Filtering / noise removal > Median (scipy, nsbatwm)` do? 
+Try the following filters (make sure you use 'nuclei_2D' in the image field):
+
+- What does `Layers > Filter > Filtering > Median filter (napari skimage)` do? 
 How does it compare to the gaussian filter we used earlier?
 
-- What does `Tools > Filtering / edge enhancement > Sobel (n-SimpleITK)` do?
+- What does `Layers > Filter > Edge detection > Farid filter (napari skimage)` do?
 
-- What does `Tools > Filtering / background removal > Maximum (scipy, nsbatwm)` 
+- What does `Layers > Filter > Filtering > Rank filters (napari skimage)` 
 do?
-
-- What does `Tools > Filtering / background removal > Minimum (scipy, nsbatwm)` 
-do?
+  - Try a 'Filter Type' of 'Maximum` and 'Minimum' + compare
+  - (you may say see a warning relating to bin number when you run this - 
+  this can be ignored)
 
 If you're not sure what the effect is, try searching for the filter's name 
 online.
@@ -490,7 +472,7 @@ online.
 ### Median
 
 The median filter creates a blurred version of the input image. Larger values 
-for the 'radius' result in a greater blurring effect.
+for the 'Footprint size' result in a greater blurring effect.
 
 The results of the median filter are similar to a gaussian blur, but tend to 
 preserve the edges of objects better. For example, here you can see that it 
@@ -498,9 +480,9 @@ preserves the sharp edges of each nucleus. You can read more about how the
 median filter works in Pete Bankhead's [bioimage book
 ](https://bioimagebook.github.io/chapters/2-processing/4-filters/filters.html#rank-filters).
 
-### Sobel
+### Farid
 
-Sobel is a type of filter used to detect the edges of objects in an image. For 
+Farid is a type of filter used to detect the edges of objects in an image. For 
 example, for the nuclei image it gives bright rings around each nucleus, as well 
 as around some of the brighter patches inside the nuclei.
 
@@ -508,13 +490,13 @@ as around some of the brighter patches inside the nuclei.
 
 A maximum filter replaces each pixel value with the maximum value in a certain 
 area around it. For example, for the nuclei, you should see the bright areas 
-expand in size. Increasing the 'radius' of the filter enhances the effect.
+expand in size. Increasing the 'Footprint size' of the filter enhances the effect.
 
 ### Minimum filter
 
 A minimum filter replaces each pixel value with the minimum value in a certain 
 area around it. For example, for the nuclei, you should see the bright areas 
-shrink in size. Increasing the 'radius' of the filter enhances the effect.
+shrink in size. Increasing the 'Footprint size' of the filter enhances the effect.
 
 :::::::::::::::::::::::::::::::::
 
@@ -525,26 +507,23 @@ shrink in size. Increasing the 'radius' of the filter enhances the effect.
 ## Thresholding the blurred image
 
 First, let's clean up our layer list. Make sure you only have the 'nuclei' and 
-'Result of gaussian_blur' layers in the layer list - select any others and 
+'nuclei_gaussian_σ=1.0' layers in the layer list - select any others and 
 remove them by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'} icon. Also, 
 close all filter settings panels on the right side of Napari (apart from the 
-gaussian settings) by clicking the tiny ![](
-https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility_off.svg
-){alt="A screenshot of Napari's hide button" height='20px'} icon at their top 
-left corner.
+gaussian settings) by clicking the tiny `X` icon at their top left corner.
 
 Now let's try thresholding our image again. Make sure you set your gaussian blur 
 sigma to three, then click 'Run'.
 
-Then, we'll apply the same threshold as before, now to the 'Result of 
-gaussian_blur' layer:
+Then, we'll apply the same threshold as before, now to the 
+'nuclei_gaussian_σ=3.0' layer:
 
 ```python
 
 # Get the image data for the blurred nuclei
-blurred = viewer.layers["Result of gaussian_blur"].data
+blurred = viewer.layers["nuclei_gaussian_σ=3.0"].data
 
 # Create mask with a threshold of 8266
 blurred_mask = blurred > 8266
@@ -584,10 +563,8 @@ one after the other. In summary, changes in data type are expected in image
 processing, and it's good to keep an eye out for when this is required!
 
 Let's return to thresholding our image. Close the gaussian panel by clicking the 
-tiny ![](
-https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility_off.svg
-){alt="A screenshot of Napari's hide button" height='20px'} icon at its top left 
-corner. Then select the 'blurred_mask' in the layer list and remove it by 
+tiny `X` icon at its top left corner. Then select the 'blurred_mask' in the 
+layer list and remove it by 
 clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'} icon. 
@@ -598,7 +575,7 @@ Finally, open the `napari-matplotlib` histogram again with:
 the nuclei image after a gaussian blur. The left contrast limit is set 
 to 0.134."}
 
-Make sure you have 'Result of gaussian_blur' selected in the layer list (should 
+Make sure you have 'nuclei_gaussian_σ=3.0' selected in the layer list (should 
 be highlighted in blue).
 
 You should see that this histogram now runs from 0 to 1, reflecting the new 
@@ -608,7 +585,7 @@ threshold between the two peaks - around 0.134:
 ```python
 
 # Get the image data for the blurred nuclei
-blurred = viewer.layers["Result of gaussian_blur"].data
+blurred = viewer.layers["nuclei_gaussian_σ=3.0"].data
 
 # Create mask with a threshold of 0.134
 blurred_mask = blurred > 0.134
@@ -653,7 +630,7 @@ clear that some areas are still missed or incorrectly labelled.
 ## Automated thresholding
 
 First, let's clean up our layer list again. Make sure you only have the 
-'nuclei', 'mask', 'blurred_mask' and 'Result of gaussian_blur' layers in the 
+'nuclei', 'mask', 'blurred_mask' and 'nuclei_gaussian_σ=3.0' layers in the 
 layer list - select any others and remove them by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'} icon. Then, 
@@ -661,25 +638,25 @@ if you still have the `napari-matplotlib` histogram open, close it by clicking
 the tiny `x` icon in the top left corner.
 
 So far we have chosen our threshold manually by looking at the image histogram, 
-but it would be better to find an automated method to do this for this. Many 
-such methods exist - for example, see the various options starting with 
-'Threshold' under `Tools > Segmentation / binarization`. One of the most common 
-methods is _Otsu thresholding_, which we will look at now.
+but it would be better to find an automated method to do this for us. Many 
+such methods exist - for example, open 
+`Layers > Filter > Thresholding > Automated Threshold (napari skimage)`. One of 
+the most common methods is _Otsu thresholding_, which we will look at now.
 
-Let's go ahead and apply this to our blurred image:  
-`Tools > Segmentation / binarization > Threshold (Otsu et al 1979, scikit-image, nsbatwm)`
+Let's go ahead and apply this to our blurred image:
 
-This will open a panel on the right side of Napari. Select 'Result of 
-gaussian_blur(data)' in the image row, then click Run:
+- Select 'nuclei_gaussian_σ=3.0' in the `Image` row
+- Select 'otsu' as the method
+- Click the 'Apply Thresholding' button
 
 ![](fig/threshold-blurred-otsu-mask.png){alt="Mask of nuclei (brown) overlaid on 
 nuclei image - created with Otsu thresholding after gaussian blur" width="60%"}
 
-This should produce a mask (in a new layer called 'Result of threshold_otsu') 
+This should produce a mask (in a new layer ending with 'threshold_otsu') 
 that is very similar to the one we created with a manual threshold. To make it 
 easier to compare, we can rename some of our layers by double clicking on their 
 name in the layer list - for example, rename 'mask' to 'manual_mask', 
-'blurred_mask' to 'manual_blurred_mask', and 'Result of threshold_otsu' to 
+'blurred_mask' to 'manual_blurred_mask', and '...threshold_otsu' to 
 'otsu_blurred_mask'. Recall that you can change the colour of a mask by clicking 
 the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/shuffle.svg
@@ -713,18 +690,17 @@ code block in that exercise to open the image:
 rectangle, circle and triangle"}
 
 Try some of the other automatic thresholding options provided by the 
-`napari-segment-blobs-and-things-with-membranes` and 
-`napari-simpleitk-image-processing` plugins.
+`napari-skimage` plugin. Set the 'method' to different options in 
+`Layers > Filter > Thresholding > Automated Threshold (napari skimage)`
 
-For example:
+Try:
 
-- `Tools > Segmentation / binarization > Threshold (Triangle method, Zack et al 1977, scikit-image, nsbatwm)`
-- `Tools > Segmentation / binarization > Threshold (Yen et al 1995, scikit-image, nsbatwm)`
-- `Tools > Segmentation / binarization > Threshold (Li et al 1993, scikit-image, nsbatwm)`
-- `Tools > Segmentation / binarization > Threshold Otsu, multiple thresholds (n-SimpleITK)`
+- `mean`
+- `yen`
+- `li`
+- `sauvola`
 
-How do they compare to standard Otsu thresholding?  
-`Tools > Segmentation / binarization > Threshold (Otsu et al 1979, scikit-image, nsbatwm)`
+How do they compare to standard `otsu` thresholding?
 
 Recall that you can change the colour of a mask by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/shuffle.svg
@@ -741,13 +717,7 @@ from the three shapes:
 ![](fig/otsu-shapes.png){alt="Mask of shapes (brown) overlaid on shapes image - 
 made with Otsu thresholding"}
 
-Li thresholding gives a very similar result.
-
-Triangle also gives a similar result, but includes some isolated pixels from the 
-noisy background:
-
-![](fig/triangle-shapes.png){alt="Mask of shapes (brown) overlaid on shapes 
-image - made with triangle thresholding"}
+Li and mean thresholding gives a very similar result.
 
 Yen gives a different result - isolating the triangle and circle from the rest 
 of the image. Some of the pixels in the rectangle are also labelled, but only 
@@ -756,19 +726,11 @@ in patchy areas:
 ![](fig/yen-shapes.png){alt="Mask of shapes (brown) overlaid on shapes image - 
 made with Yen thresholding"}
 
-Finally, the 'Threshold Otsu, multiple thresholds' option gives a completely 
-different result. Using 'number of thresholds' of 3, a 'label offset' of 0 and 
-'number of histogram bins' of 256, we create a segmentation where each shape 
-gets its own label:
+Finally, Sauvola gives a completely different result, including a large number 
+of pixels from the background:
 
-![](fig/otsu-multiple-shapes.png){alt="Mask of shapes (brown) overlaid on shapes 
-image - made with multiple thresholds Otsu method"}
-
-The 'Threshold Otsu, multiple thresholds' option is an extension of the standard 
-Otsu thresholding method. This allows it to choose multiple thresholds at once 
-(rather than only one as standard). This is useful if you have multiple 
-different classes to segment in your images, that each have a clear peak in the 
-image histogram.
+![](fig/sauvola-shapes.png){alt="Mask of shapes (brown) overlaid on shapes 
+image - made with Sauvola thresholding" width="60%"}
 
 The important point is that different automatic thresholding methods will work 
 well for different kinds of images, and depending on which part of an image you 
@@ -778,65 +740,6 @@ see which performs best for your specific dataset.
 :::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
-
-## The Napari assistant
-
-In this episode, we have directly applied methods from the `Tools` menu to our 
-images. It's worth mentioning though that these methods are also available via 
-the 'Napari assistant'.
-
-First, let's clean up our layer list again. Make sure you only have the 'nuclei' 
-layer in the layer list - select any others and remove them by clicking the ![](
-https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
-){alt="A screenshot of Napari's delete layer button" height='30px'} icon. Also, 
-close all settings panels on the right side of Napari by clicking the tiny ![](
-https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility_off.svg
-){alt="A screenshot of Napari's hide button" height='20px'} icon at their top 
-left corner.
-
-We can open the assistant with:  
-`Tools > Utilities > Assistant (na)`
-
-![](fig/napari-assistant.png){alt="Screenshot of the Napari assistant user 
-interface"}
-
-The assistant splits image processing operations into broad categories such as 
-'Remove noise' and 'Filter'. Let's recreate our workflow of a gaussian blur 
-followed by otsu thresholding in the assistant. 
-
-First, click the 'Remove noise' button in the assistant panel. In the settings 
-that appear below, select the 'Operation' as 'Gaussian (scikit-image, nsbatwm)' 
-and set the 'sigma' to three. 
-
-![](fig/remove-noise-options.png){alt="Screenshot of settings for removing noise 
-in Napari"}
-
-This will create a new layer called 'Result of Gaussian (scikit-image, nsbatwm)'. 
-If you can't see it in the viewer, try adjusting the contrast limits so the 
-right node is at 1 (remember this is a float image that runs from 0-1, as we 
-discussed in an [earlier section](#thresholding-the-blurred-image)).
-
-With the 'Result of Gaussian (scikit-image, nsbatwm)' layer selected, click the 
-'Binarize' button in the assistant panel. Change the 'Operation' to 
-'Threshold (Otsu et al 1979, scikit-image, nsbatwm)'. 
-
-![](fig/binarize-options.png){alt="Screenshot of settings for binarize in 
-Napari"}
-
-You should see a nuclei mask similar to the one we created before. 
-
-Note that you can change the settings of a particular operation and all the 
-steps after it will also update. For example, select the 'Result of Gaussian 
-(scikit-image, nsbatwm)' layer again, then change the sigma to 1. You should see 
-the mask automatically updates, becoming more patchy and noisy.
-
-The napari assistant also has useful options to export and save workflows for 
-re-use. This is important to make our image processing _reproducible_ - it 
-creates a clear record of every step that produced the final result. This makes 
-it easy for other researchers to replicate our work and try the same methods on 
-their own data. The napari-assistant can export workflows as python scripts or 
-jupyter notebooks, which you can read more about in their 
-[online documentation](https://www.napari-hub.org/plugins/napari-assistant).
 
 ## Summary
 
