@@ -314,8 +314,9 @@ Make sure you have 'nuclei' selected on the 'image' row, then click
 ![](fig/nuclei-blurred-1.png){alt="Nuclei image after gaussian blur with sigma 
 of 1" width='40%'}
 
-You should see a new image appear in the layer list called 'nuclei_gaussian_σ=1.0', which is a slightly blurred version of the original nuclei 
-image.
+You should see a new image appear in the layer list called 
+'nuclei_gaussian_σ=1.0', which is a slightly blurred version of the 
+original nuclei image.
 
 Try increasing the 'sigma' value to three and clicking run again:
 
@@ -638,8 +639,9 @@ the tiny `x` icon in the top left corner.
 
 So far we have chosen our threshold manually by looking at the image histogram, 
 but it would be better to find an automated method to do this for us. Many 
-such methods exist - for example, open `Layers > Filter > Thresholding > Automated Threshold (napari skimage)`. One of the most common 
-methods is _Otsu thresholding_, which we will look at now.
+such methods exist - for example, open 
+`Layers > Filter > Thresholding > Automated Threshold (napari skimage)`. One of 
+the most common methods is _Otsu thresholding_, which we will look at now.
 
 Let's go ahead and apply this to our blurred image: 
 - Select 'nuclei_gaussian_σ=3.0' in the `Image` row
@@ -687,7 +689,8 @@ code block in that exercise to open the image:
 rectangle, circle and triangle"}
 
 Try some of the other automatic thresholding options provided by the 
-`napari-skimage` plugin. Set the 'method' to different options in `Layers > Filter > Thresholding > Automated Threshold (napari skimage)`
+`napari-skimage` plugin. Set the 'method' to different options in 
+`Layers > Filter > Thresholding > Automated Threshold (napari skimage)`
 
 Try:
 
@@ -722,7 +725,8 @@ in patchy areas:
 ![](fig/yen-shapes.png){alt="Mask of shapes (brown) overlaid on shapes image - 
 made with Yen thresholding"}
 
-Finally, Sauvola gives a completely different result, including a large number of pixels from the background:
+Finally, Sauvola gives a completely different result, including a large number 
+of pixels from the background:
 
 ![](fig/sauvola-shapes.png){alt="Mask of shapes (brown) overlaid on shapes 
 image - made with Sauvola thresholding" width="60%"}
