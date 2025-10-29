@@ -260,10 +260,10 @@ This adds the cells 3D image (which is stored as zcyx), and specifies that
 dimension 1 is the channel axis. This allows Napari to split the channels 
 automatically into different layers.
 
-Usually when loading your own images into Napari e.g. with the 
-napari-aicsimageio plugin (as we will see in the 
+Often when loading your own images into Napari e.g. with the 
+BioIO plugin (as we will see in the 
 [filetypes and metadata episode](filetypes-and-metadata.md)), the channel 
-axis should be recognised automatically. If not, you may need to add the image 
+axis will be recognised automatically. If not, you may need to add the image 
 via the console as above, manually stating the channel axis.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -324,9 +324,8 @@ clicking on '00001_01.ome.tiff' on [this page of the OME website
 
 To open it in Napari, remove any existing image layers, then drag and drop the 
 file over the canvas. A popup may appear asking you to choose a 'reader' - you 
-can select either 'napari builtins' or 'napari-aicsimageio'. We'll see in the 
-next episode that the 'napari-aicsimageio' reader gives us access to useful 
-image metadata.
+can select either 'napari builtins' or 'Bioio Reader'. We'll see in the 
+next episode that BioIO gives us access to useful image metadata.
 
 Note this image can take a while to open, so give it some time! 
 Alternatively, you can select in the top menu-bar:  
@@ -385,8 +384,8 @@ additional sliders, not caring about exactly what each represents.
 Python has certain conventions for the order of image axes (like 
 [scikit-image's 'coordinate conventions'
 ](https://scikit-image.org/docs/stable/user_guide/numpy_images.html#coordinate-conventions) 
-and [aicsimageio's reader
-](https://allencellmodeling.github.io/aicsimageio/aicsimageio.aics_image.AICSImage.html)) 
+and [BioIO's reader
+](https://bioio-devs.github.io/bioio/OVERVIEW.html#full-image-reading)) 
 - but this tends to vary based on the library or plugin you're using. These 
 are not firm rules!
 
