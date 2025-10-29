@@ -64,11 +64,8 @@ Let's start by going to the napari hub and searching for 'matplotlib':
 
 You should see 'napari Matplotlib' appear in the list (if not, try scrolling 
 further down the page). If we click on `napari matplotlib` this opens a summary 
-of the plugin with links to the documentation. There's also a useful 'Activity' 
-tab that summarises the number of installs and maintenance history of the plugin:
-
-![](fig/napari-hub-activity.png
-){alt="Screenshot of napari-matplotlib's activity tab on napari hub"}
+of the plugin with links to the documentation and github repository containing 
+the plugin's source code.
 
 Now that we've found the plugin we want to use, let's go ahead and install it 
 in Napari. Note that some plugins have special requirements for installation, 
@@ -96,7 +93,7 @@ Napari hub contains hundreds of plugins with varying quality, written by many
 different developers. It can be difficult to choose which plugins to use!
 
 - Search for cell tracking plugins on [Napari hub](https://www.napari-hub.org/)
-- Look at some of the plugin summaries and 'Activity' tabs
+- Look at some of the plugin summaries, documentation and github repositories
 - What factors could help you decide if the plugin is well maintained?
 - What factors could help you decide if the plugin is popular with Napari users?
 
@@ -110,9 +107,8 @@ Some factors to look for:
 
 **Last updated**  
 Check when the plugin was last updated - was it recently? This is shown in the 
-search list summary and under 'Maintenance' in the activity tab. In the activity 
-tab, you can also look at a graph summarising the 'commits' over the past year - 
-'commits' are made when someone updates their plugin with new changes.
+search list summary and in the left sidebar when you open the plugin's page on 
+napari-hub.
 
 **Documentation**  
 Is the plugin summary (+ any linked documentation) detailed enough to explain 
@@ -122,12 +118,11 @@ how to use the plugin?
 
 Some factors to look for:
 
-**Installs**  
-Check how many times a plugin has been installed - a higher number of installs 
-usually means it's more popular in the Napari community. The installs are shown 
-in the search list summary and under 'Usage' in the activity tab. In the 
-activity tab, you can also look at a graph summarising the installs over the 
-past year.
+**Stars on github**  
+If you open a plugin's linked github repository, you can see the number of 
+'stars' in the top right. More stars tend to indicate a plugin is more popular - 
+although this isn't always the case! Github is mainly used by plugin developers, 
+so a plugin with few stars may still have many people using it. 
 
 **Image.sc**  
 It can also be useful to search the plugin's name on the 
