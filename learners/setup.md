@@ -232,6 +232,12 @@ napari
 - Select `Plate1-Blue-A-12-Scene-3-P3-F2-03.czi` and click open.
 - If you see a `Choose reader` dialog, select `Bioio Reader`.
 
+Note: the `Bioio Reader` automatically installs the `bioio-bioformats` reader, 
+which has additional java dependencies. The first time you open the `czi` image, 
+you may see lots of text printed to the terminal as it downloads these extra 
+files. This may take up to 5 minutes - so give it some time. This will only 
+happen once, and the `czi` image will open much faster next time.
+
 ::::::::::::::::::::::::::
 ::::::::::::::::::: solution
 
