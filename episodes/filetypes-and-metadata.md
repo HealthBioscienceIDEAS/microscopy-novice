@@ -487,7 +487,7 @@ high quality .jpg). Note: these files will be written to the same folder as the
 '00001_01.ome.tiff' image!
 
 ```python
-from skimage.io import imsave
+import imageio.v3 as iio
 from pathlib import Path
 
 # Get the 00001_01.ome layer, and get timepoint = 30
@@ -496,10 +496,10 @@ image = layer.data[30, :, :]
 
 # Save as different file formats in same folder as 00001_01.ome
 folder_path = Path(layer.source.path).parent
-imsave( folder_path / "test-tiff.tiff", image)
-imsave( folder_path / "test-png.png", image)
-imsave( folder_path / "test-jpg-high-quality.jpg", image, quality=75)
-imsave( folder_path / "test-jpg-low-quality.jpg", image, quality=30)
+iio.imwrite( folder_path / "test-tiff.tiff", image)
+iio.imwrite( folder_path / "test-png.png", image)
+iio.imwrite( folder_path / "test-jpg-high-quality.jpg", image, quality=75)
+iio.imwrite( folder_path / "test-jpg-low-quality.jpg", image, quality=30)
 
 ```
 
