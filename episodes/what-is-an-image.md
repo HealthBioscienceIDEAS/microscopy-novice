@@ -393,9 +393,10 @@ and _overflow_.
 value. For example, storing 1000 in a `uint8` image may result in 255 being 
 stored instead (the max value)
 
-- Overflow: For NumPy arrays, values outside the valid range are 
+- Overflow: For NumPy arrays, values outside the valid range may be 
 'wrapped around' to give the new result. For example, storing 256 in a `uint8` 
-image (max 255) would give 0, 257 would give 1 and so on...  
+image (max 255) would give 0, 257 would give 1 and so on... Otherwise, you 
+may see an `OverflowError` being thrown.
 
 Clipping and overflow result in data loss - you can't get the original values 
 back! So it's always good to keep the data type in mind when doing image 
@@ -530,19 +531,19 @@ you should see the one bright pixel you just created.
 ```python
 
 image[15, 10] = 300
-viewer.layers["human_mitosis"].refresh()
-
-print(image[15, 10])
 ```
 
-```output
+```error
 
-44
+OverflowError                             Traceback (most recent call last)
+Cell In[8], line 1
+----> 1 image[15, 10] = 300
+
+OverflowError: Python integer 300 out of bounds for uint8
 ```
-
-The new value is not correct. This is because 300 exceeds the maximum value for 
-this 8-bit image (max 255). The value therefore overflows and 'wraps around' to 
-give 44 - an incorrect value.
+An `OverflowError` occurs when you try to update this pixel value.
+This is because 300 exceeds the maximum value for 
+this 8-bit image (max 255).
 
 :::::::::::::::::::::::::::::::::
 
