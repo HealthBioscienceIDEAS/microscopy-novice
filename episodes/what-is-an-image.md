@@ -39,13 +39,14 @@ bottom layer. This should highlight all layers in blue.
 
 - Press the remove layer button ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
-){alt="A screenshot of Napari's delete layer button" height='30px'} 
+){alt="Napari's delete layer button" height='30px'} 
 
 - Go to the top menu-bar of Napari and select:  
 `File > Open Sample > napari builtins > Human Mitosis`
 
-![](fig/human-mitosis-napari.png){alt="A screenshot of a 2D image of human cells 
-undergoing mitosis in Napari"}
+![](fig/human-mitosis-napari.png){alt="A 2D image of human cells 
+undergoing mitosis in Napari. Many small, round nuclei are scattered across this 
+grayscale image, with a small number appearing brighter and flatter in shape."}
 
 This 2D image shows the nuclei of human cells undergoing mitosis. If we really 
 zoom in up-close by scrolling, we can see that this image is actually made up of 
@@ -57,8 +58,9 @@ If we hover over these pixels with the mouse cursor, we can see that each pixel
 has a specific value. Try hovering over pixels in dark and bright areas of the 
 image and see how the value changes in the bottom left of the viewer:
 
-![](fig/pixel-value.png){alt="A screenshot of Napari - with the mouse cursor 
-hovering over a pixel and highlighting the corresponding pixel value"}
+![](fig/pixel-value.png){alt="A closeup of a few nuclei - the mouse cursor 
+hovers over a pixel and the corresponding value of 110 is shown in the bottom 
+row of the user interface."}
 
 You should see that brighter areas have higher values than darker areas (we'll 
 see exactly how these values are converted to colours in the 
@@ -72,10 +74,12 @@ dig deeper into Napari's `Image` layers...
 
 First, open Napari's built-in Python console by pressing the console button ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/console.svg
-){alt="A screenshot of Napari's console button" height='30px'}. 
+){alt="Napari's console button" height='30px'}. 
 Note this can take a few seconds to open, so give it some time:
 
-![](fig/console.png){alt="A screenshot of Napari's console"}
+![](fig/console.png){alt="Napari's console. A few lines of text show the console 
+and Python version being used, followed by the prompt (In [1]:) indicating where 
+to type commands."}
 
 :::::::::::::::::::::::::::::::::::::: callout
 
@@ -88,7 +92,7 @@ decreased with <kbd>Ctrl</kbd> and <kbd>-</kbd> together.
 Note that you can also pop the console out into its own window by clicking the 
 small ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/pop_out.svg
-){alt="A screenshot of Napari's float panel button" height='30px'} 
+){alt="Napari's float panel button" height='30px'} 
 icon on the left side.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -137,8 +141,10 @@ For example, look at the simplified image of an arrow below. On the left is the
 array of numbers, with the corresponding image display on the right. This is 
 called a 4 by 4 image, as it has 4 rows and 4 columns:
 
-![](fig/array.png){alt="A diagram comparing the array of numbers and image 
-display for a simplified image of an arrow"}
+![](fig/array.png){alt="Left - a 4x4 array of numbers, representing the pixel 
+values in a small image of an arrow. All are either 0, or 255. Right - the 
+corresponding displayed image, showing pixel values of 0 as black, and 255 as 
+white."}
 
 In Napari this array is a `numpy.ndarray`. [NumPy](https://numpy.org/) is a 
 popular python package that provides 'n-dimensional arrays' (or 'ndarray' for 
@@ -415,23 +421,29 @@ coordinates that appear to the left of the pixel value. If you closed the
 mitosis image, then open it again by removing all layers and selecting: 
 `File > Open Sample > napari builtins > Human Mitosis`:
 
-![](fig/coordinates.png){alt="A screenshot of Napari - with the mouse cursor 
-hovering over a pixel and highlighting the corresponding coordinates"}
+![](fig/coordinates.png){alt="A closeup of a few nuclei - the mouse cursor 
+hovers over a pixel, and the corresponding coordinates (314, 214) are shown in 
+the bottom row of the user interface."}
 
 As you move around, you should see that the lowest coordinate values are at the 
 top left corner, with the first value increasing as you move down and the second 
 value increasing as you move to the right. This is different to the standard 
 coordinate systems you may be used to (for example, from making graphs):
 
-![](fig/coordinate-system.png){alt="Diagram comparing a standard graph 
-coordinate system (left) and the image coordinate system (right)"}
+![](fig/coordinate-system.png){alt="Left - a scatter plot using a 'standard' 
+coordinate system. The origin (0, 0) is at the bottom left, with x increasing 
+horizontally to the right, and y vertically up. Right - the human mitosis image 
+using an 'image' coordinate system. The origin is at the top left, with x 
+increasing horizontally to the right, and y vertically down."}
 
 Note that Napari lists coordinates as [y, x] or [rows, columns], so e.g. [1,3] 
 would be the pixel in row 1 and column 3. Remember that these coordinates always 
 start from 0 as you can see in the diagram below:
 
 ![](fig/coordinates-on-image.png
-){alt="A diagram showing how pixel coordinates change over a simple 4x4 image" width=50%}
+){alt="A 4x4 array with rows and columns labelled from 0 to 4. Each pixel is 
+labelled with its coordinate, starting at (0, 0) in the top left to (3, 3) in 
+the bottom right." width=50%}
 
 For the mitosis image, these coordinates are in pixels, but we'll see in the 
 [filetypes and metadata episode](filetypes-and-metadata.md#pixel-size) that 
