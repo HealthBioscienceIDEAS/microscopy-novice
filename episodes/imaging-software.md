@@ -32,8 +32,9 @@ examples in the [multi-dimensional images episode](multi-dimensional-images.md))
 - Different channels
 - Small to large datasets
 
-![](fig/images-mosaic.png){alt="A mosaic of screenshots of some of Napari's 
-included sample data" width='80%'}
+![](fig/images-mosaic.png){alt="Five examples of images included in Napari's 
+sample data. These vary widely from grayscale images of human nuclei to 
+full-colour images of tissue sections." width='80%'}
 
 With such a wide range of data, there comes a huge variety of software that can 
 work with these images. Different software may be specialised to specific types 
@@ -243,8 +244,8 @@ conda activate napari-env
 napari
 ```
 
-![](fig/blank-napari-ui.png){alt="A screenshot of the default Napari user 
-interface"}
+![](fig/blank-napari-ui.png){alt="The default Napari user interface. The layout 
+of this interface will be described in detail in later images."}
 
 ## Opening images
 
@@ -254,8 +255,9 @@ menu-bar of Napari and select:
 
 You should see a fluorescence microscopy image of some cells:
 
-![](fig/cells-napari.png){alt="A screenshot of a flourescence microscopy image 
-of some cells in Napari"}
+![](fig/cells-napari.png){alt="A fluorescence microscopy image of some cells 
+displayed in Napari. Many round nuclei are shown in green, each surrounded by a 
+thin purple membrane."}
 
 ## Napari's User interface
 
@@ -263,8 +265,12 @@ Napari's user interface is split into a few main sections, as you can see in the
 diagram below (note that on Macs the main menu will appear in the upper ribbon, 
 rather than inside the Napari window):
 
-![](fig/ui-sections-napari.png){alt="A screenshot of Napari with the main user 
-interface sections labelled"}
+![](fig/ui-sections-napari.png){alt="The napari user interface. The right side 
+is filled by the canvas, a large window that currently displays a fluorescence 
+microscopy image. Below this are the horizontal dimension sliders. The left side 
+is split into the following sections (from top to bottom): layer controls, layer 
+buttons, layer list and viewer buttons. The main menu sits at the very top of 
+the interface."}
 
 Let's take a brief look at each of these sections - for full information see the 
 [Napari documentation](https://napari.org/stable/tutorials/fundamentals/viewer.html).
@@ -295,15 +301,18 @@ image displayed. For example, here we have a 3D image of some cells, which
 consists of a stack of 2D images. If we drag the slider at the bottom of the 
 image, we move up and down in this stack:
 
-![](fig/dim-slider.png){alt="Three screenshots of the cells image in napari, at 
-different z depths"}
+![](fig/dim-slider.png){alt="Three screenshots of the cells image in napari, 
+taken at increasing Z depth from left to right. The horizontal dimension slider 
+is shown below each, with increasing z position.}
 
 Pressing the arrow buttons at either end of the slider steps through one slice 
 at a time. Also, pressing the 'play' button at the very left of the slider moves 
 automatically through the stack until pressed again.
 
-![](fig/dim-slider-closeup.png){alt="Closeup of Napari's dimension slider with
-labels" width='80%'}
+![](fig/dim-slider-closeup.png){alt="Closeup of Napari's dimension slider 
+showing, from left to right: the play button, left arrow, slider control, 
+right arrow, followed by a label showing the current and max position." 
+width='80%'}
 
 We will see in later episodes that more sliders can appear if our image has more 
 dimensions (e.g. time series, or further channels).
@@ -315,21 +324,21 @@ various aspects of the Napari viewer:
 
 ### Console ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/console.svg
-){alt="A screenshot of Napari's console button" height='30px'}
+){alt="Napari's console button" height='30px'}
 
 This button opens Napari's built-in python console - we'll use the console more
 in later episodes.
 
 ### 2D/3D ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/2D.svg
-){alt="A screenshot of Napari's 2D button" height='25px'}  / ![](
+){alt="Napari's 2D button" height='25px'}  / ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/3D.svg
-){alt="A screenshot of Napari's 3D button" height='25px'}
+){alt="Napari's 3D button" height='25px'}
 
 This switches the canvas between 2D and 3D display. Try switching to the 3D view 
 for the cells image:
 
-![](fig/cells-3d-napari.png){alt="A screenshot of 3D cells in Napari"}
+![](fig/cells-3d-napari.png){alt="A 3D view of the cells image in Napari."}
 
 The controls for moving in 3D are similar to those for 2D:
 ```
@@ -340,7 +349,7 @@ Zoom - Scroll in/out
 
 ### Roll dimensions ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/roll.svg
-){alt="A screenshot of Napari's roll dimensions button" height='25px'} 
+){alt="Napari's roll dimensions button" height='25px'} 
 
 This changes which image dimensions are displayed in the viewer. For example, 
 let's switch back to the 2D view for our cells image and press the roll 
@@ -349,22 +358,24 @@ orthogonal views (i.e. at 90 degrees to our starting view). Pressing it 3 times
 will bring us back to the original orientation.
 
 ![](fig/roll-dims.png){alt="Three screenshots of the cells image in napari, 
-with different axes being visualised"}
+displaying the three orthogonal views created via rolling dimensions."}
 
 ### Transpose dimensions ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/transpose.svg
-){alt="A screenshot of Napari's transpose dimensions button" height='25px'}
+){alt="Napari's transpose dimensions button" height='25px'}
 
 This button swaps the two currently displayed dimensions. Again trying this for 
 our cells image, we see that the image becomes flipped. Pressing the button 
 again brings us back to the original orientation.
 
-![](fig/transpose-dim.png){alt="Two screenshots of the cells image in napari, 
-with dimensions swapped"}
+![](fig/transpose-dim.png){alt="Two screenshots of the cells image - before and 
+after transposing dimensions. Before transposing, axis 1 points vertically down 
+the page, and axis 2 horizontally right. After, axis 2 points vertically down 
+the page, and axis 1 horizontally right.}
 
 ### Grid ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/canvas-grid-view.svg
-){alt="A screenshot of Napari's grid button" height='25px'}
+){alt="Napari's grid button" height='25px'}
 
 This button displays all image layers in a grid (+ any additional layer types,
 as we'll see [later in the episode](#layer-buttons)). Using this for our cells 
@@ -373,7 +384,7 @@ rather than on top of each other.
 
 ### Home ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/home.svg
-){alt="A screenshot of Napari's home button" height='25px'}
+){alt="Napari's home button" height='25px'}
 
 This button brings the canvas back to its default view. This is useful if you 
 have panned/zoomed to a specific region and want to quickly get back to an 
@@ -387,8 +398,9 @@ For example, currently our layer list contains two items - 'nuclei' and
 'membrane'. These are both `Image` layers and are displayed in order, with 
 the nuclei on top and membrane underneath.
 
-![](fig/layer-list.png){alt="A screenshot of Napari's layer list, showing two 
-image layers named 'nuclei' and 'membrane'"}
+![](fig/layer-list.png){alt="Napari's layer list. Two layers are shown stacked 
+on top of each other, named 'nuclei' and 'membrane'. Each layer contains, from 
+left to right - a small image of that layer, an eye icon, then the layer name."}
 
 We can show/hide each layer by clicking the eye icon on the left side of their 
 row. We can also rename them by double clicking on the row.
@@ -398,8 +410,9 @@ list. For example, try dragging the membrane layer above the nuclei. You should
 see the nuclei disappear from the viewer (as they are now hidden by the membrane 
 image on top).
 
-![](fig/layer-reordering.png){alt="A screenshot of Napari with the nuclei and 
-membrane layer swapped"}
+![](fig/layer-reordering.png){alt="A screenshot of Napari with the membrane 
+layer positioned above the nuclei layer. Only the purple membrane layer is 
+displayed in the canvas."}
 
 Here we only have `Image` layers, but there are many more types like `Points`, 
 `Shapes` and `Labels`, some of which we will see [later in the episode
@@ -476,7 +489,7 @@ these new types:
 
 ### Points ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/new_points.svg
-){alt="A screenshot of Napari's point layer button" height='30px'}
+){alt="Napari's point layer button" height='30px'}
 
 This button creates a new 
 [points layer](https://napari.org/stable/howtos/layers/points.html). This can 
@@ -484,7 +497,7 @@ be used to mark specific locations in an image.
 
 ### Shapes ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/new_shapes.svg
-){alt="A screenshot of Napari's shape layer button" height='30px'} 
+){alt="Napari's shape layer button" height='30px'} 
 
 This button creates a new 
 [shapes layer](https://napari.org/stable/howtos/layers/shapes.html). Shapes can 
@@ -492,7 +505,7 @@ be used to mark regions of interest e.g. with rectangles, ellipses or lines.
 
 ### Labels ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/new_labels.svg
-){alt="A screenshot of Napari's labels layer button" height='30px'}
+){alt="Napari's labels layer button" height='30px'}
 
 This button creates a new 
 [labels layer](https://napari.org/stable/howtos/layers/labels.html). This is 
@@ -501,7 +514,7 @@ nuclei.
 
 ### Remove layer ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
-){alt="A screenshot of Napari's delete layer button" height='30px'}  
+){alt="Napari's delete layer button" height='30px'}  
 
 This button removes the currently selected layer (highlighted in blue) from the 
 layer list.
@@ -531,17 +544,18 @@ show a summary tooltip.
 
 Add points and adjust settings to give the result below:
 
-![](fig/points-task.png){alt="Cells image with points marking multiple nuclei"}
+![](fig/points-task.png){alt="Cells image with white points marking multiple 
+nuclei. A dividing cell is marked by a purple star with a white border."}
 
 :::::::::::::::::::::::: solution 
  
 - Click the 'add points' button ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/add.svg
-){alt="Screenshot of Napari's add points button" height='30px'}
+){alt="Napari's add points button" height='30px'}
 - Click on nuclei to add points on top of them
 - Click the 'select points' button ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/select.svg
-){alt="Screenshot of Napari's select points button" height='30px'}
+){alt="Napari's select points button" height='30px'}
 - Click on the point over the dividing nucleus
 - Increase the point size slider
 - Change its symbol to star
