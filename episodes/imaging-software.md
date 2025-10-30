@@ -303,7 +303,7 @@ image, we move up and down in this stack:
 
 ![](fig/dim-slider.png){alt="Three screenshots of the cells image in napari, 
 taken at increasing Z depth from left to right. The horizontal dimension slider 
-is shown below each, with increasing z position.}
+is shown below each, with increasing z position."}
 
 Pressing the arrow buttons at either end of the slider steps through one slice 
 at a time. Also, pressing the 'play' button at the very left of the slider moves 
@@ -371,7 +371,7 @@ again brings us back to the original orientation.
 ![](fig/transpose-dim.png){alt="Two screenshots of the cells image - before and 
 after transposing dimensions. Before transposing, axis 1 points vertically down 
 the page, and axis 2 horizontally right. After, axis 2 points vertically down 
-the page, and axis 1 horizontally right.}
+the page, and axis 1 horizontally right."}
 
 ### Grid ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/canvas-grid-view.svg

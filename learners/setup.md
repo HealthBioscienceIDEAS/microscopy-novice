@@ -181,8 +181,8 @@ napari
 Note: Napari may take a few minutes to open the first time.
 You should now see the napari viewer like this ...
 
-![](../episodes/fig/blank-napari-ui.png){alt="A
- screenshot of the default Napari user interface" width='60%'}
+![](../episodes/fig/blank-napari-ui.png){alt="The default Napari user interface" 
+width='60%'}
 
 Open a file with
 
@@ -201,8 +201,9 @@ Open a file with
 If not then please check the installation first
 by re-running the above steps and checking for any error messages in the
 terminal output. If that fails please get in touch with the course
- organisers for help.](fig/ome_00001.png){alt="A screenshot of freshly
- opened 00001_01.ome.tiff" width='80%'}
+organisers for help.](fig/ome_00001.png){alt="00001_01.ome.tiff displayed in 
+Napari. Many small, round nuclei are scattered across this grayscale image." 
+width='80%'}
 
 Close napari: `File > exit`
 
@@ -248,9 +249,9 @@ happen once, and the `czi` image will open much faster next time.
 If not then please check the installation first
 by re-running the above steps and checking for any error messages in the
 terminal output. If that fails please get in touch with the course
- organisers for help.](fig/plate1-blue.png){alt="A
- screenshot of freshly opened Plate1-Blue-A-12-Scene-3-P3-F2-03.czi"
- width='80%'}
+organisers for help.](fig/plate1-blue.png){
+alt="Plate1-Blue-A-12-Scene-3-P3-F2-03.czi displayed in Napari. A few 
+oval-shaped yeast cells are displayed in this grayscale image." width='80%'}
 
 Close napari: `File > exit`
 
