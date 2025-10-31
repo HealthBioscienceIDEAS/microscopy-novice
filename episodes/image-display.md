@@ -31,15 +31,16 @@ For example, take the image array shown below. Depending on the display
 settings, it can look very different inside Napari:
 
 ![](fig/same-array-diff-display.png
-){alt="Diagram showing an image array (top) with three different colormap 
-options (bottom)" width='70%'}
+){alt="A 4x4 image array, with pixel values ranging from 0-255, is displayed
+using three different colormap options: grayscale, red and green." width='70%'}
 
 Equally, image arrays with different pixel values can look the same in Napari 
 depending on the display settings:
 
 ![](fig/diff-array-same-display.png
-){alt="Diagram showing two image arrays - 8-bit vs 16-bit (top) with the same 
-display (bottom)" width='50%'}
+){alt="Two 4x4 image arrays are displayed - one has pixel values from 0-255, 
+the other from 0-65535. When displayed with a grayscale colormap, both 
+appear identical." width='50%'}
 
 In summary, we can't rely on appearance alone to understand the underlying pixel 
 values. Display settings (like the colormap, brightness and contrast - as we 
@@ -60,7 +61,9 @@ to a piece of software. Napari has hundreds of plugins available on the
 Let's start by going to the napari hub and searching for 'matplotlib':
 
 ![](fig/napari-hub.png
-){alt="Screenshot of searching 'matplotlib' on napari hub"}
+){alt="Search results for 'matplotlib' on the napari hub website. One result
+is displayed - napari Matplotlib - with a short description including the 
+author name, release date and date of last update."}
 
 You should see 'napari Matplotlib' appear in the list (if not, try scrolling 
 further down the page). If we click on `napari matplotlib` this opens a summary 
@@ -77,7 +80,9 @@ In the top menu bar of Napari select:
 `Plugins > Install/Uninstall Plugins...`
 
 ![](fig/plugin-installation.png
-){alt="Screenshot of plugin installation window in Napari"}
+){alt="The napari plugin installation window. The searchbar reads 'matplotlib'. 
+The 'installed plugins' section shows no plugins, and the 'available plugins' 
+section shows napari-matplotlib and napari-signal-selector."}
 
 This should open a window summarising all installed plugins (at the top) and all 
 available plugins to install (at the bottom). If we search for 'matplotlib' in 
@@ -152,7 +157,10 @@ Then open the image histogram with:
 You should see a histogram open on the right side of the image:
 
 ![](fig/mitosis-histogram.png
-){alt="Screenshot of image histogram for mitosis image" width='70%'}
+){alt="A histogram of pixel values for the mitosis image. The x axis runs from 
+0-255, and the y axis from 0-100000. Tall bars, indicating many pixels, are 
+displayed for low intensities (~0-30), decreasing in size rapidly for higher 
+intensities." width='70%'}
 
 This histogram summarises the pixel values of the entire image. On the x axis 
 is the pixel value which run from 0-255 for this 8-bit image. This is split 
@@ -171,7 +179,9 @@ Let's quickly compare to another image. Open the 'coins' image with:
 `File > Open Sample > napari builtins > Coins`
 
 ![](fig/coins-histogram.png
-){alt="Screenshot of image histogram for coins image" width='68%'}
+){alt="A histogram of pixel values for the coins image. The x axis runs from 
+0-255, and the y axis from 0-3500. Tall bars, indicating many pixels, are shown
+for a wide range of pixel values." width='68%'}
 
 From the histogram, we can see that this image has a wider spread of pixel 
 values. There are bars of similar height across many different values (rather 
@@ -189,10 +199,17 @@ assume that all images are displayed with a standard gray colormap and default
 contrast limits of the min/max possible pixel values:
 
 ![](fig/exercise-hist-images.png
-){alt="Screenshot of 4 small grayscale test images" width='68%'}
+){alt="Four noisy grayscale images are labelled 1-4. 1 - half the image is 
+bright, and the other half is dark. 2 - a random pattern of bright and dark 
+pixels. 3 - Similar to 2, but with a lower range of pixel values. 4 - a quarter 
+of the image is bright, and the rest is dark." width='68%'}
 
 ![](fig/exercise-histograms.png
-){alt="Screenshot of 4 histograms, corresponding to the test images"}
+){alt="Four image histograms labelled a-d, each with an x axis ranging from 0-255. 
+a - a thin peak between pixel values of 100-150. b - two peaks, one between 
+values of 0-125, and the other between values of 125-250. The first peak is 
+taller than the second. c - a wide peak between pixel vales of 0-255. 
+d - two peaks in the same positions as b, but with the same height."}
 
 :::::::::::::::::::::::: solution 
 
@@ -239,8 +256,8 @@ display. For example, remember the image at the beginning of this episode,
 showing an image array using three different colormaps:
 
 ![](fig/same-array-diff-display.png
-){alt="Diagram showing an image array (top) with three different colormap 
-options (bottom)" width='70%'}
+){alt="A 4x4 image array, with pixel values ranging from 0-255, is displayed
+using three different colormap options: grayscale, red and green." width='70%'}
 
 Napari supports a wide range of colormaps that can be selected from the 
 'colormap' menu in the layer controls (as we saw in the [Imaging Software 
@@ -249,15 +266,19 @@ episode](imaging-software.md)). For example, see the diagram below showing the
 gray:
 
 ![](fig/gray-colorbar.png
-){alt="Grey colormap shown as a colorbar with corresponding pixel values" 
+){alt="Grey colormap shown as a colorbar ranging from black on the left to white 
+on the right. A scale of pixel values is shown below from 0 to 255." 
 width='50%'}
 
 See the diagram below for examples of 4 different colormaps applied to the 
 'coins' image from Napari, along with corresponding image histograms:
 
 ![](fig/colorbar-comparison.png
-){alt="Diagram showing histograms, colorbars and images for the gray, green, 
-viridis and inferno colormap applied on the coins image" width='90%'}
+){alt="Comparison of the gray, green, viridis and inferno colormaps applied on 
+the coins image. Each colormap has its own row displaying: the image histogram 
+with corresponding colorbar below it, followed by the coins image with colormap 
+applied. In each, the values in the histogram are identical - only the displayed 
+colours change." width='90%'}
 
 Why would we want to use different colormaps?
 
@@ -291,7 +312,9 @@ for a value of 150 we get:
 
 ![](fig/contrast-comparison-150-255.png
 ){alt="Histogram, colorbar and image corresponding to coins coloured by the 
-gray colormap. Contrast limits 150 and 255." width='90%'}
+gray colormap. Contrast limits 150 and 255. Everything below pixel value 150 is 
+black. The image background appears darker, and the coins are harder to 
+distinguish." width='90%'}
 
 Now all the colours from black to white are spread over a smaller range of pixel 
 values from 150-255 and everything below 150 is set to black. Note that in 
@@ -305,7 +328,9 @@ and 200:
 
 ![](fig/contrast-comparison-150-200.png
 ){alt="Histogram, colorbar and image corresponding to coins coloured by the 
-gray colormap. Contrast limits 150 and 200." width='90%'}
+gray colormap. Contrast limits 150 and 200. Everything below pixel value 150 is 
+black, and everything above pixel value 200 is white. The coins appear bright 
+against a dark background." width='90%'}
 
 Now the range of colours from black to white only cover the pixel values from 
 150-200, everything below is black and everything above is white.
@@ -326,7 +351,7 @@ limit will remove any low intensity parts of the image from the display.
 
 Open the Napari console with the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/console.svg
-){alt="A screenshot of Napari's console button" height='30px'}
+){alt="Napari's console button" height='30px'}
 button and copy and paste the code below:
 ```
 import numpy as np

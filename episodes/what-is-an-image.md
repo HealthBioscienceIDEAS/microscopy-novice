@@ -440,10 +440,9 @@ Note that Napari lists coordinates as [y, x] or [rows, columns], so e.g. [1,3]
 would be the pixel in row 1 and column 3. Remember that these coordinates always 
 start from 0 as you can see in the diagram below:
 
-![](fig/coordinates-on-image.png
-){alt="A 4x4 array with rows and columns labelled from 0 to 4. Each pixel is 
-labelled with its coordinate, starting at (0, 0) in the top left to (3, 3) in 
-the bottom right." width=50%}
+![](fig/coordinates-on-image.png){alt="A 4x4 array with rows and columns 
+labelled from 0 to 4. Each pixel is labelled with its coordinate, starting at 
+(0, 0) in the top left to (3, 3) in the bottom right." width="50%"}
 
 For the mitosis image, these coordinates are in pixels, but we'll see in the 
 [filetypes and metadata episode](filetypes-and-metadata.md#pixel-size) that 
