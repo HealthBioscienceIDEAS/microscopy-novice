@@ -1,0 +1,54 @@
+# Adapted from UCL ARC's Python Tooling repository
+# https://github.com/UCL-ARC/python-tooling/
+
+# This is a basic workflow to check for broken links with GitHub Actions
+
+name: Link Checker
+
+concurrency:
+  # Cancel this workflow if new changes trigger another run
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  schedule:
+    - cron: '0 0 * * 0'  # Every Sunday at midnight UTC
+
+jobs:
+  link-checker:
+    timeout-minutes: 2
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
+      - name: Link Checker
+        id: lychee
+        uses: lycheeverse/lychee-action@a8c4c7cb88f0c7386610c35eb25108e448569cb0 # v2.7.0
+        with:
+          # Exclude the image.sc forum, stackoverflow, and doi.org/10.1098/rsta.2021.0110,
+          # they all work but return 403 often within GitHub Actions.continue-on-error: 
+
+          # Ignore gnu.org and fsf.org because they're often down but are still the right
+          # websites to link to!
+
+          # Also exclude links containing '?q=user%3A' matching GitHub search queries
+          # for user profiles that return 404 when tested in GitHub Actions, 
+          # even though they work correctly when accessed via a browser.
+
+          args: "--verbose
+            --exclude https://forum.image.sc/
+            --exclude https://stackoverflow.com
+            --exclude https://doi.org/10.1098/rsta.2021.0110
+            --exclude http://www.gnu.org
+            --exclude http://fsf.org
+            --exclude '.*\\?q=user%3A.*'
+            -- ."
+          fail: true
+          jobSummary: true
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
