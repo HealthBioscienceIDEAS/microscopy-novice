@@ -26,8 +26,10 @@ As we saw in the ['What is an image?' episode](what-is-an-image.md), image pixel
 values are stored as arrays of numbers with certain dimensions and data type. 
 So far we have focused on grayscale 2D images that are represented by a 2D array:
 
-![](fig/array.png){alt="A diagram comparing the array of numbers and image 
-display for a simplified image of an arrow" width='80%'}
+![](fig/array.png){alt="Left - a 4x4 array of numbers, representing the pixel 
+values in a small image of an arrow. All are either 0, or 255. Right - the 
+corresponding displayed image, showing pixel values of 0 as black, and 255 as 
+white." width='80%'}
 
 Light microscopy data varies greatly though, and often has more dimensions 
 representing:
@@ -56,8 +58,9 @@ complex imaging data.
 Go to the top menu-bar of Napari and select:  
 `File > Open Sample > napari builtins > Human Mitosis`
 
-![](fig/human-mitosis-napari.png){alt="A screenshot of a 2D image of human cells 
-undergoing mitosis in Napari"}
+![](fig/human-mitosis-napari.png){alt="A 2D image of human cells 
+undergoing mitosis in Napari. Many small, round nuclei are scattered across this 
+grayscale image."}
 
 We can see this image only has two dimensions (or two 'axes' as they're also 
 known) due to the lack of sliders under the image, and by checking its shape in 
@@ -84,11 +87,12 @@ for the y and x axes). These comments won't appear in the output in your console
 
 Let's remove the mitosis image by clicking the remove layer button ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
-){alt="A screenshot of Napari's delete layer button" height='30px'} at the top 
+){alt="Napari's delete layer button" height='30px'} at the top 
 right of the layer list. Then, let's open a new 3D image:  
 `File > Open Sample > napari builtins > Brain (3D)`
 
-![](fig/brain-napari.png){alt="A screenshot of a head X-ray in Napari"}
+![](fig/brain-napari.png){alt="A human head X-ray displayed in Napari. A 
+cross-section through the head is shown, with the skull, eyes and nose visible."}
 
 This image shows part of a human head acquired using X-ray Computerised 
 Tomography (CT). We can see it has three dimensions due to the slider at the 
@@ -109,8 +113,9 @@ containing a 256x256 array. The x/y axes point along the width/height of the
 first 2D image, and the z axis points along the stack. It is stored as a 3D 
 array:
 
-![](fig/2d-3d-arrays.png){alt="A diagram comparing 2D and 
-3D image arrays" width='80%'}
+![](fig/2d-3d-arrays.png){alt="Left - a 4x4 image array with 2 dimensions (x 
+and y). Right - a 4x4x4 image array with 3 dimensions (x, y and z). The array 
+appears as a 3D cube." width='80%'}
 
 In Napari (and Python in general), dimensions are referred to by their index 
 e.g. here dimension 0 is the z axis, dimension 1 is the y axis and dimension 2 
@@ -141,8 +146,9 @@ Next, let's look at a 3D image where an additional (fourth) dimension contains
 data from different 'channels'. Remove the brain image and select:  
 `File > Open Sample > napari builtins > Cells (3D+2Ch)`  
 
-![](fig/cells-napari.png){alt="A screenshot of a flourescence microscopy image 
-of some cells in Napari"}
+![](fig/cells-napari.png){alt="A fluorescence microscopy image of some cells 
+displayed in Napari. Many round nuclei are shown in green, each surrounded by a 
+thin purple membrane."}
 
 Image channels can be used to store data from multiple sources for the same 
 location. For example, consider the diagram below. On the left is shown a 2D 
@@ -155,8 +161,10 @@ and elasticity at each location (like from [scanning probe microscopy
 ](https://www.nature.com/articles/s43586-021-00033-2)). These separate data 
 sources are stored as 'channels' in our image.
 
-![](fig/channel-arrays.png){alt="A diagram showing different kinds of channels 
-for a 4x4 image of a cell e.g. red / green / surface height / elasticity" 
+![](fig/channel-arrays.png){alt="A diagram comparing two kinds of channel (top - 
+wavelengths of red and green; bottom - measurements of surface height and 
+elasticity). All are displayed for an example 4x4 image array containing a 
+simple cell with a nucleus - columns and rows are labelled 0-3." 
 width='80%'}
 
 This diagram shows an example of a 2D image with channels, but this can also be 
@@ -171,7 +179,7 @@ image channel per fluorophore. In this case, there are two channels - one for a
 flourophore targeting the nucleus, and one for a fluorophore targeting the cell 
 membrane. These are shown as separate image layers in Napari's layer list:
 
-![](fig/layer-list.png){alt="A screenshot of Napari's layer list, showing two 
+![](fig/layer-list.png){alt="Napari's layer list, showing two 
 image layers named 'nuclei' and 'membrane'"}
 
 Recall from the [imaging software episode](imaging-software.md) that 'layers' 
@@ -229,8 +237,11 @@ arrays with 3 dimensions (60, 256, 256) are combined to give one array with
 four dimensions (2, 60, 256, 256) with the first axis representing the 2 channels. 
 See the diagram below for a visualisation of how these 3D and 4D arrays compare:
 
-![](fig/3d-4d-arrays.png){alt="A diagram comparing image arrays with three 
-(z, y, x) and four (c, z, y, x) dimensions" width='80%'}
+![](fig/3d-4d-arrays.png){alt="Left - a 4x4x4 image array with 3 dimensions (x, 
+y and z). The array appears as a 3D cube. Right - an image array with 4 
+dimensions (channels, x, y and z). The two channels (labelled channel 0 and 
+channel 1) are each displayed as a 4x4x4 cube with different colours." 
+width='80%'}
 
 As we've seen before, the labels on the left hand side of each slider in Napari 
 matches the index of the dimension it moves along. The top slider (labelled 1) 
@@ -293,7 +304,7 @@ a time)
 
 2. Channels can be easily shown/hidden with the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
-){alt="A screenshot of Napari's eye button" height='20px'} icons
+){alt="Napari's eye button" height='20px'} icons
 
 3. Display settings like contrast limits and colormaps can be controlled 
 independently for each channel (rather than only for the entire image)
@@ -331,18 +342,19 @@ Note this image can take a while to open, so give it some time!
 Alternatively, you can select in the top menu-bar:  
 `File > Open File(s)...`
 
-![](fig/cells-time-napari.png){alt="A screenshot of a 2D time series in Napari"}
+![](fig/cells-time-napari.png){alt="A snapshot from a 2D time series in Napari. 
+Small, round nuclei can be seen scattered throughout this grayscale image."}
 
 This image is a 2D time series (tyx) of some human cells undergoing mitosis. The 
 slider at the bottom now moves through time, rather than z or channels. Try 
 moving the slider from left to right -  you should see some nuclei divide and 
 the total number of nuclei increase. You can also press the small ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/right_arrow.svg
-){alt="A screenshot of Napari's play button" height='20px'} icon at the 
+){alt="Napari's play button" height='20px'} icon at the 
 left side of the slider to automatically move along it. The icon will change 
 into a ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/square.svg
-){alt="A screenshot of Napari's stop button" height='25px'}- pressing this will 
+){alt="Napari's stop button" height='25px'}- pressing this will 
 stop the movement.
 
 We can again check the image dimensions by running the following:
@@ -360,7 +372,8 @@ print(image.shape)
 Note that this image has a total of 3 dimensions, and so it will also be stored 
 in a 3D array:
 
-![](fig/tyx-array.png){alt="A diagram of a tyx image array" width='40%'}
+![](fig/tyx-array.png){alt="A 4x4x4 image array with 3 dimensions (t, y and x). 
+The array appears as a 3D cube." width='40%'}
 
 This makes the point that the dimensions don't always represent the same 
 quantities. For example, a 3D image array with shape (512, 512, 512) could 
@@ -417,7 +430,7 @@ This is a fluorescence microscopy image of mouse kidney tissue.
 2. What do each of those dimensions represent? (e.g. t, c, z, y, x) **Hint:** 
 try using the roll dimensions button ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/roll.svg
-){alt="A screenshot of Napari's roll dimensions button" height='25px'} to view 
+){alt="Napari's roll dimensions button" height='25px'} to view 
 different combinations of axes.
 
 3. Once you know which dimension represent channels, remove the image and load 
@@ -451,7 +464,7 @@ image.shape
 ### 2
 If we press the roll dimensions button ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/roll.svg
-){alt="A screenshot of Napari's roll dimensions button" height='25px'} once, we 
+){alt="Napari's roll dimensions button" height='25px'} once, we 
 can see an image of various cells and nuclei. Moving the slider labelled '0' 
 seems to move up and down in this image (i.e. the z axis), while moving the 
 slider labelled '3' changes between highlighting different features like nuclei 
@@ -480,8 +493,8 @@ Let's open an example RGB image with the command below. Make sure you remove any
 existing image layers first!  
 `File > Open Sample > napari builtins > Skin (RGB)`
 
-![](fig/skin-napari.png){alt="A screenshot of an H+E slide of skin layers 
-in Napari"}
+![](fig/skin-napari.png){alt="An H+E slide of skin layers 
+in Napari. Pink skin cells are displayed in full-colour."}
 
 This image is a hematoxylin and eosin stained slide of dermis and epidermis 
 (skin layers). Let's check its shape:
@@ -501,8 +514,9 @@ they were for the multichannel images above. Instead, they are shown combined
 together as a single image. If you hover your mouse over the image, you should 
 see three pixel values printed in the bottom left representing (R, G, B).
 
-![](fig/rgb-values.png){alt="A screenshot of an H+E slide of skin layers in 
-Napari, highlighting the (R,G,B) values"}
+![](fig/rgb-values.png){alt="A closeup of the H+E slide in 
+Napari. The mouse cursor hovers over a pixel, and the corresponding (R, G, B) 
+values of (211, 133, 159) are shown at the bottom of the user interface."}
 
 We can see these different channels more clearly if we right click on the 'skin' 
 image layer and select:  
@@ -511,14 +525,16 @@ image layer and select:
 This shows the red, green and blue channels as separate image layers. Try 
 inspecting each one individually by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
-){alt="A screenshot of Napari's eye button" height='30px'} icons to hide the 
+){alt="Napari's eye button" height='30px'} icons to hide the 
 other layers.
 
 We can understand these RGB pixel values better by opening a different sample 
 image. Remove all layers, then select:  
 `File > Open Sample > napari builtins > Colorwheel (RGB)`
 
-![](fig/colorwheel-napari.png){alt="A screenshot of a colorwheel in Napari"}
+![](fig/colorwheel-napari.png){alt="A colorwheel displayed in Napari. White is 
+at the centre, moving to red at the top, blue at the bottom left and green at 
+the bottom right."}
 
 This image shows an RGB colourwheel - try hovering your mouse over different 
 areas, making note of the (R, G, B) values shown in the bottom left of Napari. 
@@ -584,7 +600,9 @@ will need to [install the `napari-matplotlib` plugin
 Then open a histogram with:  
 `Plugins > napari Matplotlib > Histogram`
  
-![](fig/rgb-histogram.png){alt="RGB histogram of the Napari Skin sample image"}
+![](fig/rgb-histogram.png){alt="RGB histogram of the Napari Skin sample image. 
+The x axis runs from 0-255, and the y axis from 0-120000. Separate coloured 
+lines are shown for each of: red (r), green (g) and blue (b)."}
 
 This histogram shows separate lines for R, G and B - this is because each 
 displayed pixel is represented by three values (R, G, B). This differs from the 
@@ -611,8 +629,8 @@ value has a minimum of 0 and a maximum of 255.
 
 :::::::::::::::::::::::: solution 
  
-![](fig/rgb-exercise.png){alt="Diagram of (R, G, B) values next to corresponding 
-colours" width='50%'}
+![](fig/rgb-exercise.png){alt="(0, 0, 255) = blue; (255, 255, 255) = white; 
+(0, 0, 0) = black; (255, 255, 0) = yellow; (100, 100, 100) = gray." width='50%'}
 
 :::::::::::::::::::::::::::::::::
 
