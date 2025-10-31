@@ -49,10 +49,7 @@ action to complete, after which the updates should be visible on the
 ### Building the lesson locally
 
 The [*sandpaper*](https://github.com/carpentries/sandpaper) package is used to
-build the lesson website. We created forks of
-[*sandpaper*](https://github.com/HealthBioscienceIDEAS/sandpaper) and
-[*varnish*](https://github.com/HealthBioscienceIDEAS/varnish) to style the
-lesson website with **IDEAS** branding.
+build the lesson website. We created a fork of [*varnish*](https://github.com/HealthBioscienceIDEAS/varnish) to style the lesson website with **IDEAS** branding.
 
 To install these forks locally, run the following from within an R session:
 
