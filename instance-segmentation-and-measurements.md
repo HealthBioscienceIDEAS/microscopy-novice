@@ -238,7 +238,7 @@ Let's start with label 3 which is the largest labelled nucleus.
 ![](fig/region_props_after_3.png){alt="A screenshot of the
 region-props dialog highlighting the largest nucleus."}
 According to the table, nucleus 3 is larger than the other nuclei
-(202258 pixels). In the [what is an image](what-is-an-image.html#pixels)
+(202258 pixels). In the [what is an image](what-is-an-image.md#pixels)
 lesson, we learnt to use the mouse pointer to find particular values in an
 image. Hovering the mouse pointer over the light purple nuclei at the bottom
 left of the image we see that these apparently four separate nuclei have
