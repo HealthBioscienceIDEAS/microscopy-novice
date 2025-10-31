@@ -191,7 +191,8 @@ noise usually appears as a random 'graininess' over the image and can make
 details difficult to see.
 
 ![](fig/image-with-noise.png){alt="Left - the nuclei from Napari's Cells 
-(3D+2Ch) sample image. Right - same image with added gaussian noise"}
+(3D+2Ch) sample image. Right - same image with added gaussian noise, a seemingly 
+random pattern of bright and dark pixels now obscure the image."}
 
 To identify and measure our features of interest, the absolute size of the 
 signal and noise are less important than the ratio between them. For example, 
@@ -209,9 +210,12 @@ distribution centred on each value (i.e. 20 and 30) with a standard deviation of
 ](https://bioimagebook.github.io/chapters/3-fluorescence/3-formation_noise/formation_noise.html) 
 of Pete Bankhead's bioimage book.
 
-![](fig/snr-comparison-low.png){alt="Diagram of a low signal-to-noise scenario. 
-Left - histogram with no noise. Middle - histogram with added noise (separate 
-histograms). Right - histogram with added noise (combined histogram)."}
+![](fig/snr-comparison-low.png){alt="Left - histogram with no noise, two 
+vertical lines are displayed at pixel values of 20 and 30. Middle - histogram 
+with added noise. The two lines are now expanded into broader, overlapping peaks 
+(shown in different colours). Right - Same as the middle histogram, but with 
+peaks displayed in the same colour. Due to their large overlap, they appear as 
+one combined peak."}
 
 If we imagine a scenario with higher signal, now values of 80 and 120 (one still 
 1.5x higher than the other), then we can see that adding the same level of noise 
@@ -221,9 +225,12 @@ clearly distinguish the values in the combined histogram on the right. This
 demonstrates how increasing the signal to noise ratio can improve our ability to 
 recognise and measure different features.
 
-![](fig/snr-comparison-high.png){alt="Diagram of a high signal-to-noise scenario. 
-Left - histogram with no noise. Middle - histogram with added noise (separate 
-histograms). Right - histogram with added noise (combined histogram)."}
+![](fig/snr-comparison-high.png){alt="Left - histogram with no noise, two 
+vertical lines are displayed at pixel values of 80 and 120. Middle - histogram 
+with added noise. The two lines are now expanded into broader, slightly 
+overlapping peaks (shown in different colours). Right - Same as the middle 
+histogram, but with peaks displayed in the same colour. Due to their small 
+overlap, they can still be distinguished as two separate peaks."}
 
 How can we improve the signal to noise ratio of our images? The main solution is 
 to increase the amount of light that we detect per image, by adjusting our 
@@ -285,8 +292,9 @@ increase light exposure to achieve a comparable signal to noise ratio. This may
 mean using higher light intensity, or imaging more slowly (with increased dwell 
 time/exposure time).
 
-![](fig/acquisition-tradeoffs.png){alt="Diagram highlighting some of the 
-trade-offs of increasing spatial resolution" width="80%"}
+![](fig/acquisition-tradeoffs.png){alt="An increase in spatial resolution may 
+require: decreased temporal resolution, decreased field of view, increased data 
+size, increased light exposure, and decreased signal to noise ratio." width="80%"}
 
 Different microscopes will provide different ranges for these features - for 
 example, supporting different ranges of spatial or temporal resolution, or 
@@ -436,7 +444,8 @@ Consider the 16x16 pixel image below of a circle. If the pixel size in x/y is
 
 
 ![](fig/pixel-size-magnification-exercise-1.png){alt="A 16x16 image of a 
-grayscale circle" width="70%"}
+grayscale circle. The background is light gray, with the circle as dark gray - 
+the circle is 12 pixels wide." width="70%"}
 
 Below is a downsampled version of the same image (now 8x8 pixels).
 
@@ -446,7 +455,7 @@ Below is a downsampled version of the same image (now 8x8 pixels).
 - If the circle is displayed as 9cm wide, then what is the magnification?
 
 ![](fig/pixel-size-magnification-exercise-2.png){alt="An 8x8 image of a 
-grayscale circle" width="70%"}
+grayscale circle. The circle is now 6 pixels wide." width="70%"}
 
 :::::::::::::::::::::::: solution 
 
@@ -522,7 +531,8 @@ grayscale colourmap (black = 0, white = maximum).
 
 ![](fig/nyquist-1.png){alt="Left - a diagram of two round cells (blue, 10 
 micrometre wide) overlaid by a perfectly aligned 10 micrometre pixel grid. 
-Right - the equivalent image with a grayscale colormap" width="80%"}
+Right - the equivalent image with a grayscale colormap - the cells are displayed 
+as two separate, white squares." width="80%"}
 
 When the cells lie at the centre of each pixel, we can easily detect them as 
 separate objects in our final image. The issue comes when the cells are offset 
@@ -532,14 +542,16 @@ in a final image where where we can no longer separate the two cells:
 
 ![](fig/nyquist-2.png){alt="Left - a diagram of two round cells (blue, 10 
 micrometre wide) overlaid by a misaligned 10 micrometre pixel grid. 
-Right - the equivalent image with a grayscale colormap" width="80%"}
+Right - the equivalent image with a grayscale colormap - the cells appear as a 
+continuous gray line and can't be separated." width="80%"}
 
 Only by decreasing the pixel size (e.g. to 5 micrometre) can we be sure to 
 capture the two cells, no matter their alignment with the grid:
 
 ![](fig/nyquist-3.png){alt="Left - a diagram of two round cells (blue, 10 
 micrometre wide) overlaid by a 5 micrometre pixel grid. 
-Right - the equivalent image with a grayscale colormap" width="80%"}
+Right - the equivalent image with a grayscale colormap - the cells are displayed 
+as two separate, gray squares." width="80%"}
 
 Failing to meet the Nyquist critera can also result in various image artifacts 
 known as 'aliasing'. For example, consider the digram below - here we have 6 
@@ -548,8 +560,10 @@ spacing of 10 micrometre, this produces an odd effect in our final image, where
 we see a repeating pattern that is much wider than the real spacing of our cells.
 
 ![](fig/aliasing.png){alt="Top - a diagram of six round cells (blue, 5 
-micrometre wide) overlaid by a 10 micrometre pixel grid. 
-Bottom - the equivalent image with a grayscale colormap" width="80%"}
+micrometre wide) overlaid by a misaligned 10 micrometre pixel grid. 
+Bottom - the equivalent image with a grayscale colormap - the cells appear as a 
+line of alternating 20 micrometre wide gray and white rectangles (4 in total)." 
+width="80%"}
 
 This is an example of aliasing where a high frequency detail in the image (the 
 repeating pattern of small cells) is aliased to give a false lower frequency 
@@ -600,8 +614,11 @@ values?
 
 - If not, how might you adjust your acquisition settings to improve it?
 
-![](fig/exercise-qc-histograms.png){alt="Diagram of four example acquisition 
-image histograms (labelled a-d)"}
+![](fig/exercise-qc-histograms.png){alt="Four 
+image histograms labelled a-d, with an x axis from 0-255. a - a thin peak 
+between 50-100. b - a broad peak between 0-255. c - a low, broad peak from 
+~150-254, with a very tall peak at 255. d - two peaks, one from 25-75 and the 
+other from 75-250. The first is higher than the second."}
 
 :::::::::::::::::::::::: solution 
 

@@ -282,7 +282,8 @@ the addition of dyes/chemicals that bind to specific structures).
 
 ![The image above is Napari's Skin (RGB) sample image - it is a brightfield 
 image of a hematoxylin and eosin stained slide of dermis and epidermis.
-](fig/skin.png){alt="An H+E slide of skin layers - layers of pink skin cells are displayed in full-colour." width='70%'}
+](fig/skin.png){alt="An H+E slide of skin layers - layers of pink skin cells are 
+displayed in full-colour." width='70%'}
 
 To increase contrast (especially for unstained samples), widefield microscopes 
 often support ['phase-contrast'
