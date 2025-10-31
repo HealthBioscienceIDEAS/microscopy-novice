@@ -60,8 +60,8 @@ while to open, so give it some time! Alternatively, you can select in Napari's
 top menu-bar:  
 `File > Open File(s)...`
 
-![](fig/plate1-czi-napari.png){alt="A screenshot of yeast sample data shown in 
-Napari"}
+![](fig/plate1-czi-napari.png){alt="Yeast sample data displayed in Napari. 
+A few oval-shaped yeast cells are shown in grayscale."}
 
 This image is part of a [published dataset on Image Data Resource
 ](https://idr.openmicroscopy.org/search/?query=Name:idr0011-ledesmafernandez-dad4/screenD) 
@@ -122,8 +122,9 @@ import rich
 rich.print(image.standard_metadata)
 ```
 
-![](fig/metadata-console.png){alt="Screenshot of metadata printed to Napari's 
-console"}
+![](fig/metadata-console.png){alt="The output of rich.print(standard_metadata) 
+in Napari's console. Each item is displayed on its own line with colour-coding 
+for different types of data e.g. strings and numbers."}
 
 If you'd prefer not to have colour-coding, but keep the clearer formatting
 of one item per line - you can run this instead:
@@ -352,8 +353,8 @@ print(image_layer_3.scale)
 
 ### 2
 
-![](fig/yeast-exercise-2.png){alt="Yeast image shown in Napari with layer 3 
-twice as big in y and x"}
+![](fig/yeast-exercise-2.png){alt="Yeast image with layer 3 displayed twice as 
+large in y and x, compared to the other two layers."}
 
 ```python
 image_layer_3.scale = (0.35, 0.4, 0.4)
@@ -364,8 +365,8 @@ be 0.2047619&mu;m) to about twice its original value (now 0.4&mu;m).
 
 ### 3
 
-![](fig/yeast-exercise-3.png){alt="Yeast image shown in Napari with layer 3 
-twice as big in y"}
+![](fig/yeast-exercise-3.png){alt="Yeast image with layer 3 displayed 
+twice as large in y, compared to the other two layers."}
 
 ```python
 image_layer_3.scale = (0.35, 0.4, 0.2047619)
@@ -378,8 +379,7 @@ to stretched or squashed images like this!
 
 ### 4
 
-![](fig/yeast-exercise-4.png){alt="Yeast image shown in Napari with all layers 
-half size in y/x"}
+![](fig/yeast-exercise-4.png){alt="Yeast image with all layers half size in y/x"}
 
 We set the pixel size in y/x to half its original value of 0.2047619&mu;m:
 ```python
@@ -511,7 +511,7 @@ Which is smallest?
 - Open all four images in Napari. Zoom in very close to a bright nucleus, and 
 try showing / hiding different layers with the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
-){alt="A screenshot of Napari's eye button" height='30px'} icon. 
+){alt="Napari's eye button" height='30px'} icon. 
 How do they differ? How does each compare to timepoint 30 of the original 
 '00001_01.ome' image?
 
@@ -563,8 +563,9 @@ See below for an example image pyramid (using napari's Cells (3D + 2Ch) sample
 image) with three different resolution levels stored. Each level is about twice
 as small the last in x and y:
 
-![](fig/image-pyramid.png){alt="Diagram of an image pyramid with three 
-resolution levels" width="40%"}
+![](fig/image-pyramid.png){alt="Diagram of an image pyramid. The fluorescence 
+microscopy cell image is displayed three times, decreasing in size from the 
+bottom of the pyramid to the top." width="40%"}
 
 
 ## Common file formats
