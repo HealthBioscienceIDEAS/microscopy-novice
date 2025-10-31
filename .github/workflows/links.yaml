@@ -29,11 +29,18 @@ jobs:
           # github runners and exclude relative links to other pages. Ignore
           # gnu.org and fsf.org because they're often down but are still the right
           # websites to link to!
+
+          # Also exclude links containing '?q=user%3A' matching GitHub search queries
+          # for user profiles that return 404 when tested in GitHub Actions, 
+          # even though they work correctly when accessed via a browser.
+
+
           args: "--verbose
             --exclude https://forum.image.sc/
             --exclude https://stackoverflow.com
             --exclude http://www.gnu.org
             --exclude http://fsf.org
+            --exclude '*?q=user%3A*'
             -- ."
           fail: true
           jobSummary: true
