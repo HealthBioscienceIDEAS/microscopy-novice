@@ -26,8 +26,9 @@ jobs:
         uses: lycheeverse/lychee-action@a8c4c7cb88f0c7386610c35eb25108e448569cb0 # v2.7.0
         with:
           # Exclude the image.sc forum and stackoverflow (which both work) but return 403 from
-          # github runners. Ignore gnu.org and fsf.org because they're often down but are still 
-          # the right websites to link to!
+          # github runners and exclude relative links to other pages. Ignore
+          # gnu.org and fsf.org because they're often down but are still the right
+          # websites to link to!
 
           # Also exclude links containing '?q=user%3A' matching GitHub search queries
           # for user profiles that return 404 when tested in GitHub Actions, 
@@ -38,8 +39,8 @@ jobs:
             --exclude https://stackoverflow.com
             --exclude http://www.gnu.org
             --exclude http://fsf.org
-            --exclude '.*\\?q=user%3A.*'"
-            
+            --exclude '.*\\?q=user%3A.*'
+            -- ."
           fail: true
           jobSummary: true
         env:
