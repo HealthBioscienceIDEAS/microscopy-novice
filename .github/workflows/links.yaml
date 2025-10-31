@@ -40,7 +40,7 @@ jobs:
             --exclude https://stackoverflow.com
             --exclude http://www.gnu.org
             --exclude http://fsf.org
-            --exclude '*?q=user%3A*'
+            --exclude '.*\\?q=user%3A.*'
             -- ."
           fail: true
           jobSummary: true
