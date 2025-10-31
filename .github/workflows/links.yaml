@@ -29,19 +29,11 @@ jobs:
           # github runners and exclude relative links to other pages. Ignore
           # gnu.org and fsf.org because they're often down but are still the right
           # websites to link to!
-          #
-          # Ignore the whole of the project slug README since the links are
-          # necessarily not real links - i.e. demos and to be filled by
-          # cookiecutter values.
           args: "--verbose
             --exclude https://forum.image.sc/
             --exclude https://stackoverflow.com
             --exclude http://www.gnu.org
             --exclude http://fsf.org
-            --exclude docs/pages
-            --exclude docs/_includes
-            --exclude-path '\\{\\{cookiecutter.project_slug\\}\\}/README.md'
-            --exclude-path 'tests/data'
             -- ."
           fail: true
           jobSummary: true
