@@ -5,6 +5,11 @@
 
 name: Link Checker
 
+concurrency:
+  # Cancel this workflow if new changes trigger another run
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
     branches:
