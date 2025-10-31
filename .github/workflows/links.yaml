@@ -12,7 +12,10 @@ on:
   pull_request:
   schedule:
     - cron: '0 0 * * 0'  # Every Sunday at midnight UTC
-
+concurrency:
+  # Cancel this workflow if new changes trigger another run
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   link-checker:
     timeout-minutes: 2
