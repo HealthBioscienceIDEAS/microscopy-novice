@@ -282,7 +282,7 @@ the addition of dyes/chemicals that bind to specific structures).
 
 ![The image above is Napari's Skin (RGB) sample image - it is a brightfield 
 image of a hematoxylin and eosin stained slide of dermis and epidermis.
-](fig/skin.png){alt="Screenshot of Napari's Skin sample image" width='70%'}
+](fig/skin.png){alt="An H+E slide of skin layers - layers of pink skin cells are displayed in full-colour." width='70%'}
 
 To increase contrast (especially for unstained samples), widefield microscopes 
 often support ['phase-contrast'
@@ -297,13 +297,15 @@ passes through a sample to increase contrast.
 via [Wikimedia Commons
 ](https://commons.wikimedia.org/wiki/File:SH-SY5Y_cells,_transmitted_light_phase_gradient_contrast_microscopy_with_ZEISS_Celldiscoverer_7_(30614936722).jpg)
 )](fig/phase-contrast.jpg){alt="Phase gradient contrast image of SH-SY5Y 
-cells" width='70%'}
+cells. A large number of cells are displayed in grayscale, many overlapping with 
+each other in this crowded 2D view." width='70%'}
 
 ![The image above is a DIC image of some yeast cells (_Saccharomyces cerevisiae_) 
 from [Wikimedia Commons
 ](https://commons.wikimedia.org/wiki/File:S_cerevisiae_under_DIC_microscopy.jpg)
-](fig/dic-example.jpg){alt="DIC image of some yeast cells - Saccharomyces 
-cerevisiae" width='50%'}
+](fig/dic-example.jpg){alt="DIC image of five yeast cells - Saccharomyces 
+cerevisiae (grayscale). Some are round in shape, while others show a small 'bud' 
+protruding from one side." width='50%'}
 
 Widefield microscopes can also be used for fluorescence microscopy. In 
 fluorescence microscopy, fluorescent labels are used that target specific 
@@ -332,7 +334,8 @@ including widefield and also confocal (that will be discussed below).
 via [Wikimedia Commons
 ](https://commons.wikimedia.org/wiki/File:Mitotic_LLC-PK1_cells,_fluorescence_microscopy_(23700644352).jpg)
 )](fig/fluorescence-example.jpg){alt="Fluorescence microscopy image of some 
-LLC-PK1 cells" width='70%'}
+LLC-PK1 cells - round nuclei are displayed in red, with the cytoskeleton 
+highlighted in green." width='70%'}
 
 The main issue with widefield microscopes is that, due to the whole sample being 
 illuminated, it can produce rather blurry images (especially for thicker 
@@ -373,8 +376,10 @@ different confocal methods - e.g. see figure 2 for a comparison of
 laser-scanning and spinning disc confocals.
 
 ![The image above is Napari's Kidney (3D + 3Ch) sample image. This was acquired 
-with confocal fluorescence microscopy.](fig/confocal-example.png){alt="Screenshot 
-of Napari's Kidney (3D + 3Ch) sample image" width='60%'}
+with confocal fluorescence microscopy.](fig/confocal-example.png){alt="Napari's 
+mouse kidney sample image. A slice through the tissue is shown, with different 
+cell structures highlighted by the three channels displayed in red, green and 
+blue." width='60%'}
 
 ### Super-resolution
 
