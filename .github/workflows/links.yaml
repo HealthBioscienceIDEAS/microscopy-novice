@@ -40,8 +40,6 @@ jobs:
           # for user profiles that return 404 when tested in GitHub Actions, 
           # even though they work correctly when accessed via a browser.
 
-          # Exclude relative pages.
-
           args: "--verbose
             --exclude https://forum.image.sc/
             --exclude https://stackoverflow.com
