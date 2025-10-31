@@ -390,8 +390,8 @@ based on modified widefield or confocal microscope setups. The increase in
 resolution they provide usually comes at the cost of increased complexity in 
 experiment/microscope setup. There are far too many types of super-resolution to 
 cover in this episode, but [Schermelleh et al.
-](https://www.nature.com/articles/s41556-018-0251-8_) and [Prakash et al
-](https://royalsocietypublishing.org/doi/10.1098/rsta.2021.0110) provide useful 
+](https://doi.org/10.1038/s41556-018-0251-8) and [Prakash et al
+](https://doi.org/10.1098/rsta.2021.0110) provide useful 
 reviews if you are interested. 
 
 ### Choosing a method
