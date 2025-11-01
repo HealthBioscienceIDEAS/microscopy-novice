@@ -238,6 +238,21 @@ you may see lots of text printed to the terminal as it downloads these extra
 files. This may take up to 5 minutes - so give it some time. This will only 
 happen once, and the `czi` image will open much faster next time.
 
+
+!!! warning Does napari fail to open the `czi` image?
+    
+    Napari automatically installs `bioio-bioformats`, but it's not needed for `czi` images and can cause problems on some Windows systems. 
+    
+    If `bioio-bioformats` is causing the problem, you may see an error like the following:
+    `failed with error: bioformats does not support the image` 
+    
+    **To fix:**
+    ```bash
+    pip uninstall bioio-bioformats
+    ```
+    Restart Napari and try opening the image again.
+
+
 ::::::::::::::::::::::::::
 ::::::::::::::::::: solution
 
