@@ -58,12 +58,12 @@ If you don't have Napari's 'Cells (3D + 2Ch)' image open, then open it with:
 Make sure you only have 'nuclei' in the layer list. Select any additional 
 layers, then click the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
-){alt="A screenshot of Napari's delete layer button" height='30px'} icon to 
+){alt="Napari's delete layer button" height='30px'} icon to 
 remove them. Also, select the nuclei layer (should be highlighted in blue), and 
 change its colormap from 'green' to 'gray' in the layer controls.
 
-![](fig/nuclei-gray-napari.png){alt="A screenshot of nuclei in Napari using 
-the gray colormap"}
+![](fig/nuclei-gray-napari.png){alt="Nuclei in Napari using 
+the gray colormap."}
 
 Now let's look at how we can create a mask of the nuclei. Recall from the 
 [last episode](quality-control-and-manual-segmentation.md), that a 'mask' is a 
@@ -85,7 +85,8 @@ recall that we looked at histograms in detail in the [image display episode
 `Plugins > napari Matplotlib > Histogram`
 
 ![](fig/nuclei-histogram.png){alt="A histogram of the 29th z slice of Napari's 
-cell sample image"}
+cell image. The x axis runs from ~0-60000 and the y axis from ~0-7000. Two peaks 
+are displayed between ~0-40000, the left one higher than the right."}
 
 From this histogram, we can see two peaks - a larger one at low intensity, then 
 a smaller one at higher intensity. Looking at the image, it would make sense if 
@@ -94,16 +95,18 @@ representing the nuclei. We can verify this by adjusting the contrast limits in
 the layer controls. If we move the left contrast limits node to the right of the 
 low intensity peak (around 8266), we can still clearly see the nuclei:
 
-![](fig/contrast-limit-8266-nuclei.png){alt="Left, nuclei with gray colormap. 
-Right, histogram of the same image. Both with left contrast limit set 
-to 8266."}
+![](fig/contrast-limit-8266-nuclei.png){alt="Image and histogram when the lower 
+contrast limit is raised to 8266. Left, grayscale nuclei - the background is 
+darker, but nuclei are still clearly visible. Right, histogram - a vertical line 
+appears at pixel value 8266, sitting between the two peaks."}
 
 If we move the left contrast limits node to the right of the higher intensity 
 peak (around 28263), most of the nuclei disappear from the image:
 
-![](fig/contrast-limit-28263-nuclei.png){alt="Left, nuclei with gray colormap. 
-Right, histogram of the same image. Both with left contrast limit set 
-to 28263."}
+![](fig/contrast-limit-28263-nuclei.png){alt="Image and histogram when the lower 
+contrast limit is raised to 28263. Left, grayscale nuclei - most of the image 
+appears black and the nuclei aren't visible. Right, histogram - a vertical line 
+appears at pixel value 28263, sitting to the right of both peaks."}
 
 Recall that you can set specific values for the contrast limits by right 
 clicking on the contrast limits slider in Napari.
@@ -131,14 +134,15 @@ nuclei contrast limits back to normal (select 'nuclei' in the layer list, then
 drag the left contrast limits node back to zero), then toggle on/off the mask 
 or nuclei layers with the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
-){alt="A screenshot of Napari's eye button" height='30px'} icon, you should see 
+){alt="Napari's eye button" height='30px'} icon, you should see 
 that the brown areas match the nucleus boundaries reasonably well. They aren't 
 perfect though! The brown regions have a speckled appearance where some regions 
 inside nuclei aren't labelled and some areas in the background are incorrectly 
 labelled. 
 
 ![](fig/threshold-mask.png){alt="Mask of nuclei (brown) overlaid on nuclei 
-image - created with manual thresholding" width="60%"}
+image - created with manual thresholding. Patchy holes are visible in the mask, 
+as well incorrectly labelled pixels in the background." width="60%"}
 
 This is mostly due to the presence of noise in our image (as we looked at in the 
 [choosing acquisition settings episode
@@ -198,7 +202,7 @@ else:
 viewer.add_image(image)
 ```
 
-![](fig/manual-thresholding-exercise-shapes.png){alt="Test image containing a 
+![](fig/manual-thresholding-exercise-shapes.png){alt="Noisy test image containing a 
 rectangle, circle and triangle"}
 
 Create a mask for each shape by choosing thresholds based on the image's 
@@ -229,7 +233,8 @@ First, we show a histogram for the image by selecting the 'image' layer, then:
 `Plugins > napari Matplotlib > Histogram`
 
 ![](fig/manual-thresholding-exercise-histogram.png){alt="Histogram of the 
-shape image"}
+shape image. The x axis runs from 0-255 and the y axis from 0-1200. Four 
+distinct peaks are displayed."}
 
 By moving the left contrast limits node we can figure out what each peak 
 represents. You should see that the peaks from left to right are:
@@ -276,8 +281,9 @@ In the top menu-bar of Napari select:
 Then search for `napari-skimage` and click the blue button labelled 'install'. 
 Wait for the installation to complete.
 
-![](fig/napari-skimage-installation.png){alt="Screenshot of plugin 
-installation window for napari-skimage"}
+![](fig/napari-skimage-installation.png){alt="Napari's plugin 
+installation window. The search-bar reads 'napari-skimage'. No installed plugins 
+are shown, and two available: napari-skimage and napari-skimage-regionprops."}
 
 Once the plugin is installed, **you will need to close and re-open Napari**.
 
@@ -289,7 +295,7 @@ Let's open the cells image in Napari again:
 As before, make sure you only have 'nuclei' in the layer list. Select any 
 additional layers, then click the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
-){alt="A screenshot of Napari's delete layer button" height='30px'} icon to 
+){alt="Napari's delete layer button" height='30px'} icon to 
 remove them. Also, select the nuclei layer (should be highlighted in blue), and 
 change its colormap from 'green' to 'gray' in the layer controls.
 
@@ -305,14 +311,15 @@ For now, we are interested in the _gaussian blur_ under:
 If you click on this option, you should see a new panel appear on the right side 
 of Napari:
 
-![](fig/gaussian-options.png){alt="Screenshot of settings for gaussian blur in 
-Napari" width='40%'}
+![](fig/gaussian-options.png){alt="Settings panel for gaussian blur in 
+Napari. From top to bottom this contains: image, sigma, preserve range, mode and 
+an 'Apply Gaussian Filter' button." width='40%'}
 
 Make sure you have 'nuclei' selected on the 'image' row, then click 
 'Apply Gaussian Filter':
 
-![](fig/nuclei-blurred-1.png){alt="Nuclei image after gaussian blur with sigma 
-of 1" width='40%'}
+![](fig/nuclei-blurred-1.png){alt="Nuclei after gaussian blur with sigma 
+of 1 - the nuclei appear slightly blurred." width='40%'}
 
 You should see a new image appear in the layer list called 
 'nuclei_gaussian_σ=1.0', which is a slightly blurred version of the 
@@ -320,10 +327,11 @@ original nuclei image.
 
 Try increasing the 'sigma' value to three and clicking run again:
 
-![](fig/nuclei-blurred-3.png){alt="Nuclei image after gaussian blur with sigma 
-of 3" width='40%'}
+![](fig/nuclei-blurred-3.png){alt="Nuclei after gaussian blur with sigma 
+of 3 - the nuclei appear heavily blurred." width='40%'}
 
-You should see a new 'nuclei_gaussian_σ=3.0' layer that is much more heavily blurred.
+You should see a new 'nuclei_gaussian_σ=3.0' layer that is much more heavily 
+blurred.
 
 What's happening here? What exactly does a gaussian blur do? A gaussian blur is 
 an example of a 'linear filter' which is used to manipulate pixel values in 
@@ -343,7 +351,8 @@ example 3x3 kernel is shown below:
 
 ![](fig/nuclei-kernel.png){alt="Left - small area of the nucleus image with a 
 pixel highlighted in red. Around this pixel is shown a 3x3 box. Right - example 
-of a 3x3 kernel"}
+of a 3x3 kernel - values for each row are: (0.05, 0.11, 0.05), 
+(0.11, 0.25, 0.11), (0.05, 0.11, 0.05)."}
 
 While the above image uses a 3x3 kernel, they can have many different sizes! 
 Kernels tend to be odd in size: 3x3, 5x5, 9x9, etc. This is to allow the current 
@@ -372,20 +381,24 @@ can be adjusted using different values of 'sigma' (the standard deviation of the
 function), with larger sigma values resulting in a wider peak:
 
 ![](fig/gaussian-1d-comparison.png){alt="Plot of a 1D gaussian function 
-comparing three different sigma values"}
+comparing sigma values of 2, 4 and 6. The x axis runs from -15-15 and the y axis 
+from 0-0.2. Each sigma value creates a symmetric peak about x=0. As sigma 
+increases, the peak becomes lower and wider."}
 
 For a gaussian filter, the values are based on a 2D gaussian function. This 
 gives similar results to the plot above (showing a 1D gaussian function) with a 
 clear central peak, but now the height decreases in both x and y:
 
 ![](fig/gaussian-2d-comparison.png){alt="Plot of a 2D gaussian function 
-comparing three different sigma values"}
+comparing three different sigma values. As sigma increases, the peak becomes 
+lower and wider."}
 
 Gaussian kernels show this same pattern, with values highest at the centre that 
 decrease as we move further away. See the example 5x5 kernel below:
 
-![](fig/gaussian-kernel.png){alt="An example of a 5x5 gaussian 
-kernel" width="40%"}
+![](fig/gaussian-kernel.png){alt="An example 5x5 gaussian 
+kernel. Values are highest at the centre (0.23) and decrease steadily towards 
+the outside edges (0)." width="40%"}
 
 The gaussian filter causes blurring (also known as smoothing), as it is 
 equivalent to taking a weighted average of all pixel values within its 
@@ -424,8 +437,9 @@ analysis packages will instead use a measure called the 'full width at half
 maximum' or FWHM. The FWHM is the width of the curve at half of its maximum 
 value (see the diagram below):
 
-![](fig/gaussian-FWHM.png){alt="Diagram of gaussian function with FWHM labelled"
-width="80%"}
+![](fig/gaussian-FWHM.png){alt="Diagram of a gaussian function - a symmetric 
+peak is shown about x=0, reaching a maximum height of y=0.2. At half its full 
+height (y=0.1), the width of the peak is labelled as its FWHM." width="80%"}
 
 Similar to increasing sigma, a higher FWHM will result in a wider peak. Note 
 that there is a clear relationship between sigma and FWHM where:
@@ -510,7 +524,7 @@ First, let's clean up our layer list. Make sure you only have the 'nuclei' and
 'nuclei_gaussian_σ=1.0' layers in the layer list - select any others and 
 remove them by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
-){alt="A screenshot of Napari's delete layer button" height='30px'} icon. Also, 
+){alt="Napari's delete layer button" height='30px'} icon. Also, 
 close all filter settings panels on the right side of Napari (apart from the 
 gaussian settings) by clicking the tiny `X` icon at their top left corner.
 
@@ -567,13 +581,13 @@ tiny `X` icon at its top left corner. Then select the 'blurred_mask' in the
 layer list and remove it by 
 clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
-){alt="A screenshot of Napari's delete layer button" height='30px'} icon. 
+){alt="Napari's delete layer button" height='30px'} icon. 
 Finally, open the `napari-matplotlib` histogram again with:  
 `Plugins > napari Matplotlib > Histogram`
 
 ![](fig/blurred-nuclei-histogram.png){alt="A histogram of the 29th z slice of 
-the nuclei image after a gaussian blur. The left contrast limit is set 
-to 0.134."}
+the nuclei image after a gaussian blur. The x axis runs from 0-1 and the y axis 
+from 0-7000. A vertical line is shown at 0.134, sitting between the two peaks."}
 
 Make sure you have 'nuclei_gaussian_σ=3.0' selected in the layer list (should 
 be highlighted in blue).
@@ -633,7 +647,7 @@ First, let's clean up our layer list again. Make sure you only have the
 'nuclei', 'mask', 'blurred_mask' and 'nuclei_gaussian_σ=3.0' layers in the 
 layer list - select any others and remove them by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
-){alt="A screenshot of Napari's delete layer button" height='30px'} icon. Then, 
+){alt="Napari's delete layer button" height='30px'} icon. Then, 
 if you still have the `napari-matplotlib` histogram open, close it by clicking 
 the tiny `x` icon in the top left corner.
 
@@ -660,10 +674,10 @@ name in the layer list - for example, rename 'mask' to 'manual_mask',
 'otsu_blurred_mask'. Recall that you can change the colour of a mask by clicking 
 the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/shuffle.svg
-){alt="A screenshot of Napari's shuffle button" height='30px'} icon in the top 
+){alt="Napari's shuffle button" height='30px'} icon in the top 
 row of the layer controls. By toggling on/off the relevant ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
-){alt="A screenshot of Napari's eye button" height='30px'} icons, you should see 
+){alt="Napari's eye button" height='30px'} icons, you should see 
 that Otsu chooses a slightly different threshold than we did in our 
 'manual_blurred_mask', labelling slightly smaller regions as nuclei in the final 
 result.
@@ -686,7 +700,7 @@ For this exercise, we'll use the same example image as the [manual thresholding
 exercise](#manual-thresholds). If you don't have that image open, run the top 
 code block in that exercise to open the image:
 
-![](fig/manual-thresholding-exercise-shapes.png){alt="Test image containing a 
+![](fig/manual-thresholding-exercise-shapes.png){alt="Noisy test image containing a 
 rectangle, circle and triangle"}
 
 Try some of the other automatic thresholding options provided by the 
@@ -704,7 +718,7 @@ How do they compare to standard `otsu` thresholding?
 
 Recall that you can change the colour of a mask by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/shuffle.svg
-){alt="A screenshot of Napari's shuffle button" height='30px'} icon in the top 
+){alt="Napari's shuffle button" height='30px'} icon in the top 
 row of the layer controls.
 
 :::::::::::::::::::::::: solution 
@@ -714,7 +728,7 @@ row of the layer controls.
 Standard Otsu thresholding chooses a threshold that separates the background 
 from the three shapes:
 
-![](fig/otsu-shapes.png){alt="Mask of shapes (brown) overlaid on shapes image - 
+![](fig/otsu-shapes.png){alt="Mask of shapes (brown) overlaid on original image - 
 made with Otsu thresholding"}
 
 Li and mean thresholding gives a very similar result.
@@ -723,14 +737,16 @@ Yen gives a different result - isolating the triangle and circle from the rest
 of the image. Some of the pixels in the rectangle are also labelled, but only 
 in patchy areas:
 
-![](fig/yen-shapes.png){alt="Mask of shapes (brown) overlaid on shapes image - 
-made with Yen thresholding"}
+![](fig/yen-shapes.png){alt="Yen thresholding mask of shapes (brown) overlaid on 
+original image. The triangle and circle are highlighted in brown, but only 
+patchy areas are covered in the rectangle."}
 
 Finally, Sauvola gives a completely different result, including a large number 
 of pixels from the background:
 
-![](fig/sauvola-shapes.png){alt="Mask of shapes (brown) overlaid on shapes 
-image - made with Sauvola thresholding" width="60%"}
+![](fig/sauvola-shapes.png){alt="Sauvola thresholding mask of shapes (brown) 
+overlaid on original image. The circle, triangle and rectangle are highlighted 
+in brown, alongside many patchy areas in the background." width="60%"}
 
 The important point is that different automatic thresholding methods will work 
 well for different kinds of images, and depending on which part of an image you 
