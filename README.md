@@ -57,9 +57,8 @@ To install these forks locally, run the following from within an R session:
 ## Install devtools
 install.packages("remotes")
 
-## Install sandpaper and varnish from the IDEAS forks
-## HealthBioscienceIDEAS/varnish is listed as a dependency of sandpaper, so will be installed as well
-remotes::install_github("HealthBioscienceIDEAS/sandpaper", dependencies = TRUE)
+## Install HealthBioscienceIDEAS/varnish 
+remotes::install_github("HealthBioscienceIDEAS/varnish", dependencies = TRUE)
 ```
 
 Then to build the lesson locally, from within the `microscopy-novice` directory, run
