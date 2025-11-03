@@ -29,8 +29,9 @@ number of cells in an image.
 First, let's open one of Napari's sample images with:  
 `File > Open Sample > napari builtins > Cells (3D + 2Ch)`
 
-![](fig/cells-napari.png){alt="A screenshot of a flourescence microscopy image 
-of some cells in Napari"}
+![](fig/cells-napari.png){alt="A fluorescence microscopy image of some cells 
+displayed in Napari. Many round nuclei are shown in green, each surrounded by a 
+thin purple membrane."}
 
 ## Quality control
 
@@ -64,11 +65,11 @@ If you need a refresher on how to use `napari matplotlib`, check out the
 [image display episode](image-display.md#napari-plugins). It may also be useful 
 to zoom into parts of the image histogram by clicking the ![](
 https://raw.githubusercontent.com/matplotlib/napari-matplotlib/main/src/napari_matplotlib/icons/black/Zoom.png
-){alt="A screenshot of napari-matplotlib's zoom button" height='30px'} icon at 
+){alt="napari-matplotlib's zoom button" height='30px'} icon at 
 the top of histogram, then clicking and dragging a box around the region you want 
 to zoom into. You can reset your histogram by clicking the ![](
 https://raw.githubusercontent.com/matplotlib/napari-matplotlib/main/src/napari_matplotlib/icons/black/Home.png
-){alt="A screenshot of napari-matplotlib's home button" height='30px'} icon.
+){alt="napari-matplotlib's home button" height='30px'} icon.
 
 :::::::::::::::::::::::: solution 
 
@@ -81,7 +82,8 @@ Make sure you have the 'nuclei' layer selected in the layer list (should be
 highlighted in blue).
 
 ![](fig/nuclei-histogram.png){alt="A histogram of the 29th z slice of Napari's 
-cell sample image"}
+cell sample image. The x axis runs from ~0-60000 and the y axis from ~0-7000. 
+Two peaks can be seen between ~0-40000."}
 
 ::::::::::::::::::::::::::::::callout
 
@@ -124,11 +126,13 @@ are indeed pixel values over much of this possible range. At first glance, it
 may seem like there are no values at the right side of the histogram, but if we 
 zoom in using the ![](
 https://raw.githubusercontent.com/matplotlib/napari-matplotlib/main/src/napari_matplotlib/icons/black/Zoom.png
-){alt="A screenshot of napari-matplotlib's zoom button" height='30px'} icon we 
+){alt="napari-matplotlib's zoom button" height='30px'} icon we 
 can clearly see pixels at these higher values.
 
 ![](fig/nuclei-histogram-zoom.png){alt="A histogram of the 29th z slice of 
-Napari's cell sample image - zoomed in to the range from 25000 to 60000"}
+Napari's cell image - zoomed in to the range from 25000 to 60000. Bars decrease 
+in height as pixel size increases - but are still visible up to the maximum 
+pixel value."}
 
 Most importantly, we see no evidence for 'clipping', which means we are avoiding 
 any irretrievable loss of information this would cause. Recall that clipping 
@@ -152,7 +156,7 @@ to each other, using some simple examples.
 First, let's take a quick look at a rough semantic segmentation. Open Napari's 
 console by pressing the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/console.svg
-){alt="A screenshot of Napari's console button" height='30px'} button, then copy 
+){alt="Napari's console button" height='30px'} button, then copy 
 and paste the code below. Don't worry about the details of what's happening in 
 the code - we'll look at some of these concepts like gaussian blur and otsu 
 thresholding in later episodes!
@@ -169,13 +173,14 @@ semantic_seg = blurred > threshold
 viewer.add_labels(semantic_seg)
 ```
 
-![](fig/semantic-seg-napari.png){alt="A screenshot of a rough semantic 
-segmentation of nuclei in Napari"}
+![](fig/semantic-seg-napari.png){alt="A semantic 
+segmentation of nuclei in Napari. A solid brown overlay is displayed over each 
+nucleus in the original image."}
 
 You should see an image appear that highlights the nuclei in brown. Try toggling 
 the 'semantic_seg' layer on and off multiple times, by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
-){alt="A screenshot of Napari's eye button" height='30px'} icon next to its name 
+){alt="Napari's eye button" height='30px'} icon next to its name 
 in the layer list. You should see that the brown areas match the nucleus 
 boundaries reasonably well.
 
@@ -203,17 +208,18 @@ instance_seg = expand_labels(instance_seg, distance=10)
 viewer.add_labels(instance_seg)
 ```
 
-![](fig/instance-seg-napari.png){alt="A screenshot of a rough instance 
-segmentation of nuclei in Napari"}
+![](fig/instance-seg-napari.png){alt="An instance 
+segmentation of nuclei in Napari. An overlay is displayed over each nucleus in 
+the original image - each of a different colour."}
 
 You should see an image appear that highlights nuclei in different colours. 
 Let's hide the 'semantic_seg' layer by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
-){alt="A screenshot of Napari's eye button" height='30px'} icon next to its name 
+){alt="Napari's eye button" height='30px'} icon next to its name 
 in Napari's layer list. Then try toggling the 'instance_seg' layer on and off 
 multiple times, by clicking the corresponding ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
-){alt="A screenshot of Napari's eye button" height='30px'} icon. You should see 
+){alt="Napari's eye button" height='30px'} icon. You should see 
 that the coloured areas match most of the nucleus boundaries reasonably well, 
 although there are some areas that are less well labelled.
 
@@ -236,11 +242,11 @@ First, let's focus on the 'semantic_seg' layer we created earlier:
 
 - Click the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
-){alt="A screenshot of Napari's eye button" height='30px'} icon next to 
+){alt="Napari's eye button" height='30px'} icon next to 
 'semantic_seg' in the layer list to make it visible. 
 - Click the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
-){alt="A screenshot of Napari's eye button" height='30px'} icon next to 
+){alt="Napari's eye button" height='30px'} icon next to 
 'instance_seg' in the layer list to hide it.
 - Make sure the 'semantic_seg' layer is selected in the layer list. It should be 
 highlighted in blue.
@@ -249,8 +255,9 @@ Try hovering over the segmentation and examining the pixel values down in the
 bottom left corner of the viewer. Recall that we looked at pixel values in the 
 ['What is an image?' episode](what-is-an-image.md#pixels).
 
-![](fig/pixel-value-segmentation.png){alt="A screenshot highlighting the pixel 
-value of a nuclei segmentation in Napari"}
+![](fig/pixel-value-segmentation.png){alt="A closeup of segmented nuclei in 
+napari. The mouse cursor hovers over a nucleus, and the corresponding pixel 
+value (1) is shown in the bottom row of the user interface."}
 
 You should see that a pixel value of 0 is used for the background and a pixel 
 value of 1 is used for the nuclei. In fact, segmentations are stored in the 
@@ -292,11 +299,11 @@ Let's take a look at the pixel values in the instance segmentation:
 
 - Click the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
-){alt="A screenshot of Napari's eye button" height='30px'} icon next to 
+){alt="Napari's eye button" height='30px'} icon next to 
 'instance_seg' in the layer list to make it visible. 
 - Click the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg
-){alt="A screenshot of Napari's eye button" height='30px'} icon next to 
+){alt="Napari's eye button" height='30px'} icon next to 
 'semantic_seg' in the layer list to hide it.
 - Make sure the 'instance_seg' layer is selected in the layer list. It should be 
 highlighted in blue.
@@ -460,12 +467,12 @@ the two segmentation layers:
 - Click on 'instance_seg', then <kbd>shift</kbd> + click 'semantic_seg'
 - Click the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
-){alt="A screenshot of Napari's delete layer button" height='30px'} icon to 
+){alt="Napari's delete layer button" height='30px'} icon to 
 remove these layers.
 
 Then click on the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/new_labels.svg
-){alt="A screenshot of Napari's labels layer button" height='30px'} icon (at the 
+){alt="Napari's labels layer button" height='30px'} icon (at the 
 top of the layer list) to create a new `Labels` layer.
 
 Recall from the [imaging software episode](imaging-software.md#layer-list), that 
@@ -474,26 +481,27 @@ standard images, `Point` layers for points, `Shape` layers for shapes like
 rectangles, ellipses or lines etc... `Labels` layers are the type used for 
 segmentations, and provide access to many new settings in the layer controls:
 
-![](fig/label-layer-controls.png){alt="A screenshot of the layer controls for 
-labels layers in Napari"}
+![](fig/label-layer-controls.png){alt="The layer controls for 
+labels layers in Napari. This includes various settings such as: opacity, brush 
+size, blending and color mode."}
 
 Let's start by painting an individual nucleus. Select the paintbrush by clicking 
 the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/paint.svg
-){alt="A screenshot of Napari's paintbrush button" height='30px'} icon in the 
+){alt="Napari's paintbrush button" height='30px'} icon in the 
 top row of the layer controls. Then click and drag across the image to label 
 pixels. You can change the size of the brush using the 'brush size' slider in 
 the layer controls. To return to normal movement, you can click the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/pan_arrows.svg
-){alt="A screenshot of Napari's pan arrows button" height='30px'} icon in the 
+){alt="Napari's pan arrows button" height='30px'} icon in the 
 top row of the layer controls, or hold down spacebar to activate it temporarily 
 (this is useful if you want to pan slightly while painting). To remove painted 
 areas, you can activate the label eraser by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/erase.svg
-){alt="A screenshot of Napari's erase button" height='30px'} icon.
+){alt="Napari's erase button" height='30px'} icon.
 
-![](fig/single-painted-nucleus.png){alt="A screenshot of a single manually 
-painted nucleus in Napari"}
+![](fig/single-painted-nucleus.png){alt="A single manually 
+painted nucleus in Napari - a brown overlay covers the nucleus area."}
 
 If you hover over the image and examine the pixel values, you will see that all 
 your painted areas have a pixel value of 1. This corresponds to the number shown 
@@ -503,8 +511,8 @@ To paint with a different pixel value, either click the + icon on the right side
 of this number, or type another value into the box. Let's paint another nucleus 
 with a pixel value of 2:
 
-![](fig/two-painted-nuclei.png){alt="A screenshot of two manually painted nuclei 
-in Napari"}
+![](fig/two-painted-nuclei.png){alt="Two manually painted nuclei 
+in Napari - a brown overlay covers one nucleus, and a blue overlay the other."}
 
 When you paint with a new value, you'll see that Napari automatically assigns it 
 a new colour. This is because `Labels` layers use 
@@ -517,7 +525,7 @@ pixel value, trying to ensure that nearby values (like 2 vs 3) are given
 dissimilar colours. This helps to make it easier to distinguish different 
 labels. You can shuffle the colours used by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/shuffle.svg
-){alt="A screenshot of Napari's shuffle button" height='30px'} icon in the top 
+){alt="Napari's shuffle button" height='30px'} icon in the top 
 row of the layer controls. Note that the pixel value of 0 will always be shown 
 as transparent - this is because it is usually used to represent the background.
 
@@ -530,10 +538,10 @@ own pixel value (label). Investigate the other settings in the layer controls:
 
 - What does the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/fill.svg
-){alt="A screenshot of Napari's fill button" height='30px'} icon do?
+){alt="Napari's fill button" height='30px'} icon do?
 - What does the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/picker.svg
-){alt="A screenshot of Napari's picker button" height='30px'} icon do?
+){alt="Napari's picker button" height='30px'} icon do?
 - What does the 'contour' setting control?
 - What does the 'n edit dim' setting control?
 - What does the 'preserve labels' setting control?
@@ -552,7 +560,7 @@ undo your last action. If you need to re-do it use
 
 ###  ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/fill.svg
-){alt="A screenshot of Napari's fill button" height='30px'} icon
+){alt="Napari's fill button" height='30px'} icon
 
 This icon activates the 'fill bucket'. It will fill whatever label you click on 
 with the currently active label (as shown next to 'label:' in the layer 
@@ -563,7 +571,7 @@ in [Napari's documentation
 
 ### ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/picker.svg
-){alt="A screenshot of Napari's picker button" height='30px'} icon
+){alt="Napari's picker button" height='30px'} icon
 
 This icon activates the 'colour picker'. This allows you to click on a pixel in 
 the viewer and immediately select the corresponding label. This is especially 
