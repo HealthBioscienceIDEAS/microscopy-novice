@@ -327,7 +327,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>What is an image?</h1>
-        <p>Last updated on 2025-06-25 |
+        <p>Last updated on 2025-11-04 |
 
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/what-is-an-image.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -727,10 +727,12 @@ lead to <em>clipping</em> and <em>overflow</em>.</p>
 <ul><li><p>Clipping: Values outside the valid range are changed to the
 closest valid value. For example, storing 1000 in a <code>uint8</code>
 image may result in 255 being stored instead (the max value)</p></li>
-<li><p>Overflow: For NumPy arrays, values outside the valid range are
-‘wrapped around’ to give the new result. For example, storing 256 in a
-<code>uint8</code> image (max 255) would give 0, 257 would give 1 and so
-on…</p></li>
+<li><p>Overflow: For NumPy arrays, values outside the valid range may be
+‘wrapped around’ or create an <code>OverflowError</code>, depending on
+what version of NumPy is installed. Older versions of NumPy may wrap the
+values around, so storing 256 in a <code>uint8</code> image (max 255)
+would give 0, 257 would give 1 and so on… Newer versions of NumPy will
+raise an <code>OverflowError</code>.</p></li>
 </ul><p>Clipping and overflow result in data loss - you can’t get the
 original values back! So it’s always good to keep the data type in mind
 when doing image processing operations (as we will see in later
@@ -872,20 +874,21 @@ image, you should see the one bright pixel you just created.</p>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a></span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>image[<span class="dv">15</span>, <span class="dv">10</span>] <span class="op">=</span> <span class="dv">300</span></span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>viewer.layers[<span class="st">"human_mitosis"</span>].refresh()</span>
-<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a><span class="bu">print</span>(image[<span class="dv">15</span>, <span class="dv">10</span>])</span></code></pre>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>image[<span class="dv">15</span>, <span class="dv">10</span>] <span class="op">=</span> <span class="dv">300</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code><span></span>
-<span><span class="fl">44</span></span></code></pre>
+<pre class="error" tabindex="0"><code>
+OverflowError                             Traceback (most recent call last)
+Cell In[8], line 1
+----&gt; 1 image[15, 10] = 300
+
+OverflowError: Python integer 300 out of bounds for uint8</code></pre>
 </div>
-<p>The new value is not correct. This is because 300 exceeds the maximum
-value for this 8-bit image (max 255). The value therefore overflows and
-‘wraps around’ to give 44 - an incorrect value.</p>
+<p>An <code>OverflowError</code> occurs when you try to update this
+pixel value. This is because 300 exceeds the maximum value for this
+8-bit image (max 255).</p>
 </div>
 </div>
 </div>
@@ -973,7 +976,7 @@ any links that you are not going to use.
   "url": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/what-is-an-image.html",
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/what-is-an-image.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2025-06-25",
+  "dateModified": "2025-11-04",
   "datePublished": "2025-11-04"
 }
 
