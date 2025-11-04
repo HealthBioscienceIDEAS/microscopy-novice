@@ -746,6 +746,30 @@ may see lots of text printed to the terminal as it downloads these extra
 files. This may take up to 5 minutes - so give it some time. This will
 only happen once, and the <code>czi</code> image will open much faster
 next time.</p>
+<div id="potential-error" class="callout caution">
+<div class="callout-square">
+<i class="callout-icon" data-feather="alert-triangle"></i>
+</div>
+<span class="callout-header">Caution</span>
+<div id="potential-error" class="callout-inner">
+<h3 class="callout-title">Potential error</h3>
+<div class="callout-content">
+<p>On some Windows systems <code>bioio-bioformats</code> dependencies
+prevent <code>czi</code> files from opening in napari. If this is the
+case, napari may crash with the following error message:</p>
+<p><code>failed with error: bioformats does not support the image</code></p>
+<p>Uninstalling the <code>bioio-bioformats</code> reader (which is not
+used in this material) will fix this issue:</p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">pip</span> uninstall bioio-bioformats</span></code></pre>
+</div>
+<p>Restart napari and try opening
+<code>Plate1-Blue-A-12-Scene-3-P3-F2-03.czi</code> again.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
