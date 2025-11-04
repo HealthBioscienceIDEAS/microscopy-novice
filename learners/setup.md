@@ -245,7 +245,7 @@ error message:
 
 `failed with error: bioformats does not support the image`
 
-Uninstalling the `bioio-bioformats` reader (which is not used in this materialt) 
+Uninstalling the `bioio-bioformats` reader (which is not used in this material) 
 will fix this issue:
 ```bash
 pip uninstall bioio-bioformats
