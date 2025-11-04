@@ -238,6 +238,7 @@ you may see lots of text printed to the terminal as it downloads these extra
 files. This may take up to 5 minutes - so give it some time. This will only 
 happen once, and the `czi` image will open much faster next time.
 
+::::::::::::::::::::::::::::::::::::::::::: caution
 ### Potential error
 On some Windows systems `bioio-bioformats` dependencies prevent `czi` files 
 from opening in napari. If this is the case, napari may crash with the following 
@@ -252,7 +253,7 @@ pip uninstall bioio-bioformats
 ```
 
 Restart napari and try opening `Plate1-Blue-A-12-Scene-3-P3-F2-03.czi` again.
-
+:::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::
 ::::::::::::::::::: solution
