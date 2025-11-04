@@ -529,7 +529,7 @@ following:</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Pros and cons of open-source / proprietary </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p><strong>Cost</strong><br>
 One of the biggest advantages of open source software is that it is
@@ -580,7 +580,7 @@ below if you are interested:</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
   <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Differences between Fiji/ImageJ and Napari </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
 <p><strong>Python vs Java</strong><br>
 A big advantage of Napari is that it is made with the Python programming
@@ -825,7 +825,7 @@ result below:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ul>
 <li>Click on the nuclei in the layer list</li>
@@ -911,7 +911,7 @@ buttons will usually show a summary tooltip.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ul>
 <li>Click the ‘add points’ button <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/add.svg" alt="Screenshot of Napari's add points button" height="30" class="figure">
@@ -1284,7 +1284,7 @@ on the bit depth?</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="dimensions">Dimensions<a class="anchor" aria-label="anchor" href="#dimensions"></a>
@@ -1492,7 +1492,7 @@ value - is it correct? If not, why not?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="section">1<a class="anchor" aria-label="anchor" href="#section"></a>
@@ -1601,7 +1601,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-image-display"><p>Content from <a href="image-display.html">Image display</a></p>
 <hr>
-<p>Last updated on 2025-06-25 |
+<p>Last updated on 2025-11-04 |
 
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/image-display.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1669,10 +1669,9 @@ hundreds of plugins available on the <a href="https://www.napari-hub.org/" class
 <figure><img src="fig/napari-hub.png" alt="Screenshot of searching 'matplotlib' on napari hub" class="figure mx-auto d-block"></figure><p>You should see ‘napari Matplotlib’ appear in the list (if not, try
 scrolling further down the page). If we click on
 <code>napari matplotlib</code> this opens a summary of the plugin with
-links to the documentation. There’s also a useful ‘Activity’ tab that
-summarises the number of installs and maintenance history of the
-plugin:</p>
-<figure><img src="fig/napari-hub-activity.png" alt="Screenshot of napari-matplotlib's activity tab on napari hub" class="figure mx-auto d-block"></figure><p>Now that we’ve found the plugin we want to use, let’s go ahead and
+links to the documentation and github repository containing the plugin’s
+source code.</p>
+<p>Now that we’ve found the plugin we want to use, let’s go ahead and
 install it in Napari. Note that some plugins have special requirements
 for installation, so it’s always worth checking their napari hub page
 for any extra instructions. In the top menu bar of Napari select:<br><code>Plugins &gt; Install/Uninstall Plugins...</code></p>
@@ -1698,7 +1697,8 @@ plugins to use!</p>
 <ul>
 <li>Search for cell tracking plugins on <a href="https://www.napari-hub.org/" class="external-link">Napari hub</a>
 </li>
-<li>Look at some of the plugin summaries and ‘Activity’ tabs</li>
+<li>Look at some of the plugin summaries, documentation and github
+repositories</li>
 <li>What factors could help you decide if the plugin is well
 maintained?</li>
 <li>What factors could help you decide if the plugin is popular with
@@ -1712,7 +1712,7 @@ Napari users?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="is-a-plugin-well-maintained">Is a plugin well maintained?<a class="anchor" aria-label="anchor" href="#is-a-plugin-well-maintained"></a>
@@ -1720,10 +1720,8 @@ Napari users?</li>
 <p>Some factors to look for:</p>
 <p><strong>Last updated</strong><br>
 Check when the plugin was last updated - was it recently? This is shown
-in the search list summary and under ‘Maintenance’ in the activity tab.
-In the activity tab, you can also look at a graph summarising the
-‘commits’ over the past year - ‘commits’ are made when someone updates
-their plugin with new changes.</p>
+in the search list summary and in the left sidebar when you open the
+plugin’s page on napari-hub.</p>
 <p><strong>Documentation</strong><br>
 Is the plugin summary (+ any linked documentation) detailed enough to
 explain how to use the plugin?</p>
@@ -1732,12 +1730,12 @@ explain how to use the plugin?</p>
 <h3 id="is-a-plugin-popular">Is a plugin popular?<a class="anchor" aria-label="anchor" href="#is-a-plugin-popular"></a>
 </h3>
 <p>Some factors to look for:</p>
-<p><strong>Installs</strong><br>
-Check how many times a plugin has been installed - a higher number of
-installs usually means it’s more popular in the Napari community. The
-installs are shown in the search list summary and under ‘Usage’ in the
-activity tab. In the activity tab, you can also look at a graph
-summarising the installs over the past year.</p>
+<p><strong>Stars on github</strong><br>
+If you open a plugin’s linked github repository, you can see the number
+of ‘stars’ in the top right. More stars tend to indicate a plugin is
+more popular - although this isn’t always the case! Github is mainly
+used by plugin developers, so a plugin with few stars may still have
+many people using it.</p>
 <p><strong>Image.sc</strong><br>
 It can also be useful to search the plugin’s name on the <a href="https://forum.image.sc/" class="external-link">image.sc</a> forum to browse relevant
 posts and see if other people had good experiences using it. Image.sc is
@@ -1793,7 +1791,7 @@ values:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ul>
 <li>a - 3</li>
@@ -1920,7 +1918,7 @@ these limits work?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>The left circle can be seen with limits of e.g. 0 and 33</p>
 <p>These limits work because the background on the left side of the
@@ -4295,7 +4293,7 @@ you can share different ideas.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>There’s no one correct answer here, as it will depend on which type
 of light microscope you are using and which aspects of nucleus size and
@@ -4442,7 +4440,7 @@ magnification?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="x16-image">16x16 image<a class="anchor" aria-label="anchor" href="#x16-image"></a>
@@ -4592,7 +4590,7 @@ it?</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="a">a<a class="anchor" aria-label="anchor" href="#a"></a>
@@ -4756,7 +4754,7 @@ icon.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>In the top menu bar of Napari select:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
 <p>Make sure you have the ‘nuclei’ layer selected in the layer list
@@ -5026,7 +5024,7 @@ integers) Choose from 8-bit, 16-bit or 32-bit.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="shapes-pattern">Shapes + pattern<a class="anchor" aria-label="anchor" href="#shapes-pattern"></a>
@@ -5207,7 +5205,7 @@ documentation</a> on <code>Labels</code> layers.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="icon">
@@ -5558,7 +5556,7 @@ value:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>First, we show a histogram for the image by selecting the ‘image’
 layer, then:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
@@ -5775,7 +5773,7 @@ name online.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="median">Median<a class="anchor" aria-label="anchor" href="#median"></a>
@@ -5996,7 +5994,7 @@ the top row of the layer controls.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Standard Otsu thresholding chooses a threshold that separates the
 background from the three shapes:</p>
