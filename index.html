@@ -507,16 +507,19 @@ terminal and pressing the <kbd>Enter</kbd> key.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># This line will create a "virtual environment" (called napari-env)</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co"># that will contain all of the software that will be used in the lessons</span></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-y</span> <span class="at">-n</span> napari-env <span class="at">-c</span> conda-forge python=3.12 napari pyqt</span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co"># Activate the napari-env virtual environment.</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co"># Running this should change the terminal prompt to '(napari-env)'.</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co"># Install czi file reader</span></span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="ex">pip</span> install napari-bioio-reader bioio-czi</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Make sure conda is up to date</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="ex">conda</span> update <span class="at">-n</span> base conda</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co"># This line will create a "virtual environment" (called napari-env)</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co"># that will contain all of the software that will be used in the lessons</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-y</span> <span class="at">-n</span> napari-env <span class="at">-c</span> conda-forge python=3.12 napari pyqt</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co"># Activate the napari-env virtual environment.</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co"># Running this should change the terminal prompt to '(napari-env)'.</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="ex">conda</span> activate napari-env</span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co"># Install czi file reader</span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="ex">pip</span> install napari-bioio-reader bioio-czi</span></code></pre>
 </div>
 </div>
 </div>
