@@ -323,7 +323,10 @@ Try increasing the 'sigma' value to three and clicking run again:
 ![](fig/nuclei-blurred-3.png){alt="Nuclei image after gaussian blur with sigma 
 of 3" width='40%'}
 
-You should see a new 'nuclei_gaussian_σ=3.0' layer that is much more heavily blurred.
+You should see a new 'nuclei_gaussian_σ=3.0' layer that is much more heavily blurred. 
+If you used the `+`/`-` buttons to set the sigma value, you may see many more 
+decimal places in the layer name e.g. 'nuclei_gaussian_σ=3.00000000000000'. 
+If so, double click on the layer name to re-name it to `nuclei_gaussian_σ=3.0`.
 
 What's happening here? What exactly does a gaussian blur do? A gaussian blur is 
 an example of a 'linear filter' which is used to manipulate pixel values in 
@@ -506,16 +509,15 @@ shrink in size. Increasing the 'Footprint size' of the filter enhances the effec
 
 ## Thresholding the blurred image
 
-First, let's clean up our layer list. Make sure you only have the 'nuclei' and 
-'nuclei_gaussian_σ=1.0' layers in the layer list - select any others and 
-remove them by clicking the ![](
+First, let's clean up our layer list. Make sure you only have the 'nuclei' 
+layer in the layer list - select any others and remove them by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'} icon. Also, 
 close all filter settings panels on the right side of Napari (apart from the 
 gaussian settings) by clicking the tiny `X` icon at their top left corner.
 
 Now let's try thresholding our image again. Make sure you set your gaussian blur 
-sigma to three, then click 'Run'.
+sigma to three, then click 'Apply Gaussian Filter'.
 
 Then, we'll apply the same threshold as before, now to the 
 'nuclei_gaussian_σ=3.0' layer:
@@ -700,7 +702,7 @@ Try:
 - `li`
 - `sauvola`
 
-How do they compare to standard `otsu` thresholding?
+How do they compare to `otsu` thresholding?
 
 Recall that you can change the colour of a mask by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/shuffle.svg
@@ -711,7 +713,7 @@ row of the layer controls.
 
 ## Solution
 
-Standard Otsu thresholding chooses a threshold that separates the background 
+Otsu thresholding chooses a threshold that separates the background 
 from the three shapes:
 
 ![](fig/otsu-shapes.png){alt="Mask of shapes (brown) overlaid on shapes image - 
