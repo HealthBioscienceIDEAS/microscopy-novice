@@ -221,8 +221,9 @@ could measure nucleus 'sphericity' (a measure of how spherical it is). Which
 measures you use will often depend on which image analysis software you use. 
 Many analysis packages have a wide range of shape (morphological) features 
 built-in e.g. Napari has a plugin called 'napari-skimage', which provides 
-access to scikit-image's `regionprops` that offers [many different features
-](https://scikit-image.org/docs/stable/api/skimage.measure.html#skimage.measure.regionprops).
+access to scikit-image's `regionprops`. See 
+[scikit-image's documentation for regionprops](https://scikit-image.org/docs/stable/api/skimage.measure.html#skimage.measure.regionprops) 
+for details on the available features.
 
 ### How to quantify?
 
