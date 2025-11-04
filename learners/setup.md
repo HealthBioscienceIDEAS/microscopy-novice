@@ -135,6 +135,9 @@ pip install "napari[all]" napari-bioio-reader bioio-czi
 ### MacOS
 
 ```bash
+# Make sure conda is up to date
+conda update -n base conda
+
 # This line will create a "virtual environment" (called napari-env)
 # that will contain all of the software that will be used in the lessons
 conda create -y -n napari-env -c conda-forge python=3.12 napari pyqt
