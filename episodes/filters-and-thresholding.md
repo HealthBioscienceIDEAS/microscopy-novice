@@ -198,8 +198,9 @@ else:
 viewer.add_image(image)
 ```
 
-![](fig/manual-thresholding-exercise-shapes.png){alt="Test image containing a 
-rectangle, circle and triangle"}
+![](fig/shapes.png){alt="Test image containing a 
+rectangle, circle and triangle" width="50%"}
+
 
 Create a mask for each shape by choosing thresholds based on the image's 
 histogram.
@@ -228,7 +229,7 @@ viewer.add_labels(mask)
 First, we show a histogram for the image by selecting the 'image' layer, then:  
 `Plugins > napari Matplotlib > Histogram`
 
-![](fig/manual-thresholding-exercise-histogram.png){alt="Histogram of the 
+![](fig/shapes-histogram.png){alt="Histogram of the 
 shape image"}
 
 By moving the left contrast limits node we can figure out what each peak 
@@ -688,8 +689,7 @@ For this exercise, we'll use the same example image as the [manual thresholding
 exercise](#manual-thresholds). If you don't have that image open, run the top 
 code block in that exercise to open the image:
 
-![](fig/manual-thresholding-exercise-shapes.png){alt="Test image containing a 
-rectangle, circle and triangle"}
+![](fig/shapes.png){alt="Test image containing a rectangle, circle and triangle" width="50%"}
 
 Try some of the other automatic thresholding options provided by the 
 `napari-skimage` plugin. Set the 'method' to different options in 
@@ -713,26 +713,12 @@ row of the layer controls.
 
 ## Solution
 
-Otsu thresholding chooses a threshold that separates the background 
-from the three shapes:
+![](fig/shapes-thresholds.png){alt="Masks via automated thresholding"}
 
-![](fig/otsu-shapes.png){alt="Mask of shapes (brown) overlaid on shapes image - 
-made with Otsu thresholding"}
-
-Li and mean thresholding gives a very similar result.
-
-Yen gives a different result - isolating the triangle and circle from the rest 
-of the image. Some of the pixels in the rectangle are also labelled, but only 
-in patchy areas:
-
-![](fig/yen-shapes.png){alt="Mask of shapes (brown) overlaid on shapes image - 
-made with Yen thresholding"}
-
-Finally, Sauvola gives a completely different result, including a large number 
-of pixels from the background:
-
-![](fig/sauvola-shapes.png){alt="Mask of shapes (brown) overlaid on shapes 
-image - made with Sauvola thresholding" width="60%"}
+- **Otsu**: Misses the low-intensity triangle.
+- **Li/mean**: This looks great! The mask includes all three shapes.
+- **Yen**: Includes shapes but also some background.
+- **Sauvola**: Includes a lot of the background.
 
 The important point is that different automatic thresholding methods will work 
 well for different kinds of images, and depending on which part of an image you 
