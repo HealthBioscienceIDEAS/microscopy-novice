@@ -135,6 +135,9 @@ pip install "napari[all]" napari-bioio-reader bioio-czi
 ### MacOS
 
 ```bash
+# Make sure conda is up to date
+conda update -n base conda
+
 # This line will create a "virtual environment" (called napari-env)
 # that will contain all of the software that will be used in the lessons
 conda create -y -n napari-env -c conda-forge python=3.12 napari pyqt
@@ -237,6 +240,23 @@ which has additional java dependencies. The first time you open the `czi` image,
 you may see lots of text printed to the terminal as it downloads these extra 
 files. This may take up to 5 minutes - so give it some time. This will only 
 happen once, and the `czi` image will open much faster next time.
+
+::::::::::::::::::::::::::::::::::::::::::: caution
+### Potential error
+On some Windows systems `bioio-bioformats` dependencies prevent `czi` files 
+from opening in napari. If this is the case, napari may crash with the following 
+error message:
+
+`failed with error: bioformats does not support the image`
+
+Uninstalling the `bioio-bioformats` reader (which is not used in this material) 
+will fix this issue:
+```bash
+pip uninstall bioio-bioformats
+```
+
+Restart napari and try opening `Plate1-Blue-A-12-Scene-3-P3-F2-03.czi` again.
+:::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::
 ::::::::::::::::::: solution
