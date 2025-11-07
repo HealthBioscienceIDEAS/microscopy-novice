@@ -187,10 +187,10 @@ from skimage.util import random_noise, img_as_ubyte
 from packaging import version
 
 image = np.full((100, 100), 10, dtype="uint8")
-image[10:50, 20:80] = 80
+image[10:50, 20:80] = 200
 image[disk((75, 75), 15)] = 140
 rr, cc = polygon([90, 60, 90], [10, 30, 50])
-image[rr, cc] = 200
+image[rr, cc] = 80
 if version.parse(skimage.__version__) < version.parse("0.21"):
   image = img_as_ubyte(random_noise(image, var=0.0005, seed=6))
 else:
@@ -245,13 +245,13 @@ can give good results, as long as they fall in the gaps between the peaks in the
 image histogram.
 
 ```python
-rectangle = (image > 53) & (image < 110)
+rectangle = image > 171
 viewer.add_labels(rectangle)
 
 circle = (image > 118) & (image < 166)
 viewer.add_labels(circle)
 
-triangle = image > 171
+triangle = (image > 53) & (image < 110)
 viewer.add_labels(triangle)
 ```
 
