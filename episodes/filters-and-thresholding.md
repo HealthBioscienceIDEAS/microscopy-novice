@@ -677,7 +677,7 @@ spread of pixel values in both the background and your class of interest. In
 effect, it's trying to find two peaks in the image histogram and place a 
 threshold in between them.
 
-This means it's best suitable for images that show two clear peaks in their 
+This means it's most suitable for images that show two clear peaks in their 
 histogram (also known as a 'bimodal' histogram). Other images may require 
 different automated thresholding methods to produce a good result. 
 
