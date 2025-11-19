@@ -715,10 +715,12 @@ row of the layer controls.
 
 ![](fig/shapes-thresholds.png){alt="Masks via automated thresholding"}
 
-- **Otsu**: Misses the low-intensity triangle.
-- **Li/mean**: This looks great! The mask includes all three shapes.
-- **Yen**: Includes shapes but also some background.
-- **Sauvola**: Includes a lot of the background.
+- **Otsu**: The mask does not include the low‑intensity triangle.
+- **Mean**: Generally good, but on close inspection a few darker triangle pixels are still missed.
+- **Li**: This looks great! The mask includes all pixels of the three shapes, while excluding the background. 
+- **Yen**: Includes the shapes but also includes some background.
+- **Sauvola**: A substantial amount of background is included here.
+
 
 The important point is that different automatic thresholding methods will work 
 well for different kinds of images, and depending on which part of an image you 
