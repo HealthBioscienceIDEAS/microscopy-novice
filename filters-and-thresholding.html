@@ -323,7 +323,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Filters and thresholding</h1>
-        <p>Last updated on 2025-11-04 |
+        <p>Last updated on 2025-11-21 |
 
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/filters-and-thresholding.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -505,17 +505,17 @@ load this test image:</p>
 <span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="im">from</span> packaging <span class="im">import</span> version</span>
 <span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>image <span class="op">=</span> np.full((<span class="dv">100</span>, <span class="dv">100</span>), <span class="dv">10</span>, dtype<span class="op">=</span><span class="st">"uint8"</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>image[<span class="dv">10</span>:<span class="dv">50</span>, <span class="dv">20</span>:<span class="dv">80</span>] <span class="op">=</span> <span class="dv">80</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>image[<span class="dv">10</span>:<span class="dv">50</span>, <span class="dv">20</span>:<span class="dv">80</span>] <span class="op">=</span> <span class="dv">200</span></span>
 <span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>image[disk((<span class="dv">75</span>, <span class="dv">75</span>), <span class="dv">15</span>)] <span class="op">=</span> <span class="dv">140</span></span>
 <span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>rr, cc <span class="op">=</span> polygon([<span class="dv">90</span>, <span class="dv">60</span>, <span class="dv">90</span>], [<span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">50</span>])</span>
-<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>image[rr, cc] <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>image[rr, cc] <span class="op">=</span> <span class="dv">80</span></span>
 <span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="cf">if</span> version.parse(skimage.__version__) <span class="op">&lt;</span> version.parse(<span class="st">"0.21"</span>):</span>
 <span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>  image <span class="op">=</span> img_as_ubyte(random_noise(image, var<span class="op">=</span><span class="fl">0.0005</span>, seed<span class="op">=</span><span class="dv">6</span>))</span>
 <span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a>  image <span class="op">=</span> img_as_ubyte(random_noise(image, var<span class="op">=</span><span class="fl">0.0005</span>, rng<span class="op">=</span><span class="dv">6</span>))</span>
 <span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a>viewer.add_image(image)</span></code></pre>
 </div>
-<figure><img src="fig/manual-thresholding-exercise-shapes.png" alt="Test image containing a  rectangle, circle and triangle" class="figure mx-auto d-block"></figure><p>Create a mask for each shape by choosing thresholds based on the
+<figure><img src="fig/shapes.png" style="width:50.0%" alt="Test image containing a  rectangle, circle and triangle" class="figure mx-auto d-block"></figure><p>Create a mask for each shape by choosing thresholds based on the
 image’s histogram. You can set a threshold as all pixels above a certain
 value:</p>
 <div class="codewrapper sourceCode" id="cb3">
@@ -546,17 +546,17 @@ value:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>First, we show a histogram for the image by selecting the ‘image’
 layer, then:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
-<figure><img src="fig/manual-thresholding-exercise-histogram.png" alt="Histogram of the  shape image" class="figure mx-auto d-block"></figure><p>By moving the left contrast limits node we can figure out what each
+<figure><img src="fig/shapes-histogram.png" alt="Histogram of the  shape image" class="figure mx-auto d-block"></figure><p>By moving the left contrast limits node we can figure out what each
 peak represents. You should see that the peaks from left to right
 are:</p>
 <ul><li>background</li>
-<li>rectangle</li>
-<li>circle</li>
 <li>triangle</li>
+<li>circle</li>
+<li>rectangle</li>
 </ul><p>Then we set thresholds for each (as below). Note that you may not
 have exactly the same threshold values as we use here! There are many
 different values that can give good results, as long as they fall in the
@@ -564,13 +564,13 @@ gaps between the peaks in the image histogram.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>rectangle <span class="op">=</span> (image <span class="op">&gt;</span> <span class="dv">53</span>) <span class="op">&amp;</span> (image <span class="op">&lt;</span> <span class="dv">110</span>)</span>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>rectangle <span class="op">=</span> image <span class="op">&gt;</span> <span class="dv">171</span></span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>viewer.add_labels(rectangle)</span>
 <span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>circle <span class="op">=</span> (image <span class="op">&gt;</span> <span class="dv">118</span>) <span class="op">&amp;</span> (image <span class="op">&lt;</span> <span class="dv">166</span>)</span>
 <span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>viewer.add_labels(circle)</span>
 <span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>triangle <span class="op">=</span> image <span class="op">&gt;</span> <span class="dv">171</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>triangle <span class="op">=</span> (image <span class="op">&gt;</span> <span class="dv">53</span>) <span class="op">&amp;</span> (image <span class="op">&lt;</span> <span class="dv">110</span>)</span>
 <span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>viewer.add_labels(triangle)</span></code></pre>
 </div>
 </div>
@@ -748,7 +748,7 @@ name online.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="median">Median<a class="anchor" aria-label="anchor" href="#median"></a></h3>
@@ -925,7 +925,7 @@ complex, but to summarise - Otsu’s method is trying to find a threshold
 that minimises the spread of pixel values in both the background and
 your class of interest. In effect, it’s trying to find two peaks in the
 image histogram and place a threshold in between them.</p>
-<p>This means it’s only suitable for images that show two clear peaks in
+<p>This means it’s most suitable for images that show two clear peaks in
 their histogram (also known as a ‘bimodal’ histogram). Other images may
 require different automated thresholding methods to produce a good
 result.</p>
@@ -940,7 +940,7 @@ result.</p>
 <p>For this exercise, we’ll use the same example image as the <a href="#manual-thresholds">manual thresholding exercise</a>. If you don’t
 have that image open, run the top code block in that exercise to open
 the image:</p>
-<figure><img src="fig/manual-thresholding-exercise-shapes.png" alt="Test image containing a  rectangle, circle and triangle" class="figure mx-auto d-block"></figure><p>Try some of the other automatic thresholding options provided by the
+<figure><img src="fig/shapes.png" style="width:50.0%" alt="Test image containing a rectangle, circle and triangle" class="figure mx-auto d-block"></figure><p>Try some of the other automatic thresholding options provided by the
 <code>napari-skimage</code> plugin. Set the ‘method’ to different
 options in
 <code>Layers &gt; Filter &gt; Thresholding &gt; Automated Threshold (napari skimage)</code></p>
@@ -960,17 +960,24 @@ the top row of the layer controls.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
-<p>Otsu thresholding chooses a threshold that separates the background
-from the three shapes:</p>
-<figure><img src="fig/otsu-shapes.png" alt="Mask of shapes (brown) overlaid on shapes image -  made with Otsu thresholding" class="figure mx-auto d-block"></figure><p>Li and mean thresholding gives a very similar result.</p>
-<p>Yen gives a different result - isolating the triangle and circle from
-the rest of the image. Some of the pixels in the rectangle are also
-labelled, but only in patchy areas:</p>
-<figure><img src="fig/yen-shapes.png" alt="Mask of shapes (brown) overlaid on shapes image -  made with Yen thresholding" class="figure mx-auto d-block"></figure><p>Finally, Sauvola gives a completely different result, including a
-large number of pixels from the background:</p>
-<figure><img src="fig/sauvola-shapes.png" style="width:60.0%" alt="Mask of shapes (brown) overlaid on shapes  image - made with Sauvola thresholding" class="figure mx-auto d-block"></figure><p>The important point is that different automatic thresholding methods
+<figure><img src="fig/shapes-thresholds.png" alt="Masks via automated thresholding" class="figure mx-auto d-block"></figure><ul><li>
+<strong>Otsu</strong>: The mask does not include the low‑intensity
+triangle.</li>
+<li>
+<strong>Mean</strong>: Generally good, but on close inspection a few
+darker triangle pixels are still missed.</li>
+<li>
+<strong>Li</strong>: This looks great! The mask includes all pixels
+of the three shapes, while excluding the background.</li>
+<li>
+<strong>Yen</strong>: Includes the shapes but also includes some
+background.</li>
+<li>
+<strong>Sauvola</strong>: A substantial amount of background is
+included here.</li>
+</ul><p>The important point is that different automatic thresholding methods
 will work well for different kinds of images, and depending on which
 part of an image you are trying to segment. It’s worth trying a variety
 of options on your images to see which performs best for your specific
@@ -1076,8 +1083,8 @@ any links that you are not going to use.
   "url": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/filters-and-thresholding.html",
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/filters-and-thresholding.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2025-11-04",
-  "datePublished": "2025-11-18"
+  "dateModified": "2025-11-21",
+  "datePublished": "2025-11-21"
 }
 
   </script><script>
