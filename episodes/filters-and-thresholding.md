@@ -187,10 +187,10 @@ from skimage.util import random_noise, img_as_ubyte
 from packaging import version
 
 image = np.full((100, 100), 10, dtype="uint8")
-image[10:50, 20:80] = 80
+image[10:50, 20:80] = 200
 image[disk((75, 75), 15)] = 140
 rr, cc = polygon([90, 60, 90], [10, 30, 50])
-image[rr, cc] = 200
+image[rr, cc] = 80
 if version.parse(skimage.__version__) < version.parse("0.21"):
   image = img_as_ubyte(random_noise(image, var=0.0005, seed=6))
 else:
@@ -198,8 +198,9 @@ else:
 viewer.add_image(image)
 ```
 
-![](fig/manual-thresholding-exercise-shapes.png){alt="Test image containing a 
-rectangle, circle and triangle"}
+![](fig/shapes.png){alt="Test image containing a 
+rectangle, circle and triangle" width="50%"}
+
 
 Create a mask for each shape by choosing thresholds based on the image's 
 histogram.
@@ -228,16 +229,16 @@ viewer.add_labels(mask)
 First, we show a histogram for the image by selecting the 'image' layer, then:  
 `Plugins > napari Matplotlib > Histogram`
 
-![](fig/manual-thresholding-exercise-histogram.png){alt="Histogram of the 
+![](fig/shapes-histogram.png){alt="Histogram of the 
 shape image"}
 
 By moving the left contrast limits node we can figure out what each peak 
 represents. You should see that the peaks from left to right are:
 
 - background
-- rectangle
-- circle
 - triangle
+- circle
+- rectangle
 
 Then we set thresholds for each (as below). Note that you may not have exactly 
 the same threshold values as we use here! There are many different values that 
@@ -245,13 +246,13 @@ can give good results, as long as they fall in the gaps between the peaks in the
 image histogram.
 
 ```python
-rectangle = (image > 53) & (image < 110)
+rectangle = image > 171
 viewer.add_labels(rectangle)
 
 circle = (image > 118) & (image < 166)
 viewer.add_labels(circle)
 
-triangle = image > 171
+triangle = (image > 53) & (image < 110)
 viewer.add_labels(triangle)
 ```
 
@@ -676,7 +677,7 @@ spread of pixel values in both the background and your class of interest. In
 effect, it's trying to find two peaks in the image histogram and place a 
 threshold in between them.
 
-This means it's only suitable for images that show two clear peaks in their 
+This means it's most suitable for images that show two clear peaks in their 
 histogram (also known as a 'bimodal' histogram). Other images may require 
 different automated thresholding methods to produce a good result. 
 
@@ -688,8 +689,7 @@ For this exercise, we'll use the same example image as the [manual thresholding
 exercise](#manual-thresholds). If you don't have that image open, run the top 
 code block in that exercise to open the image:
 
-![](fig/manual-thresholding-exercise-shapes.png){alt="Test image containing a 
-rectangle, circle and triangle"}
+![](fig/shapes.png){alt="Test image containing a rectangle, circle and triangle" width="50%"}
 
 Try some of the other automatic thresholding options provided by the 
 `napari-skimage` plugin. Set the 'method' to different options in 
@@ -713,26 +713,14 @@ row of the layer controls.
 
 ## Solution
 
-Otsu thresholding chooses a threshold that separates the background 
-from the three shapes:
+![](fig/shapes-thresholds.png){alt="Masks via automated thresholding"}
 
-![](fig/otsu-shapes.png){alt="Mask of shapes (brown) overlaid on shapes image - 
-made with Otsu thresholding"}
+- **Otsu**: The mask does not include the low‑intensity triangle.
+- **Mean**: Generally good, but on close inspection a few darker triangle pixels are still missed.
+- **Li**: This looks great! The mask includes all pixels of the three shapes, while excluding the background. 
+- **Yen**: Includes the shapes but also includes some background.
+- **Sauvola**: A substantial amount of background is included here.
 
-Li and mean thresholding gives a very similar result.
-
-Yen gives a different result - isolating the triangle and circle from the rest 
-of the image. Some of the pixels in the rectangle are also labelled, but only 
-in patchy areas:
-
-![](fig/yen-shapes.png){alt="Mask of shapes (brown) overlaid on shapes image - 
-made with Yen thresholding"}
-
-Finally, Sauvola gives a completely different result, including a large number 
-of pixels from the background:
-
-![](fig/sauvola-shapes.png){alt="Mask of shapes (brown) overlaid on shapes 
-image - made with Sauvola thresholding" width="60%"}
 
 The important point is that different automatic thresholding methods will work 
 well for different kinds of images, and depending on which part of an image you 
