@@ -236,9 +236,9 @@ By moving the left contrast limits node we can figure out what each peak
 represents. You should see that the peaks from left to right are:
 
 - background
-- rectangle
-- circle
 - triangle
+- circle
+- rectangle
 
 Then we set thresholds for each (as below). Note that you may not have exactly 
 the same threshold values as we use here! There are many different values that 
