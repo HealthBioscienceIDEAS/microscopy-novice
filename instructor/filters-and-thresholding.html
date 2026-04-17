@@ -233,7 +233,7 @@
       </button>
     </div><!--/div.accordion-header-->
 
-    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#thresholding">Thresholding</a></li>
 <li><a href="#adding-plugins-to-help-with-segmentation">Adding plugins to help with segmentation</a></li>
@@ -428,15 +428,15 @@ interested in, and we should set our threshold accordingly.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="co"># Get the image data for the nuclei</span></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>nuclei <span class="op">=</span> viewer.layers[<span class="st">"nuclei"</span>].data</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co"># Create mask with a threshold of 8266</span></span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>mask <span class="op">=</span> nuclei <span class="op">&gt;</span> <span class="dv">8266</span></span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="co"># Add mask to the Napari viewer</span></span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>viewer.add_labels(mask)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="co"># Get the image data for the nuclei</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1" aria-label="code-block-1-3"></a>nuclei <span class="op">=</span> viewer.layers[<span class="st">"nuclei"</span>].data</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1" aria-label="code-block-1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1" aria-label="code-block-1-5"></a><span class="co"># Create mask with a threshold of 8266</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1" aria-label="code-block-1-6"></a>mask <span class="op">=</span> nuclei <span class="op">&gt;</span> <span class="dv">8266</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1" aria-label="code-block-1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1" aria-label="code-block-1-8"></a><span class="co"># Add mask to the Napari viewer</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1" aria-label="code-block-1-9"></a>viewer.add_labels(mask)</span></code></pre>
 </div>
 <p>You should see a mask appear that highlights the nuclei in brown. If
 we set the nuclei contrast limits back to normal (select ‘nuclei’ in the
@@ -500,22 +500,22 @@ load this test image:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="im">import</span> skimage</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="im">from</span> skimage.draw <span class="im">import</span> disk, polygon</span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="im">from</span> skimage.util <span class="im">import</span> random_noise, img_as_ubyte</span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="im">from</span> packaging <span class="im">import</span> version</span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>image <span class="op">=</span> np.full((<span class="dv">100</span>, <span class="dv">100</span>), <span class="dv">10</span>, dtype<span class="op">=</span><span class="st">"uint8"</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>image[<span class="dv">10</span>:<span class="dv">50</span>, <span class="dv">20</span>:<span class="dv">80</span>] <span class="op">=</span> <span class="dv">200</span></span>
-<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>image[disk((<span class="dv">75</span>, <span class="dv">75</span>), <span class="dv">15</span>)] <span class="op">=</span> <span class="dv">140</span></span>
-<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>rr, cc <span class="op">=</span> polygon([<span class="dv">90</span>, <span class="dv">60</span>, <span class="dv">90</span>], [<span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">50</span>])</span>
-<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>image[rr, cc] <span class="op">=</span> <span class="dv">80</span></span>
-<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="cf">if</span> version.parse(skimage.__version__) <span class="op">&lt;</span> version.parse(<span class="st">"0.21"</span>):</span>
-<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>  image <span class="op">=</span> img_as_ubyte(random_noise(image, var<span class="op">=</span><span class="fl">0.0005</span>, seed<span class="op">=</span><span class="dv">6</span>))</span>
-<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a>  image <span class="op">=</span> img_as_ubyte(random_noise(image, var<span class="op">=</span><span class="fl">0.0005</span>, rng<span class="op">=</span><span class="dv">6</span>))</span>
-<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a>viewer.add_image(image)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1" aria-label="code-block-2-2"></a><span class="im">import</span> skimage</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1" aria-label="code-block-2-3"></a><span class="im">from</span> skimage.draw <span class="im">import</span> disk, polygon</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1" aria-label="code-block-2-4"></a><span class="im">from</span> skimage.util <span class="im">import</span> random_noise, img_as_ubyte</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1" aria-label="code-block-2-5"></a><span class="im">from</span> packaging <span class="im">import</span> version</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1" aria-label="code-block-2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1" aria-label="code-block-2-7"></a>image <span class="op">=</span> np.full((<span class="dv">100</span>, <span class="dv">100</span>), <span class="dv">10</span>, dtype<span class="op">=</span><span class="st">"uint8"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1" aria-label="code-block-2-8"></a>image[<span class="dv">10</span>:<span class="dv">50</span>, <span class="dv">20</span>:<span class="dv">80</span>] <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1" aria-label="code-block-2-9"></a>image[disk((<span class="dv">75</span>, <span class="dv">75</span>), <span class="dv">15</span>)] <span class="op">=</span> <span class="dv">140</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1" aria-label="code-block-2-10"></a>rr, cc <span class="op">=</span> polygon([<span class="dv">90</span>, <span class="dv">60</span>, <span class="dv">90</span>], [<span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">50</span>])</span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1" aria-label="code-block-2-11"></a>image[rr, cc] <span class="op">=</span> <span class="dv">80</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1" aria-label="code-block-2-12"></a><span class="cf">if</span> version.parse(skimage.__version__) <span class="op">&lt;</span> version.parse(<span class="st">"0.21"</span>):</span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1" aria-label="code-block-2-13"></a>  image <span class="op">=</span> img_as_ubyte(random_noise(image, var<span class="op">=</span><span class="fl">0.0005</span>, seed<span class="op">=</span><span class="dv">6</span>))</span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1" aria-label="code-block-2-14"></a><span class="cf">else</span>:</span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1" aria-label="code-block-2-15"></a>  image <span class="op">=</span> img_as_ubyte(random_noise(image, var<span class="op">=</span><span class="fl">0.0005</span>, rng<span class="op">=</span><span class="dv">6</span>))</span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1" aria-label="code-block-2-16"></a>viewer.add_image(image)</span></code></pre>
 </div>
 <figure><img src="../fig/shapes.png" style="width:50.0%" alt="Test image containing a  rectangle, circle and triangle" class="figure mx-auto d-block"></figure><p>Create a mask for each shape by choosing thresholds based on the
 image’s histogram. You can set a threshold as all pixels above a certain
@@ -523,22 +523,22 @@ value:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>mask <span class="op">=</span> image <span class="op">&gt;</span> <span class="dv">40</span></span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>viewer.add_labels(mask)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a>mask <span class="op">=</span> image <span class="op">&gt;</span> <span class="dv">40</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a>viewer.add_labels(mask)</span></code></pre>
 </div>
 <p>Or all pixels below a certain value:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>mask <span class="op">=</span> image <span class="op">&lt;</span> <span class="dv">40</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>viewer.add_labels(mask)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a>mask <span class="op">=</span> image <span class="op">&lt;</span> <span class="dv">40</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a>viewer.add_labels(mask)</span></code></pre>
 </div>
 <p>Or all pixels between two values:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>mask <span class="op">=</span> (image <span class="op">&gt;</span> <span class="dv">20</span>) <span class="op">&amp;</span> (image <span class="op">&lt;</span> <span class="dv">40</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>viewer.add_labels(mask)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a>mask <span class="op">=</span> (image <span class="op">&gt;</span> <span class="dv">20</span>) <span class="op">&amp;</span> (image <span class="op">&lt;</span> <span class="dv">40</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1" aria-label="code-block-5-2"></a>viewer.add_labels(mask)</span></code></pre>
 </div>
 </div>
 </div>
@@ -566,14 +566,14 @@ gaps between the peaks in the image histogram.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>rectangle <span class="op">=</span> image <span class="op">&gt;</span> <span class="dv">171</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>viewer.add_labels(rectangle)</span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>circle <span class="op">=</span> (image <span class="op">&gt;</span> <span class="dv">118</span>) <span class="op">&amp;</span> (image <span class="op">&lt;</span> <span class="dv">166</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>viewer.add_labels(circle)</span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>triangle <span class="op">=</span> (image <span class="op">&gt;</span> <span class="dv">53</span>) <span class="op">&amp;</span> (image <span class="op">&lt;</span> <span class="dv">110</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>viewer.add_labels(triangle)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a>rectangle <span class="op">=</span> image <span class="op">&gt;</span> <span class="dv">171</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1" aria-label="code-block-6-2"></a>viewer.add_labels(rectangle)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1" aria-label="code-block-6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1" aria-label="code-block-6-4"></a>circle <span class="op">=</span> (image <span class="op">&gt;</span> <span class="dv">118</span>) <span class="op">&amp;</span> (image <span class="op">&lt;</span> <span class="dv">166</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1" aria-label="code-block-6-5"></a>viewer.add_labels(circle)</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1" aria-label="code-block-6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1" aria-label="code-block-6-7"></a>triangle <span class="op">=</span> (image <span class="op">&gt;</span> <span class="dv">53</span>) <span class="op">&amp;</span> (image <span class="op">&lt;</span> <span class="dv">110</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1" aria-label="code-block-6-8"></a>viewer.add_labels(triangle)</span></code></pre>
 </div>
 </div>
 </div>
@@ -721,8 +721,8 @@ should be added soon).</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>nuclei <span class="op">=</span> viewer.layers[<span class="st">"nuclei"</span>].data</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>viewer.add_image(nuclei[<span class="dv">30</span>, :, :], name<span class="op">=</span><span class="st">"nuclei_2D"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a>nuclei <span class="op">=</span> viewer.layers[<span class="st">"nuclei"</span>].data</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a>viewer.add_image(nuclei[<span class="dv">30</span>, :, :], name<span class="op">=</span><span class="st">"nuclei_2D"</span>)</span></code></pre>
 </div>
 <p>Try the following filters (make sure you use ‘nuclei_2D’ in the image
 field):</p>
@@ -802,15 +802,15 @@ gaussian blur sigma to three, then click ‘Apply Gaussian Filter’.</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co"># Get the image data for the blurred nuclei</span></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>blurred <span class="op">=</span> viewer.layers[<span class="st">"nuclei_gaussian_σ=3.0"</span>].data</span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co"># Create mask with a threshold of 8266</span></span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>blurred_mask <span class="op">=</span> blurred <span class="op">&gt;</span> <span class="dv">8266</span></span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co"># Add mask to the Napari viewer</span></span>
-<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>viewer.add_labels(blurred_mask)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1" aria-label="code-block-8-2"></a><span class="co"># Get the image data for the blurred nuclei</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1" aria-label="code-block-8-3"></a>blurred <span class="op">=</span> viewer.layers[<span class="st">"nuclei_gaussian_σ=3.0"</span>].data</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1" aria-label="code-block-8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1" aria-label="code-block-8-5"></a><span class="co"># Create mask with a threshold of 8266</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1" aria-label="code-block-8-6"></a>blurred_mask <span class="op">=</span> blurred <span class="op">&gt;</span> <span class="dv">8266</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1" aria-label="code-block-8-7"></a></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1" aria-label="code-block-8-8"></a><span class="co"># Add mask to the Napari viewer</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1" aria-label="code-block-8-9"></a>viewer.add_labels(blurred_mask)</span></code></pre>
 </div>
 <p>You’ll see that we get an odd result - a totally empty image! What
 went wrong here? Let’s look at the blurred image’s shape and data type
@@ -818,8 +818,8 @@ in the console:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="bu">print</span>(blurred.shape)</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="bu">print</span>(blurred.dtype)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="bu">print</span>(blurred.shape)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1" aria-label="code-block-9-2"></a><span class="bu">print</span>(blurred.dtype)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -858,15 +858,15 @@ again choose a threshold between the two peaks - around 0.134:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a></span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co"># Get the image data for the blurred nuclei</span></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>blurred <span class="op">=</span> viewer.layers[<span class="st">"nuclei_gaussian_σ=3.0"</span>].data</span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="co"># Create mask with a threshold of 0.134</span></span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>blurred_mask <span class="op">=</span> blurred <span class="op">&gt;</span> <span class="fl">0.134</span></span>
-<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="co"># Add mask to the Napari viewer</span></span>
-<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>viewer.add_labels(blurred_mask)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a><span class="co"># Get the image data for the blurred nuclei</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1" aria-label="code-block-11-3"></a>blurred <span class="op">=</span> viewer.layers[<span class="st">"nuclei_gaussian_σ=3.0"</span>].data</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1" aria-label="code-block-11-4"></a></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1" aria-label="code-block-11-5"></a><span class="co"># Create mask with a threshold of 0.134</span></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1" aria-label="code-block-11-6"></a>blurred_mask <span class="op">=</span> blurred <span class="op">&gt;</span> <span class="fl">0.134</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1" aria-label="code-block-11-7"></a></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1" aria-label="code-block-11-8"></a><span class="co"># Add mask to the Napari viewer</span></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1" aria-label="code-block-11-9"></a>viewer.add_labels(blurred_mask)</span></code></pre>
 </div>
 <figure><img src="../fig/threshold-blurred-mask.png" style="width:60.0%" alt="Mask of nuclei (brown) overlaid on  nuclei image - created with manual thresholding after gaussian blur" class="figure mx-auto d-block"></figure><p>Now we see a much more sensible result - a brown mask that again
 highlights the nuclei in brown. To compare to the result with no
@@ -874,15 +874,15 @@ smoothing, let’s run our previous threshold again (from the <a href="#threshol
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co"># Get the image data for the nuclei</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>nuclei <span class="op">=</span> viewer.layers[<span class="st">"nuclei"</span>].data</span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co"># Create mask with a threshold of 8266</span></span>
-<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>mask <span class="op">=</span> nuclei <span class="op">&gt;</span> <span class="dv">8266</span></span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="co"># Add mask to the Napari viewer</span></span>
-<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>viewer.add_labels(mask)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="co"># Get the image data for the nuclei</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1" aria-label="code-block-12-3"></a>nuclei <span class="op">=</span> viewer.layers[<span class="st">"nuclei"</span>].data</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1" aria-label="code-block-12-4"></a></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1" aria-label="code-block-12-5"></a><span class="co"># Create mask with a threshold of 8266</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1" aria-label="code-block-12-6"></a>mask <span class="op">=</span> nuclei <span class="op">&gt;</span> <span class="dv">8266</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1" aria-label="code-block-12-7"></a></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1" aria-label="code-block-12-8"></a><span class="co"># Add mask to the Napari viewer</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1" aria-label="code-block-12-9"></a>viewer.add_labels(mask)</span></code></pre>
 </div>
 <p>If we compare ‘blurred_mask’ and ‘mask’, we can see that blurring
 before choosing a threshold results in a much smoother result that has
@@ -1063,7 +1063,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1086,7 +1086,7 @@ any links that you are not going to use.
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/filters-and-thresholding.html",
   "dateCreated": "2023-10-26",
   "dateModified": "2025-11-21",
-  "datePublished": "2026-04-14"
+  "datePublished": "2026-04-17"
 }
 
   </script><script>

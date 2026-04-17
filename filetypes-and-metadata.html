@@ -197,7 +197,7 @@
       </button>
     </div><!--/div.accordion-header-->
 
-    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#image-file-formats">Image file formats</a></li>
 <li><a href="#metadata">Metadata</a></li>
@@ -409,17 +409,17 @@ metadata, let’s explore with <code>BioIO</code> in napari’s console.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">from</span> bioio <span class="im">import</span> BioImage</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="co"># get the file path from the image layer</span></span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>image_path <span class="op">=</span> viewer.layers[<span class="dv">0</span>].source.path</span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>image <span class="op">=</span> BioImage(image_path)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="im">from</span> bioio <span class="im">import</span> BioImage</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1" aria-label="code-block-1-3"></a><span class="co"># get the file path from the image layer</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1" aria-label="code-block-1-4"></a>image_path <span class="op">=</span> viewer.layers[<span class="dv">0</span>].source.path</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1" aria-label="code-block-1-5"></a>image <span class="op">=</span> BioImage(image_path)</span></code></pre>
 </div>
 <p>Now we can explore some of the image’s properties:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="bu">print</span>(image.dims) <span class="co"># print size of each axis (in pixels)</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="bu">print</span>(image.dims) <span class="co"># print size of each axis (in pixels)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -434,7 +434,7 @@ a single timepoint.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="bu">print</span>(image.standard_metadata)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="bu">print</span>(image.standard_metadata)</span></code></pre>
 </div>
 <p>This includes the image dimensions, the date/time the image was
 acquired, as well as information about the pixel size
@@ -456,16 +456,16 @@ colour-coding to make the output easier to read:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="im">import</span> rich</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>rich.<span class="bu">print</span>(image.standard_metadata)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="im">import</span> rich</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1" aria-label="code-block-5-2"></a>rich.<span class="bu">print</span>(image.standard_metadata)</span></code></pre>
 </div>
 <figure><img src="fig/metadata-console.png" alt="Screenshot of metadata printed to Napari's  console" class="figure mx-auto d-block"></figure><p>If you’d prefer not to have colour-coding, but keep the clearer
 formatting of one item per line - you can run this instead:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="im">import</span> pprint</span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>pprint.pp(image.standard_metadata)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="im">import</span> pprint</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1" aria-label="code-block-6-2"></a>pprint.pp(image.standard_metadata)</span></code></pre>
 </div>
 </div>
 </div>
@@ -474,8 +474,8 @@ formatting of one item per line - you can run this instead:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>metadata <span class="op">=</span> image.ome_metadata</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="bu">print</span>(metadata)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a>metadata <span class="op">=</span> image.ome_metadata</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a><span class="bu">print</span>(metadata)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -493,13 +493,13 @@ formatting of one item per line - you can run this instead:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="bu">print</span>(metadata.instruments)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="bu">print</span>(metadata.instruments)</span></code></pre>
 </div>
 <p>The metadata is nested, so we can keep going deeper e.g.</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="bu">print</span>(metadata.instruments[<span class="dv">0</span>].objectives)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="bu">print</span>(metadata.instruments[<span class="dv">0</span>].objectives)</span></code></pre>
 </div>
 <p>This metadata is a vital record of exactly how the image was acquired
 and what it represents. As we’ve mentioned in previous episodes - it’s
@@ -601,7 +601,7 @@ our .czi image, this is stored as:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="bu">print</span>(image.physical_pixel_sizes)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="bu">print</span>(image.physical_pixel_sizes)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -627,11 +627,11 @@ and with the pixel size set correctly. First, remove the
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># Get the numpy array and remove the un-needed time axis</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>image_np <span class="op">=</span> image.data[<span class="dv">0</span>,]</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="co"># Display it, giving the correct 'channel_axis' to split on + pixel size</span></span>
-<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>viewer.add_image(image_np, rgb<span class="op">=</span><span class="va">False</span>, channel_axis<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span>[<span class="fl">0.35</span>, <span class="fl">0.2047619</span>, <span class="fl">0.2047619</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="co"># Get the numpy array and remove the un-needed time axis</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1" aria-label="code-block-13-2"></a>image_np <span class="op">=</span> image.data[<span class="dv">0</span>,]</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1" aria-label="code-block-13-3"></a></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1" aria-label="code-block-13-4"></a><span class="co"># Display it, giving the correct 'channel_axis' to split on + pixel size</span></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1" aria-label="code-block-13-5"></a>viewer.add_image(image_np, rgb<span class="op">=</span><span class="va">False</span>, channel_axis<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span>[<span class="fl">0.35</span>, <span class="fl">0.2047619</span>, <span class="fl">0.2047619</span>])</span></code></pre>
 </div>
 <p>Each image layer in Napari has a <code>.scale</code> which is
 equivalent to the pixel size. We can check this is set correctly
@@ -639,11 +639,11 @@ with:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Get the first image layer</span></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>image_layer <span class="op">=</span> viewer.layers[<span class="dv">0</span>]</span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># Print its scale</span></span>
-<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="bu">print</span>(image_layer.scale)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="co"># Get the first image layer</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1" aria-label="code-block-14-2"></a>image_layer <span class="op">=</span> viewer.layers[<span class="dv">0</span>]</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1" aria-label="code-block-14-3"></a></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1" aria-label="code-block-14-4"></a><span class="co"># Print its scale</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1" aria-label="code-block-14-5"></a><span class="bu">print</span>(image_layer.scale)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -669,7 +669,7 @@ correctly before making measurements from your images. You can set the
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>image_layer.scale <span class="op">=</span> (<span class="fl">0.35</span>, <span class="fl">0.2047619</span>, <span class="fl">0.2047619</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a>image_layer.scale <span class="op">=</span> (<span class="fl">0.35</span>, <span class="fl">0.2047619</span>, <span class="fl">0.2047619</span>)</span></code></pre>
 </div>
 </div>
 </div>
@@ -688,9 +688,9 @@ correctly before making measurements from your images. You can set the
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>image_layer_1 <span class="op">=</span> viewer.layers[<span class="dv">0</span>]</span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>image_layer_2 <span class="op">=</span> viewer.layers[<span class="dv">1</span>]</span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>image_layer_3 <span class="op">=</span> viewer.layers[<span class="dv">2</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a>image_layer_1 <span class="op">=</span> viewer.layers[<span class="dv">0</span>]</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1" aria-label="code-block-17-2"></a>image_layer_2 <span class="op">=</span> viewer.layers[<span class="dv">1</span>]</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1" aria-label="code-block-17-3"></a>image_layer_3 <span class="op">=</span> viewer.layers[<span class="dv">2</span>]</span></code></pre>
 </div>
 <ol style="list-style-type: decimal"><li>Check the <code>.scale</code> of each layer - are they the
 same?</li>
@@ -716,9 +716,9 @@ tall as their original size in the viewer</li>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="bu">print</span>(image_layer_1.scale)</span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="bu">print</span>(image_layer_2.scale)</span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="bu">print</span>(image_layer_3.scale)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="bu">print</span>(image_layer_1.scale)</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1" aria-label="code-block-18-2"></a><span class="bu">print</span>(image_layer_2.scale)</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1" aria-label="code-block-18-3"></a><span class="bu">print</span>(image_layer_3.scale)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -733,7 +733,7 @@ tall as their original size in the viewer</li>
 <figure><img src="fig/yeast-exercise-2.png" alt="Yeast image shown in Napari with layer 3  twice as big in y and x" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>image_layer_3.scale <span class="op">=</span> (<span class="fl">0.35</span>, <span class="fl">0.4</span>, <span class="fl">0.4</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a>image_layer_3.scale <span class="op">=</span> (<span class="fl">0.35</span>, <span class="fl">0.4</span>, <span class="fl">0.4</span>)</span></code></pre>
 </div>
 <p>You should see that layer 3 becomes about twice as wide and twice as
 tall as the other layers. This is because we set the pixel size in y and
@@ -745,7 +745,7 @@ x (which used to be 0.2047619μm) to about twice its original value (now
 <figure><img src="fig/yeast-exercise-3.png" alt="Yeast image shown in Napari with layer 3  twice as big in y" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>image_layer_3.scale <span class="op">=</span> (<span class="fl">0.35</span>, <span class="fl">0.4</span>, <span class="fl">0.2047619</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a>image_layer_3.scale <span class="op">=</span> (<span class="fl">0.35</span>, <span class="fl">0.4</span>, <span class="fl">0.2047619</span>)</span></code></pre>
 </div>
 <p>You should see that layer 3 appears squashed - with the same width as
 other layers, but about twice the height. This is because we set the
@@ -760,9 +760,9 @@ inappropriately can lead to stretched or squashed images like this!</p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>image_layer_1.scale <span class="op">=</span> (<span class="fl">0.35</span>, <span class="fl">0.10238095</span>, <span class="fl">0.10238095</span>)</span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>image_layer_2.scale <span class="op">=</span> (<span class="fl">0.35</span>, <span class="fl">0.10238095</span>, <span class="fl">0.10238095</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>image_layer_3.scale <span class="op">=</span> (<span class="fl">0.35</span>, <span class="fl">0.10238095</span>, <span class="fl">0.10238095</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a>image_layer_1.scale <span class="op">=</span> (<span class="fl">0.35</span>, <span class="fl">0.10238095</span>, <span class="fl">0.10238095</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1" aria-label="code-block-22-2"></a>image_layer_2.scale <span class="op">=</span> (<span class="fl">0.35</span>, <span class="fl">0.10238095</span>, <span class="fl">0.10238095</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1" aria-label="code-block-22-3"></a>image_layer_3.scale <span class="op">=</span> (<span class="fl">0.35</span>, <span class="fl">0.10238095</span>, <span class="fl">0.10238095</span>)</span></code></pre>
 </div>
 </div>
 </div>
@@ -864,19 +864,19 @@ written to the same folder as the ‘00001_01.ome.tiff’ image!</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="im">import</span> imageio.v3 <span class="im">as</span> iio</span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="co"># Get the 00001_01.ome layer, and get timepoint = 30</span></span>
-<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a>layer <span class="op">=</span> viewer.layers[<span class="st">"00001_01.ome"</span>]</span>
-<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a>image <span class="op">=</span> layer.data[<span class="dv">30</span>, :, :]</span>
-<span id="cb23-7"><a href="#cb23-7" tabindex="-1"></a></span>
-<span id="cb23-8"><a href="#cb23-8" tabindex="-1"></a><span class="co"># Save as different file formats in same folder as 00001_01.ome</span></span>
-<span id="cb23-9"><a href="#cb23-9" tabindex="-1"></a>folder_path <span class="op">=</span> Path(layer.source.path).parent</span>
-<span id="cb23-10"><a href="#cb23-10" tabindex="-1"></a>iio.imwrite( folder_path <span class="op">/</span> <span class="st">"test-tiff.tiff"</span>, image)</span>
-<span id="cb23-11"><a href="#cb23-11" tabindex="-1"></a>iio.imwrite( folder_path <span class="op">/</span> <span class="st">"test-png.png"</span>, image)</span>
-<span id="cb23-12"><a href="#cb23-12" tabindex="-1"></a>iio.imwrite( folder_path <span class="op">/</span> <span class="st">"test-jpg-high-quality.jpg"</span>, image, quality<span class="op">=</span><span class="dv">75</span>)</span>
-<span id="cb23-13"><a href="#cb23-13" tabindex="-1"></a>iio.imwrite( folder_path <span class="op">/</span> <span class="st">"test-jpg-low-quality.jpg"</span>, image, quality<span class="op">=</span><span class="dv">30</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a><span class="im">import</span> imageio.v3 <span class="im">as</span> iio</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1" aria-label="code-block-23-2"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1" aria-label="code-block-23-3"></a></span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1" aria-label="code-block-23-4"></a><span class="co"># Get the 00001_01.ome layer, and get timepoint = 30</span></span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1" aria-label="code-block-23-5"></a>layer <span class="op">=</span> viewer.layers[<span class="st">"00001_01.ome"</span>]</span>
+<span id="cb23-6"><a href="#cb23-6" tabindex="-1" aria-label="code-block-23-6"></a>image <span class="op">=</span> layer.data[<span class="dv">30</span>, :, :]</span>
+<span id="cb23-7"><a href="#cb23-7" tabindex="-1" aria-label="code-block-23-7"></a></span>
+<span id="cb23-8"><a href="#cb23-8" tabindex="-1" aria-label="code-block-23-8"></a><span class="co"># Save as different file formats in same folder as 00001_01.ome</span></span>
+<span id="cb23-9"><a href="#cb23-9" tabindex="-1" aria-label="code-block-23-9"></a>folder_path <span class="op">=</span> Path(layer.source.path).parent</span>
+<span id="cb23-10"><a href="#cb23-10" tabindex="-1" aria-label="code-block-23-10"></a>iio.imwrite( folder_path <span class="op">/</span> <span class="st">"test-tiff.tiff"</span>, image)</span>
+<span id="cb23-11"><a href="#cb23-11" tabindex="-1" aria-label="code-block-23-11"></a>iio.imwrite( folder_path <span class="op">/</span> <span class="st">"test-png.png"</span>, image)</span>
+<span id="cb23-12"><a href="#cb23-12" tabindex="-1" aria-label="code-block-23-12"></a>iio.imwrite( folder_path <span class="op">/</span> <span class="st">"test-jpg-high-quality.jpg"</span>, image, quality<span class="op">=</span><span class="dv">75</span>)</span>
+<span id="cb23-13"><a href="#cb23-13" tabindex="-1" aria-label="code-block-23-13"></a>iio.imwrite( folder_path <span class="op">/</span> <span class="st">"test-jpg-low-quality.jpg"</span>, image, quality<span class="op">=</span><span class="dv">30</span>)</span></code></pre>
 </div>
 <ul><li><p>Go to the folder where ‘00001_01.ome.tiff’ was saved and look at
 the file sizes of the newly written images (<code>test-tiff</code>,
@@ -1069,7 +1069,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1092,7 +1092,7 @@ any links that you are not going to use.
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/filetypes-and-metadata.html",
   "dateCreated": "2023-10-26",
   "dateModified": "2025-10-29",
-  "datePublished": "2026-04-14"
+  "datePublished": "2026-04-17"
 }
 
   </script><script>

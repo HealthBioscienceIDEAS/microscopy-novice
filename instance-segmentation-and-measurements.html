@@ -242,7 +242,7 @@
       </button>
     </div><!--/div.accordion-header-->
 
-    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#loading-an-image-and-creating-a-mask">Loading an image and creating a mask</a></li>
 <li><a href="#our-first-measurement">Our first measurement</a></li>
@@ -392,15 +392,15 @@ then copy and paste the code below.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">from</span> skimage.filters <span class="im">import</span> threshold_otsu, gaussian</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>image <span class="op">=</span> viewer.layers[<span class="st">"nuclei"</span>].data</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>blurred <span class="op">=</span> gaussian(image, sigma<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>threshold <span class="op">=</span> threshold_otsu(blurred)</span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>semantic_seg <span class="op">=</span> blurred <span class="op">&gt;</span> threshold</span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>viewer.add_labels(semantic_seg)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="im">from</span> skimage.filters <span class="im">import</span> threshold_otsu, gaussian</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1" aria-label="code-block-1-3"></a>image <span class="op">=</span> viewer.layers[<span class="st">"nuclei"</span>].data</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1" aria-label="code-block-1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1" aria-label="code-block-1-5"></a>blurred <span class="op">=</span> gaussian(image, sigma<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1" aria-label="code-block-1-6"></a>threshold <span class="op">=</span> threshold_otsu(blurred)</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1" aria-label="code-block-1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1" aria-label="code-block-1-8"></a>semantic_seg <span class="op">=</span> blurred <span class="op">&gt;</span> threshold</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1" aria-label="code-block-1-9"></a>viewer.add_labels(semantic_seg)</span></code></pre>
 </div>
 <figure><img src="fig/semantic-seg-napari.png" alt="A screenshot of a rough semantic segmentation of nuclei in Napari" class="figure mx-auto d-block"></figure><p>And you should see the image above. You are now ready to begin this
 lesson.</p>
@@ -411,26 +411,26 @@ code in the console.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># We're going to need some functions from the Numpy library.</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co"># How many pixels are there in total in the image?</span></span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>total_pixels <span class="op">=</span> semantic_seg.size</span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="co"># How many pixels are labelled as cell nuclei (pixel value = 1)?</span></span>
-<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="co"># We'll use Numpy's count_nonzero method.</span></span>
-<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>nuclei_pixels <span class="op">=</span> np.count_nonzero(semantic_seg)</span>
-<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="co"># Now we can work out what percentage of the image is cell nuclei</span></span>
-<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>nuclei_percent <span class="op">=</span> nuclei_pixels <span class="op">/</span> total_pixels <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="co"># And write the results to the console with some formatting.</span></span>
-<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="co"># Python's f-string format allows us to easily mix text and</span></span>
-<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a><span class="co"># code in our print statements. The curly brackets contain</span></span>
-<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a><span class="co"># code and the ":2f" provides formatting instructions, here</span></span>
-<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a><span class="co"># telling Python to only print 2 decimal points.</span></span>
-<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Percent Nuclei = </span><span class="sc">{</span>nuclei_percent<span class="sc">:.2f}</span><span class="ss">%"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="co"># We're going to need some functions from the Numpy library.</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1" aria-label="code-block-2-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1" aria-label="code-block-2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1" aria-label="code-block-2-4"></a><span class="co"># How many pixels are there in total in the image?</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1" aria-label="code-block-2-5"></a>total_pixels <span class="op">=</span> semantic_seg.size</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1" aria-label="code-block-2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1" aria-label="code-block-2-7"></a><span class="co"># How many pixels are labelled as cell nuclei (pixel value = 1)?</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1" aria-label="code-block-2-8"></a><span class="co"># We'll use Numpy's count_nonzero method.</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1" aria-label="code-block-2-9"></a>nuclei_pixels <span class="op">=</span> np.count_nonzero(semantic_seg)</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1" aria-label="code-block-2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1" aria-label="code-block-2-11"></a><span class="co"># Now we can work out what percentage of the image is cell nuclei</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1" aria-label="code-block-2-12"></a>nuclei_percent <span class="op">=</span> nuclei_pixels <span class="op">/</span> total_pixels <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1" aria-label="code-block-2-13"></a></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1" aria-label="code-block-2-14"></a><span class="co"># And write the results to the console with some formatting.</span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1" aria-label="code-block-2-15"></a><span class="co"># Python's f-string format allows us to easily mix text and</span></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1" aria-label="code-block-2-16"></a><span class="co"># code in our print statements. The curly brackets contain</span></span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1" aria-label="code-block-2-17"></a><span class="co"># code and the ":2f" provides formatting instructions, here</span></span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1" aria-label="code-block-2-18"></a><span class="co"># telling Python to only print 2 decimal points.</span></span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1" aria-label="code-block-2-19"></a></span>
+<span id="cb2-20"><a href="#cb2-20" tabindex="-1" aria-label="code-block-2-20"></a><span class="bu">print</span>(<span class="ss">f"Percent Nuclei = </span><span class="sc">{</span>nuclei_percent<span class="sc">:.2f}</span><span class="ss">%"</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -458,14 +458,14 @@ new images? The Napari Python console has a built in save function.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Save current session to a file called measure_percent.py</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="op">%</span>save measure_percent <span class="op">~</span><span class="dv">0</span><span class="op">/</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="co"># Save current session to a file called measure_percent.py</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="op">%</span>save measure_percent <span class="op">~</span><span class="dv">0</span><span class="op">/</span></span></code></pre>
 </div>
 <p>Delete the semantic_seg layer from the viewer and run:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>load measure_percent.py</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a>load measure_percent.py</span></code></pre>
 </div>
 <p>After pressing enter you should see the calculated percent nuclei and
 the semantic_seg layer should reappear. We will reuse the save function
@@ -484,14 +484,14 @@ each connected region a unique integer value. Let’s try it.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Import the label function</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="im">from</span> skimage.measure <span class="im">import</span> label</span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co"># Run the label function on the mask image</span></span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>instance_seg <span class="op">=</span> label(semantic_seg)</span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co"># Add the result to the viewer</span></span>
-<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>viewer.add_labels(instance_seg)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="co"># Import the label function</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1" aria-label="code-block-6-2"></a><span class="im">from</span> skimage.measure <span class="im">import</span> label</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1" aria-label="code-block-6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1" aria-label="code-block-6-4"></a><span class="co"># Run the label function on the mask image</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1" aria-label="code-block-6-5"></a>instance_seg <span class="op">=</span> label(semantic_seg)</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1" aria-label="code-block-6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1" aria-label="code-block-6-7"></a><span class="co"># Add the result to the viewer</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1" aria-label="code-block-6-8"></a>viewer.add_labels(instance_seg)</span></code></pre>
 </div>
 <p><img src="fig/instance_segmentation_wrong.png" alt="A screenshot of an instance segmentation of nuclei with some incorrectly joined instances." class="figure">
 You should see the above image in the Napari viewer. The different
@@ -502,9 +502,9 @@ maximum value of the instance segmentation image.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co"># Calculate number of nuclei from instance segmentation</span></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of Nuclei = </span><span class="sc">{</span>instance_seg<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a><span class="co"># Calculate number of nuclei from instance segmentation</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1" aria-label="code-block-7-3"></a><span class="bu">print</span>(<span class="ss">f"Number of Nuclei = </span><span class="sc">{</span>instance_seg<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -516,10 +516,10 @@ individual nucleus by specifying an integer value between 1 and 18</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># How many pixels are there in nucleus 1</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>nucleus_id <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"There are </span><span class="sc">{</span>np<span class="sc">.</span>count_nonzero(instance_seg <span class="op">==</span> nucleus_id)<span class="sc">}</span><span class="ss">"</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>      <span class="ss">f"pixels in nucleus </span><span class="sc">{</span>nucleus_id<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="co"># How many pixels are there in nucleus 1</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1" aria-label="code-block-9-2"></a>nucleus_id <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1" aria-label="code-block-9-3"></a><span class="bu">print</span>(<span class="ss">f"There are </span><span class="sc">{</span>np<span class="sc">.</span>count_nonzero(instance_seg <span class="op">==</span> nucleus_id)<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1" aria-label="code-block-9-4"></a>      <span class="ss">f"pixels in nucleus </span><span class="sc">{</span>nucleus_id<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -620,12 +620,12 @@ nuclei are separate?</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="im">from</span> skimage.morphology <span class="im">import</span> binary_erosion, ball</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="co"># With radius = 1</span></span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>radius <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>eroded_mask <span class="op">=</span> binary_erosion(semantic_seg, footprint <span class="op">=</span> ball(radius))</span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>viewer.add_labels(eroded_mask, name <span class="op">=</span> <span class="ss">f'eroded ball </span><span class="sc">{</span>radius<span class="sc">}</span><span class="ss">'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="im">from</span> skimage.morphology <span class="im">import</span> binary_erosion, ball</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1" aria-label="code-block-11-3"></a><span class="co"># With radius = 1</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1" aria-label="code-block-11-4"></a>radius <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1" aria-label="code-block-11-5"></a>eroded_mask <span class="op">=</span> binary_erosion(semantic_seg, footprint <span class="op">=</span> ball(radius))</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1" aria-label="code-block-11-6"></a>viewer.add_labels(eroded_mask, name <span class="op">=</span> <span class="ss">f'eroded ball </span><span class="sc">{</span>radius<span class="sc">}</span><span class="ss">'</span>)</span></code></pre>
 </div>
 <p>Note that larger radius values will take longer to run on your
 computer. Keep your radius values &lt;= 10.</p>
@@ -637,7 +637,7 @@ computer. Keep your radius values &lt;= 10.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>To test different values of radius, you can assign a different value
 to radius, e.g. <code>radius = 5</code> and rerun the last two lines
@@ -646,11 +646,11 @@ loop</a> which enables us to test multiple values of radius quickly.</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># The for loop will repeat the indented lines of codes for each value</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co"># of radius in the list (1, 5, 10).</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="cf">for</span> radius <span class="kw">in</span> <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>:</span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  eroded_mask <span class="op">=</span> binary_erosion(semantic_seg, footprint <span class="op">=</span> ball(radius))</span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>  viewer.add_labels(eroded_mask, name <span class="op">=</span> <span class="ss">f'eroded ball </span><span class="sc">{</span>radius<span class="sc">}</span><span class="ss">'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="co"># The for loop will repeat the indented lines of codes for each value</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="co"># of radius in the list (1, 5, 10).</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1" aria-label="code-block-12-3"></a><span class="cf">for</span> radius <span class="kw">in</span> <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>:</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1" aria-label="code-block-12-4"></a>  eroded_mask <span class="op">=</span> binary_erosion(semantic_seg, footprint <span class="op">=</span> ball(radius))</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1" aria-label="code-block-12-5"></a>  viewer.add_labels(eroded_mask, name <span class="op">=</span> <span class="ss">f'eroded ball </span><span class="sc">{</span>radius<span class="sc">}</span><span class="ss">'</span>)</span></code></pre>
 </div>
 <p><img src="fig/binary_mask_no_erosion.png" alt="A screenshot of a semantic segmentation mask before erosion." class="figure">
 The first image shows the mask without any erosion for comparison.</p>
@@ -675,16 +675,16 @@ again.</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># Remove the incorrect instance segmentation from the viewer</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>viewer.layers.remove(<span class="st">'instance_seg'</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>eroded_semantic_seg <span class="op">=</span> viewer.layers[<span class="st">'eroded ball 10'</span>].data</span>
-<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="co"># Create a new instace segmentation using the eroded mask</span></span>
-<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>instance_seg <span class="op">=</span> label(eroded_semantic_seg)</span>
-<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>viewer.add_labels(instance_seg)</span>
-<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a></span>
-<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of nuclei after erosion  = </span><span class="sc">{</span>instance_seg<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="co"># Remove the incorrect instance segmentation from the viewer</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1" aria-label="code-block-13-2"></a>viewer.layers.remove(<span class="st">'instance_seg'</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1" aria-label="code-block-13-3"></a></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1" aria-label="code-block-13-4"></a>eroded_semantic_seg <span class="op">=</span> viewer.layers[<span class="st">'eroded ball 10'</span>].data</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1" aria-label="code-block-13-5"></a><span class="co"># Create a new instace segmentation using the eroded mask</span></span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1" aria-label="code-block-13-6"></a>instance_seg <span class="op">=</span> label(eroded_semantic_seg)</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1" aria-label="code-block-13-7"></a></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1" aria-label="code-block-13-8"></a>viewer.add_labels(instance_seg)</span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1" aria-label="code-block-13-9"></a></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1" aria-label="code-block-13-10"></a><span class="bu">print</span>(<span class="ss">f"Number of nuclei after erosion  = </span><span class="sc">{</span>instance_seg<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -707,16 +707,16 @@ labels.</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="im">from</span> skimage.segmentation <span class="im">import</span> expand_labels</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co"># Remove the eroded instance segmentation from the viewer</span></span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>viewer.layers.remove(<span class="st">'instance_seg'</span>)</span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co"># Expand the labels using the same radius we used when eroding them (10)</span></span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>instance_seg <span class="op">=</span> expand_labels(instance_seg, <span class="dv">10</span>)</span>
-<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co"># Put the new instance segmentation back in the viewer</span></span>
-<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a>viewer.add_labels(instance_seg)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="im">from</span> skimage.segmentation <span class="im">import</span> expand_labels</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1" aria-label="code-block-15-2"></a></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1" aria-label="code-block-15-3"></a><span class="co"># Remove the eroded instance segmentation from the viewer</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1" aria-label="code-block-15-4"></a>viewer.layers.remove(<span class="st">'instance_seg'</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1" aria-label="code-block-15-5"></a></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1" aria-label="code-block-15-6"></a><span class="co"># Expand the labels using the same radius we used when eroding them (10)</span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1" aria-label="code-block-15-7"></a>instance_seg <span class="op">=</span> expand_labels(instance_seg, <span class="dv">10</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1" aria-label="code-block-15-8"></a></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1" aria-label="code-block-15-9"></a><span class="co"># Put the new instance segmentation back in the viewer</span></span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1" aria-label="code-block-15-10"></a>viewer.add_labels(instance_seg)</span></code></pre>
 </div>
 <p><img src="fig/instance_segmentation_expanded.png" alt="Expanded instance segmentation on the eroded segmentation mask" class="figure">
 There are now 19 apparently correctly labelled nuclei that appear to be
@@ -745,7 +745,7 @@ original mask, what will we see?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p><img src="fig/instance_segmentation_vs_semantic_segmentation.png" alt="A comparison between the expanded instance segmentation and the original semantic segmentation showing some mismatch between the borders." class="figure">
 Looking at the above image we can see some small mismatches around the
@@ -768,14 +768,14 @@ border</a> function.</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="im">from</span> skimage.segmentation <span class="im">import</span> clear_border</span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>viewer.layers.remove(<span class="st">'instance_seg'</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>instance_seg <span class="op">=</span> clear_border(instance_seg)</span>
-<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a>viewer.add_labels(instance_seg)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1" aria-label="code-block-16-2"></a><span class="im">from</span> skimage.segmentation <span class="im">import</span> clear_border</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1" aria-label="code-block-16-3"></a></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1" aria-label="code-block-16-4"></a>viewer.layers.remove(<span class="st">'instance_seg'</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1" aria-label="code-block-16-5"></a></span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1" aria-label="code-block-16-6"></a>instance_seg <span class="op">=</span> clear_border(instance_seg)</span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1" aria-label="code-block-16-7"></a></span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1" aria-label="code-block-16-8"></a>viewer.add_labels(instance_seg)</span></code></pre>
 </div>
 <p><img src="fig/instance_segmentation_clear_border.png" alt="The instance segmentation with any nuclei crossing the image boundary removed" class="figure">
 We now have an image with 11 clearly labelled nuclei. You may notice
@@ -788,9 +788,9 @@ we did above.</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># First count the nuclei</span></span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>number_of_nuclei <span class="op">=</span> instance_seg.<span class="bu">max</span>()</span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"There are </span><span class="sc">{</span>number_of_nuclei<span class="sc">}</span><span class="ss"> individual nuclei"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a><span class="co"># First count the nuclei</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1" aria-label="code-block-17-2"></a>number_of_nuclei <span class="op">=</span> instance_seg.<span class="bu">max</span>()</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1" aria-label="code-block-17-3"></a><span class="bu">print</span>(<span class="ss">f"There are </span><span class="sc">{</span>number_of_nuclei<span class="sc">}</span><span class="ss"> individual nuclei"</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -806,13 +806,13 @@ old instance segmentation in the viewer.)</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>viewer.layers.remove(<span class="st">'instance_seg'</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>instance_seg <span class="op">=</span> label(instance_seg)</span>
-<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a>number_of_nuclei <span class="op">=</span> instance_seg.<span class="bu">max</span>()</span>
-<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"There are </span><span class="sc">{</span>number_of_nuclei<span class="sc">}</span><span class="ss"> individual nuclei"</span>)</span>
-<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a></span>
-<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a>viewer.add_labels(instance_seg)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a>viewer.layers.remove(<span class="st">'instance_seg'</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1" aria-label="code-block-19-2"></a></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1" aria-label="code-block-19-3"></a>instance_seg <span class="op">=</span> label(instance_seg)</span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1" aria-label="code-block-19-4"></a>number_of_nuclei <span class="op">=</span> instance_seg.<span class="bu">max</span>()</span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1" aria-label="code-block-19-5"></a><span class="bu">print</span>(<span class="ss">f"There are </span><span class="sc">{</span>number_of_nuclei<span class="sc">}</span><span class="ss"> individual nuclei"</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1" aria-label="code-block-19-6"></a></span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1" aria-label="code-block-19-7"></a>viewer.add_labels(instance_seg)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -835,15 +835,15 @@ returns a list of numbers.</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a></span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="co"># Create a list of label values for each label in the instance segmentation</span></span>
-<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="co"># We need to add 1 to the number of nuclei as python's range function</span></span>
-<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="co"># includes the lower limit (1) but not the upper limit.</span></span>
-<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a>labels <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, number_of_nuclei <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a></span>
-<span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a><span class="co"># Print it to the console to check it's right</span></span>
-<span id="cb21-8"><a href="#cb21-8" tabindex="-1"></a><span class="cf">for</span> label <span class="kw">in</span> labels:</span>
-<span id="cb21-9"><a href="#cb21-9" tabindex="-1"></a>  <span class="bu">print</span> (label)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1" aria-label="code-block-21-2"></a><span class="co"># Create a list of label values for each label in the instance segmentation</span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1" aria-label="code-block-21-3"></a><span class="co"># We need to add 1 to the number of nuclei as python's range function</span></span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1" aria-label="code-block-21-4"></a><span class="co"># includes the lower limit (1) but not the upper limit.</span></span>
+<span id="cb21-5"><a href="#cb21-5" tabindex="-1" aria-label="code-block-21-5"></a>labels <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, number_of_nuclei <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" tabindex="-1" aria-label="code-block-21-6"></a></span>
+<span id="cb21-7"><a href="#cb21-7" tabindex="-1" aria-label="code-block-21-7"></a><span class="co"># Print it to the console to check it's right</span></span>
+<span id="cb21-8"><a href="#cb21-8" tabindex="-1" aria-label="code-block-21-8"></a><span class="cf">for</span> label <span class="kw">in</span> labels:</span>
+<span id="cb21-9"><a href="#cb21-9" tabindex="-1" aria-label="code-block-21-9"></a>  <span class="bu">print</span> (label)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -867,19 +867,19 @@ store the results.</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="co"># Create an empty list</span></span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>nucleus_pixels <span class="op">=</span> []</span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="co"># Go through each nucleus,</span></span>
-<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="cf">for</span> label <span class="kw">in</span> labels:</span>
-<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a>  <span class="co"># Append the number of pixels to the list</span></span>
-<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a>  nucleus_pixels.append(np.count_nonzero(instance_seg <span class="op">==</span> label))</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a><span class="co"># Create an empty list</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1" aria-label="code-block-23-2"></a>nucleus_pixels <span class="op">=</span> []</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1" aria-label="code-block-23-3"></a><span class="co"># Go through each nucleus,</span></span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1" aria-label="code-block-23-4"></a><span class="cf">for</span> label <span class="kw">in</span> labels:</span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1" aria-label="code-block-23-5"></a>  <span class="co"># Append the number of pixels to the list</span></span>
+<span id="cb23-6"><a href="#cb23-6" tabindex="-1" aria-label="code-block-23-6"></a>  nucleus_pixels.append(np.count_nonzero(instance_seg <span class="op">==</span> label))</span></code></pre>
 </div>
 <p>We now have a list of nuclei sizes in pixels. We can check what is in
 the list with a print statement.</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="bu">print</span>(nucleus_pixels)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" tabindex="-1" aria-label="code-block-24-1"></a><span class="bu">print</span>(nucleus_pixels)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -903,27 +903,27 @@ calculate the nucleus volume in cubic micrometres.</p>
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="co"># Let's keep everything in micrometres</span></span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>pixel_volume <span class="op">=</span> <span class="fl">0.26</span> <span class="op">*</span> <span class="fl">0.26</span> <span class="op">*</span> <span class="fl">0.29</span></span>
-<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a><span class="co"># We can multiply all nuclei by the pixel volume by first converting the</span></span>
-<span id="cb26-5"><a href="#cb26-5" tabindex="-1"></a><span class="co"># nucleus_pixels to a numpy array.</span></span>
-<span id="cb26-6"><a href="#cb26-6" tabindex="-1"></a>nucleus_volume <span class="op">=</span> pixel_volume <span class="op">*</span> np.array(nucleus_pixels)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" tabindex="-1" aria-label="code-block-26-1"></a><span class="co"># Let's keep everything in micrometres</span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1" aria-label="code-block-26-2"></a>pixel_volume <span class="op">=</span> <span class="fl">0.26</span> <span class="op">*</span> <span class="fl">0.26</span> <span class="op">*</span> <span class="fl">0.29</span></span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1" aria-label="code-block-26-3"></a></span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1" aria-label="code-block-26-4"></a><span class="co"># We can multiply all nuclei by the pixel volume by first converting the</span></span>
+<span id="cb26-5"><a href="#cb26-5" tabindex="-1" aria-label="code-block-26-5"></a><span class="co"># nucleus_pixels to a numpy array.</span></span>
+<span id="cb26-6"><a href="#cb26-6" tabindex="-1" aria-label="code-block-26-6"></a>nucleus_volume <span class="op">=</span> pixel_volume <span class="op">*</span> np.array(nucleus_pixels)</span></code></pre>
 </div>
 <p>We can now use some simple functions to find the range, mean, and
 standard deviation of the nuclei in micrometers.</p>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a></span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="co"># Find the range of nucleus sizes (maximum - minimum).</span></span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Range of nucleus volumes = </span><span class="sc">{</span>nucleus_volume<span class="sc">.</span><span class="bu">max</span>() <span class="op">-</span> nucleus_volume<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.2f}</span><span class="ss"> cubic micrometres."</span>)</span>
-<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a><span class="co"># Find the mean nuclei volume</span></span>
-<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Nucleus volume mean = </span><span class="sc">{</span>np<span class="sc">.</span>mean(nucleus_volume)<span class="sc">:.2f}</span><span class="ss"> cubic micrometres."</span>)</span>
-<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a></span>
-<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a><span class="co"># And the standard deviation</span></span>
-<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Nucleus volume standard dev. = </span><span class="sc">{</span>np<span class="sc">.</span>std(nucleus_volume)<span class="sc">:.2f}</span><span class="ss"> cubic micrometres."</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1" aria-label="code-block-27-1"></a></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1" aria-label="code-block-27-2"></a><span class="co"># Find the range of nucleus sizes (maximum - minimum).</span></span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1" aria-label="code-block-27-3"></a><span class="bu">print</span>(<span class="ss">f"Range of nucleus volumes = </span><span class="sc">{</span>nucleus_volume<span class="sc">.</span><span class="bu">max</span>() <span class="op">-</span> nucleus_volume<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.2f}</span><span class="ss"> cubic micrometres."</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1" aria-label="code-block-27-4"></a></span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1" aria-label="code-block-27-5"></a><span class="co"># Find the mean nuclei volume</span></span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1" aria-label="code-block-27-6"></a><span class="bu">print</span>(<span class="ss">f"Nucleus volume mean = </span><span class="sc">{</span>np<span class="sc">.</span>mean(nucleus_volume)<span class="sc">:.2f}</span><span class="ss"> cubic micrometres."</span>)</span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1" aria-label="code-block-27-7"></a></span>
+<span id="cb27-8"><a href="#cb27-8" tabindex="-1" aria-label="code-block-27-8"></a><span class="co"># And the standard deviation</span></span>
+<span id="cb27-9"><a href="#cb27-9" tabindex="-1" aria-label="code-block-27-9"></a><span class="bu">print</span>(<span class="ss">f"Nucleus volume standard dev. = </span><span class="sc">{</span>np<span class="sc">.</span>std(nucleus_volume)<span class="sc">:.2f}</span><span class="ss"> cubic micrometres."</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -940,7 +940,7 @@ subsequent time points, creating a repeatable measurement workflow.</p>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="op">%</span>save measurement_workflow <span class="op">~</span><span class="dv">0</span><span class="op">/</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" tabindex="-1" aria-label="code-block-29-1"></a><span class="op">%</span>save measurement_workflow <span class="op">~</span><span class="dv">0</span><span class="op">/</span></span></code></pre>
 </div>
 <p>This will create a Python file <code>measurement_workflow.py</code>
 that we can load into the Napari console and re-run. You may choose to
@@ -1009,7 +1009,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1032,7 +1032,7 @@ any links that you are not going to use.
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instance-segmentation-and-measurements.html",
   "dateCreated": "2023-10-26",
   "dateModified": "2025-11-04",
-  "datePublished": "2026-04-14"
+  "datePublished": "2026-04-17"
 }
 
   </script><script>

@@ -224,7 +224,7 @@
       </button>
     </div><!--/div.accordion-header-->
 
-    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#quality-control">Quality control</a></li>
 <li><a href="#what-is-segmentation">What is segmentation?</a></li>
@@ -442,8 +442,8 @@ the console:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>nuclei <span class="op">=</span> viewer.layers[<span class="st">"nuclei"</span>].data</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="bu">print</span>(nuclei.dtype)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a>nuclei <span class="op">=</span> viewer.layers[<span class="st">"nuclei"</span>].data</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="bu">print</span>(nuclei.dtype)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -484,15 +484,15 @@ gaussian blur and otsu thresholding in later episodes!</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="im">from</span> skimage.filters <span class="im">import</span> threshold_otsu, gaussian</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>image <span class="op">=</span> viewer.layers[<span class="st">"nuclei"</span>].data</span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>blurred <span class="op">=</span> gaussian(image, sigma<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>threshold <span class="op">=</span> threshold_otsu(blurred)</span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>semantic_seg <span class="op">=</span> blurred <span class="op">&gt;</span> threshold</span>
-<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>viewer.add_labels(semantic_seg)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="im">from</span> skimage.filters <span class="im">import</span> threshold_otsu, gaussian</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1" aria-label="code-block-3-3"></a>image <span class="op">=</span> viewer.layers[<span class="st">"nuclei"</span>].data</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1" aria-label="code-block-3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1" aria-label="code-block-3-5"></a>blurred <span class="op">=</span> gaussian(image, sigma<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1" aria-label="code-block-3-6"></a>threshold <span class="op">=</span> threshold_otsu(blurred)</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1" aria-label="code-block-3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1" aria-label="code-block-3-8"></a>semantic_seg <span class="op">=</span> blurred <span class="op">&gt;</span> threshold</span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1" aria-label="code-block-3-9"></a>viewer.add_labels(semantic_seg)</span></code></pre>
 </div>
 <figure><img src="fig/semantic-seg-napari.png" alt="A screenshot of a rough semantic  segmentation of nuclei in Napari" class="figure mx-auto d-block"></figure><p>You should see an image appear that highlights the nuclei in brown.
 Try toggling the ‘semantic_seg’ layer on and off multiple times, by
@@ -513,15 +513,15 @@ these concepts in later episodes.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="im">from</span> skimage.morphology <span class="im">import</span> binary_erosion, ball</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="im">from</span> skimage.segmentation <span class="im">import</span> expand_labels</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="im">from</span> skimage.measure <span class="im">import</span> label</span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>eroded <span class="op">=</span> binary_erosion(semantic_seg, footprint<span class="op">=</span>ball(<span class="dv">10</span>))</span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>instance_seg <span class="op">=</span> label(eroded)</span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>instance_seg <span class="op">=</span> expand_labels(instance_seg, distance<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>viewer.add_labels(instance_seg)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="im">from</span> skimage.morphology <span class="im">import</span> binary_erosion, ball</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="im">from</span> skimage.segmentation <span class="im">import</span> expand_labels</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a><span class="im">from</span> skimage.measure <span class="im">import</span> label</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1" aria-label="code-block-4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1" aria-label="code-block-4-5"></a>eroded <span class="op">=</span> binary_erosion(semantic_seg, footprint<span class="op">=</span>ball(<span class="dv">10</span>))</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1" aria-label="code-block-4-6"></a>instance_seg <span class="op">=</span> label(eroded)</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1" aria-label="code-block-4-7"></a>instance_seg <span class="op">=</span> expand_labels(instance_seg, distance<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1" aria-label="code-block-4-8"></a></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1" aria-label="code-block-4-9"></a>viewer.add_labels(instance_seg)</span></code></pre>
 </div>
 <figure><img src="fig/instance-seg-napari.png" alt="A screenshot of a rough instance  segmentation of nuclei in Napari" class="figure mx-auto d-block"></figure><p>You should see an image appear that highlights nuclei in different
 colours. Let’s hide the ‘semantic_seg’ layer by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/visibility.svg" alt="A screenshot of Napari's eye button" height="30" class="figure"> icon next
@@ -563,12 +563,12 @@ image?’ episode</a>.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># Get the semantic segmentation data</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>image <span class="op">=</span> viewer.layers[<span class="st">'semantic_seg'</span>].data</span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co"># Print the image values and type</span></span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="bu">print</span>(image)</span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(image))</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="co"># Get the semantic segmentation data</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1" aria-label="code-block-5-2"></a>image <span class="op">=</span> viewer.layers[<span class="st">'semantic_seg'</span>].data</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1" aria-label="code-block-5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1" aria-label="code-block-5-4"></a><span class="co"># Print the image values and type</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1" aria-label="code-block-5-5"></a><span class="bu">print</span>(image)</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1" aria-label="code-block-5-6"></a><span class="bu">print</span>(<span class="bu">type</span>(image))</span></code></pre>
 </div>
 <p>Note the output is shortened here to save space!</p>
 <div class="codewrapper">
@@ -604,11 +604,11 @@ the console like so:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># Get the instance segmentation data</span></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>image <span class="op">=</span> viewer.layers[<span class="st">'instance_seg'</span>].data</span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co"># Print the maximum pixel value</span></span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="bu">print</span>(image.<span class="bu">max</span>())</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="co"># Get the instance segmentation data</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a>image <span class="op">=</span> viewer.layers[<span class="st">'instance_seg'</span>].data</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1" aria-label="code-block-7-3"></a></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1" aria-label="code-block-7-4"></a><span class="co"># Print the maximum pixel value</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1" aria-label="code-block-7-5"></a><span class="bu">print</span>(image.<span class="bu">max</span>())</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -643,9 +643,9 @@ denoting their probability.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>nuclei <span class="op">=</span> viewer.layers[<span class="st">"nuclei"</span>].data</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>semantic_seg <span class="op">=</span> viewer.layers[<span class="st">"semantic_seg"</span>].data</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>instance_seg <span class="op">=</span> viewer.layers[<span class="st">"instance_seg"</span>].data</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a>nuclei <span class="op">=</span> viewer.layers[<span class="st">"nuclei"</span>].data</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1" aria-label="code-block-9-2"></a>semantic_seg <span class="op">=</span> viewer.layers[<span class="st">"semantic_seg"</span>].data</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1" aria-label="code-block-9-3"></a>instance_seg <span class="op">=</span> viewer.layers[<span class="st">"instance_seg"</span>].data</span></code></pre>
 </div>
 <ul><li><p>What shape are the <code>nuclei</code>, <code>semantic_seg</code>
 and <code>instance_seg</code> images?</p></li>
@@ -674,9 +674,9 @@ integers) Choose from 8-bit, 16-bit or 32-bit.</p></li>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="bu">print</span>(nuclei.shape)</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="bu">print</span>(semantic_seg.shape)</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="bu">print</span>(instance_seg.shape)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="bu">print</span>(nuclei.shape)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1" aria-label="code-block-10-2"></a><span class="bu">print</span>(semantic_seg.shape)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1" aria-label="code-block-10-3"></a><span class="bu">print</span>(instance_seg.shape)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -702,8 +702,8 @@ episode</a>.</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="bu">print</span>(semantic_seg.dtype)</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="bu">print</span>(instance_seg.dtype)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="bu">print</span>(semantic_seg.dtype)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="bu">print</span>(instance_seg.dtype)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -987,7 +987,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/HealthBioscienceIDEAS/varnish/tree/IDEAS" class="external-link">varnish (1.0.3.9000)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1010,7 +1010,7 @@ any links that you are not going to use.
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/quality-control-and-manual-segmentation.html",
   "dateCreated": "2023-10-26",
   "dateModified": "2025-06-25",
-  "datePublished": "2026-04-14"
+  "datePublished": "2026-04-17"
 }
 
   </script><script>
