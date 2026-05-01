@@ -1,4 +1,4 @@
-# Image Analysis for Microscopy
+# Image Analysis with Napari for Microscopy
 
 A lesson teaching the fundamentals of analysing image data acquired via light microscopy experiments.
 

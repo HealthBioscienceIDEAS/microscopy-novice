@@ -17,9 +17,7 @@ work with light microscopy imaging data in their research projects.
 
 - No python experience is necessary or assumed, but you will get more out of the 
 course if you know some basics e.g. from the online [Software Carpentry 
-python course](https://swcarpentry.github.io/python-novice-inflammation/) or 
-[an in-person course at UCL
-](https://www.ucl.ac.uk/advanced-research-computing/education/training).
+python course](https://swcarpentry.github.io/python-novice-inflammation/).
 
 - Please bring a laptop (Windows, Mac or Linux) to the lesson. Before the start 
 of the course, please follow the [setup instructions](learners/setup.md) so 
