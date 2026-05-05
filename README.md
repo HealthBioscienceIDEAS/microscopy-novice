@@ -1,6 +1,24 @@
-# microscopy-novice
+# Image Analysis with Napari for Microscopy
 
-    This is the lesson repository for microscopy-novice
+A lesson teaching the fundamentals of analysing image data acquired via light microscopy experiments.
+
+## Lesson Content
+
+This lesson focuses on the use of [napari](https://napari.org/), a Python-based image viewer, for all image processing steps.
+It also covers the basics of how to design a light microscopy experiment and optimise acquisition settings for a given research question.
+
+## Contribution
+
+Contributions are very welcome - please make a suggestion or correct an error by [raising an issue](https://github.com/HealthBioscienceIDEAS/microscopy-novice/issues).
+
+See the [CONTRIBUTING.md file](CONTRIBUTING.md) for contribution guidelines.
+
+## Acknowledgements
+
+These lessons were initially developed as part of the [Health and Biosciences IDEAS](https://healthbioscienceideas.github.io/) project, which is a training initiative funded by [UKRI Innovation Scholars](https://www.ukri.org/opportunity/innovation-scholars-data-science-training-in-health-bioscience/) (MR/V03863X/1). 
+
+Continued support for this project is provided in part by the [UKRI Digital Research Skills Catalyst](https://digitalskillscatalyst.ac.uk/). 
+The Catalyst Project is funded by UKRI Digital Research Infrastructure Programme from October 2024 to March 2027. Project reference: UKRI/ST/B000299/1.
 
 ## Development
 
@@ -41,9 +59,8 @@ When you're happy, commit, push and open a PR on GitHub. This will trigger the
 [*sandpaper* PR validation and preview
 workflows](https://carpentries.github.io/sandpaper-docs/pull-request.html) to
 validate and preview the new content. Once the PR gets approved, merge it into
-`main` and wait for the [Build and
-Deploy](https://github.com/HealthBioscienceIDEAS/microscopy-novice/actions/workflows/sandpaper-main.yaml)
-action to complete, after which the updates should be visible on the
+`main` and wait for the github actions to complete, after which the updates 
+should be visible on the
 [website](https://healthbioscienceideas.github.io/microscopy-novice/)
 
 ### Building the lesson locally
