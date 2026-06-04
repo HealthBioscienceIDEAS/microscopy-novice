@@ -141,13 +141,24 @@ print(metadata)
 ```
 ```output
 OME(
-   experimenters=[{'id': 'Experimenter:0', 'user_name': 'Zeiss'}],
-   instruments=[<1 field_type>],
-   images=[<1 field_type>],
+    plates=[<1 field_type>],
+    experimenters=[{'id': 'Experimenter:Zeiss', 'user_name': 'Zeiss'}],
+    instruments=[<1 field_type>],
+    images=[<2 field_type>],
+    structured_annotations={
+        'xml_annotations': [
+            {
+                'description': 'ZEN 2012 (blue edition)1.1.1.0',
+                'id': 'urn:lsid:allencell.org:Annotation:AcquisitionSoftware',
+                'value': {},
+                'kind': 'xmlannotation'
+            }
+        ]
+    }
 )
 ```
 
-In this case, we can see it is split into three categories: 
+In this case, we can see it is split into various categories including 
 `experimenters`, `images` and `instruments`. You can look inside each of these
 using `.category` e.g.:
 ```python
@@ -174,7 +185,7 @@ processing steps don't overwrite this original image.
 Explore the metadata in the console to answer the following 
 questions:
 
-- What type of microscope was used to take this image?
+- Which manufacturer made the microscope used to take this image?
 - What detector was used to take this image?
 - What does each channel show? For example, which fluorophore is used? What is 
 its excitation and emission wavelength? (hint: look inside the image's 
@@ -186,8 +197,8 @@ pixel metadata: `metadata.images[0].pixels`)
 
 ### Microscope model
 
-Under `metadata.instruments[0].microscope`, we can see that an 'Axio Imager Z2' 
-microscope was used.
+Under `metadata.instruments[0].microscope`, we can see that the microscope 
+manufacturer was Zeiss.
 
 ### Detector
 Under `metadata.instruments[0].detectors`, we can see 
@@ -196,18 +207,18 @@ that this used an HDCamC10600-30B (ORCA-R2) detector.
 ### Channels
 
 Under `metadata.images[0].pixels.channels`, we can see one entry per channel 
-- `Channel:0:0`, `Channel:0:1` and `Channel:0:2`. 
+- `Channel:1:0`, `Channel:2:0` and `Channel:3:0`. 
 
 In the first (`metadata.images[0].pixels.channels[0]`), we can see that its 
-`name` is TagYFP, a fluorophore with `emission_wavelength` of 524nm and 
+`fluor` is TagYFP, a fluorophore with `emission_wavelength` of 524nm and 
 `excitation_wavelength` of 508nm.
 
-In the first (`metadata.images[0].pixels.channels[1]`), we can see that its 
-`name` is mRFP1.2, a fluorophore with `emission_wavelength` of 612nm and 
+In the second (`metadata.images[0].pixels.channels[1]`), we can see that its 
+`fluor` is mRFP1.2, a fluorophore with `emission_wavelength` of 612nm and 
 `excitation_wavelength` of 590nm.
 
-In the first (`metadata.images[0].pixels.channels[2]`), we see that its name 
-is `TL DIC` and no `emission_wavelength` or `excitation_wavelength` is listed. 
+In the last (`metadata.images[0].pixels.channels[2]`), we see that no `fluor`, 
+`emission_wavelength` or `excitation_wavelength` is listed. 
 Its `illumination_type` is listed as 'transmitted', so this is simply an image 
 of the yeast cells with no fluorophores used.
 
