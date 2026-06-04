@@ -195,7 +195,7 @@ pixel metadata: `metadata.images[0].pixels`)
  
 ## Solution
 
-### Microscope model
+### Microscope manufacturer
 
 Under `metadata.instruments[0].microscope`, we can see that the microscope 
 manufacturer was Zeiss.
