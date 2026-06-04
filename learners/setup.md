@@ -127,6 +127,9 @@ conda activate napari-env
 
 # Install napari and plugins using pip
 pip install "napari[all]" napari-bioio-reader bioio-czi
+
+# Install Jupyter Notebook
+pip install jupyterlab
 ```
 
 :::::::::::::::::::::::::::::::::::::::::::
