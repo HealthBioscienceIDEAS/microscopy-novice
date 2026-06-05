@@ -250,7 +250,7 @@ See the diagram below for a visualisation of how these 3D and 4D arrays compare:
 As we've seen before, the labels on the left hand side of each slider in Napari 
 matches the index of the dimension it moves along. The top slider (labelled -3) 
 moves along the z axis, while the bottom slider (labelled -4) switches channels.
-Remember a negative index counts back from the last dimension, so for this image:
+Remember a negative index counts backwards from the last dimension, so for this image:
 
 - **Shape**: (2, 60, 256, 256)
 - **Axis**:  (c, z, y, x)
