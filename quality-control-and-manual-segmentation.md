@@ -192,11 +192,11 @@ the details of what's happening here - we'll look at some of these concepts in
 later episodes.
 
 ```python
-from skimage.morphology import binary_erosion, ball
+from skimage.morphology import erosion, ball
 from skimage.segmentation import expand_labels
 from skimage.measure import label
 
-eroded = binary_erosion(semantic_seg, footprint=ball(10))
+eroded = erosion(semantic_seg, footprint=ball(10))
 instance_seg = label(eroded)
 instance_seg = expand_labels(instance_seg, distance=10)
 
