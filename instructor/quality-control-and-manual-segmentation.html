@@ -323,7 +323,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Quality control and manual segmentation</h1>
-        <p>Last updated on 2025-06-25 |
+        <p>Last updated on 2026-06-05 |
 
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/quality-control-and-manual-segmentation.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -515,11 +515,11 @@ these concepts in later episodes.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="im">from</span> skimage.morphology <span class="im">import</span> binary_erosion, ball</span>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="im">from</span> skimage.morphology <span class="im">import</span> erosion, ball</span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="im">from</span> skimage.segmentation <span class="im">import</span> expand_labels</span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a><span class="im">from</span> skimage.measure <span class="im">import</span> label</span>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1" aria-label="code-block-4-4"></a></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1" aria-label="code-block-4-5"></a>eroded <span class="op">=</span> binary_erosion(semantic_seg, footprint<span class="op">=</span>ball(<span class="dv">10</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1" aria-label="code-block-4-5"></a>eroded <span class="op">=</span> erosion(semantic_seg, footprint<span class="op">=</span>ball(<span class="dv">10</span>))</span>
 <span id="cb4-6"><a href="#cb4-6" tabindex="-1" aria-label="code-block-4-6"></a>instance_seg <span class="op">=</span> label(eroded)</span>
 <span id="cb4-7"><a href="#cb4-7" tabindex="-1" aria-label="code-block-4-7"></a>instance_seg <span class="op">=</span> expand_labels(instance_seg, distance<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb4-8"><a href="#cb4-8" tabindex="-1" aria-label="code-block-4-8"></a></span>
@@ -1011,8 +1011,8 @@ any links that you are not going to use.
   "url": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/quality-control-and-manual-segmentation.html",
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/quality-control-and-manual-segmentation.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2025-06-25",
-  "datePublished": "2026-06-02"
+  "dateModified": "2026-06-05",
+  "datePublished": "2026-06-05"
 }
 
   </script><script>

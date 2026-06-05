@@ -1288,7 +1288,7 @@ on the bit depth?</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="dimensions">Dimensions<a class="anchor" aria-label="anchor" href="#dimensions"></a>
@@ -1498,7 +1498,7 @@ value - is it correct? If not, why not?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="section">1<a class="anchor" aria-label="anchor" href="#section"></a>
@@ -1720,7 +1720,7 @@ Napari users?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="is-a-plugin-well-maintained">Is a plugin well maintained?<a class="anchor" aria-label="anchor" href="#is-a-plugin-well-maintained"></a>
@@ -1799,7 +1799,7 @@ values:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ul>
 <li>a - 3</li>
@@ -1926,7 +1926,7 @@ these limits work?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The left circle can be seen with limits of e.g. 0 and 33</p>
 <p>These limits work because the background on the left side of the
@@ -4682,7 +4682,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-quality-control-and-manual-segmentation"><p>Content from <a href="quality-control-and-manual-segmentation.html">Quality control and manual segmentation</a></p>
 <hr>
-<p>Last updated on 2025-06-25 |
+<p>Last updated on 2026-06-05 |
 
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/quality-control-and-manual-segmentation.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 55 minutes</p>
@@ -4877,11 +4877,11 @@ these concepts in later episodes.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="im">from</span> skimage.morphology <span class="im">import</span> binary_erosion, ball</span>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="im">from</span> skimage.morphology <span class="im">import</span> erosion, ball</span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="im">from</span> skimage.segmentation <span class="im">import</span> expand_labels</span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a><span class="im">from</span> skimage.measure <span class="im">import</span> label</span>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1" aria-label="code-block-4-4"></a></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1" aria-label="code-block-4-5"></a>eroded <span class="op">=</span> binary_erosion(semantic_seg, footprint<span class="op">=</span>ball(<span class="dv">10</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1" aria-label="code-block-4-5"></a>eroded <span class="op">=</span> erosion(semantic_seg, footprint<span class="op">=</span>ball(<span class="dv">10</span>))</span>
 <span id="cb4-6"><a href="#cb4-6" tabindex="-1" aria-label="code-block-4-6"></a>instance_seg <span class="op">=</span> label(eroded)</span>
 <span id="cb4-7"><a href="#cb4-7" tabindex="-1" aria-label="code-block-4-7"></a>instance_seg <span class="op">=</span> expand_labels(instance_seg, distance<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb4-8"><a href="#cb4-8" tabindex="-1" aria-label="code-block-4-8"></a></span>
@@ -5572,7 +5572,7 @@ value:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>First, we show a histogram for the image by selecting the ‘image’
 layer, then:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
@@ -5784,7 +5784,7 @@ name online.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="median">Median<a class="anchor" aria-label="anchor" href="#median"></a>
@@ -6008,7 +6008,7 @@ the top row of the layer controls.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <figure><img src="../fig/shapes-thresholds.png" alt="Masks via automated thresholding" class="figure mx-auto d-block"></figure><ul>
 <li>
@@ -6083,7 +6083,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-instance-segmentation-and-measurements"><p>Content from <a href="instance-segmentation-and-measurements.html">Instance segmentation and measurements</a></p>
 <hr>
-<p>Last updated on 2025-11-04 |
+<p>Last updated on 2026-06-05 |
 
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/instance-segmentation-and-measurements.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 60 minutes</p>
@@ -6368,13 +6368,13 @@ are separate</h3>
 need to make sure all the nuclei are separate. We can do this by
 reducing the apparent size of the nuclei by eroding the image. Image
 erosion is an image filter, similar to those we covered in the <a href="filters-and-thresholding.html">filters and thresholding</a>
-lesson. We will use scikit-image’s <a href="https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.binary_erosion" class="external-link">binary_erosion</a>
-function. In this lesson we will run the binary erosion function using
-the Napari console to help develop our scripting skills. It is also
-possible to run the binary erosion function through a plugin:
-<code>Layers &gt; Filter &gt; Morphology &gt; Binary Morphology (napari skimage)</code>
+lesson. We will use scikit-image’s <a href="https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.erosion" class="external-link">erosion</a>
+function. In this lesson we will run the erosion function using the
+Napari console to help develop our scripting skills. It is also possible
+to run the erosion function through a plugin:
+<code>Layers &gt; Filter &gt; Morphology &gt; Morphology (napari skimage)</code>
 if you prefer.</p>
-<p>The binary erosion function sets a pixel to the minimum value in the
+<p>The erosion function sets a pixel to the minimum value in the
 neighbourhood defined by a <code>footprint</code> parameter. We’ll use
 scikit-image’s <a href="https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.ball" class="external-link">ball</a>
 function to generate a sphere to use as the footprint. Image erosion has
@@ -6388,11 +6388,11 @@ nuclei are separate?</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="im">from</span> skimage.morphology <span class="im">import</span> binary_erosion, ball</span>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="im">from</span> skimage.morphology <span class="im">import</span> erosion, ball</span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a></span>
 <span id="cb11-3"><a href="#cb11-3" tabindex="-1" aria-label="code-block-11-3"></a><span class="co"># With radius = 1</span></span>
 <span id="cb11-4"><a href="#cb11-4" tabindex="-1" aria-label="code-block-11-4"></a>radius <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1" aria-label="code-block-11-5"></a>eroded_mask <span class="op">=</span> binary_erosion(semantic_seg, footprint <span class="op">=</span> ball(radius))</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1" aria-label="code-block-11-5"></a>eroded_mask <span class="op">=</span> erosion(semantic_seg, footprint <span class="op">=</span> ball(radius))</span>
 <span id="cb11-6"><a href="#cb11-6" tabindex="-1" aria-label="code-block-11-6"></a>viewer.add_labels(eroded_mask, name <span class="op">=</span> <span class="ss">f'eroded ball </span><span class="sc">{</span>radius<span class="sc">}</span><span class="ss">'</span>)</span></code></pre>
 </div>
 <p>Note that larger radius values will take longer to run on your
@@ -6417,7 +6417,7 @@ loop</a> which enables us to test multiple values of radius quickly.</p>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="co"># The for loop will repeat the indented lines of codes for each value</span></span>
 <span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="co"># of radius in the list (1, 5, 10).</span></span>
 <span id="cb12-3"><a href="#cb12-3" tabindex="-1" aria-label="code-block-12-3"></a><span class="cf">for</span> radius <span class="kw">in</span> <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>:</span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1" aria-label="code-block-12-4"></a>  eroded_mask <span class="op">=</span> binary_erosion(semantic_seg, footprint <span class="op">=</span> ball(radius))</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1" aria-label="code-block-12-4"></a>  eroded_mask <span class="op">=</span> erosion(semantic_seg, footprint <span class="op">=</span> ball(radius))</span>
 <span id="cb12-5"><a href="#cb12-5" tabindex="-1" aria-label="code-block-12-5"></a>  viewer.add_labels(eroded_mask, name <span class="op">=</span> <span class="ss">f'eroded ball </span><span class="sc">{</span>radius<span class="sc">}</span><span class="ss">'</span>)</span></code></pre>
 </div>
 <p><img src="../fig/binary_mask_no_erosion.png" alt="A screenshot of a semantic segmentation mask before erosion." class="figure">
@@ -6939,8 +6939,8 @@ any links that you are not going to use.
   "url": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/aio.html",
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/aio.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2026-06-02",
-  "datePublished": "2026-06-02"
+  "dateModified": "2026-06-05",
+  "datePublished": "2026-06-05"
 }
 
   </script><script>
