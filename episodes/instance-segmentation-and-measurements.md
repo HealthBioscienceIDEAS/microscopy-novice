@@ -281,15 +281,15 @@ apparent size of the nuclei by eroding the image.
 Image erosion is an image filter, similar to those we covered in the
 [filters and thresholding](filters-and-thresholding.md) lesson.
 We will use scikit-image's
-[binary_erosion](
-https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.binary_erosion)
-function. In this lesson we will run the binary erosion function using
+[erosion](
+https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.erosion)
+function. In this lesson we will run the erosion function using
 the Napari console to help develop our scripting skills. It is also
-possible to run the binary erosion function through a plugin:
-`Layers > Filter > Morphology > Binary Morphology (napari skimage)`
+possible to run the erosion function through a plugin:
+`Layers > Filter > Morphology > Morphology (napari skimage)`
 if you prefer.
 
-The binary erosion function sets a pixel to the
+The erosion function sets a pixel to the
 minimum value in the neighbourhood defined by a `footprint` parameter.
 We'll use scikit-image's [ball](
 https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.ball)
@@ -303,11 +303,11 @@ the `semantic_seg` layer with different integer values for the radius.
 What radius do you need to ensure all nuclei are separate?
 
 ```python
-from skimage.morphology import binary_erosion, ball
+from skimage.morphology import erosion, ball
 
 # With radius = 1
 radius = 1
-eroded_mask = binary_erosion(semantic_seg, footprint = ball(radius))
+eroded_mask = erosion(semantic_seg, footprint = ball(radius))
 viewer.add_labels(eroded_mask, name = f'eroded ball {radius}')
 ```
 
@@ -324,7 +324,7 @@ which enables us to test multiple values of radius quickly.
 # The for loop will repeat the indented lines of codes for each value
 # of radius in the list (1, 5, 10).
 for radius in 1, 5, 10:
-  eroded_mask = binary_erosion(semantic_seg, footprint = ball(radius))
+  eroded_mask = erosion(semantic_seg, footprint = ball(radius))
   viewer.add_labels(eroded_mask, name = f'eroded ball {radius}')
 
 ```
