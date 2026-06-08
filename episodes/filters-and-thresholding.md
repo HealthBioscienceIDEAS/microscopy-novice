@@ -336,7 +336,7 @@ console (unless your keyboard has the `σ` character). To make life easier
 change the name of the added layer now. Double click on the layer name, delete `σ`
 and change it to `sigma`
 
-![](fig/layer-rename.png){alt="Changing the name of an image layer." width='40%'}
+![](fig/layer-rename.png){alt="The mouse cursor hovers over a napari image layer named nuclei_gaussian_sigma=1.0." width='40%'}
 
 
 Similarly, if you used the `+`/`-` buttons to set the sigma value, you may see excessive
