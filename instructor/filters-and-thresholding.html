@@ -323,7 +323,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Filters and thresholding</h1>
-        <p>Last updated on 2025-11-21 |
+        <p>Last updated on 2026-06-08 |
 
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/filters-and-thresholding.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -548,7 +548,7 @@ value:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>First, we show a histogram for the image by selecting the ‘image’
 layer, then:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
@@ -613,11 +613,29 @@ right side of Napari:</p>
 original nuclei image.</p>
 <p>Try increasing the ‘sigma’ value to three and clicking run again:</p>
 <figure><img src="../fig/nuclei-blurred-3.png" style="width:40.0%" alt="Nuclei image after gaussian blur with sigma  of 3" class="figure mx-auto d-block"></figure><p>You should see a new ‘nuclei_gaussian_σ=3.0’ layer that is much more
-heavily blurred. If you used the <code>+</code>/<code>-</code> buttons
-to set the sigma value, you may see many more decimal places in the
-layer name e.g. ‘nuclei_gaussian_σ=3.00000000000000’. If so, double
+heavily blurred.</p>
+<div id="renaming-layer-names" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="renaming-layer-names" class="callout-inner">
+<h3 class="callout-title">Renaming Layer Names</h3>
+<div class="callout-content">
+<p>The Gaussian filter plugin uses the special character <code>σ</code>
+in the layer names. This naming convention makes it difficult to type
+layer names in the Napari console (unless your keyboard has the
+<code>σ</code> character). To make life easier change the name of the
+added layer now. Double click on the layer name, delete <code>σ</code>
+and change it to <code>sigma</code></p>
+<figure><img src="../fig/layer-rename.png" style="width:70.0%" alt="The mouse cursor hovers over a napari image layer named nuclei_gaussian_sigma=1.0." class="figure mx-auto d-block"></figure><p>Similarly, if you used the <code>+</code>/<code>-</code> buttons to
+set the sigma value, you may see excessive decimal places in the layer
+name e.g. <code>nuclei_gaussian_σ=3.00000000000000</code>. If so, double
 click on the layer name to re-name it to
-<code>nuclei_gaussian_σ=3.0</code>.</p>
+<code>nuclei_gaussian_sigma=3.0</code>.</p>
+</div>
+</div>
+</div>
 <p>What’s happening here? What exactly does a gaussian blur do? A
 gaussian blur is an example of a ‘linear filter’ which is used to
 manipulate pixel values in images. When a filter is applied to an image,
@@ -750,7 +768,7 @@ name online.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="median">Median<a class="anchor" aria-label="anchor" href="#median"></a></h3>
@@ -790,21 +808,24 @@ filter enhances the effect.</p>
 </div>
 </section><section><h2 class="section-heading" id="thresholding-the-blurred-image">Thresholding the blurred image<a class="anchor" aria-label="anchor" href="#thresholding-the-blurred-image"></a></h2>
 <hr class="half-width"><p>First, let’s clean up our layer list. Make sure you only have the
-‘nuclei’ layer in the layer list - select any others and remove them by
-clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
-icon. Also, close all filter settings panels on the right side of Napari
+<code>nuclei</code> and <code>nuclei_gaussian_sigma=3.0</code> layers in
+the layer list - select any others and remove them by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
+icon. Close all filter settings panels on the right side of Napari
 (apart from the gaussian settings) by clicking the tiny <code>X</code>
 icon at their top left corner.</p>
-<p>Now let’s try thresholding our image again. Make sure you set your
-gaussian blur sigma to three, then click ‘Apply Gaussian Filter’.</p>
-<p>Then, we’ll apply the same threshold as before, now to the
-‘nuclei_gaussian_σ=3.0’ layer:</p>
+<p>If you don’t have the <code>nuclei_gaussian_sigma=3.0</code> in your
+layer list then make it now using the Gaussian Filter with sigma set to
+three. You may need to rename the layer, replacing <code>σ</code> with
+<code>sigma</code>.</p>
+<p>Now let’s try thresholding our image again. We’ll apply the same
+threshold as before, now to the <code>nuclei_gaussian_sigma=3.0</code>
+layer:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a></span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1" aria-label="code-block-8-2"></a><span class="co"># Get the image data for the blurred nuclei</span></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1" aria-label="code-block-8-3"></a>blurred <span class="op">=</span> viewer.layers[<span class="st">"nuclei_gaussian_σ=3.0"</span>].data</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1" aria-label="code-block-8-3"></a>blurred <span class="op">=</span> viewer.layers[<span class="st">"nuclei_gaussian_sigma=3.0"</span>].data</span>
 <span id="cb8-4"><a href="#cb8-4" tabindex="-1" aria-label="code-block-8-4"></a></span>
 <span id="cb8-5"><a href="#cb8-5" tabindex="-1" aria-label="code-block-8-5"></a><span class="co"># Create mask with a threshold of 8266</span></span>
 <span id="cb8-6"><a href="#cb8-6" tabindex="-1" aria-label="code-block-8-6"></a>blurred_mask <span class="op">=</span> blurred <span class="op">&gt;</span> <span class="dv">8266</span></span>
@@ -850,8 +871,8 @@ select the ‘blurred_mask’ in the layer list and remove it by clicking
 the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
 icon. Finally, open the <code>napari-matplotlib</code> histogram again
 with:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
-<figure><img src="../fig/blurred-nuclei-histogram.png" alt="A histogram of the 29th z slice of  the nuclei image after a gaussian blur. The left contrast limit is set  to 0.134." class="figure mx-auto d-block"></figure><p>Make sure you have ‘nuclei_gaussian_σ=3.0’ selected in the layer list
-(should be highlighted in blue).</p>
+<figure><img src="../fig/blurred-nuclei-histogram.png" alt="A histogram of the 29th z slice of  the nuclei image after a gaussian blur. The left contrast limit is set  to 0.134." class="figure mx-auto d-block"></figure><p>Make sure you have ‘nuclei_gaussian_sigma=3.0’ selected in the layer
+list (should be highlighted in blue).</p>
 <p>You should see that this histogram now runs from 0 to 1, reflecting
 the new values after the gaussian blur and its new data type. Let’s
 again choose a threshold between the two peaks - around 0.134:</p>
@@ -860,7 +881,7 @@ again choose a threshold between the two peaks - around 0.134:</p>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a></span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a><span class="co"># Get the image data for the blurred nuclei</span></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1" aria-label="code-block-11-3"></a>blurred <span class="op">=</span> viewer.layers[<span class="st">"nuclei_gaussian_σ=3.0"</span>].data</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1" aria-label="code-block-11-3"></a>blurred <span class="op">=</span> viewer.layers[<span class="st">"nuclei_gaussian_sigma=3.0"</span>].data</span>
 <span id="cb11-4"><a href="#cb11-4" tabindex="-1" aria-label="code-block-11-4"></a></span>
 <span id="cb11-5"><a href="#cb11-5" tabindex="-1" aria-label="code-block-11-5"></a><span class="co"># Create mask with a threshold of 0.134</span></span>
 <span id="cb11-6"><a href="#cb11-6" tabindex="-1" aria-label="code-block-11-6"></a>blurred_mask <span class="op">=</span> blurred <span class="op">&gt;</span> <span class="fl">0.134</span></span>
@@ -895,9 +916,9 @@ at the bottom of the image, it’s clear that some areas are still missed
 or incorrectly labelled.</p>
 </section><section><h2 class="section-heading" id="automated-thresholding">Automated thresholding<a class="anchor" aria-label="anchor" href="#automated-thresholding"></a></h2>
 <hr class="half-width"><p>First, let’s clean up our layer list again. Make sure you only have
-the ‘nuclei’, ‘mask’, ‘blurred_mask’ and ‘nuclei_gaussian_σ=3.0’ layers
-in the layer list - select any others and remove them by clicking the
-<img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
+the ‘nuclei’, ‘mask’, ‘blurred_mask’ and ‘nuclei_gaussian_sigma=3.0’
+layers in the layer list - select any others and remove them by clicking
+the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
 icon. Then, if you still have the <code>napari-matplotlib</code>
 histogram open, close it by clicking the tiny <code>x</code> icon in the
 top left corner.</p>
@@ -908,7 +929,8 @@ for us. Many such methods exist - for example, open
 One of the most common methods is <em>Otsu thresholding</em>, which we
 will look at now.</p>
 <p>Let’s go ahead and apply this to our blurred image:</p>
-<ul><li>Select ‘nuclei_gaussian_σ=3.0’ in the <code>Image</code> row</li>
+<ul><li>Select ‘nuclei_gaussian_sigma=3.0’ in the <code>Image</code>
+row</li>
 <li>Select ‘otsu’ as the method</li>
 <li>Click the ‘Apply Thresholding’ button</li>
 </ul><figure><img src="../fig/threshold-blurred-otsu-mask.png" style="width:60.0%" alt="Mask of nuclei (brown) overlaid on  nuclei image - created with Otsu thresholding after gaussian blur" class="figure mx-auto d-block"></figure><p>This should produce a mask (in a new layer ending with
@@ -962,7 +984,7 @@ the top row of the layer controls.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <figure><img src="../fig/shapes-thresholds.png" alt="Masks via automated thresholding" class="figure mx-auto d-block"></figure><ul><li>
 <strong>Otsu</strong>: The mask does not include the low‑intensity
@@ -1085,7 +1107,7 @@ any links that you are not going to use.
   "url": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/filters-and-thresholding.html",
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/instructor/filters-and-thresholding.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2025-11-21",
+  "dateModified": "2026-06-08",
   "datePublished": "2026-06-08"
 }
 

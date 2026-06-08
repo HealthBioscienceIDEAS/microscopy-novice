@@ -967,33 +967,36 @@ the layer controls.</p>
 <p aria-hidden="true">Image 1 of 1: ‘Nuclei image after gaussian blur with sigma  of 3’</p>
 <figure><img src="fig/nuclei-blurred-3.png" style="width:40.0%" alt="Nuclei image after gaussian blur with sigma  of 3" class="figure mx-auto d-block"></figure><hr>
 <h3 id="filters-and-thresholding-figure-16">Figure 16</h3>
+<p aria-hidden="true">Image 1 of 1: ‘The mouse cursor hovers over a napari image layer named nuclei_gaussian_sigma=1.0.’</p>
+<figure><img src="fig/layer-rename.png" style="width:70.0%" alt="The mouse cursor hovers over a napari image layer named nuclei_gaussian_sigma=1.0." class="figure mx-auto d-block"></figure><hr>
+<h3 id="filters-and-thresholding-figure-17">Figure 17</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Small zoomed-in area of the nucleus image  with a pixel highlighted in red. Around this pixel is shown a  3x3 box.’</p>
 <figure><img src="fig/nuclei-kernel-area.png" style="width:60.0%" alt="Small zoomed-in area of the nucleus image  with a pixel highlighted in red. Around this pixel is shown a  3x3 box." class="figure mx-auto d-block"></figure><hr>
-<h3 id="filters-and-thresholding-figure-17">Figure 17</h3>
+<h3 id="filters-and-thresholding-figure-18">Figure 18</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Left - small area of the nucleus image with a  pixel highlighted in red. Around this pixel is shown a 3x3 box. Right - example  of a 3x3 kernel’</p>
 <figure><img src="fig/nuclei-kernel.png" alt="Left - small area of the nucleus image with a  pixel highlighted in red. Around this pixel is shown a 3x3 box. Right - example  of a 3x3 kernel" class="figure mx-auto d-block"></figure><hr>
-<h3 id="filters-and-thresholding-figure-18">Figure 18</h3>
+<h3 id="filters-and-thresholding-figure-19">Figure 19</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Plot of a 1D gaussian function  comparing three different sigma values’</p>
 <figure><img src="fig/gaussian-1d-comparison.png" alt="Plot of a 1D gaussian function  comparing three different sigma values" class="figure mx-auto d-block"></figure><hr>
-<h3 id="filters-and-thresholding-figure-19">Figure 19</h3>
+<h3 id="filters-and-thresholding-figure-20">Figure 20</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Plot of a 2D gaussian function  comparing three different sigma values’</p>
 <figure><img src="fig/gaussian-2d-comparison.png" alt="Plot of a 2D gaussian function  comparing three different sigma values" class="figure mx-auto d-block"></figure><hr>
-<h3 id="filters-and-thresholding-figure-20">Figure 20</h3>
+<h3 id="filters-and-thresholding-figure-21">Figure 21</h3>
 <p aria-hidden="true">Image 1 of 1: ‘An example of a 5x5 gaussian  kernel’</p>
 <figure><img src="fig/gaussian-kernel.png" style="width:40.0%" alt="An example of a 5x5 gaussian  kernel" class="figure mx-auto d-block"></figure><hr>
-<h3 id="filters-and-thresholding-figure-21">Figure 21</h3>
+<h3 id="filters-and-thresholding-figure-22">Figure 22</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Diagram of gaussian function with FWHM labelled’</p>
 <figure><img src="fig/gaussian-FWHM.png" style="width:80.0%" alt="Diagram of gaussian function with FWHM labelled" class="figure mx-auto d-block"></figure><hr>
-<h3 id="filters-and-thresholding-figure-22">Figure 22</h3>
+<h3 id="filters-and-thresholding-figure-23">Figure 23</h3>
 <p aria-hidden="true">Image 1 of 1: ‘A screenshot of Napari's delete layer button’</p>
 <p>First, let’s clean up our layer list. Make sure you only have the
-‘nuclei’ layer in the layer list - select any others and remove them by
-clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
-icon. Also, close all filter settings panels on the right side of Napari
+<code>nuclei</code> and <code>nuclei_gaussian_sigma=3.0</code> layers in
+the layer list - select any others and remove them by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
+icon. Close all filter settings panels on the right side of Napari
 (apart from the gaussian settings) by clicking the tiny <code>X</code>
 icon at their top left corner.</p>
 <hr>
-<h3 id="filters-and-thresholding-figure-23">Figure 23</h3>
+<h3 id="filters-and-thresholding-figure-24">Figure 24</h3>
 <p aria-hidden="true">Image 1 of 1: ‘A screenshot of Napari's delete layer button’</p>
 <p>Let’s return to thresholding our image. Close the gaussian panel by
 clicking the tiny <code>X</code> icon at its top left corner. Then
@@ -1002,26 +1005,26 @@ the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/re
 icon. Finally, open the <code>napari-matplotlib</code> histogram again
 with:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
 <hr>
-<h3 id="filters-and-thresholding-figure-24">Figure 24</h3>
+<h3 id="filters-and-thresholding-figure-25">Figure 25</h3>
 <p aria-hidden="true">Image 1 of 1: ‘A histogram of the 29th z slice of  the nuclei image after a gaussian blur. The left contrast limit is set  to 0.134.’</p>
 <figure><img src="fig/blurred-nuclei-histogram.png" alt="A histogram of the 29th z slice of  the nuclei image after a gaussian blur. The left contrast limit is set  to 0.134." class="figure mx-auto d-block"></figure><hr>
-<h3 id="filters-and-thresholding-figure-25">Figure 25</h3>
+<h3 id="filters-and-thresholding-figure-26">Figure 26</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Mask of nuclei (brown) overlaid on  nuclei image - created with manual thresholding after gaussian blur’</p>
 <figure><img src="fig/threshold-blurred-mask.png" style="width:60.0%" alt="Mask of nuclei (brown) overlaid on  nuclei image - created with manual thresholding after gaussian blur" class="figure mx-auto d-block"></figure><hr>
-<h3 id="filters-and-thresholding-figure-26">Figure 26</h3>
+<h3 id="filters-and-thresholding-figure-27">Figure 27</h3>
 <p aria-hidden="true">Image 1 of 1: ‘A screenshot of Napari's delete layer button’</p>
 <p>First, let’s clean up our layer list again. Make sure you only have
-the ‘nuclei’, ‘mask’, ‘blurred_mask’ and ‘nuclei_gaussian_σ=3.0’ layers
-in the layer list - select any others and remove them by clicking the
-<img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
+the ‘nuclei’, ‘mask’, ‘blurred_mask’ and ‘nuclei_gaussian_sigma=3.0’
+layers in the layer list - select any others and remove them by clicking
+the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30" class="figure">
 icon. Then, if you still have the <code>napari-matplotlib</code>
 histogram open, close it by clicking the tiny <code>x</code> icon in the
 top left corner.</p>
 <hr>
-<h3 id="filters-and-thresholding-figure-27">Figure 27</h3>
+<h3 id="filters-and-thresholding-figure-28">Figure 28</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Mask of nuclei (brown) overlaid on  nuclei image - created with Otsu thresholding after gaussian blur’</p>
 <figure><img src="fig/threshold-blurred-otsu-mask.png" style="width:60.0%" alt="Mask of nuclei (brown) overlaid on  nuclei image - created with Otsu thresholding after gaussian blur" class="figure mx-auto d-block"></figure><hr>
-<h3 id="filters-and-thresholding-figure-28">Figure 28</h3>
+<h3 id="filters-and-thresholding-figure-29">Figure 29</h3>
 <p aria-hidden="true">Image 1 of 2: ‘A screenshot of Napari's shuffle button’</p>
 <p aria-hidden="true">Image 2 of 2: ‘A screenshot of Napari's eye button’</p>
 <p>This should produce a mask (in a new layer ending with
@@ -1036,15 +1039,15 @@ should see that Otsu chooses a slightly different threshold than we did
 in our ‘manual_blurred_mask’, labelling slightly smaller regions as
 nuclei in the final result.</p>
 <hr>
-<h3 id="filters-and-thresholding-figure-29">Figure 29</h3>
+<h3 id="filters-and-thresholding-figure-30">Figure 30</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Test image containing a rectangle, circle and triangle’</p>
 <figure><img src="fig/shapes.png" style="width:50.0%" alt="Test image containing a rectangle, circle and triangle" class="figure mx-auto d-block"></figure><hr>
-<h3 id="filters-and-thresholding-figure-30">Figure 30</h3>
+<h3 id="filters-and-thresholding-figure-31">Figure 31</h3>
 <p aria-hidden="true">Image 1 of 1: ‘A screenshot of Napari's shuffle button’</p>
 <p>Recall that you can change the colour of a mask by clicking the <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/shuffle.svg" alt="A screenshot of Napari's shuffle button" height="30" class="figure"> icon in
 the top row of the layer controls.</p>
 <hr>
-<h3 id="filters-and-thresholding-figure-31">Figure 31</h3>
+<h3 id="filters-and-thresholding-figure-32">Figure 32</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Masks via automated thresholding’</p>
 <figure><img src="fig/shapes-thresholds.png" alt="Masks via automated thresholding" class="figure mx-auto d-block"></figure><hr></section><section id="instance-segmentation-and-measurements"><h2 class="section-heading"><a href="instance-segmentation-and-measurements.html">Instance segmentation and measurements</a></h2>
 <hr class="half-width">
