@@ -325,7 +325,7 @@ image_layer_2 = viewer.layers[2]
 
 1. Check the `.scale` of each layer - are they the same?
 2. Set the scale of `image_layer_2` to (0.35, 0.4, 0.4) - what changes in the viewer?
-3. Set the scale of layer 3 to (0.35, 0.4, 0.2047619) - what changes in the 
+3. Set the scale of `image_layer_2` to (0.35, 0.4, 0.2047619) - what changes in the 
 viewer?
 4. Set the scale of all layers so they are half as wide and half as tall as 
 their original size in the viewer
