@@ -1715,7 +1715,7 @@ Napari users?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="is-a-plugin-well-maintained">Is a plugin well maintained?<a class="anchor" aria-label="anchor" href="#is-a-plugin-well-maintained"></a>
@@ -1794,7 +1794,7 @@ values:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ul>
 <li>a - 3</li>
@@ -1921,7 +1921,7 @@ these limits work?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>The left circle can be seen with limits of e.g. 0 and 33</p>
 <p>These limits work because the background on the left side of the
@@ -1964,7 +1964,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-multi-dimensional-images"><p>Content from <a href="multi-dimensional-images.html">Multi-dimensional images</a></p>
 <hr>
-<p>Last updated on 2025-10-29 |
+<p>Last updated on 2026-06-08 |
 
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/multi-dimensional-images.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -2080,11 +2080,30 @@ each image containing a 256x256 array. The x/y axes point along the
 width/height of the first 2D image, and the z axis points along the
 stack. It is stored as a 3D array:</p>
 <figure><img src="fig/2d-3d-arrays.png" style="width:80.0%" alt="A diagram comparing 2D and  3D image arrays" class="figure mx-auto d-block"></figure><p>In Napari (and Python in general), dimensions are referred to by
-their index e.g. here dimension 0 is the z axis, dimension 1 is the y
-axis and dimension 2 is the x axis. We can check this in Napari by
-looking at the number at the very left of the slider. Here it’s labelled
-‘0’, showing that it controls movement along dimension 0 (i.e. the z
-axis).</p>
+their ‘index’, which is an integer assigned to each position. The first
+dimension has an index of 0, the second an index of 1 and so on…</p>
+<p>For our 3D image:</p>
+<ul>
+<li>
+<strong>Shape</strong>: (10, 256, 256)</li>
+<li>
+<strong>Axis</strong>: (z, y, x)</li>
+<li>
+<strong>Index</strong>: (0, 1, 2)</li>
+</ul>
+<p>We can also use negative numbers for the index, in which case it
+counts backwards from the last dimension:</p>
+<ul>
+<li>
+<strong>Shape</strong>: (10, 256, 256)</li>
+<li>
+<strong>Axis</strong>: (z, y, x)</li>
+<li>
+<strong>Index</strong>: (-3, -2, -1)</li>
+</ul>
+<p>Napari uses a negative index in most places e.g. if you look at the
+number at the very left of the slider, it is labelled ‘-3’. This shows
+it controls movement along dimension -3 (i.e. the z axis).</p>
 <div id="axis-labels" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -2094,8 +2113,8 @@ axis).</p>
 <h3 class="callout-title">Axis labels</h3>
 <div class="callout-content">
 <p>By default, sliders will be labelled by the index of the dimension
-they move along e.g. 0, 1, 2… Note that it is possible to re-name these
-though! For example, if you click on the number at the left of the
+they move along e.g. -1, -2, -3… Note that it is possible to re-name
+these though! For example, if you click on the number at the left of the
 slider, you can freely type in a new value. This can be useful to label
 sliders with informative names like ‘z’, or ‘time’.</p>
 <p>You can also check which labels are currently being used with:</p>
@@ -2192,8 +2211,17 @@ representing the 2 channels. See the diagram below for a visualisation
 of how these 3D and 4D arrays compare:</p>
 <figure><img src="fig/3d-4d-arrays.png" style="width:80.0%" alt="A diagram comparing image arrays with three  (z, y, x) and four (c, z, y, x) dimensions" class="figure mx-auto d-block"></figure><p>As we’ve seen before, the labels on the left hand side of each slider
 in Napari matches the index of the dimension it moves along. The top
-slider (labelled 1) moves along the z axis, while the bottom slider
-(labelled 0) switches channels.</p>
+slider (labelled -3) moves along the z axis, while the bottom slider
+(labelled -4) switches channels. Remember a negative index counts
+backwards from the last dimension, so for this image:</p>
+<ul>
+<li>
+<strong>Shape</strong>: (2, 60, 256, 256)</li>
+<li>
+<strong>Axis</strong>: (c, z, y, x)</li>
+<li>
+<strong>Index</strong>: (-4, -3, -2, -1)</li>
+</ul>
 <p>We can separate the channels again by right clicking on the
 ‘membrane’ image layer and selecting:<br><code>Split Stack</code></p>
 <p>Note that this resets the contrast limits for membrane and nuclei to
@@ -2211,10 +2239,13 @@ splitting.</p>
 <p>When we open the cells image through the Napari menu, it is really
 calling something like:</p>
 <pre><code>from skimage import data
-viewer.add_image(data.cells3d(), channel_axis=1)</code></pre>
+viewer.add_image(data.cells3d(), channel_axis=-3)</code></pre>
 <p>This adds the cells 3D image (which is stored as zcyx), and specifies
-that dimension 1 is the channel axis. This allows Napari to split the
+that dimension -3 is the channel axis. This allows Napari to split the
 channels automatically into different layers.</p>
+<p>Note: we could use a positive index here and get the same result:</p>
+<pre><code>from skimage import data
+viewer.add_image(data.cells3d(), channel_axis=1)</code></pre>
 <p>Often when loading your own images into Napari e.g. with the BioIO
 plugin (as we will see in the <a href="filetypes-and-metadata.html">filetypes and metadata episode</a>),
 the channel axis will be recognised automatically. If not, you may need
@@ -2248,7 +2279,7 @@ shown below:</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Pros and cons </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p><strong>Channels as separate layers</strong></p>
 <ol style="list-style-type: decimal">
@@ -2301,11 +2332,11 @@ the left side of the slider to automatically move along it. The icon
 will change into a <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/square.svg" alt="A screenshot of Napari's stop button" height="25" class="figure">- pressing
 this will stop the movement.</p>
 <p>We can again check the image dimensions by running the following:</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a>image <span class="op">=</span> viewer.layers[<span class="st">"00001_01.ome"</span>].data</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a><span class="bu">print</span>(image.shape)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a>image <span class="op">=</span> viewer.layers[<span class="st">"00001_01.ome"</span>].data</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="bu">print</span>(image.shape)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2324,10 +2355,10 @@ the next section.</p>
 <hr class="half-width">
 <p>As we’ve seen so far, we can check the number and size of an image’s
 dimensions by running:</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a>image.shape</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a>image.shape</span></code></pre>
 </div>
 <p>Napari reads this array and displays the image appropriately, with
 the correct number of sliders, based on these dimensions. It’s worth
@@ -2359,11 +2390,11 @@ above.</p>
 <div class="callout-content">
 <p>Remove all image layers, then open a new image by copying and pasting
 the following into Napari’s console:</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="im">from</span> skimage <span class="im">import</span> data</span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1" aria-label="code-block-14-2"></a>image <span class="op">=</span> viewer.add_image(data.kidney(), rgb<span class="op">=</span><span class="va">False</span>).data</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="im">from</span> skimage <span class="im">import</span> data</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1" aria-label="code-block-15-2"></a>image <span class="op">=</span> viewer.add_image(data.kidney(), rgb<span class="op">=</span><span class="va">False</span>).data</span></code></pre>
 </div>
 <p>This is a fluorescence microscopy image of mouse kidney tissue.</p>
 <ol style="list-style-type: decimal">
@@ -2374,11 +2405,11 @@ to view different combinations of axes.</p></li>
 <li><p>Once you know which dimension represent channels, remove the
 image and load it again with:</p></li>
 </ol>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="co"># Replace ? with the correct channel axis</span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1" aria-label="code-block-15-2"></a>viewer.add_image(data.kidney(), rgb<span class="op">=</span><span class="va">False</span>, channel_axis<span class="op">=</span>?)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="co"># Replace ? with the correct channel axis</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1" aria-label="code-block-16-2"></a>viewer.add_image(data.kidney(), rgb<span class="op">=</span><span class="va">False</span>, channel_axis<span class="op">=</span>?)</span></code></pre>
 </div>
 <p>Note that using the wrong channel axis may cause Napari to crash. If
 this happens to you just restart Napari and try again. Bear in mind, as
@@ -2397,16 +2428,16 @@ large size.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="section">1<a class="anchor" aria-label="anchor" href="#section"></a>
 </h3>
 <p>The image has 4 dimensions, which we can see with:</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a>image.shape</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a>image.shape</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2419,17 +2450,17 @@ large size.</p>
 </h3>
 <p>If we press the roll dimensions button <img src="https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/roll.svg" alt="A screenshot of Napari's roll dimensions button" height="25" class="figure">
 once, we can see an image of various cells and nuclei. Moving the slider
-labelled ‘0’ seems to move up and down in this image (i.e. the z axis),
-while moving the slider labelled ‘3’ changes between highlighting
+labelled ‘-4’ seems to move up and down in this image (i.e. the z axis),
+while moving the slider labelled ‘-1’ changes between highlighting
 different features like nuclei and cell edges (i.e. channels).
-Therefore, the remaining two axes (1 and 2) must be y and x. This means
-the image’s 4 dimensions are (z, y, x, c)</p>
+Therefore, the remaining two axes (-3 and -2) must be y and x. This
+means the image’s 4 dimensions are (z, y, x, c)</p>
 </div>
 <div class="section level3">
 <h3 id="section-2">3<a class="anchor" aria-label="anchor" href="#section-2"></a>
 </h3>
-<p>The channel axis is 3 (remember that the numbering always starts form
-0!)</p>
+<p>The channel axis is -1 (remember that -1 is the last dimension). We
+could also use an equivalent positive index of 3.</p>
 </div>
 <div class="section level3">
 <h3 id="section-3">4<a class="anchor" aria-label="anchor" href="#section-3"></a>
@@ -2452,11 +2483,11 @@ red (R), one representing green (G) and one representing blue (B).</p>
 remove any existing image layers first!<br><code>File &gt; Open Sample &gt; napari builtins &gt; Skin (RGB)</code></p>
 <figure><img src="fig/skin-napari.png" alt="A screenshot of an H+E slide of skin layers  in Napari" class="figure mx-auto d-block"></figure><p>This image is a hematoxylin and eosin stained slide of dermis and
 epidermis (skin layers). Let’s check its shape:</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a>image <span class="op">=</span> viewer.layers[<span class="st">"skin"</span>].data</span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1" aria-label="code-block-18-2"></a><span class="bu">print</span>(image.shape)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a>image <span class="op">=</span> viewer.layers[<span class="st">"skin"</span>].data</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1" aria-label="code-block-19-2"></a><span class="bu">print</span>(image.shape)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2516,11 +2547,11 @@ make sure you keep a copy of your original raw data!</p>
 has a length of 3 or 4, Napari will assume it is RGB and <a href="https://napari.org/stable/howtos/layers/image.html#viewing-rgb-vs-luminance-grayscale-images" class="external-link">display
 it as such</a>. If loading an image from the console, you can also
 manually set it to load as rgb:</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a><span class="im">from</span> skimage <span class="im">import</span> data</span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1" aria-label="code-block-20-2"></a>viewer.add_image(data.astronaut(), rgb<span class="op">=</span><span class="va">True</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="im">from</span> skimage <span class="im">import</span> data</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1" aria-label="code-block-21-2"></a>viewer.add_image(data.astronaut(), rgb<span class="op">=</span><span class="va">True</span>)</span></code></pre>
 </div>
 </div>
 </div>
@@ -2546,7 +2577,7 @@ manually set it to load as rgb:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>If you haven’t completed the <a href="image-display.html">image
 display episode</a>, you will need to <a href="image-display.html#napari-plugins">install the
@@ -2586,7 +2617,7 @@ produce? Each value has a minimum of 0 and a maximum of 255.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <figure><img src="fig/rgb-exercise.png" style="width:50.0%" alt="Diagram of (R, G, B) values next to corresponding  colours" class="figure mx-auto d-block"></figure>
 </div>
@@ -2835,7 +2866,7 @@ image’s pixel metadata: <code>metadata.images[0].pixels</code>)</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="microscope-model">Microscope model<a class="anchor" aria-label="anchor" href="#microscope-model"></a>
@@ -3017,7 +3048,7 @@ tall as their original size in the viewer</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="section">1<a class="anchor" aria-label="anchor" href="#section"></a>
@@ -3220,7 +3251,7 @@ do they differ? How does each compare to timepoint 30 of the original
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="file-sizes">File sizes<a class="anchor" aria-label="anchor" href="#file-sizes"></a>
@@ -4759,7 +4790,7 @@ icon.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>In the top menu bar of Napari select:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
 <p>Make sure you have the ‘nuclei’ layer selected in the layer list
@@ -5029,7 +5060,7 @@ integers) Choose from 8-bit, 16-bit or 32-bit.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="shapes-pattern">Shapes + pattern<a class="anchor" aria-label="anchor" href="#shapes-pattern"></a>
@@ -5210,7 +5241,7 @@ documentation</a> on <code>Labels</code> layers.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="icon">
@@ -5561,7 +5592,7 @@ value:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>First, we show a histogram for the image by selecting the ‘image’
 layer, then:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
@@ -5773,7 +5804,7 @@ name online.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="median">Median<a class="anchor" aria-label="anchor" href="#median"></a>
@@ -5997,7 +6028,7 @@ the top row of the layer controls.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <figure><img src="fig/shapes-thresholds.png" alt="Masks via automated thresholding" class="figure mx-auto d-block"></figure><ul>
 <li>
@@ -6393,7 +6424,7 @@ computer. Keep your radius values &lt;= 10.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>To test different values of radius, you can assign a different value
 to radius, e.g. <code>radius = 5</code> and rerun the last two lines
@@ -6501,7 +6532,7 @@ original mask, what will we see?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p><img src="fig/instance_segmentation_vs_semantic_segmentation.png" alt="A comparison between the expanded instance segmentation and the original semantic segmentation showing some mismatch between the borders." class="figure">
 Looking at the above image we can see some small mismatches around the
@@ -6926,8 +6957,8 @@ any links that you are not going to use.
   "url": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/aio.html",
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/aio.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2026-06-05",
-  "datePublished": "2026-06-05"
+  "dateModified": "2026-06-08",
+  "datePublished": "2026-06-08"
 }
 
   </script><script>
