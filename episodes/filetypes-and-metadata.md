@@ -368,7 +368,7 @@ be 0.2047619&mu;m) to about twice its original value (now 0.4&mu;m).
 twice as big in y"}
 
 ```python
-image_layer_3.scale = (0.35, 0.4, 0.2047619)
+image_layer_2.scale = (0.35, 0.4, 0.2047619)
 ```
 You should see that layer 2 appears squashed - with the same width as other
 layers, but about twice the height. This is because we set the pixel size in y
