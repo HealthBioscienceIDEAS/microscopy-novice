@@ -203,7 +203,7 @@ Let's try it.
 Create a new cell and run:
 
 ```python
-# Create an instant segmentation using scikit-image
+# Create an instant segmentation
 
 # Import the label function
 from skimage.measure import label
@@ -224,8 +224,8 @@ nuclei can be done very easily by taking the maximum value of the instance
 segmentation image.
 
 ```python
-# Calculate number of nuclei from instance segmentation
-number_of_nuclei = instance_seg.max()
+# Calculate number of nuclei 
+number_of_nuclei = instance_seg.max() 
 print("Number of Nuclei =", number_of_nuclei)
 ```
 ```output
