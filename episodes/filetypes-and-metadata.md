@@ -141,13 +141,24 @@ print(metadata)
 ```
 ```output
 OME(
-   experimenters=[{'id': 'Experimenter:0', 'user_name': 'Zeiss'}],
-   instruments=[<1 field_type>],
-   images=[<1 field_type>],
+    plates=[<1 field_type>],
+    experimenters=[{'id': 'Experimenter:Zeiss', 'user_name': 'Zeiss'}],
+    instruments=[<1 field_type>],
+    images=[<2 field_type>],
+    structured_annotations={
+        'xml_annotations': [
+            {
+                'description': 'ZEN 2012 (blue edition)1.1.1.0',
+                'id': 'urn:lsid:allencell.org:Annotation:AcquisitionSoftware',
+                'value': {},
+                'kind': 'xmlannotation'
+            }
+        ]
+    }
 )
 ```
 
-In this case, we can see it is split into three categories: 
+In this case, we can see it is split into various categories including 
 `experimenters`, `images` and `instruments`. You can look inside each of these
 using `.category` e.g.:
 ```python
@@ -174,7 +185,7 @@ processing steps don't overwrite this original image.
 Explore the metadata in the console to answer the following 
 questions:
 
-- What type of microscope was used to take this image?
+- Which manufacturer made the microscope used to take this image?
 - What detector was used to take this image?
 - What does each channel show? For example, which fluorophore is used? What is 
 its excitation and emission wavelength? (hint: look inside the image's 
@@ -184,10 +195,10 @@ pixel metadata: `metadata.images[0].pixels`)
  
 ## Solution
 
-### Microscope model
+### Microscope manufacturer
 
-Under `metadata.instruments[0].microscope`, we can see that an 'Axio Imager Z2' 
-microscope was used.
+Under `metadata.instruments[0].microscope`, we can see that the microscope 
+manufacturer was Zeiss.
 
 ### Detector
 Under `metadata.instruments[0].detectors`, we can see 
@@ -196,18 +207,18 @@ that this used an HDCamC10600-30B (ORCA-R2) detector.
 ### Channels
 
 Under `metadata.images[0].pixels.channels`, we can see one entry per channel 
-- `Channel:0:0`, `Channel:0:1` and `Channel:0:2`. 
+- `Channel:1:0`, `Channel:2:0` and `Channel:3:0`. 
 
 In the first (`metadata.images[0].pixels.channels[0]`), we can see that its 
-`name` is TagYFP, a fluorophore with `emission_wavelength` of 524nm and 
+`fluor` is TagYFP, a fluorophore with `emission_wavelength` of 524nm and 
 `excitation_wavelength` of 508nm.
 
-In the first (`metadata.images[0].pixels.channels[1]`), we can see that its 
-`name` is mRFP1.2, a fluorophore with `emission_wavelength` of 612nm and 
+In the second (`metadata.images[0].pixels.channels[1]`), we can see that its 
+`fluor` is mRFP1.2, a fluorophore with `emission_wavelength` of 612nm and 
 `excitation_wavelength` of 590nm.
 
-In the first (`metadata.images[0].pixels.channels[2]`), we see that its name 
-is `TL DIC` and no `emission_wavelength` or `excitation_wavelength` is listed. 
+In the last (`metadata.images[0].pixels.channels[2]`), we see that no `fluor`, 
+`emission_wavelength` or `excitation_wavelength` is listed. 
 Its `illumination_type` is listed as 'transmitted', so this is simply an image 
 of the yeast cells with no fluorophores used.
 
@@ -314,18 +325,18 @@ image_layer.scale = (0.35, 0.2047619, 0.2047619)
 
 ## Pixel size / scale
 
-Copy and paste the following into Napari's console to get `image_layer_1`, 
-`image_layer_2` and `image_layer_3` of the yeast image:
+Copy and paste the following into Napari's console to get `image_layer_0`,
+`image_layer_1` and `image_layer_2` of the yeast image:
 
 ```python
-image_layer_1 = viewer.layers[0]
-image_layer_2 = viewer.layers[1]
-image_layer_3 = viewer.layers[2]
+image_layer_0 = viewer.layers[0]
+image_layer_1 = viewer.layers[1]
+image_layer_2 = viewer.layers[2]
 ```
 
 1. Check the `.scale` of each layer - are they the same?
-2. Set the scale of layer 3 to (0.35, 0.4, 0.4) - what changes in the viewer?
-3. Set the scale of layer 3 to (0.35, 0.4, 0.2047619) - what changes in the 
+2. Set the scale of `image_layer_2` to (0.35, 0.4, 0.4) - what changes in the viewer?
+3. Set the scale of `image_layer_2` to (0.35, 0.4, 0.2047619) - what changes in the 
 viewer?
 4. Set the scale of all layers so they are half as wide and half as tall as 
 their original size in the viewer
@@ -340,9 +351,9 @@ their original size in the viewer
 All layers have the same scale
 
 ```python
+print(image_layer_0.scale)
 print(image_layer_1.scale)
 print(image_layer_2.scale)
-print(image_layer_3.scale)
 ```
 ```output
 [0.35 0.2047619 0.2047619]
@@ -352,40 +363,40 @@ print(image_layer_3.scale)
 
 ### 2
 
-![](fig/yeast-exercise-2.png){alt="Yeast image shown in Napari with layer 3 
+![](fig/yeast-exercise-2.png){alt="Yeast image shown in Napari with layer 2
 twice as big in y and x"}
 
 ```python
-image_layer_3.scale = (0.35, 0.4, 0.4)
+image_layer_2.scale = (0.35, 0.4, 0.4)
 ```
-You should see that layer 3 becomes about twice as wide and twice as tall as the 
-other layers. This is because we set the pixel size in y and x (which used to 
+You should see that layer 2 becomes about twice as wide and twice as tall as the
+other layers. This is because we set the pixel size in y and x (which used to
 be 0.2047619&mu;m) to about twice its original value (now 0.4&mu;m).
 
 ### 3
 
-![](fig/yeast-exercise-3.png){alt="Yeast image shown in Napari with layer 3 
+![](fig/yeast-exercise-3.png){alt="Yeast image shown in Napari with layer 2
 twice as big in y"}
 
 ```python
-image_layer_3.scale = (0.35, 0.4, 0.2047619)
+image_layer_2.scale = (0.35, 0.4, 0.2047619)
 ```
-You should see that layer 3 appears squashed - with the same width as other 
-layers, but about twice the height. This is because we set the pixel size in y 
-(which used to be 0.2047619&mu;m) to about twice its original value (now 
+You should see that layer 2 appears squashed - with the same width as other
+layers, but about twice the height. This is because we set the pixel size in y
+(which used to be 0.2047619&mu;m) to about twice its original value (now
 0.4&mu;m). Bear in mind that setting the pixel sizes inappropriately can lead 
 to stretched or squashed images like this!
 
 ### 4
 
-![](fig/yeast-exercise-4.png){alt="Yeast image shown in Napari with all layers 
+![](fig/yeast-exercise-4.png){alt="Yeast image shown in Napari with all layers
 half size in y/x"}
 
 We set the pixel size in y/x to half its original value of 0.2047619&mu;m:
 ```python
+image_layer_0.scale = (0.35, 0.10238095, 0.10238095)
 image_layer_1.scale = (0.35, 0.10238095, 0.10238095)
 image_layer_2.scale = (0.35, 0.10238095, 0.10238095)
-image_layer_3.scale = (0.35, 0.10238095, 0.10238095)
 ```
 :::::::::::::::::::::::::::::::::
 

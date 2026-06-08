@@ -112,18 +112,33 @@ array:
 ![](fig/2d-3d-arrays.png){alt="A diagram comparing 2D and 
 3D image arrays" width='80%'}
 
-In Napari (and Python in general), dimensions are referred to by their index 
-e.g. here dimension 0 is the z axis, dimension 1 is the y axis and dimension 2 
-is the x axis. We can check this in Napari by looking at the number at the very 
-left of the slider. Here it's labelled '0', showing that it controls movement 
-along dimension 0 (i.e. the z axis).
+In Napari (and Python in general), dimensions are referred to by their 'index',
+which is an integer assigned to each position. The first dimension has an index 
+of 0, the second an index of 1 and so on... 
+
+For our 3D image:
+
+- **Shape**: (10, 256, 256)
+- **Axis**:  (z, y, x)
+- **Index**: (0, 1, 2)
+
+We can also use negative numbers for the index, in which case it counts 
+backwards from the last dimension:
+
+- **Shape**: (10, 256, 256)
+- **Axis**:  (z, y, x)
+- **Index**: (-3, -2, -1)
+
+Napari uses a negative index in most places e.g. if you look at the number at 
+the very left of the slider, it is labelled '-3'. This shows it controls 
+movement along dimension -3 (i.e. the z axis).
 
 :::::::::::::::::::::::::::::::::::::: callout
 
 ## Axis labels
 
 By default, sliders will be labelled by the index of the dimension they move 
-along e.g. 0, 1, 2... Note that it is possible to re-name these though! For 
+along e.g. -1, -2, -3... Note that it is possible to re-name these though! For 
 example, if you click on the number at the left of the slider, you can freely 
 type in a new value. This can be useful to label sliders with informative names 
 like 'z', or 'time'. 
@@ -233,8 +248,13 @@ See the diagram below for a visualisation of how these 3D and 4D arrays compare:
 (z, y, x) and four (c, z, y, x) dimensions" width='80%'}
 
 As we've seen before, the labels on the left hand side of each slider in Napari 
-matches the index of the dimension it moves along. The top slider (labelled 1) 
-moves along the z axis, while the bottom slider (labelled 0) switches channels.
+matches the index of the dimension it moves along. The top slider (labelled -3) 
+moves along the z axis, while the bottom slider (labelled -4) switches channels.
+Remember a negative index counts backwards from the last dimension, so for this image:
+
+- **Shape**: (2, 60, 256, 256)
+- **Axis**:  (c, z, y, x)
+- **Index**: (-4, -3, -2, -1)
 
 We can separate the channels again by right clicking on the 'membrane' image 
 layer and selecting:  
@@ -254,11 +274,17 @@ something like:
 
 ```
 from skimage import data
-viewer.add_image(data.cells3d(), channel_axis=1)
+viewer.add_image(data.cells3d(), channel_axis=-3)
 ```
 This adds the cells 3D image (which is stored as zcyx), and specifies that 
-dimension 1 is the channel axis. This allows Napari to split the channels 
+dimension -3 is the channel axis. This allows Napari to split the channels 
 automatically into different layers.
+
+Note: we could use a positive index here and get the same result:
+```
+from skimage import data
+viewer.add_image(data.cells3d(), channel_axis=1)
+```
 
 Often when loading your own images into Napari e.g. with the 
 BioIO plugin (as we will see in the 
@@ -452,14 +478,15 @@ image.shape
 If we press the roll dimensions button ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/roll.svg
 ){alt="A screenshot of Napari's roll dimensions button" height='25px'} once, we 
-can see an image of various cells and nuclei. Moving the slider labelled '0' 
+can see an image of various cells and nuclei. Moving the slider labelled '-4' 
 seems to move up and down in this image (i.e. the z axis), while moving the 
-slider labelled '3' changes between highlighting different features like nuclei 
-and cell edges (i.e. channels). Therefore, the remaining two axes (1 and 2) must 
+slider labelled '-1' changes between highlighting different features like nuclei 
+and cell edges (i.e. channels). Therefore, the remaining two axes (-3 and -2) must 
 be y and x. This means the image's 4 dimensions are (z, y, x, c)
 
 ### 3
-The channel axis is 3 (remember that the numbering always starts form 0!)
+The channel axis is -1 (remember that -1 is the last dimension). We could also
+use an equivalent positive index of 3.
 
 ### 4
 There are 3 channels which we can see from the `.shape` output, or from the 
