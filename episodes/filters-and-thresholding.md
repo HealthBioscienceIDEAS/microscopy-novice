@@ -325,11 +325,27 @@ Try increasing the 'sigma' value to three and clicking run again:
 of 3" width='40%'}
 
 You should see a new 'nuclei_gaussian_σ=3.0' layer that is much more heavily blurred. 
-If you used the `+`/`-` buttons to set the sigma value, you may see many more 
-decimal places in the layer name e.g. 'nuclei_gaussian_σ=3.00000000000000'. 
-If so, double click on the layer name to re-name it to `nuclei_gaussian_σ=3.0`.
 
-What's happening here? What exactly does a gaussian blur do? A gaussian blur is 
+::::::::::::::::::::::::::::::::::::: callout
+
+## Renaming Layer Names
+
+The Gaussian filter plugin uses the special character `σ` in the layer names.
+This naming convention makes it difficult to type layer names in the Napari
+console (unless your keyboard has the `σ` character). To make life easier
+change the name of the added layer now. Double click on the layer name, delete `σ`
+and change it to `sigma`
+
+![](fig/layer-rename.png){alt="The mouse cursor hovers over a napari image layer named nuclei_gaussian_sigma=1.0." width='70%'}
+
+
+Similarly, if you used the `+`/`-` buttons to set the sigma value, you may see excessive
+decimal places in the layer name e.g. `nuclei_gaussian_σ=3.00000000000000`.
+If so, double click on the layer name to re-name it to `nuclei_gaussian_sigma=3.0`.
+
+:::::::::::::::::::::::::::::::::::::
+
+What's happening here? What exactly does a gaussian blur do? A gaussian blur is
 an example of a 'linear filter' which is used to manipulate pixel values in 
 images. When a filter is applied to an image, each pixel value is replaced by 
 some combination of the pixel values around it. For example, below is shown a 
@@ -510,23 +526,25 @@ shrink in size. Increasing the 'Footprint size' of the filter enhances the effec
 
 ## Thresholding the blurred image
 
-First, let's clean up our layer list. Make sure you only have the 'nuclei' 
-layer in the layer list - select any others and remove them by clicking the ![](
+First, let's clean up our layer list. Make sure you only have the `nuclei` and 
+`nuclei_gaussian_sigma=3.0` layers in the layer list - select any others and remove them by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
-){alt="A screenshot of Napari's delete layer button" height='30px'} icon. Also, 
-close all filter settings panels on the right side of Napari (apart from the 
+){alt="A screenshot of Napari's delete layer button" height='30px'} icon. 
+Close all filter settings panels on the right side of Napari (apart from the 
 gaussian settings) by clicking the tiny `X` icon at their top left corner.
 
-Now let's try thresholding our image again. Make sure you set your gaussian blur 
-sigma to three, then click 'Apply Gaussian Filter'.
+If you don't have the `nuclei_gaussian_sigma=3.0` in your layer list then make it now
+using the Gaussian Filter with sigma set to three. You may need to rename the layer, 
+replacing `σ` with `sigma`.
 
-Then, we'll apply the same threshold as before, now to the 
-'nuclei_gaussian_σ=3.0' layer:
+Now let's try thresholding our image again.
+We'll apply the same threshold as before, now to the 
+`nuclei_gaussian_sigma=3.0` layer:
 
 ```python
 
 # Get the image data for the blurred nuclei
-blurred = viewer.layers["nuclei_gaussian_σ=3.0"].data
+blurred = viewer.layers["nuclei_gaussian_sigma=3.0"].data
 
 # Create mask with a threshold of 8266
 blurred_mask = blurred > 8266
@@ -578,7 +596,7 @@ Finally, open the `napari-matplotlib` histogram again with:
 the nuclei image after a gaussian blur. The left contrast limit is set 
 to 0.134."}
 
-Make sure you have 'nuclei_gaussian_σ=3.0' selected in the layer list (should 
+Make sure you have 'nuclei_gaussian_sigma=3.0' selected in the layer list (should 
 be highlighted in blue).
 
 You should see that this histogram now runs from 0 to 1, reflecting the new 
@@ -588,7 +606,7 @@ threshold between the two peaks - around 0.134:
 ```python
 
 # Get the image data for the blurred nuclei
-blurred = viewer.layers["nuclei_gaussian_σ=3.0"].data
+blurred = viewer.layers["nuclei_gaussian_sigma=3.0"].data
 
 # Create mask with a threshold of 0.134
 blurred_mask = blurred > 0.134
@@ -633,7 +651,7 @@ clear that some areas are still missed or incorrectly labelled.
 ## Automated thresholding
 
 First, let's clean up our layer list again. Make sure you only have the 
-'nuclei', 'mask', 'blurred_mask' and 'nuclei_gaussian_σ=3.0' layers in the 
+'nuclei', 'mask', 'blurred_mask' and 'nuclei_gaussian_sigma=3.0' layers in the 
 layer list - select any others and remove them by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'} icon. Then, 
@@ -648,7 +666,7 @@ the most common methods is _Otsu thresholding_, which we will look at now.
 
 Let's go ahead and apply this to our blurred image:
 
-- Select 'nuclei_gaussian_σ=3.0' in the `Image` row
+- Select 'nuclei_gaussian_sigma=3.0' in the `Image` row
 - Select 'otsu' as the method
 - Click the 'Apply Thresholding' button
 
