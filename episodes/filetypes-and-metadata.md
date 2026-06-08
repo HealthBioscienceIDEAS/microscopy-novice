@@ -314,13 +314,13 @@ image_layer.scale = (0.35, 0.2047619, 0.2047619)
 
 ## Pixel size / scale
 
-Copy and paste the following into Napari's console to get `image_layer_1`, 
-`image_layer_2` and `image_layer_3` of the yeast image:
+Copy and paste the following into Napari's console to get `image_layer_0`,
+`image_layer_1` and `image_layer_2` of the yeast image:
 
 ```python
-image_layer_1 = viewer.layers[0]
-image_layer_2 = viewer.layers[1]
-image_layer_3 = viewer.layers[2]
+image_layer_0 = viewer.layers[0]
+image_layer_1 = viewer.layers[1]
+image_layer_2 = viewer.layers[2]
 ```
 
 1. Check the `.scale` of each layer - are they the same?
@@ -340,9 +340,9 @@ their original size in the viewer
 All layers have the same scale
 
 ```python
+print(image_layer_0.scale)
 print(image_layer_1.scale)
 print(image_layer_2.scale)
-print(image_layer_3.scale)
 ```
 ```output
 [0.35 0.2047619 0.2047619]
@@ -352,40 +352,40 @@ print(image_layer_3.scale)
 
 ### 2
 
-![](fig/yeast-exercise-2.png){alt="Yeast image shown in Napari with layer 3 
+![](fig/yeast-exercise-2.png){alt="Yeast image shown in Napari with layer 2
 twice as big in y and x"}
 
 ```python
-image_layer_3.scale = (0.35, 0.4, 0.4)
+image_layer_2.scale = (0.35, 0.4, 0.4)
 ```
-You should see that layer 3 becomes about twice as wide and twice as tall as the 
-other layers. This is because we set the pixel size in y and x (which used to 
+You should see that layer 2 becomes about twice as wide and twice as tall as the
+other layers. This is because we set the pixel size in y and x (which used to
 be 0.2047619&mu;m) to about twice its original value (now 0.4&mu;m).
 
 ### 3
 
-![](fig/yeast-exercise-3.png){alt="Yeast image shown in Napari with layer 3 
+![](fig/yeast-exercise-3.png){alt="Yeast image shown in Napari with layer 2
 twice as big in y"}
 
 ```python
 image_layer_3.scale = (0.35, 0.4, 0.2047619)
 ```
-You should see that layer 3 appears squashed - with the same width as other 
-layers, but about twice the height. This is because we set the pixel size in y 
-(which used to be 0.2047619&mu;m) to about twice its original value (now 
+You should see that layer 2 appears squashed - with the same width as other
+layers, but about twice the height. This is because we set the pixel size in y
+(which used to be 0.2047619&mu;m) to about twice its original value (now
 0.4&mu;m). Bear in mind that setting the pixel sizes inappropriately can lead 
 to stretched or squashed images like this!
 
 ### 4
 
-![](fig/yeast-exercise-4.png){alt="Yeast image shown in Napari with all layers 
+![](fig/yeast-exercise-4.png){alt="Yeast image shown in Napari with all layers
 half size in y/x"}
 
 We set the pixel size in y/x to half its original value of 0.2047619&mu;m:
 ```python
+image_layer_0.scale = (0.35, 0.10238095, 0.10238095)
 image_layer_1.scale = (0.35, 0.10238095, 0.10238095)
 image_layer_2.scale = (0.35, 0.10238095, 0.10238095)
-image_layer_3.scale = (0.35, 0.10238095, 0.10238095)
 ```
 :::::::::::::::::::::::::::::::::
 
