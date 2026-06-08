@@ -538,7 +538,7 @@ using the Gaussian Filter with sigma set to three. You may need to rename the la
 replacing `σ` with `sigma`.
 
 Now let's try thresholding our image again.
-Then, we'll apply the same threshold as before, now to the 
+We'll apply the same threshold as before, now to the 
 `nuclei_gaussian_sigma=3.0` layer:
 
 ```python
