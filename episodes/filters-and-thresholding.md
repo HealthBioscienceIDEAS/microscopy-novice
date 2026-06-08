@@ -526,18 +526,20 @@ shrink in size. Increasing the 'Footprint size' of the filter enhances the effec
 
 ## Thresholding the blurred image
 
-First, let's clean up our layer list. Make sure you only have the 'nuclei' 
-layer in the layer list - select any others and remove them by clicking the ![](
+First, let's clean up our layer list. Make sure you only have the `nuclei` and 
+`nuclei_gaussian_sigma=3.0` layers in the layer list - select any others and remove them by clicking the ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
-){alt="A screenshot of Napari's delete layer button" height='30px'} icon. Also, 
-close all filter settings panels on the right side of Napari (apart from the 
+){alt="A screenshot of Napari's delete layer button" height='30px'} icon. 
+Close all filter settings panels on the right side of Napari (apart from the 
 gaussian settings) by clicking the tiny `X` icon at their top left corner.
 
-Now let's try thresholding our image again. Make sure you set your gaussian blur 
-sigma to three, then click 'Apply Gaussian Filter'.
+If you don't have the `nuclei_gaussian_sigma=3.0` in your layer list then make it now
+using the Gaussian Filter with sigma set to three. You may need to rename the layer, 
+replacing `σ` with `sigma`.
 
+Now let's try thresholding our image again.
 Then, we'll apply the same threshold as before, now to the 
-'nuclei_gaussian_sigma=3.0' layer:
+`nuclei_gaussian_sigma=3.0` layer:
 
 ```python
 
