@@ -322,7 +322,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Filetypes and metadata</h1>
-        <p>Last updated on 2025-10-29 |
+        <p>Last updated on 2026-06-08 |
 
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/filetypes-and-metadata.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -481,13 +481,24 @@ formatting of one item per line - you can run this instead:</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>OME(
-   experimenters=[{'id': 'Experimenter:0', 'user_name': 'Zeiss'}],
-   instruments=[&lt;1 field_type&gt;],
-   images=[&lt;1 field_type&gt;],
+    plates=[&lt;1 field_type&gt;],
+    experimenters=[{'id': 'Experimenter:Zeiss', 'user_name': 'Zeiss'}],
+    instruments=[&lt;1 field_type&gt;],
+    images=[&lt;2 field_type&gt;],
+    structured_annotations={
+        'xml_annotations': [
+            {
+                'description': 'ZEN 2012 (blue edition)1.1.1.0',
+                'id': 'urn:lsid:allencell.org:Annotation:AcquisitionSoftware',
+                'value': {},
+                'kind': 'xmlannotation'
+            }
+        ]
+    }
 )</code></pre>
 </div>
-<p>In this case, we can see it is split into three categories:
-<code>experimenters</code>, <code>images</code> and
+<p>In this case, we can see it is split into various categories
+including <code>experimenters</code>, <code>images</code> and
 <code>instruments</code>. You can look inside each of these using
 <code>.category</code> e.g.:</p>
 <div class="codewrapper sourceCode" id="cb9">
@@ -520,7 +531,7 @@ overwrite this original image.</p>
 <div class="callout-content">
 <p>Explore the metadata in the console to answer the following
 questions:</p>
-<ul><li>What type of microscope was used to take this image?</li>
+<ul><li>Which manufacturer made the microscope used to take this image?</li>
 <li>What detector was used to take this image?</li>
 <li>What does each channel show? For example, which fluorophore is used?
 What is its excitation and emission wavelength? (hint: look inside the
@@ -536,9 +547,9 @@ image’s pixel metadata: <code>metadata.images[0].pixels</code>)</li>
 <div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="section level3">
-<h3 id="microscope-model">Microscope model<a class="anchor" aria-label="anchor" href="#microscope-model"></a></h3>
+<h3 id="microscope-manufacturer">Microscope manufacturer<a class="anchor" aria-label="anchor" href="#microscope-manufacturer"></a></h3>
 <p>Under <code>metadata.instruments[0].microscope</code>, we can see
-that an ‘Axio Imager Z2’ microscope was used.</p>
+that the microscope manufacturer was Zeiss.</p>
 </div>
 <div class="section level3">
 <h3 id="detector">Detector<a class="anchor" aria-label="anchor" href="#detector"></a></h3>
@@ -548,22 +559,21 @@ this used an HDCamC10600-30B (ORCA-R2) detector.</p>
 <div class="section level3">
 <h3 id="channels">Channels<a class="anchor" aria-label="anchor" href="#channels"></a></h3>
 <p>Under <code>metadata.images[0].pixels.channels</code>, we can see one
-entry per channel - <code>Channel:0:0</code>, <code>Channel:0:1</code>
-and <code>Channel:0:2</code>.</p>
+entry per channel - <code>Channel:1:0</code>, <code>Channel:2:0</code>
+and <code>Channel:3:0</code>.</p>
 <p>In the first (<code>metadata.images[0].pixels.channels[0]</code>), we
-can see that its <code>name</code> is TagYFP, a fluorophore with
+can see that its <code>fluor</code> is TagYFP, a fluorophore with
 <code>emission_wavelength</code> of 524nm and
 <code>excitation_wavelength</code> of 508nm.</p>
-<p>In the first (<code>metadata.images[0].pixels.channels[1]</code>), we
-can see that its <code>name</code> is mRFP1.2, a fluorophore with
+<p>In the second (<code>metadata.images[0].pixels.channels[1]</code>),
+we can see that its <code>fluor</code> is mRFP1.2, a fluorophore with
 <code>emission_wavelength</code> of 612nm and
 <code>excitation_wavelength</code> of 590nm.</p>
-<p>In the first (<code>metadata.images[0].pixels.channels[2]</code>), we
-see that its name is <code>TL DIC</code> and no
-<code>emission_wavelength</code> or <code>excitation_wavelength</code>
-is listed. Its <code>illumination_type</code> is listed as
-‘transmitted’, so this is simply an image of the yeast cells with no
-fluorophores used.</p>
+<p>In the last (<code>metadata.images[0].pixels.channels[2]</code>), we
+see that no <code>fluor</code>, <code>emission_wavelength</code> or
+<code>excitation_wavelength</code> is listed. Its
+<code>illumination_type</code> is listed as ‘transmitted’, so this is
+simply an image of the yeast cells with no fluorophores used.</p>
 </div>
 </div>
 </div>
@@ -1091,7 +1101,7 @@ any links that you are not going to use.
   "url": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/filetypes-and-metadata.html",
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/filetypes-and-metadata.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2025-10-29",
+  "dateModified": "2026-06-08",
   "datePublished": "2026-06-08"
 }
 

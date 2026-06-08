@@ -1284,7 +1284,7 @@ on the bit depth?</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="dimensions">Dimensions<a class="anchor" aria-label="anchor" href="#dimensions"></a>
@@ -1494,7 +1494,7 @@ value - is it correct? If not, why not?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="section">1<a class="anchor" aria-label="anchor" href="#section"></a>
@@ -1715,7 +1715,7 @@ Napari users?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="is-a-plugin-well-maintained">Is a plugin well maintained?<a class="anchor" aria-label="anchor" href="#is-a-plugin-well-maintained"></a>
@@ -1794,7 +1794,7 @@ values:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ul>
 <li>a - 3</li>
@@ -1921,7 +1921,7 @@ these limits work?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The left circle can be seen with limits of e.g. 0 and 33</p>
 <p>These limits work because the background on the left side of the
@@ -2651,7 +2651,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-filetypes-and-metadata"><p>Content from <a href="filetypes-and-metadata.html">Filetypes and metadata</a></p>
 <hr>
-<p>Last updated on 2025-10-29 |
+<p>Last updated on 2026-06-08 |
 
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/filetypes-and-metadata.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -2812,13 +2812,24 @@ formatting of one item per line - you can run this instead:</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>OME(
-   experimenters=[{'id': 'Experimenter:0', 'user_name': 'Zeiss'}],
-   instruments=[&lt;1 field_type&gt;],
-   images=[&lt;1 field_type&gt;],
+    plates=[&lt;1 field_type&gt;],
+    experimenters=[{'id': 'Experimenter:Zeiss', 'user_name': 'Zeiss'}],
+    instruments=[&lt;1 field_type&gt;],
+    images=[&lt;2 field_type&gt;],
+    structured_annotations={
+        'xml_annotations': [
+            {
+                'description': 'ZEN 2012 (blue edition)1.1.1.0',
+                'id': 'urn:lsid:allencell.org:Annotation:AcquisitionSoftware',
+                'value': {},
+                'kind': 'xmlannotation'
+            }
+        ]
+    }
 )</code></pre>
 </div>
-<p>In this case, we can see it is split into three categories:
-<code>experimenters</code>, <code>images</code> and
+<p>In this case, we can see it is split into various categories
+including <code>experimenters</code>, <code>images</code> and
 <code>instruments</code>. You can look inside each of these using
 <code>.category</code> e.g.:</p>
 <div class="codewrapper sourceCode" id="cb9">
@@ -2852,7 +2863,7 @@ overwrite this original image.</p>
 <p>Explore the metadata in the console to answer the following
 questions:</p>
 <ul>
-<li>What type of microscope was used to take this image?</li>
+<li>Which manufacturer made the microscope used to take this image?</li>
 <li>What detector was used to take this image?</li>
 <li>What does each channel show? For example, which fluorophore is used?
 What is its excitation and emission wavelength? (hint: look inside the
@@ -2869,10 +2880,10 @@ image’s pixel metadata: <code>metadata.images[0].pixels</code>)</li>
 <div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="section level3">
-<h3 id="microscope-model">Microscope model<a class="anchor" aria-label="anchor" href="#microscope-model"></a>
+<h3 id="microscope-manufacturer">Microscope manufacturer<a class="anchor" aria-label="anchor" href="#microscope-manufacturer"></a>
 </h3>
 <p>Under <code>metadata.instruments[0].microscope</code>, we can see
-that an ‘Axio Imager Z2’ microscope was used.</p>
+that the microscope manufacturer was Zeiss.</p>
 </div>
 <div class="section level3">
 <h3 id="detector">Detector<a class="anchor" aria-label="anchor" href="#detector"></a>
@@ -2884,22 +2895,21 @@ this used an HDCamC10600-30B (ORCA-R2) detector.</p>
 <h3 id="channels">Channels<a class="anchor" aria-label="anchor" href="#channels"></a>
 </h3>
 <p>Under <code>metadata.images[0].pixels.channels</code>, we can see one
-entry per channel - <code>Channel:0:0</code>, <code>Channel:0:1</code>
-and <code>Channel:0:2</code>.</p>
+entry per channel - <code>Channel:1:0</code>, <code>Channel:2:0</code>
+and <code>Channel:3:0</code>.</p>
 <p>In the first (<code>metadata.images[0].pixels.channels[0]</code>), we
-can see that its <code>name</code> is TagYFP, a fluorophore with
+can see that its <code>fluor</code> is TagYFP, a fluorophore with
 <code>emission_wavelength</code> of 524nm and
 <code>excitation_wavelength</code> of 508nm.</p>
-<p>In the first (<code>metadata.images[0].pixels.channels[1]</code>), we
-can see that its <code>name</code> is mRFP1.2, a fluorophore with
+<p>In the second (<code>metadata.images[0].pixels.channels[1]</code>),
+we can see that its <code>fluor</code> is mRFP1.2, a fluorophore with
 <code>emission_wavelength</code> of 612nm and
 <code>excitation_wavelength</code> of 590nm.</p>
-<p>In the first (<code>metadata.images[0].pixels.channels[2]</code>), we
-see that its name is <code>TL DIC</code> and no
-<code>emission_wavelength</code> or <code>excitation_wavelength</code>
-is listed. Its <code>illumination_type</code> is listed as
-‘transmitted’, so this is simply an image of the yeast cells with no
-fluorophores used.</p>
+<p>In the last (<code>metadata.images[0].pixels.channels[2]</code>), we
+see that no <code>fluor</code>, <code>emission_wavelength</code> or
+<code>excitation_wavelength</code> is listed. Its
+<code>illumination_type</code> is listed as ‘transmitted’, so this is
+simply an image of the yeast cells with no fluorophores used.</p>
 </div>
 </div>
 </div>
@@ -4329,7 +4339,7 @@ you can share different ideas.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>There’s no one correct answer here, as it will depend on which type
 of light microscope you are using and which aspects of nucleus size and
@@ -4476,7 +4486,7 @@ magnification?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="x16-image">16x16 image<a class="anchor" aria-label="anchor" href="#x16-image"></a>
@@ -4626,7 +4636,7 @@ it?</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="a">a<a class="anchor" aria-label="anchor" href="#a"></a>
@@ -4790,7 +4800,7 @@ icon.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>In the top menu bar of Napari select:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
 <p>Make sure you have the ‘nuclei’ layer selected in the layer list
@@ -5060,7 +5070,7 @@ integers) Choose from 8-bit, 16-bit or 32-bit.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="shapes-pattern">Shapes + pattern<a class="anchor" aria-label="anchor" href="#shapes-pattern"></a>
@@ -5241,7 +5251,7 @@ documentation</a> on <code>Labels</code> layers.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="icon">
@@ -5592,7 +5602,7 @@ value:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>First, we show a histogram for the image by selecting the ‘image’
 layer, then:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
@@ -5804,7 +5814,7 @@ name online.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="median">Median<a class="anchor" aria-label="anchor" href="#median"></a>
@@ -6028,7 +6038,7 @@ the top row of the layer controls.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <figure><img src="fig/shapes-thresholds.png" alt="Masks via automated thresholding" class="figure mx-auto d-block"></figure><ul>
 <li>
