@@ -327,6 +327,10 @@ been labelled as a single nucleus.
 
 :::::::::::::::::::::::::challenge
 ### Why Are Separate Nuclei Getting the Same Label?
+
+![](fig/same_label_2d.png){
+alt="A screenshot of an instance segmentation of nuclei."}
+
 the images above, three of the light purple nuclei are visibly touching, so
 it is not surprising that they have been considered as a single
 `connected component` and thus labelled as a single nucleus. What about the
@@ -344,7 +348,7 @@ https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/
 ){alt="Napari's 2D/3D toggle" height='30px'} button.
 Try it now.
 
-![](fig/instance_segmentation_wrong3d.png){
+![](fig/same_label_3d.png){
 alt="A screenshot of an instance segmentation of nuclei in 3D mode with some
 incorrectly joined instances."}
 You should see the image rendered in 3D, with a clear join between the
@@ -416,6 +420,7 @@ Try eroding the `semantic_seg` layer with different integer values for the radiu
 Note that larger radius values will take longer to run on your computer. 
 
 Keep your radius values <= 15.
+
 :::::::::::::::::::::::::solution
 To test different values of radius, you can assign a different value to
 radius, e.g. `radius = 5` and rerun the last two lines from above. Or
@@ -462,6 +467,7 @@ and some disappear completely.
 ### For-loops (**extra hard**)
 
 Try using a Python `for` loop to test several radius values.
+
 :::::::::::::::::::::::::solution
 You can change the radius manually (for example, `radius = 5`) and re‑run the erosion each time.  
 But if you want to test **many** radius values quickly, a Python [for loop](https://swcarpentry.github.io/python-novice-inflammation/05-loop.html) lets you repeat the same steps for each radius in a list.
