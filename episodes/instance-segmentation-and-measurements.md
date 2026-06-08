@@ -325,13 +325,14 @@ image. Hovering the mouse pointer over the light purple nuclei at the bottom
 left of the image we see that these apparently four separate nuclei have
 been labelled as a single nucleus. 
 
-::::::::::::::::::::::::: challenge
+:::::::::::::::::::::::::challenge
+### Why Are Separate Nuclei Getting the Same Label?
 the images above, three of the light purple nuclei are visibly touching, so
 it is not surprising that they have been considered as a single
 `connected component` and thus labelled as a single nucleus. What about the
 fourth apparently separate nucleus? Why does it have the same label?
 
-::::::::::::::::::::::::: solution
+:::::::::::::::::::::::::solution
 It is important to remember that this is
 a three-dimensional image and so pixels will be considered as "connected" if
 they are adjacent to another segmented pixel in any of the three dimensions
@@ -406,11 +407,15 @@ eroded_mask = erosion(semantic_seg, footprint = ball(1))
 viewer.add_labels(eroded_mask, name = "eroded_ball_1")
 ```
 
-::::::::::::::::::::::::: challenge
-We can change the radius of the footprint to control the amount of erosion. Try eroding the `semantic_seg` layer with different integer values for the radius. What radius do you need to ensure all nuclei are separate?
+:::::::::::::::::::::::::challenge
+### What is a good radius?
+We can change the radius of the footprint to control the amount of erosion. 
 
-Note that larger radius values will take longer to run on your computer. Keep 
-your radius values <= 15.
+Try eroding the `semantic_seg` layer with different integer values for the radius. What radius do you need to ensure all nuclei are separate?
+
+Note that larger radius values will take longer to run on your computer. 
+
+Keep your radius values <= 15.
 :::::::::::::::::::::::::solution
 To test different values of radius, you can assign a different value to
 radius, e.g. `radius = 5` and rerun the last two lines from above. Or
@@ -453,8 +458,10 @@ and some disappear completely.
 :::::::::::::::::::::::::
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::: challenge
-**EXTRA HARD:** Try using a Python `for` loop to test several radius values automatically.
+:::::::::::::::::::::::::challenge
+### For-loops (**extra hard**)
+
+Try using a Python `for` loop to test several radius values.
 :::::::::::::::::::::::::solution
 You can change the radius manually (for example, `radius = 5`) and re‑run the erosion each time.  
 But if you want to test **many** radius values quickly, a Python [for loop](https://swcarpentry.github.io/python-novice-inflammation/05-loop.html) lets you repeat the same steps for each radius in a list.
