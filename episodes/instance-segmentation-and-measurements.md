@@ -153,8 +153,7 @@ You are now ready to begin this lesson.
 ## Our first measurement
 
 We now have a mask image with each pixel classified as either cell nuclei
-(pixel value 1) or not (pixel value 0). Try running the following code in
-the console.
+(pixel value 1) or not (pixel value 0). 
 
 Create a new cell and run:
 
@@ -172,7 +171,6 @@ nuclei_pixels = np.count_nonzero(semantic_seg)
 # Now we can work out what percentage of the image is cell nuclei
 nuclei_percent = nuclei_pixels / total_pixels * 100
 
-# And write the results to the console.
 print("Percent Nuclei =", round(nuclei_percent, 2), "%")
 ```
 
