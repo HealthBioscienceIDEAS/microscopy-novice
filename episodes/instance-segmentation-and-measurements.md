@@ -43,12 +43,12 @@ assembled within Napari if you prefer.
 
 ### 1. Activate your Napari environment
 Open Miniforge Prompt and activate the environment you created for Napari:
-```
+``` bash
 activate napari-env
 ```
 ### 2. Create and navigate to your workshop folder
 It is best practice to keep all your project files together in a dedicated folder.
-```
+``` bash
 # Create a folder
 mkdir napari-workshop
 
@@ -59,30 +59,22 @@ Everything you create in JupyterLab will be saved inside this folder.
 
 ### 3. Launch JupyterLab
 Start JupyterLab from inside the napari-workshop folder:
-```
+``` bash
 jupyter lab
 ```
 The JupyterLab interface should appear in a browser window.
 
 ### 4. Create a new notebook
-In the JupyterLab Launcher, select:
+In the JupyterLab Launcher, **select: Notebook > Python 3 (ipykernel)**
 
-Notebook → Python 3 (ipykernel)
-
-This will open a new Python notebook 
-
-for example "instance_segmentation"
+This will open a new Python notebook.
 
 ### 5. Name your notebook
 Renaming your notebook immediately helps keep your workflow tidy and makes it easier to find later.
 
 Right click the default name at the top of the notebook tab (e.g., *Untitled.ipynb*).
 
-Enter a meaningful name, for example:
-
-```
-instance_segmentation.ipynb
-```
+Enter a meaningful name, for example: *instance_segmentation.ipynb*.
 
 ## About notebooks
 A notebook is made up of building blocks called **cells**.
