@@ -39,7 +39,7 @@ $ git push origin main
 > - Cancel any "01 Maintain: Build and Deploy Site" workflow currently running
 > - Run the "02 Maintain: Check for Updated Packages" workflow and merge any PR opened to update the renv lockfile
 > - This should automatically run the "03 Maintain: Apply Package Cache" workflow to install packages and build the cache
-> - A successful cache build should then trigger the "01 Maintain: Build and Deploy Site" workflow
+> - A successful cache buid should then trigger the "01 Maintain: Build and Deploy Site" workflow
 
 ### Updating using GitHub
 
