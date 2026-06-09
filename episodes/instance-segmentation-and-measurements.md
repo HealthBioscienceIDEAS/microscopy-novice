@@ -454,7 +454,7 @@ and some disappear completely.
 :::::::::::::::::::::::::
 
 :::::::::::::::::::::::::challenge
-### For-loops (**extra hard**)
+### For-loop 
 
 Try using a Python `for` loop to test several radius values.
 
