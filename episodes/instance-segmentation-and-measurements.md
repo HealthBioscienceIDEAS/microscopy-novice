@@ -116,7 +116,7 @@ A Napari viewer window should open in a separate window, preloaded with the cell
 
 ## Create a mask
 ```python
-# Create a semantic segmentation using scikit-image
+# Create a semantic segmentation 
 
 # Import the functions we need from scikit-image
 from skimage.filters import threshold_otsu, gaussian
@@ -150,7 +150,9 @@ We now have a mask image with each pixel classified as either cell nuclei
 Create a new cell and run:
 
 ```python
-# We're going to need some functions from the Numpy library.
+# Our first measurement: percentage of cell nuclei
+
+# Import the Numpy library.
 import numpy as np
 
 # How many pixels are there in total in the image?
@@ -160,7 +162,7 @@ total_pixels = semantic_seg.size
 # We'll use Numpy's count_nonzero method.
 nuclei_pixels = np.count_nonzero(semantic_seg)
 
-# Now we can work out what percentage of the image is cell nuclei
+# The percentage of the image that is cell nuclei
 nuclei_percent = nuclei_pixels / total_pixels * 100
 
 print("Percent Nuclei =", round(nuclei_percent, 2), "%")
