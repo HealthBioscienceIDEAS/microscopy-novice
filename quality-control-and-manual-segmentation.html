@@ -323,7 +323,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Quality control and manual segmentation</h1>
-        <p>Last updated on 2026-06-05 |
+        <p>Last updated on 2026-06-09 |
 
         <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/edit/main/episodes/quality-control-and-manual-segmentation.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -364,7 +364,7 @@ segmentation tools (e.g. paintbrush/fill bucket)</p></li>
 <p>For the next few episodes, we will work through an example of
 counting the number of cells in an image.</p>
 <p>First, let’s open one of Napari’s sample images with:<br><code>File &gt; Open Sample &gt; napari builtins &gt; Cells (3D + 2Ch)</code></p>
-<figure><img src="fig/cells-napari.png" alt="A screenshot of a flourescence microscopy image  of some cells in Napari" class="figure mx-auto d-block"></figure><section><h2 class="section-heading" id="quality-control">Quality control<a class="anchor" aria-label="anchor" href="#quality-control"></a></h2>
+<figure><img src="fig/cells-napari.png" alt="A screenshot of a fluorescence microscopy image  of some cells in Napari" class="figure mx-auto d-block"></figure><section><h2 class="section-heading" id="quality-control">Quality control<a class="anchor" aria-label="anchor" href="#quality-control"></a></h2>
 <hr class="half-width"><p>The first step in any image processing workflow is always quality
 control. We have to check that the images we acquired at the microscope
 capture the features we are interested in, with a reasonable signal to
@@ -407,7 +407,7 @@ icon.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>In the top menu bar of Napari select:<br><code>Plugins &gt; napari Matplotlib &gt; Histogram</code></p>
 <p>Make sure you have the ‘nuclei’ layer selected in the layer list
@@ -667,7 +667,7 @@ integers) Choose from 8-bit, 16-bit or 32-bit.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="shapes-pattern">Shapes + pattern<a class="anchor" aria-label="anchor" href="#shapes-pattern"></a></h3>
@@ -836,7 +836,7 @@ documentation</a> on <code>Labels</code> layers.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="icon">
@@ -910,7 +910,7 @@ learning models. These models learn to segment images based on provided
 segmented patches of our images of interest. While generating this
 manual groundtruth is still slow and time consuming, the advantage is
 that we only need to segment a small subset of our images (rather than
-the entire thing). Also, once the model is trained, it can be re-used on
+the entire thing). Also, once the model is trained, it can be reused on
 similar image data.</p>
 <p>It’s worth bearing in mind that automated methods are rarely perfect
 (whether they’re classic image processing, machine learning or deep
@@ -1009,7 +1009,7 @@ any links that you are not going to use.
   "url": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/quality-control-and-manual-segmentation.html",
   "identifier": "https://HealthBioscienceIDEAS.github.io/microscopy-novice/quality-control-and-manual-segmentation.html",
   "dateCreated": "2023-10-26",
-  "dateModified": "2026-06-05",
+  "dateModified": "2026-06-09",
   "datePublished": "2026-06-09"
 }
 
