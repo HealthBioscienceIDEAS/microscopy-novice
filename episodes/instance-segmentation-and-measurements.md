@@ -8,7 +8,7 @@ exercises: 15
 
 - How do we perform instance segmentation in Napari?
 - How do we measure cell size with Napari?
-- How do we save our work to create re-usable workflows?
+- How do we save our work to create reusable workflows?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -20,7 +20,7 @@ exercises: 15
 
 - Calculate the number of cells and average cell volume.
 
-- Save and edit your workflow to re-use on subsequent images.
+- Save and edit your workflow to reuse on subsequent images.
 
 - Perform more complex cell shape analysis using scikit-image's `regionprops`.
 
@@ -365,7 +365,7 @@ again.
 viewer.layers.remove('instance_seg')
 
 eroded_semantic_seg = viewer.layers['eroded ball 10'].data
-# Create a new instace segmentation using the eroded mask
+# Create a new instance segmentation using the eroded mask
 instance_seg = label(eroded_semantic_seg)
 
 viewer.add_labels(instance_seg)
@@ -498,7 +498,7 @@ There are 11 individual nuclei
 
 You now have a correct instance segmentation. You could return to
 using the napari-skimage plugin to calculate the sizes
-of each nucleus and export the results to a speadsheet or your preferred
+of each nucleus and export the results to a spreadsheet or your preferred
 analysis software using the `Save Results` function. However you've probably
 picked up enough Python during this course to complete the analysis you need
 with just the Napari console. Let's give it a try. The following commands
@@ -608,7 +608,7 @@ These numbers provide a good quantitative measure of the quantity and
 volume of cell nuclei suitable for an experiment investigating how these
 quantities change over time.
 
-We can save our work from the console for re-use on data from subsequent
+We can save our work from the console for reuse on data from subsequent
 time points, creating a repeatable measurement workflow.
 
 ```python

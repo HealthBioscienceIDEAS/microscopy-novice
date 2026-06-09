@@ -421,7 +421,7 @@ choosing image processing and statistical analysis methods.
 | :-----                  | :-------            | :------- 
 | Brightfield             | Illuminates the sample with light from one side, and images on the other | Hard to see many biological structures - usually requires contrast agents/staining to increase contrast
 | Phase contrast / DIC    | Makes use of slight changes in the ‘phase’ of light as it passes through a sample to increase contrast | Allows unstained samples to be seen more easily
-| Widefield flourescence  | Fluorescent labels (with specific excitation and emission wavelengths) bind to specific biological structures | Widefield illuminates the whole sample at once, which can lead to blurry images in thicker samples
+| Widefield fluorescence  | Fluorescent labels (with specific excitation and emission wavelengths) bind to specific biological structures | Widefield illuminates the whole sample at once, which can lead to blurry images in thicker samples
 | Laser scanning confocal | A laser is scanned across the sample point by point in a raster pattern | Allows 'optical sectioning', giving clearer images in full 3D. More complex to use than widefield, also slower to acquire images.
 | Spinning disc confocal  | An array of pinholes on a disc split the laser into hundreds of beams that move across the sample | Faster than standard laser scanning confocal
 | Super-resolution        | Wide range of methods that break the classic 'diffraction limit' of light, allowing resolutions down to tens of nanometres | More complex to use than standard widefield / confocal

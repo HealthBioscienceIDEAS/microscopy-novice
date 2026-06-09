@@ -39,7 +39,7 @@ $ git push origin main
 > - Cancel any "01 Maintain: Build and Deploy Site" workflow currently running
 > - Run the "02 Maintain: Check for Updated Packages" workflow and merge any PR opened to update the renv lockfile
 > - This should automatically run the "03 Maintain: Apply Package Cache" workflow to install packages and build the cache
-> - A successful cache buid should then trigger the "01 Maintain: Build and Deploy Site" workflow
+> - A successful cache build should then trigger the "01 Maintain: Build and Deploy Site" workflow
 
 ### Updating using GitHub
 
@@ -194,7 +194,7 @@ There are no repository variables for this workflow.
 
 ## Pull Request and Review Management
 
-Because our lessons execute code, pull requests are a security risk for any lesson and thus have security measures associted with them.
+Because our lessons execute code, pull requests are a security risk for any lesson and thus have security measures associated with them.
 **Do not merge any pull requests that do not pass checks and do not have bots commented on them.**
 
 This series of workflows all go together and are described in the following diagram and the below sections:
@@ -256,5 +256,5 @@ This emits an artifact that is the pull request number for the next action.
 
 ### Remove Pull Request Branch (pr-post-remove-branch.yaml)
 
-Tiggered by `pr-close-signal.yaml`.
+Triggered by `pr-close-signal.yaml`.
 This removes the temporary branch associated with the pull request (if it was created).
