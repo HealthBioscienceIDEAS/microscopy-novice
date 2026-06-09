@@ -20,7 +20,7 @@ exercises: 15
 
 - Calculate the number of cells and average cell volume.
 
-- Save and edit your workflow to re-use on subsequent images.
+- Save and edit your workflow to reuse on subsequent images.
 
 - Perform more complex cell shape analysis using scikit-image's `regionprops`.
 
@@ -291,7 +291,7 @@ props_df = pd.DataFrame(props)
 props_df
 ```
 
-## Sorting and inspecting the resuls
+## Sorting and inspecting the results
 
 Regionprops can generate a lot of information on the shape and
 size of each connected region. For now we will focus only on the
@@ -391,7 +391,7 @@ will be set to zero.
 
 Create a new cell and run:
 ```python
-# Erode the semantic segementation
+# Erode the semantic segmentation
 
 # import tools
 from skimage.morphology import erosion, ball
@@ -483,7 +483,7 @@ Now we have separate nuclei, lets try creating instance labels
 again.
 
 ```python
-# Create a new instace segmentation using the eroded mask
+# Create a new instance segmentation using the eroded mask
 eroded_semantic_seg = viewer.layers['eroded_ball_10'].data
 eroded_instance_seg = label(eroded_semantic_seg)
 viewer.add_labels(eroded_instance_seg)
