@@ -26,6 +26,23 @@ displayed, with Napari as our main example. In the next few episodes, we will
 instead focus on how to design an experiment using light microscopy and how to 
 analyse the resulting image data.
 
+## Image analysis should be considered right from the start
+
+The success of your image analysis pipeline is dependent on having good 
+quality images from the microscope, that are appropriate for the type of analysis
+you want to do.
+
+Think about how you will analyse your images _right at the start_, as this will 
+affect how you design your experiment and acquire your images.
+
+Consider doing a pilot study where you collect a small number of images, and
+process them with your image analysis pipeline. This will let you discover potential
+issues early, and optimise both image acquisition and analysis.
+
+Remember that image processing is reliant on good input data. It's best to fix 
+issues while acquiring at the microscope, rather than trying to do it later with 
+image processing.
+
 ## Steps to designing a light microscopy experiment
 
 As we've said throughout the course, there is no one 'right' way of analysing 
