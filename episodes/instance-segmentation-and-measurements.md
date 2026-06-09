@@ -21,6 +21,7 @@ exercises: 15
 - Calculate the number of cells and average cell volume.
 
 - Save and edit your workflow to reuse on subsequent images.
+- Save and edit your workflow to reuse on subsequent images.
 
 - Perform more complex cell shape analysis using scikit-image's `regionprops`.
 

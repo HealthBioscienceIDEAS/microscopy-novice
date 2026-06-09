@@ -237,7 +237,7 @@ During the [setup instructions](../learners/setup.md), we installed the
 
 If you want to open more types of file, you will have to install the relevant 
 reader following the 
-[intructions in the BioIO docs](https://bioio-devs.github.io/bioio/OVERVIEW.html).
+[instructions in the BioIO docs](https://bioio-devs.github.io/bioio/OVERVIEW.html).
 Note the `bioio-bioformats` reader should allow a wide range of file formats to 
 be read.
 

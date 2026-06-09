@@ -29,7 +29,7 @@ number of cells in an image.
 First, let's open one of Napari's sample images with:  
 `File > Open Sample > napari builtins > Cells (3D + 2Ch)`
 
-![](fig/cells-napari.png){alt="A screenshot of a flourescence microscopy image 
+![](fig/cells-napari.png){alt="A screenshot of a fluorescence microscopy image 
 of some cells in Napari"}
 
 ## Quality control
@@ -623,7 +623,7 @@ These models learn to segment images based on provided 'groundtruth' data. This
 interest. While generating this manual groundtruth is still slow and time 
 consuming, the advantage is that we only need to segment a small subset of our 
 images (rather than the entire thing). Also, once the model is trained, it can 
-be re-used on similar image data.
+be reused on similar image data.
 
 It's worth bearing in mind that automated methods are rarely perfect (whether 
 they're classic image processing, machine learning or deep learning based). It's 

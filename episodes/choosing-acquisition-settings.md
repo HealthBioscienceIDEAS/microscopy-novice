@@ -304,7 +304,7 @@ settings, with figure 5 as a great example of the different trade-offs.
 
 ::::::::::::::::::::::::::::::::::::: challenge 
 
-## Choosing acquisiton settings
+## Choosing acquisition settings
 
 In the previous episode, we used an example of investigating the effects of a 
 specific chemical on cells grown in culture. Continuing with this, which 
@@ -541,7 +541,7 @@ capture the two cells, no matter their alignment with the grid:
 micrometre wide) overlaid by a 5 micrometre pixel grid. 
 Right - the equivalent image with a grayscale colormap" width="80%"}
 
-Failing to meet the Nyquist critera can also result in various image artifacts 
+Failing to meet the Nyquist criteria can also result in various image artifacts 
 known as 'aliasing'. For example, consider the digram below - here we have 6 
 small cells (blue) that are evenly spaced in the x direction. Using a pixel 
 spacing of 10 micrometre, this produces an odd effect in our final image, where 
