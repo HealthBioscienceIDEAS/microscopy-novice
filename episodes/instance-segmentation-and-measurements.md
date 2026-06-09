@@ -8,7 +8,7 @@ exercises: 15
 
 - How do we perform instance segmentation in Napari?
 - How do we measure cell size with Napari?
-- How can computational notebooks be used to build re‑usable workflows?
+- How can computational notebooks be used to build reusable workflows?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -65,7 +65,7 @@ jupyter lab
 The JupyterLab interface should appear in a browser window.
 
 ### 4. Create a new notebook
-In the JupyterLab Launcher, **select: Notebook > Python 3 (ipykernel)**
+In the JupyterLab menu bar select: **File > New > Notebook > Python 3 (ipykernel)**
 
 This will open a new Python notebook.
 
@@ -83,7 +83,7 @@ For this workshop, we will only use **Code Cells**.
 
 When you run a Code Cell, the output typically appears underneath it. This could be a number, text, a table, an error message.
 
-By splitting code up into cells, you can run one specific part of your code without having to re-run whole file and get instant feedback.
+By splitting code up into cells, you can run one specific part of your code without having to re-run the whole file and get instant feedback.
 
 Be careful about the order of your notebook cells. Running them out of sequence can leave variables outdated or missing, which can lead to confusing results. 
 
@@ -112,7 +112,7 @@ In the second cell run:
 viewer = napari.Viewer()
 viewer.open_sample("napari", "cells3d")
 ```
-A Napari viewer window opens in a separate window.
+A Napari viewer window should open in a separate window, preloaded with the cells3D sample image we have used in previous episodes.
 
 ## Create a mask
 ```python
@@ -140,7 +140,7 @@ segmentation of nuclei in Napari"}
 
 In the Napari viewer you should see the image above. 
 
-You are now ready to begin this lesson.
+We will now use Jupyter to make measurements with repeatable, well documented scripts. 
 
 ## Our first measurement
 
@@ -195,7 +195,7 @@ Let's try it.
 Create a new cell and run:
 
 ```python
-# Create an instant segmentation
+# Create an instance segmentation
 
 # Import the label function
 from skimage.measure import label
@@ -488,7 +488,7 @@ eroded_semantic_seg = viewer.layers['eroded_ball_10'].data
 eroded_instance_seg = label(eroded_semantic_seg)
 viewer.add_labels(eroded_instance_seg)
 
-print("Number of nuclei after erosion  =", instance_seg.max())
+print("Number of nuclei after erosion  =", eroded_instance_seg.max())
 ```
 
 ```output
