@@ -704,7 +704,7 @@ Read the [conda documentation](https://docs.conda.io/projects/conda/en/latest/us
 
 Other good practices include:
 - Sharing your notebook on a collaborative platform such as [GitHub](https://github.com/) or [GitLab](https://about.gitlab.com/), where others can comment, discuss, or propose improvements.
-- Using version control (e.g., [Git](https://git-scm.com/)) to track changes, document improvements, and maintain a clear history of how your workflow evolves. This also gives you the ability to revert to earlier versions whenever a mistake happens, ensuring you never lose working progress.
+- Using version control (e.g., [Git](https://git-scm.com/)) to track changes, document improvements, and maintain a clear history of how your workflow evolves. This also gives you the ability to revert to earlier versions whenever a mistake happens, ensuring you never lose work in progress.
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
