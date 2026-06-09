@@ -15,14 +15,9 @@ exercises: 15
 ::::::::::::::::::::::::::::::::::::: objectives
 
 - Use simple operations (like erosion and dilation) to clean up a segmentation.
-
 - Use connected components labelling on a thresholded image.
-
 - Calculate the number of cells and average cell volume.
-
 - Save and edit your workflow to reuse on subsequent images.
-- Save and edit your workflow to reuse on subsequent images.
-
 - Perform more complex cell shape analysis using scikit-image's `regionprops`.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
