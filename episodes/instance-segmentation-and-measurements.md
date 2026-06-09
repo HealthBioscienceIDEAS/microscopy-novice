@@ -680,7 +680,35 @@ Once you know the voxel size, `pandas` makes the conversion and analysis extreme
 props_df["volume_um3"].describe()
 ```
  
-Together, these tools give you a clean, practical way to go from labelled nuclei to meaningful numbers in one notebook.
+## Saving, reusing, and sharing your workflow
+
+A key advantage of using a JupyterLab notebook is that your entire analysis is saved in one place. This makes your workflow reproducible, easy to adapt, and simple to share with others.
+
+A tidy notebook is easier to understand for others (and for your future self). 
+
+Good practice includes:
+- Ensuring the notebook runs without issues from beginning to end.
+- Organising the notebook into clear sections (e.g. imports, loading data, segmentation, measurements, exporting results).
+- Removing unused cells and tidy temporary experiments.
+- Adding short notes explaining key steps and decisions.
+
+Your notebook contains all the analysis steps, but it won’t run correctly unless the software environment is the same. 
+
+Export your conda environment so others can recreate it:
+bash
+```
+conda env export > environment.yml
+```
+To recreate the same software environment on another computer:
+bash
+```
+conda env create -f environment.yml
+```
+Read the [conda documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file) for more information.
+
+Other good practices include:
+- Sharing your notebook on a collaborative platform such as [GitHub](https://github.com/) or [GitLab](https://about.gitlab.com/), where others can comment, discuss, or propose improvements.
+- Using version control (e.g., [Git](https://git-scm.com/)) to track changes, document improvements, and maintain a clear history of how your workflow evolves. This also gives you the ability to revert to earlier versions whenever a mistake happens, ensuring you never lose working progress.
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
