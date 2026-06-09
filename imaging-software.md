@@ -86,7 +86,7 @@ Plugins, in contrast to scripts, are focused on adding optional new features to
 a piece of software (rather than automating use of existing features). They 
 allow members of the community, outside the main team that develops the 
 software, to add features they need for a particular image type or processing 
-task. They're designed to be re-useable so other members of the community can 
+task. They're designed to be reusable so other members of the community can 
 easily benefit from these new features.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -254,7 +254,7 @@ menu-bar of Napari and select:
 
 You should see a fluorescence microscopy image of some cells:
 
-![](fig/cells-napari.png){alt="A screenshot of a flourescence microscopy image 
+![](fig/cells-napari.png){alt="A screenshot of a fluorescence microscopy image 
 of some cells in Napari"}
 
 ## Napari's User interface

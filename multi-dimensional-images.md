@@ -156,7 +156,7 @@ Next, let's look at a 3D image where an additional (fourth) dimension contains
 data from different 'channels'. Remove the brain image and select:  
 `File > Open Sample > napari builtins > Cells (3D+2Ch)`  
 
-![](fig/cells-napari.png){alt="A screenshot of a flourescence microscopy image 
+![](fig/cells-napari.png){alt="A screenshot of a fluorescence microscopy image 
 of some cells in Napari"}
 
 Image channels can be used to store data from multiple sources for the same 
@@ -178,7 +178,7 @@ This diagram shows an example of a 2D image with channels, but this can also be
 extended to 3D images, as we will see now.
 
 Fluorescence microscopy images, like the one we currently have open in Napari, 
-are common examples of images with multiple channels. In flourescence 
+are common examples of images with multiple channels. In fluorescence 
 microscopy, different 'flourophores' are used that target specific features 
 (like the nucleus or cell membrane) and emit light of different wavelengths. 
 Images are taken filtering for each of these wavelengths in turn, giving one 
