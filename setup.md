@@ -2,6 +2,8 @@
 title: Setup
 ---
 
+Please attempt the steps below before attending the course. However, if you would prefer to work through this with an instructor's help, you can join the drop-in session at the start of the first day of the course. 
+
 ## Download Data
 
 During these lessons we will be using two microscopy images and creating images
