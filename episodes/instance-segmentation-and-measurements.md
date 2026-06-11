@@ -682,7 +682,7 @@ A key advantage of using a JupyterLab notebook is that your entire analysis is s
 
 A tidy notebook is easier to understand for others (and for your future self). 
 
-Good practice includes:
+Good practice include:
 
 - Ensuring the notebook runs without issues from beginning to end.
 
