@@ -38,7 +38,7 @@ assembled within Napari if you prefer.
 ## Creating a notebook in JupyterLab
 
 ### 1. Activate your Napari environment
-Open Miniforge Prompt and activate the environment you created for Napari:
+Open the Miniforge Prompt (or whichever other environment manager you used when installing Napari), and activate the environment you created for Napari:
 ``` bash
 activate napari-env
 ```
@@ -54,7 +54,7 @@ cd napari-workshop
 Everything you create in JupyterLab will be saved inside this folder.
 
 ### 3. Launch JupyterLab
-Start JupyterLab from inside the napari-workshop folder:
+Start JupyterLab from inside the *napari-workshop* folder:
 ``` bash
 jupyter lab
 ```
@@ -83,34 +83,88 @@ By splitting code up into cells, you can run one specific part of your code with
 
 Be careful about the order of your notebook cells. Running them out of sequence can leave variables outdated or missing, which can lead to confusing results. 
 
-## Running code and adding new cells
-Write this in the first cell and run the cell:
+## Using Python inside a notebook
+
+Run each of the following examples in separate notebook cells so you can clearly see the output after each step.
+
 ``` python
-# Everything after the hash is a comment and won't be treated as code
-
-# Python can do basic arithmetic
-1 + 1
+# Everything after a hash (#) is a comment and is ignored by Python.
+# Use comments to explain what you're doing.
 ```
-
-The result will appear directly underneath the cell.
 
 If you want to create another cell, click the **+** button in the toolbar or use **Insert > Insert Cell Below**.
 
-## Using Napari from within JupyterLab 
-In the first cell run:
+``` python
+# Python can do basic calculations
+1 + 1
+1 + 2
+# and will display the last output
+```
+
+``` output
+3
+```
+
+``` python
+# Python can assign values to variables
+one = 1
+two = one + one
+```
+
+Notice that there is no output.
+
+``` python
+# Variables store values rather than return them
+# To see their value write the variable name
+two
+```
+
+``` output
+2
+```
+
+**Note**: In a standard Python script, writing a variable name on its own does nothing and you must use `print()` to show output.
+
+
+``` python
+# Python's print function
+print("one plus one is", two)
+print("one plus two is", one + two)
+```
+
+``` output
+one plus one is 2
+one plus two is 3
+```
+
+## Using Napari from within a notebook
+
 ``` python
 # Import napari package
 import napari
 ``` 
-In the second cell run:
+
 ``` python
 # Open Cells (3D + 2Ch) sample image in napari's viewer
 viewer = napari.Viewer()
 viewer.open_sample("napari", "cells3d")
 ```
-A Napari viewer window should open in a separate window, preloaded with the cells3D sample image we have used in previous episodes.
 
-## Create a mask
+The output should look like this:
+
+``` output
+[<Image layer 'membrane' at 0x1853b7738c0>,
+ <Image layer 'nuclei' at 0x1853c844710>]
+ ```
+
+The memory addresses (`0x1853b7738c0` and `0x1853c844710`) will be different for you. They indicate the locations in memory where Python happened to store those layer objects. 
+
+Napari's viewer should open in a separate window, preloaded with the cells3D sample image.
+
+## Semantic segmentation
+
+We start by blurring the image and setting a threshold.
+
 ```python
 # Create a semantic segmentation 
 
@@ -120,15 +174,31 @@ from skimage.filters import threshold_otsu, gaussian
 # Access the nuclei channel from the viewer
 image = viewer.layers["nuclei"].data
 
-# Smooth the image and compute a threshold
+# Smooth the image
 blurred = gaussian(image, sigma=3)
+
+# Compute a threshold
 threshold = threshold_otsu(blurred)
 
-# Create a binary mask
+print("The threshold picked is:", threshold) 
+```
+
+``` output
+The threshold picked is: 0.1407702761280905
+```
+
+Using our threshold on the blurred image we create a semantic segmentation. 
+
+``` python
+# Create a semantic segmentation 
 semantic_seg = blurred > threshold
 
-# Add the mask as a labels layer in Napari
+# Add as a labels layer to the viewer
 viewer.add_labels(semantic_seg)
+```
+
+``` output
+<Labels layer 'semantic_seg' at 0x1f157459820>
 ```
 
 ![](fig/semantic-seg-napari.png){alt="A screenshot of a rough semantic
@@ -136,64 +206,15 @@ segmentation of nuclei in Napari"}
 
 In the Napari viewer you should see the image above. 
 
-We will now use Jupyter to make measurements with repeatable, well documented scripts. 
+## Instance segmentation
 
-## Our first measurement
+We will use the the [label](https://scikit-image.org/docs/stable/api/skimage.measure.html#skimage.measure.label) function from scikit-image to create an instance segmentation. 
 
-We now have a mask image with each pixel classified as either cell nuclei
-(pixel value 1) or not (pixel value 0). 
+The label function is an example of [connected component analysis](https://datacarpentry.org/image-processing/08-connected-components.html#connected-component-analysis). Connected component analysis will go through the entire image, determine which parts of the segmentation are connected to each other and form separate objects. Then it will assign each connected region a unique integer value.
 
-Create a new cell and run:
 
 ```python
-# Our first measurement: percentage of cell nuclei
-
-# Import the Numpy library.
-import numpy as np
-
-# How many pixels are there in total in the image?
-total_pixels = semantic_seg.size
-
-# How many pixels are labelled as cell nuclei (pixel value = 1)?
-# We'll use Numpy's count_nonzero method.
-nuclei_pixels = np.count_nonzero(semantic_seg)
-
-# The percentage of the image that is cell nuclei
-nuclei_percent = nuclei_pixels / total_pixels * 100
-
-print("Percent Nuclei =", round(nuclei_percent, 2), "%")
-```
-
-```output
-Percent Nuclei = 19.47 %
-```
-
-Is knowing the percentage of pixels that are classed as nuclei sufficient
-for our purposes? Thinking back to some of the research questions
-we discussed in the [episode on designing an experiment](
-designing-a-light-microscopy-experiment.md#define-your-research-question)
-, if the percentage changes over time we can infer that something is
-happening but what? We can't say whether the nuclei are changing in
-number or in size or shape. For most research questions we will need a more
-informative measurement.
-
-## Counting the nuclei
-
-We now need to count the number of nuclei in the image. We can use the
-the [label](
-https://scikit-image.org/docs/stable/api/skimage.measure.html#skimage.measure.label)
-function from scikit-image. The label function is an example of
-[connected component analysis](
-https://datacarpentry.org/image-processing/08-connected-components.html#connected-component-analysis)
-. Connected component analysis will go through the entire image, determine
-which parts of the segmentation are connected to each other and form separate
-objects. Then it will assign each connected region a unique integer value.
-Let's try it.
-
-Create a new cell and run:
-
-```python
-# Create an instance segmentation
+# Instance segmentation
 
 # Import the label function
 from skimage.measure import label
@@ -204,44 +225,12 @@ instance_seg = label(semantic_seg)
 # Add the result to the viewer
 viewer.add_labels(instance_seg)
 ```
+
 ![](fig/instance_segmentation_wrong.png){
 alt="A screenshot of an instance segmentation of nuclei with some
 incorrectly joined instances."}
-You should see the above image in the Napari viewer. The different colours
-are used to represent different nuclei. The instance segmentation assigns
-a different integer value to each nucleus, so counting the number of
-nuclei can be done very easily by taking the maximum value of the instance
-segmentation image.
 
-```python
-# Calculate number of nuclei 
-number_of_nuclei = instance_seg.max() 
-print("Number of Nuclei =", number_of_nuclei)
-```
-```output
-Number of Nuclei = 18
-```
-
-We can reuse Numpy's `count_nonzero` function on an individual nucleus by
-specifying an integer value between 1 and 18
-
-```python
-# How many pixels are there in nucleus 1
-nucleus_id = 1
-number_of_pixels = np.count_nonzero(instance_seg == nucleus_id)
-print("There are", number_of_pixels,"pixels in nucleus", nucleus_id)
-```
-
-```output
-There are 43945 pixels in nucleus 1
-```
-
-Congratulations, you've measured the size (in pixels) of the first nucleus.
-Later in this lesson, we'll cover how to convert the size in pixels to
-volume in cubic micrometres and how to get statistics on the sizes of all
-the nuclei. Before we do that, we'll use the [napari-skimage](
-https://napari-hub.org/plugins/napari-skimage.html) plugin to
-interactively examine the size and shape of individual nuclei.
+You should see the above image in the Napari viewer. The different colours are used to represent the labels of separate objects. 
 
 ## Using napari-skimage plugin to measure nuclei size
 
@@ -264,11 +253,10 @@ to the table window to reposition it.
 ![](fig/region_props_after.png){alt="A screenshot of the numeric value table
 created by the napari-skimage plugin"}
 
-## How to get Regionprops results as a table in JupyterLab
+## Regionprops
 
-Instead of using the napari‑skimage plugin, the same measurements can be computed in our notebook.
+Before, we used the napari‑skimage plugin to create a table with properties of the nuclei. The same properties can also be computed using the skimage directly in our notebook.
 
-Create a new cell and run:
 ``` python
 # Create a Regionprops table
 
@@ -293,11 +281,10 @@ props_df
 
 Regionprops can generate a lot of information on the shape and
 size of each connected region. For now we will focus only on the
-column headed `area`, which shows the size (in pixels).
+column headed `area`, which shows the size in pixels.
 
-Let's look more closely at some the extreme values by sorting our table.
+Let's sort our table so that it is easier to see the extreme values.
 
-Create a new cell and run:
 ``` python
 # Sort the table based on cell size (area)
 sorted_props_df = props_df.sort_values("area")
@@ -305,6 +292,7 @@ sorted_props_df = props_df.sort_values("area")
 # Display the table
 sorted_props_df
 ```
+
 ### The largest nucleus
 According to the table, nucleus 3 is larger than the other nuclei
 (202258 pixels). In the [what is an image](what-is-an-image.md#pixels)
@@ -312,6 +300,8 @@ lesson, we learnt to use the mouse pointer to find particular values in an
 image. Hovering the mouse pointer over the light purple nuclei at the bottom
 left of the image we see that these apparently four separate nuclei have
 been labelled as a single nucleus. 
+
+In the layer controls of the semantic_seg layer we can confirm this by selecting label `3` and enabling `show selected`.
 
 :::::::::::::::::::::::::challenge
 ### Why Are Separate Nuclei Getting the Same Label?
@@ -358,31 +348,20 @@ Nucleus 18 is right at the edge of the image, so is only a partial nucleus. Part
 Our first problem is how to deal with four apparently distinct nuclei (labelled
 with a light purple colour) being segmented as a single nucleus. 
 
-
-### Erode the semantic segmentation so all nuclei are separate
+### Erosion
 In order to use the label function to count the cell nuclei we first need
-to make sure all the nuclei are separate. We can do this by reducing the
-apparent size of the nuclei by eroding the image.
-Image erosion is an image filter, similar to those we covered in the
-[filters and thresholding](filters-and-thresholding.md) lesson.
-We will use scikit-image's
-[erosion](
-https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.erosion)
-function. 
+to make sure all the nuclei are separate. We can do this by by eroding the segmentation.
 
-In this lesson we will run the erosion function in our notebook 
-to so that we can easily reproduce the results later. It is also
-possible to run the erosion function through a plugin:
-`Layers > Filter > Morphology > Morphology (napari skimage)`
-if you prefer.
+Erosion is a type of filter, similar to those we covered in the [filters and thresholding](filters-and-thresholding.md) lesson.
 
-The erosion function sets a pixel to the
-minimum value in the neighbourhood defined by a `footprint` parameter.
+We will use scikit-image's [erosion](https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.erosion) function. The erosion function sets a pixel to the minimum value in the neighbourhood defined by a `footprint` parameter. 
+
 We'll use scikit-image's [ball](
 https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.ball)
 function to generate a sphere to use as the footprint.
 
 Image erosion has the effect of making bright areas of the image smaller.
+
 In this case the labelled (non-zero) nuclei will become smaller, as any
 pixels closer to the edge of the nucleus than the radius of the footprint
 will be set to zero. 
@@ -452,7 +431,7 @@ and some disappear completely.
 :::::::::::::::::::::::::
 
 :::::::::::::::::::::::::challenge
-### For-loop 
+### For-loop to test different radii
 
 Try using a Python `for` loop to test several radius values.
 
@@ -475,6 +454,8 @@ for radius in radii:
 :::::::::::::::::::::::::
 :::::::::::::::::::::::::
 
+It is possible to run the erosion function through a plugin: `Layers > Filter > Morphology > Binary Morphology (napari skimage)`.
+
 ### Instance segmentation using the eroded mask
 
 Now we have separate nuclei, lets try creating instance labels
@@ -482,43 +463,41 @@ again.
 
 ```python
 # Create a new instance segmentation using the eroded mask
-eroded_semantic_seg = viewer.layers['eroded_ball_10'].data
-eroded_instance_seg = label(eroded_semantic_seg)
-viewer.add_labels(eroded_instance_seg)
+eroded_mask = viewer.layers['eroded_ball_10'].data
+instance_seg = label(eroded_mask)
 
-print("Number of nuclei after erosion  =", eroded_instance_seg.max())
-```
+# Remove old instance segmentation
+viewer.layers.remove('instance_seg')
 
-```output
-Number of nuclei after erosion  = 19
+# Add new instance segmentation
+viewer.add_labels(instance_seg)
 ```
 
 ![](fig/instance_segmentation_on_eroded_mask.png){
 alt="Instance segmentation on the eroded segmentation mask"}
-Looking at the image above, there are no longer any incorrectly joined
-nuclei. The absolute number of nuclei found hasn't changed much as the
-erosion process has removed some partial nuclei around the edges of the
-image.
+
+Looking at the image above, there are no longer any incorrectly joined nuclei. 
 
 ### Dilation
 
-Performing any size or shape analysis on these nuclei will be flawed, as
-they are heavily eroded. We can largely undo much of the erosion by using
-the scikit-image's [expand labels](
-https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.expand_labels)
-function. The expand labels function is a filter which performs a `dilation`
-, expanding the bright (non-zero) parts of the image.
-The expand labels function adds an extra step to stop the dilation
-when two neighbouring labels meet, preventing overlapping labels.
+We managed to separate the nuclei, however performing any size or shape analysis on these nuclei will be flawed, as they are heavily eroded.
+
+We can largely undo the erosion by using the scikit-image's [expand labels](
+https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.expand_labels) function. 
+
+The expand labels function is a filter which performs a `dilation`, expanding the bright (non-zero) parts of the image. The expand labels function adds an extra step to stop the dilation when two neighbouring labels meet, preventing overlapping labels.
 
 ```python
 from skimage.segmentation import expand_labels
 
 # Dilate eroded instance segmentation with the same radius
-dilated_instance_seg = expand_labels(eroded_instance_seg, 10)
+instance_seg = expand_labels(instance_seg, 10)
 
-viewer.add_labels(dilated_instance_seg)
+# Remove old instance segmentation
+viewer.layers.remove('instance_seg')
 
+# Add new instance segmentation
+viewer.add_labels(instance_seg)
 ```
 
 ![](fig/instance_segmentation_dilated.png){
@@ -554,14 +533,15 @@ our results be significant?
 
 :::::::::::::::::::::::::
 :::::::::::::::::::::::::
+
 ## Removing Border Cells
 Now we return to the second problem with our initial instance segmentation,
 the presence of partial nuclei around the image borders. As we're measuring
 nuclei size, the presence of any partially visible nuclei could substantially
-bias our statistics. We can remove these from our analysis using scikit-image's
-[clear border](
-https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.clear_border)
-function.
+bias our statistics. 
+
+We can remove these from our analysis using scikit-image's [clear border](
+https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.clear_border) function.
 
 ```python
 # Remove partial nuclei touching the image border
@@ -570,31 +550,33 @@ function.
 from skimage.segmentation import clear_border
 
 # Clear border
-clear_border_dilated_instance_seg = clear_border(dilated_instance_seg)
-viewer.add_labels(clear_border_dilated_instance_seg)
+instance_seg = clear_border(instance_seg)
+
+# Remove old instance segmentation
+viewer.layers.remove('instance_seg')
+
+# Add new instance segmentation
+viewer.add_labels(instance_seg)
 ```
 
 ![](fig/instance_segmentation_clear_border.png){
 alt="The instance segmentation with any nuclei crossing the image boundary
 removed"}
-We now have an image with 11 clearly labelled nuclei.
-You may notice that the smaller nucleus (dark orange) near the top left
-of the image has been removed even though we can't see where it touches the
-image border. Remember that this is a 3D image and clear border removes
-nuclei touching any border. This nucleus has been removed because it touches
-the top or bottom (z axis) of the image.
-Let's check the nuclei count as we did above.
+
+We now have an image with 11 clearly labelled nuclei. You may notice that the smaller nucleus (dark orange) near the top left of the image has been removed even though we can't see where it touches the image border. Remember that this is a 3D image and clear border removes nuclei touching any border. This nucleus has been removed because it touches the top or bottom (z axis) of the image. Let's check the nuclei count as we did above.
 
 ```python
 # First count the nuclei
 number_of_nuclei = clear_border_dilated_instance_seg.max()
-print("There are", number_of_nuclei, "nuclei")
+print("Number of nuclei: ", number_of_nuclei)
 ```
 ```output
-There are 19 individual nuclei
+Number of nuclei: 19
 ```
-Why are there still 19 nuclei? When we ran `clear_borders` the pixels
-corresponding
+
+Why are there still 19 nuclei? 
+
+When we ran `clear_borders` the pixels corresponding
 to border nuclei were set to zero, however the total number of labels
 in the image was not changed, so whilst there are 19 labels in the
 image some of them have no corresponding pixels. The easiest way to
@@ -603,20 +585,22 @@ segmentation in the viewer.)
 
 ```python
 # Relabel
-clear_border_dilated_instance_seg = label(clear_border_dilated_instance_seg)
+instance_seg = label(instance_seg)
 
 # Remove old instance segmentation
-viewer.layers.remove('clear_border_dilated_instance_seg')
+viewer.layers.remove('instance_seg')
+
+# Add relabeled instance segmentation
+viewer.add_labels(instance_seg)
 
 # Number of nuclei after relabling
-number_of_nuclei = clear_border_dilated_instance_seg.max()
-print(f"There are {number_of_nuclei} individual nuclei")
+number_of_nuclei = instance_seg.max()
+print("Number of nuclei:", number_of_nuclei)
 
-# Add relabeled segmentation as labels layer
-viewer.add_labels(clear_border_dilated_instance_seg)
 ```
+
 ```output
-There are 11 individual nuclei
+Number of nuclei: 11
 ```
 
 ## Number of pixels per nuclei.
@@ -626,13 +610,6 @@ Let's start by counting the pixels per nucleus like we did before.
 
 ```python
 # Count the pixels per nucleus
-
-# Remove the old instance segmentation
-viewer.layers.remove('instance_seg')
-
-# Add new instance segmentation
-instance_seg = clear_border_dilated_instance_seg
-viewer.add_labels(instance_seg)
 
 # Extract region properties 
 props = regionprops_table(
