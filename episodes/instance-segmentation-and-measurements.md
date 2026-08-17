@@ -162,7 +162,7 @@ Napari's viewer should open in a separate window, preloaded with the cells3D sam
 
 ## Semantic segmentation
 
-
+First, we will re-create the semantic segmentation of our nuclei that we made in the previous episode.
 
 We start by blurring the image and setting a threshold.
 
