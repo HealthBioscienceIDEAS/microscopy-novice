@@ -162,6 +162,8 @@ Napari's viewer should open in a separate window, preloaded with the cells3D sam
 
 ## Semantic segmentation
 
+
+
 We start by blurring the image and setting a threshold.
 
 ```python
