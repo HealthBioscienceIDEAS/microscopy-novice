@@ -308,7 +308,7 @@ In the layer controls of the semantic_seg layer we can confirm this by selecting
 ![](fig/same_label_2d.png){
 alt="A screenshot of an instance segmentation of nuclei."}
 
-the images above, three of the light purple nuclei are visibly touching, so
+In the image above, three of the light purple nuclei are visibly touching, so
 it is not surprising that they have been considered as a single
 `connected component` and thus labelled as a single nucleus. What about the
 fourth apparently separate nucleus? Why does it have the same label?
