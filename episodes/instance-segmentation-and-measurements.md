@@ -464,7 +464,7 @@ again.
 
 ```python
 # Create a new instance segmentation using the eroded mask
-eroded_mask = viewer.layers['eroded_ball_10'].data
+eroded_mask = erosion(semantic_seg, footprint=ball(10))
 instance_seg = label(eroded_mask)
 
 # Remove old instance segmentation
@@ -483,7 +483,7 @@ Looking at the image above, there are no longer any incorrectly joined nuclei.
 
 We managed to separate the nuclei, however performing any size or shape analysis on these nuclei will be flawed, as they are heavily eroded.
 
-We can largely undo the erosion by using the scikit-image's [expand labels](
+We can largely undo the erosion by using scikit-image's [expand labels](
 https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.expand_labels) function. 
 
 The expand labels function is a filter which performs a `dilation`, expanding the bright (non-zero) parts of the image. The expand labels function adds an extra step to stop the dilation when two neighbouring labels meet, preventing overlapping labels.
@@ -570,7 +570,7 @@ Let's check the nuclei count as we did above.
 
 ```python
 # First count the nuclei
-number_of_nuclei = clear_border_dilated_instance_seg.max()
+number_of_nuclei = instance_seg.max()
 print("Number of nuclei: ", number_of_nuclei)
 ```
 ```output
