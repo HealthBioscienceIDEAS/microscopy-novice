@@ -626,7 +626,7 @@ props_df = pd.DataFrame(props)
 props_df
 ```
 
-**Are these pixel counts good measurements?**
+**Are these pixel counts useful measurements?**
 Pixel counts depend on image resolution, not on the biology of the sample.
 
 This is why biologists convert pixel counts into physical units like µm³ that allow comparisons across experiments, microscopes, and labs.
