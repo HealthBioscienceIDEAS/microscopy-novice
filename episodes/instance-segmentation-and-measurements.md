@@ -451,7 +451,7 @@ again.
 
 ```python
 # Create a new instance segmentation using the eroded mask
-eroded_mask = viewer.layers['eroded_ball_10'].data
+eroded_mask = erosion(semantic_seg, footprint=ball(10))
 instance_seg = label(eroded_mask)
 
 # Remove old instance segmentation
