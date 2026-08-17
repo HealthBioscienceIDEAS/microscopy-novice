@@ -606,7 +606,7 @@ print("Number of nuclei:", number_of_nuclei)
 Number of nuclei: 11
 ```
 
-## Number of pixels per nuclei.
+## Number of pixels per nucleus
 Now that your instance segmentation is correct, you can finish the analysis in our notebook.
 
 Let's start by counting the pixels per nucleus like we did before. 
