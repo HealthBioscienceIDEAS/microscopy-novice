@@ -38,7 +38,7 @@ assembled within Napari if you prefer.
 ## Creating a notebook in JupyterLab
 
 ### 1. Activate your Napari environment
-Open the Miniforge Prompt (or whichever other environment manager you used when installing Napari), and activate the environment you created for Napari:
+Open the terminal (the same one you used for Napari installation: see 'Opening a terminal' section of [the setup instructions](http://127.0.0.1:4321/index.html#install-python-packages)), and activate the environment you created for Napari:
 ``` bash
 conda activate napari-env
 ```
@@ -79,7 +79,7 @@ A notebook is made up of building blocks called **cells**.
 
 For this workshop, we will only use **Code Cells**. 
 
-When you run a Code Cell, the output typically appears underneath it. This could be a number, text, a table, an error message.
+When you run a Code Cell, the output typically appears underneath it. This could be a number, text, a table, or an error message.
 
 By splitting code up into cells, you can run one specific part of your code without having to re-run the whole file and get instant feedback.
 
@@ -661,13 +661,13 @@ A key advantage of using a JupyterLab notebook is that your entire analysis is s
 
 A tidy notebook is easier to understand for others (and for your future self). 
 
-Good practice include:
+Good practice includes:
 
 - Ensuring the notebook runs without issues from beginning to end.
 
 - Organising the notebook into clear sections (e.g. imports, loading data, segmentation, measurements, exporting results).
 
-- Removing unused cells and tidy temporary experiments.
+- Removing unused cells and tidying temporary experiments.
 
 - Adding short notes explaining key steps and decisions.
 
