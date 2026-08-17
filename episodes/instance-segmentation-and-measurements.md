@@ -42,28 +42,25 @@ Open the terminal (the same one you used for Napari installation: see 'Opening a
 ``` bash
 conda activate napari-env
 ```
-### 2. Create and navigate to your workshop folder
-It is best practice to keep all your project files together in a dedicated folder.
 
-
-``` bash
-# Create a folder
-mkdir napari-workshop
-
-# Move into that folder
-cd napari-workshop
-```
-Everything you create in JupyterLab will be saved inside this folder.
-
-### 3. Launch JupyterLab
-Start JupyterLab from inside the *napari-workshop* folder:
+### 2. Launch JupyterLab
+Start JupyterLab:
 ``` bash
 jupyter lab
 ```
 The JupyterLab interface should appear in a browser window.
 
+### 3. Create and navigate to your workshop folder
+It is best practice to keep all your project files together in a dedicated folder.
+
+- Use the file browser on the left-hand side
+- Navigate to a location that is easy to find again (like your Desktop)
+- Right-click to create a new folder and name it *napari-workshop* 
+
 ### 4. Create a new notebook
-In the JupyterLab menu bar select: **File > New > Notebook > Python 3 (ipykernel)**
+Once you are inside the *napari-workshop* folder, create a new notebook.
+
+For example by using the JupyterLab menu bar to select: **File > New > Notebook > Python 3 (ipykernel)**
 
 This will open a new Python notebook.
 
