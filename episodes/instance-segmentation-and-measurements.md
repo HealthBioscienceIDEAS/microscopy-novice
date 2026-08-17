@@ -233,6 +233,19 @@ incorrectly joined instances."}
 
 You should see the above image in the Napari viewer. The different colours are used to represent the labels of separate objects. 
 
+## Counting the nuclei
+
+Because the instance segmentation assigns a different integer value starting at 1 and increasing in steps of 1 (1, 2, 3, …) to each object, counting the number of nuclei can be done very easily by taking the maximum value of the instance segmentation image.
+
+```python
+# Count the nuclei
+number_of_nuclei = instance_seg.max()
+print("Number of nuclei: ", number_of_nuclei)
+```
+```output
+Number of nuclei: 18
+```
+
 ## Using napari-skimage plugin to measure nuclei size
 
 In the napari toolbar, open `Layers > Measure > Regionprops (labels) (skimage)`.
@@ -551,7 +564,9 @@ viewer.add_labels(instance_seg)
 alt="The instance segmentation with any nuclei crossing the image boundary
 removed"}
 
-We now have an image with 11 clearly labelled nuclei. You may notice that the smaller nucleus (dark orange) near the top left of the image has been removed even though we can't see where it touches the image border. Remember that this is a 3D image and clear border removes nuclei touching any border. This nucleus has been removed because it touches the top or bottom (z axis) of the image. Let's check the nuclei count as we did above.
+We now have an image with 11 clearly labelled nuclei. You may notice that the smaller nucleus (dark orange) near the top left of the image has been removed even though we can't see where it touches the image border. Remember that this is a 3D image and clear border removes nuclei touching any border. This nucleus has been removed because it touches the top or bottom (z axis) of the image. 
+
+Let's check the nuclei count as we did above.
 
 ```python
 # First count the nuclei
@@ -562,7 +577,7 @@ print("Number of nuclei: ", number_of_nuclei)
 Number of nuclei: 19
 ```
 
-Why are there still 19 nuclei? 
+Why are there 19 nuclei? 
 
 When we ran `clear_borders` the pixels corresponding
 to border nuclei were set to zero, however the total number of labels
