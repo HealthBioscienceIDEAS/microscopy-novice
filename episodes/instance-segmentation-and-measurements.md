@@ -667,7 +667,7 @@ Good practice include:
 
 - Organising the notebook into clear sections (e.g. imports, loading data, segmentation, measurements, exporting results).
 
-- Removing unused cells and tidy temporary experiments.
+- Removing unused cells and tidying temporary experiments.
 
 - Adding short notes explaining key steps and decisions.
 
