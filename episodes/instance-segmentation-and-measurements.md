@@ -38,7 +38,7 @@ assembled within Napari if you prefer.
 ## Creating a notebook in JupyterLab
 
 ### 1. Activate your Napari environment
-Open the Miniforge Prompt (or whichever other environment manager you used when installing Napari), and activate the environment you created for Napari:
+Open the terminal (the same one you used for Napari installation: see 'Opening a terminal' section of [the setup instructions](http://127.0.0.1:4321/index.html#install-python-packages)), and activate the environment you created for Napari:
 ``` bash
 conda activate napari-env
 ```
