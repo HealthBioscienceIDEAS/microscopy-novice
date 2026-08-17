@@ -302,7 +302,7 @@ image. Hovering the mouse pointer over the light purple nuclei at the bottom
 left of the image we see that these apparently four separate nuclei have
 been labelled as a single nucleus. 
 
-In the layer controls of the semantic_seg layer we can confirm this by selecting label `3` and enabling `show selected`.
+In the layer controls of the instance_seg layer we can confirm this by selecting label `3` and enabling `show selected`.
 
 :::::::::::::::::::::::::challenge
 ### Why Are Separate Nuclei Getting the Same Label?
