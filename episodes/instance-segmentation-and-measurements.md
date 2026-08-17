@@ -79,7 +79,7 @@ A notebook is made up of building blocks called **cells**.
 
 For this workshop, we will only use **Code Cells**. 
 
-When you run a Code Cell, the output typically appears underneath it. This could be a number, text, a table, an error message.
+When you run a Code Cell, the output typically appears underneath it. This could be a number, text, a table, or an error message.
 
 By splitting code up into cells, you can run one specific part of your code without having to re-run the whole file and get instant feedback.
 
