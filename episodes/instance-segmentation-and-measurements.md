@@ -627,7 +627,7 @@ props_df
 ```
 
 **Are these pixel counts useful measurements?**
-Pixel counts depend on image resolution, not on the biology of the sample.
+Pixel counts depend on image resolution, rather than the real size of a biological structure. This means images of the exact same nuclei taken with different settings could give vastly different values for the number of pixels. 
 
 This is why biologists convert pixel counts into physical units like µm³ that allow comparisons across experiments, microscopes, and labs.
 
