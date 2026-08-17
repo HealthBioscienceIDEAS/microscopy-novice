@@ -241,7 +241,7 @@ You should see a dialog like this:
 napari-skimage Regionprops widget at startup."}
 
 Select `instance_seg` in the 'Labels layer' drop down box and `nuclei` in the 
-'Intensity Image Layer' drop down box.You can choose to measure various shape
+'Intensity Image Layer' drop down box. You can choose to measure various shape
 properties with this plugin but for now let's keep it simple, making
 sure that only `area`, `centroid` and `label` are selected. You will need to hold 
 down <kbd>ctrl</kbd> to select multiple items in the list.
@@ -256,7 +256,7 @@ created by the napari-skimage plugin"}
 
 ## Regionprops
 
-Before, we used the napari‑skimage plugin to create a table with properties of the nuclei. The same properties can also be computed using the skimage directly in our notebook.
+Before, we used the napari‑skimage plugin to create a table with properties of the nuclei. The same properties can also be computed using scikit-image directly in our notebook.
 
 ``` python
 # Create a Regionprops table
@@ -302,7 +302,7 @@ image. Hovering the mouse pointer over the light purple nuclei at the bottom
 left of the image we see that these apparently four separate nuclei have
 been labelled as a single nucleus. 
 
-In the layer controls of the semantic_seg layer we can confirm this by selecting label `3` and enabling `show selected`.
+In the layer controls of the instance_seg layer we can confirm this by selecting label `3` and enabling `show selected`.
 
 :::::::::::::::::::::::::challenge
 ### Why Are Separate Nuclei Getting the Same Label?
@@ -337,7 +337,7 @@ upper most light purple nucleus and its neighbour.
 ::::::::::::::::::::::::: 
 
 ### The smallest nucleus
-The smallest nucleus is labelled 18, with a size of 7 pixels. We can use the position data (the `centroid` columns) in the table to help find this nucleus. We need to navigate to slice 33 and get the mouse near the top left corner (33 64 0) to find label 18 in the image.
+The smallest nucleus is labelled 18, with a size of 7 pixels. We can use the position data (the `centroid` columns) in the table to help find this nucleus. We need to navigate to slice 33 and get the mouse near the top left corner (33 63 0) to find label 18 in the image.
 
 ![](fig/region_props_after_18.png){alt="A screenshot
 region-props dialog highlighting the smallest nucleus."}
