@@ -241,7 +241,7 @@ You should see a dialog like this:
 napari-skimage Regionprops widget at startup."}
 
 Select `instance_seg` in the 'Labels layer' drop down box and `nuclei` in the 
-'Intensity Image Layer' drop down box.You can choose to measure various shape
+'Intensity Image Layer' drop down box. You can choose to measure various shape
 properties with this plugin but for now let's keep it simple, making
 sure that only `area`, `centroid` and `label` are selected. You will need to hold 
 down <kbd>ctrl</kbd> to select multiple items in the list.
