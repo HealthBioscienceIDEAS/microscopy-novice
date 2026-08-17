@@ -40,7 +40,7 @@ assembled within Napari if you prefer.
 ### 1. Activate your Napari environment
 Open the Miniforge Prompt (or whichever other environment manager you used when installing Napari), and activate the environment you created for Napari:
 ``` bash
-activate napari-env
+conda activate napari-env
 ```
 ### 2. Create and navigate to your workshop folder
 It is best practice to keep all your project files together in a dedicated folder.
