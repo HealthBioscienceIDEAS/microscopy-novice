@@ -672,19 +672,7 @@ Good practice includes:
 
 - Adding short notes explaining key steps and decisions.
 
-Your notebook contains all the analysis steps, but it won’t run correctly unless the software environment is the same. 
-
-Export your conda environment so others can recreate it:
-
-``` bash
-conda env export > environment.yml
-```
-To recreate the same software environment on another computer:
-
-``` bash
-conda env create -f environment.yml
-```
-Read the [conda documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file) for more information.
+Your notebook contains all the analysis steps, but it won’t run correctly unless the software environment is the same. You can share the instructions you used to create your conda environment, but this doesn’t always reproduce the exact same package versions or dependencies. Conda also provides tools for exporting an environment so it can be recreated more reliably elsewhere. See the [conda documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file) for more information.
 
 Other good practices include:
 
