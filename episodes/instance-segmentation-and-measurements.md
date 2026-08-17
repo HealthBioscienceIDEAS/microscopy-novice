@@ -44,6 +44,8 @@ conda activate napari-env
 ```
 ### 2. Create and navigate to your workshop folder
 It is best practice to keep all your project files together in a dedicated folder.
+
+
 ``` bash
 # Create a folder
 mkdir napari-workshop
@@ -68,7 +70,7 @@ This will open a new Python notebook.
 ### 5. Name your notebook
 Renaming your notebook immediately helps keep your workflow tidy and makes it easier to find later.
 
-Right click the default name at the top of the notebook tab (e.g., *Untitled.ipynb*).
+Right click the default name at the top of the notebook tab (e.g., *Untitled.ipynb*), and select `Rename Notebook...`.
 
 Enter a meaningful name, for example: *instance_segmentation.ipynb*.
 
