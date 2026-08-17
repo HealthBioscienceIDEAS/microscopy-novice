@@ -606,7 +606,7 @@ print("Number of nuclei:", number_of_nuclei)
 Number of nuclei: 11
 ```
 
-## Number of pixels per nuclei.
+## Number of pixels per nucleus
 Now that your instance segmentation is correct, you can finish the analysis in our notebook.
 
 Let's start by counting the pixels per nucleus like we did before. 
@@ -626,8 +626,8 @@ props_df = pd.DataFrame(props)
 props_df
 ```
 
-**Are these pixel counts good measurements?**
-Pixel counts depend on image resolution, not on the biology of the sample.
+**Are these pixel counts useful measurements?**
+Pixel counts depend on image resolution, rather than the real size of a biological structure. This means images of the exact same nuclei taken with different settings could give vastly different values for the number of pixels. 
 
 This is why biologists convert pixel counts into physical units like µm³ that allow comparisons across experiments, microscopes, and labs.
 
