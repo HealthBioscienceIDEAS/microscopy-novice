@@ -350,22 +350,9 @@ Our first problem is how to deal with four apparently distinct nuclei (labelled
 with a light purple colour) being segmented as a single nucleus. 
 
 ### Erosion
-In order to use the label function to count the cell nuclei we first need
-to make sure all the nuclei are separate. We can do this by by eroding the segmentation.
+To separate our nuclei, we can 'erode' our segmentation. Erosion is a type of filter, similar to those we covered in the [filters and thresholding episode](episodes\filters-and-thresholding.md). It will make all segmented nuclei smaller, by setting pixels at their edge to zero.
 
-Erosion is a type of filter, similar to those we covered in the [filters and thresholding](filters-and-thresholding.md) lesson.
-
-We will use scikit-image's [erosion](https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.erosion) function. The erosion function sets a pixel to the minimum value in the neighbourhood defined by a `footprint` parameter. 
-
-We'll use scikit-image's [ball](
-https://scikit-image.org/docs/stable/api/skimage.morphology.html#skimage.morphology.ball)
-function to generate a sphere to use as the footprint.
-
-Image erosion has the effect of making bright areas of the image smaller.
-
-In this case the labelled (non-zero) nuclei will become smaller, as any
-pixels closer to the edge of the nucleus than the radius of the footprint
-will be set to zero. 
+The size / shape of the region that gets set to zero is controlled by the filter's 'footprint'. We'll use scikit-image's ball function to generate a sphere to use as the footprint. Any pixels closer to the edge of the nucleus than the radius of this sphere will be set to zero.
 
 Create a new cell and run:
 ```python
