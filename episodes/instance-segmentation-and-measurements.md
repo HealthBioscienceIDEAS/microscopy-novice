@@ -91,7 +91,7 @@ Run each of the following examples in separate notebook cells so you can clearly
 # Use comments to explain what you're doing.
 ```
 
-If you want to create another cell, click the **+** button in the toolbar or use **Insert > Insert Cell Below**.
+If you want to create another cell, click the **+** button in the toolbar or use the **Insert Cell Below** button on the right side of the cell.
 
 ``` python
 # Python can do basic calculations
