@@ -470,7 +470,7 @@ Looking at the image above, there are no longer any incorrectly joined nuclei.
 
 We managed to separate the nuclei, however performing any size or shape analysis on these nuclei will be flawed, as they are heavily eroded.
 
-We can largely undo the erosion by using the scikit-image's [expand labels](
+We can largely undo the erosion by using scikit-image's [expand labels](
 https://scikit-image.org/docs/stable/api/skimage.segmentation.html#skimage.segmentation.expand_labels) function. 
 
 The expand labels function is a filter which performs a `dilation`, expanding the bright (non-zero) parts of the image. The expand labels function adds an extra step to stop the dilation when two neighbouring labels meet, preventing overlapping labels.
