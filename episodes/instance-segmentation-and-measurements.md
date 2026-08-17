@@ -256,7 +256,7 @@ created by the napari-skimage plugin"}
 
 ## Regionprops
 
-Before, we used the napari‑skimage plugin to create a table with properties of the nuclei. The same properties can also be computed using the skimage directly in our notebook.
+Before, we used the napari‑skimage plugin to create a table with properties of the nuclei. The same properties can also be computed using scikit-image directly in our notebook.
 
 ``` python
 # Create a Regionprops table
