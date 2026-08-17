@@ -337,7 +337,7 @@ upper most light purple nucleus and its neighbour.
 ::::::::::::::::::::::::: 
 
 ### The smallest nucleus
-The smallest nucleus is labelled 18, with a size of 7 pixels. We can use the position data (the `centroid` columns) in the table to help find this nucleus. We need to navigate to slice 33 and get the mouse near the top left corner (33 64 0) to find label 18 in the image.
+The smallest nucleus is labelled 18, with a size of 7 pixels. We can use the position data (the `centroid` columns) in the table to help find this nucleus. We need to navigate to slice 33 and get the mouse near the top left corner (33 63 0) to find label 18 in the image.
 
 ![](fig/region_props_after_18.png){alt="A screenshot
 region-props dialog highlighting the smallest nucleus."}
