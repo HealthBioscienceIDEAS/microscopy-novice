@@ -555,7 +555,7 @@ We now have an image with 11 clearly labelled nuclei. You may notice that the sm
 
 ```python
 # First count the nuclei
-number_of_nuclei = clear_border_dilated_instance_seg.max()
+number_of_nuclei = instance_seg.max()
 print("Number of nuclei: ", number_of_nuclei)
 ```
 ```output
