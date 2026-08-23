@@ -129,6 +129,9 @@ conda activate napari-env
 
 # Install napari and plugins using pip
 pip install "napari[all]" napari-bioio-reader bioio-czi
+
+# Install JupyterLab and dependencies 
+pip install --upgrade jupyterlab ipywidgets
 ```
 
 :::::::::::::::::::::::::::::::::::::::::::
@@ -150,6 +153,9 @@ conda activate napari-env
 
 # Install czi file reader
 pip install napari-bioio-reader bioio-czi
+
+# Install JupyterLab and dependencies 
+pip install --upgrade jupyterlab ipywidgets
 ```
 
 :::::::::::::::::::::::::::::::::::::::::::
