@@ -363,7 +363,7 @@ Our first problem is how to deal with four apparently distinct nuclei (labelled
 with a light purple colour) being segmented as a single nucleus. 
 
 ### Erosion
-To separate our nuclei, we can 'erode' our segmentation. Erosion is a type of filter, similar to those we covered in the [filters and thresholding episode](https://healthbioscienceideas.github.io/microscopy-novice/filters-and-thresholding.html). It will make all segmented nuclei smaller, by setting pixels at their edge to zero.
+To separate our nuclei, we can 'erode' our segmentation. Erosion is a type of filter, similar to those we covered in the [filters and thresholding episode](filters-and-thresholding.md). It will make all segmented nuclei smaller, by setting pixels at their edge to zero.
 
 The size / shape of the region that gets set to zero is controlled by the filter's 'footprint'. We'll use scikit-image's ball function to generate a sphere to use as the footprint. Any pixels closer to the edge of the nucleus than the radius of this sphere will be set to zero.
 
