@@ -15,7 +15,7 @@ See the [CONTRIBUTING.md file](CONTRIBUTING.md) for contribution guidelines.
 
 ## Acknowledgements
 
-These lessons were initially developed as part of the [Health and Biosciences IDEAS](https://healthbioscienceideas.github.io/) project, which is a training initiative funded by [UKRI Innovation Scholars](https://www.ukri.org/opportunity/innovation-scholars-data-science-training-in-health-bioscience/) (MR/V03863X/1). 
+These lessons were initially developed as part of the [Health and Biosciences IDEAS](https://healthbioscienceideas.github.io/) project, which is a training initiative funded by UKRI Innovation Scholars (MR/V03863X/1). 
 
 Continued support for this project is provided in part by the [UKRI Digital Research Skills Catalyst](https://digitalskillscatalyst.ac.uk/). 
 The Catalyst Project is funded by UKRI Digital Research Infrastructure Programme from October 2024 to March 2027. Project reference: UKRI/ST/B000299/1.

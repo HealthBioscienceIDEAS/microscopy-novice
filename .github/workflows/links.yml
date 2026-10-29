@@ -30,8 +30,9 @@ jobs:
         id: lychee
         uses: lycheeverse/lychee-action@a8c4c7cb88f0c7386610c35eb25108e448569cb0 # v2.7.0
         with:
-          # Exclude the image.sc forum, stackoverflow, and doi.org/10.1098/rsta.2021.0110,
-          # they all work but return 403 often within GitHub Actions.continue-on-error: 
+          # Exclude the image.sc forum, stackoverflow, https://github.com/join 
+          # and doi.org/10.1098/rsta.2021.0110, they all work but return 403 
+          # often within GitHub Actions
 
           # Ignore gnu.org and fsf.org because they're often down but are still the right
           # websites to link to!
@@ -43,6 +44,7 @@ jobs:
           args: "--verbose
             --exclude https://forum.image.sc/
             --exclude https://stackoverflow.com
+            --exclude https://github.com/join
             --exclude https://doi.org/10.1098/rsta.2021.0110
             --exclude http://www.gnu.org
             --exclude http://fsf.org
