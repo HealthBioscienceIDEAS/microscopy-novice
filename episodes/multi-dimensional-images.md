@@ -350,8 +350,8 @@ clicking on '00001_01.ome.tiff' on [this page of the OME website
 
 To open it in Napari, remove any existing image layers, then drag and drop the 
 file over the canvas. A popup may appear asking you to choose a 'reader' - you 
-can select either 'napari builtins' or 'Bioio Reader'. We'll see in the 
-next episode that BioIO gives us access to useful image metadata.
+should select **napari builtins**. We'll look at the Bioio reader in the next 
+episode, which gives us access to useful image metadata.
 
 Note this image can take a while to open, so give it some time! 
 Alternatively, you can select in the top menu-bar:  
