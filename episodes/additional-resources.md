@@ -81,7 +81,7 @@ Open to all.
 - [Global BioImage Analysts' Society (GloBIAS) seminar series](https://www.globias.org/activities/bia-seminar-series-2025-2026)  
 Online talks on bio-image analysis. Open to all.
 
-- [UCL Bioimage interest group](https://www.ucl.ac.uk/science-technology-platforms/imaging/ucl-bioimage-interest-group)  
+- [London BioImage Interest Group](https://www.ucl.ac.uk/research-innovation/science-technology-platforms/london-bioimage-interest-group)  
 Monthly talks (in person and online) about image analysis of biological images. 
 Open to all.
 
