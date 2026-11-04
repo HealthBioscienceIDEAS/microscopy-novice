@@ -489,8 +489,9 @@ pixel values and may alter the results of any analysis that you perform!
 ## Compression
 
 Let's remove all layers from the Napari viewer, and open the 
-'00001_01.ome.tiff' dataset. You should have already downloaded this to your 
-working directory as part of the [setup instructions](../learners/setup.md).
+'00001_01.ome.tiff' dataset (use the **napari builtins** reader if asked). 
+You should have already downloaded this to your working directory as part of 
+the [setup instructions](../learners/setup.md).
 
 Run the code below in Napari's console. This will save a specific timepoint of 
 this image (time = 30) as four different file formats (.tiff, .png + low and 
