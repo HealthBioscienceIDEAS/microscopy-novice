@@ -52,10 +52,24 @@ pixels in Napari, or print the array into Napari's console (as we saw last
 episode), but these are hard to interpret at a glance. A much better option is 
 to use an image histogram.
 
-To do this, we will have to install a new plugin for Napari. Remember from the 
-[Imaging Software episode](imaging-software.md) that plugins add new features 
-to a piece of software. Napari has hundreds of plugins available on the 
-[napari hub](https://www.napari-hub.org/) website.
+Napari comes with a built-in histogram, which you can open by clicking the ![](
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/histogram.svg
+){alt="Napari's histogram button" height='30px'} icon next to the contrast limits 
+slider in the layer controls. 
+
+![](fig/builtin-histogram.png
+){alt="Napari's built-in histogram, displayed inside the layer controls."}
+
+For this episode though, we will use one provided by a napari plugin for two 
+main reasons:
+
+- it will provide an example of how to install and use plugins
+- it supports some features like panning / zooming into the histogram that 
+aren't supported in napari yet
+
+Remember from the [Imaging Software episode](imaging-software.md) that plugins 
+add new features to a piece of software. Napari has hundreds of plugins 
+available on the [napari hub](https://www.napari-hub.org/) website.
 
 Let's start by going to the napari hub and searching for 'matplotlib':
 
